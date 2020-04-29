@@ -1,0 +1,541 @@
+{
+	"CB": {
+		"munFolder":"arcpy.env.scratchFolder + '/CapeBreton/'",
+		"munName":"CapeBreton",
+		"munFullName":"Cape Breton Regional Municipality",
+		"munID":"CB",
+		"shpMunID":"CB"
+		},
+	"HX": {
+		"munFolder":"arcpy.env.scratchFolder + '/Halifax/'",
+		"munName":"Halifax",
+		"munFullName":"Halifax Regional Municipality",
+		"munID":"HX",
+		"shpMunID":"HX"
+		},
+	"FN": {
+		"munFolder":"arcpy.env.scratchFolder + '/FirstNations/'",
+		"munName":"FirstNations",
+		"munFullName":"First Nations",
+		"munID":"FN",
+		"shpMunID":"FN"
+		},
+	"AP": {
+		"munFolder":"arcpy.env.scratchFolder + '/CountyAnnapolis/'",
+		"munName":"CountyAnnapolis",
+		"munFullName":"County of Annapolis",
+		"munID":"AP",
+		"shpMunID":"AP"
+		},
+	"AT": {
+		"munFolder":"arcpy.env.scratchFolder + '/CountyAntigonish/'",
+		"munName":"CountyAntigonish",
+		"munFullName":"County of Antigonish",
+		"munID":"AT",
+		"shpMunID":"AT"
+		},
+	"CO": {
+		"munFolder":"arcpy.env.scratchFolder + '/CountyColchester/'",
+		"munName":"CountyColchester",
+		"munFullName":"County of Colchester",
+		"munID":"CO",
+		"shpMunID":"CO"
+		},
+	"CU": {
+		"munFolder":"arcpy.env.scratchFolder + '/CountyCumberland/'",
+		"munName":"CountyCumberland",
+		"munFullName":"County of Cumberland",
+		"munID":"CU",
+		"shpMunID":"CU"
+		},
+	"IN": {
+		"munFolder":"arcpy.env.scratchFolder + '/CountyInverness/'",
+		"munName":"CountyInverness",
+		"munFullName":"County of Inverness",
+		"munID":"IN",
+		"shpMunID":"IN"
+		},
+	"KI": {
+		"munFolder":"arcpy.env.scratchFolder + '/CountyKings/'",
+		"munName":"CountyKings",
+		"munFullName":"County of Kings",
+		"munID":"KI",
+		"shpMunID":"KI"
+		},
+	"PI": {
+		"munFolder":"arcpy.env.scratchFolder + '/CountyPictou/'",
+		"munName":"CountyPictou",
+		"munFullName":"County of Pictou",
+		"munID":"PI",
+		"shpMunID":"PI"
+		},
+	"RI": {
+		"munFolder":"arcpy.env.scratchFolder + '/CountyRichmond/'",
+		"munName":"CountyRichmond",
+		"munFullName":"County of Richmond",
+		"munID":"RI",
+		"shpMunID":"RI"
+		},
+	"VI": {
+		"munFolder":"arcpy.env.scratchFolder + '/CountyVictoria/'",
+		"munName":"CountyVictoria",
+		"munFullName":"County of Victoria",
+		"munID":"VI",
+		"shpMunID":"VI"
+		},
+	"AY": {
+		"munFolder":"arcpy.env.scratchFolder + '/DistrictArgyle/'",
+		"munName":"DistrictArgyle",
+		"munFullName":"District of Argyle",
+		"munID":"AY",
+		"shpMunID":"ARG"
+		},
+	"BA": {
+		"munFolder":"arcpy.env.scratchFolder + '/DistrictBarrington/'",
+		"munName":"DistrictBarrington",
+		"munFullName":"District of Barrington",
+		"munID":"BA",
+		"shpMunID":"BA"
+		},
+	"CT": {
+		"munFolder":"arcpy.env.scratchFolder + '/DistrictChester/'",
+		"munName":"DistrictChester",
+		"munFullName":"District of Chester",
+		"munID":"CT",
+		"shpMunID":"CT"
+		},
+	"CL": {
+		"munFolder":"arcpy.env.scratchFolder + '/DistrictClare/'",
+		"munName":"DistrictClare",
+		"munFullName":"District of Clare",
+		"munID":"CL",
+		"shpMunID":"CL"
+		},
+	"DI": {
+		"munFolder":"arcpy.env.scratchFolder + '/DistrictDigby/'",
+		"munName":"DistrictDigby",
+		"munFullName":"District of Digby",
+		"munID":"DI",
+		"shpMunID":"DI"
+		},
+	"EH": {
+		"munFolder":"arcpy.env.scratchFolder + '/DistrictEastHants/'",
+		"munName":"DistrictEastHants",
+		"munFullName":"District of East Hants",
+		"munID":"EH",
+		"shpMunID":"EH"
+		},
+	"GU": {
+		"munFolder":"arcpy.env.scratchFolder + '/DistrictGuysborough/'",
+		"munName":"DistrictGuysborough",
+		"munFullName":"District of Guysborough",
+		"munID":"GU",
+		"shpMunID":"GU"
+		},
+	"LU": {
+		"munFolder":"arcpy.env.scratchFolder + '/DistrictLunenburg/'",
+		"munName":"DistrictLunenburg",
+		"munFullName":"District of Lunenburg",
+		"munID":"LU",
+		"shpMunID":"LU"
+		},
+	"SH": {
+		"munFolder":"arcpy.env.scratchFolder + '/DistrictShelburne/'",
+		"munName":"DistrictShelburne",
+		"munFullName":"District of Shelburne",
+		"munID":"SH",
+		"shpMunID":"SH"
+		},
+	"SM": {
+		"munFolder":"arcpy.env.scratchFolder + '/DistrictStMarys/'",
+		"munName":"DistrictStMarys",
+		"munFullName":"District of St. Mary's",
+		"munID":"SM",
+		"shpMunID":"SM"
+		},
+	"WH": {
+		"munFolder":"arcpy.env.scratchFolder + '/DistrictWestHants/'",
+		"munName":"DistrictWestHants",
+		"munFullName":"District of West Hants",
+		"munID":"WH",
+		"shpMunID":"WH"
+		},
+	"YA": {
+		"munFolder":"arcpy.env.scratchFolder + '/DistrictYarmouth/'",
+		"munName":"DistrictYarmouth",
+		"munFullName":"District of Yarmouth",
+		"munID":"YA",
+		"shpMunID":"YA"
+		},
+	"QU": {
+		"munFolder":"arcpy.env.scratchFolder + '/RegionQueens/'",
+		"munName":"RegionQueens",
+		"munFullName":"Region of Queens",
+		"munID":"QU",
+		"shpMunID":"QU"
+		},
+	"AM": {
+		"munFolder":"arcpy.env.scratchFolder + '/TownAmherst/'",
+		"munName":"TownAmherst",
+		"munFullName":"Town of Amherst",
+		"munID":"AM",
+		"shpMunID":"AM"
+		},
+	"AR": {
+		"munFolder":"arcpy.env.scratchFolder + '/TownAnnapolisRoyal/'",
+		"munName":"TownAnnapolisRoyal",
+		"munFullName":"Town of Annapolis Royal",
+		"munID":"AR",
+		"shpMunID":"AR"
+		},
+	"AS": {
+		"munFolder":"arcpy.env.scratchFolder + '/TownAntigonish/'",
+		"munName":"TownAntigonish",
+		"munFullName":"Town of Antigonish",
+		"munID":"AS",
+		"shpMunID":"AS"
+		},
+	"BE": {
+		"munFolder":"arcpy.env.scratchFolder + '/TownBerwick/'",
+		"munName":"TownBerwick",
+		"munFullName":"Town of Berwick",
+		"munID":"BE",
+		"shpMunID":"BE"
+		},
+	"BT": {
+		"munFolder":"arcpy.env.scratchFolder + '/TownBridgetown/'",
+		"munName":"TownBridgetown",
+		"munFullName":"Town of Bridgetown",
+		"munID":"BT",
+		"shpMunID":"BT"
+		},
+	"BW": {
+		"munFolder":"arcpy.env.scratchFolder + '/TownBridgewater/'",
+		"munName":"TownBridgewater",
+		"munFullName":"Town of Bridgewater",
+		"munID":"BW",
+		"shpMunID":"BW"
+		},
+	"CA": {
+		"munFolder":"arcpy.env.scratchFolder + '/TownCanso/'",
+		"munName":"TownCanso",
+		"munFullName":"Town of Canso",
+		"munID":"CA",
+		"shpMunID":"CA"
+		},
+	"CH": {
+		"munFolder":"arcpy.env.scratchFolder + '/TownClarksHarbour/'",
+		"munName":"TownClarksHarbour",
+		"munFullName":"Town of Clark's Harbour",
+		"munID":"CH",
+		"shpMunID":"CH"
+		},
+	"DG": {
+		"munFolder":"arcpy.env.scratchFolder + '/TownDigby/'",
+		"munName":"TownDigby",
+		"munFullName":"Town of Digby",
+		"munID":"DG",
+		"shpMunID":"DG"
+		},
+	"HP": {
+		"munFolder":"arcpy.env.scratchFolder + '/TownHantsport/'",
+		"munName":"TownHantsport",
+		"munFullName":"Town of Hantsport",
+		"munID":"HP",
+		"shpMunID":"HP"
+		},
+	"KE": {
+		"munFolder":"arcpy.env.scratchFolder + '/TownKentville/'",
+		"munName":"TownKentville",
+		"munFullName":"Town of Kentville",
+		"munID":"KE",
+		"shpMunID":"KE"
+		},
+	"LO": {
+		"munFolder":"arcpy.env.scratchFolder + '/TownLockeport/'",
+		"munName":"TownLockeport",
+		"munFullName":"Town of Lockeport",
+		"munID":"LO",
+		"shpMunID":"LKP"
+		},
+	"LN": {
+		"munFolder":"arcpy.env.scratchFolder + '/TownLunenburg/'",
+		"munName":"TownLunenburg",
+		"munFullName":"Town of Lunenburg",
+		"munID":"LN",
+		"shpMunID":"LN"
+		},
+	"MB": {
+		"munFolder":"arcpy.env.scratchFolder + '/TownMahoneBay/'",
+		"munName":"TownMahoneBay",
+		"munFullName":"Town of Mahone Bay",
+		"munID":"MB",
+		"shpMunID":"MHB"
+		},
+	"MI": {
+		"munFolder":"arcpy.env.scratchFolder + '/TownMiddleton/'",
+		"munName":"TownMiddleton",
+		"munFullName":"Town of Middleton",
+		"munID":"MI",
+		"shpMunID":"MI"
+		},
+	"MU": {
+		"munFolder":"arcpy.env.scratchFolder + '/TownMulgrave/'",
+		"munName":"TownMulgrave",
+		"munFullName":"Town of Mulgrave",
+		"munID":"MU",
+		"shpMunID":"MU"
+		},
+	"NG": {
+		"munFolder":"arcpy.env.scratchFolder + '/TownNewGlasgow/'",
+		"munName":"TownNewGlasgow",
+		"munFullName":"Town of New Glasgow",
+		"munID":"NG",
+		"shpMunID":"NG"
+		},
+	"OX": {
+		"munFolder":"arcpy.env.scratchFolder + '/TownOxford/'",
+		"munName":"TownOxford",
+		"munFullName":"Town of Oxford",
+		"munID":"OX",
+		"shpMunID":"OX"
+		},
+	"PA": {
+		"munFolder":"arcpy.env.scratchFolder + '/TownParrsboro/'",
+		"munName":"TownParrsboro",
+		"munFullName":"Town of Parrsboro",
+		"munID":"PA",
+		"shpMunID":"PA"
+		},
+	"PC": {
+		"munFolder":"arcpy.env.scratchFolder + '/TownPictou/'",
+		"munName":"TownPictou",
+		"munFullName":"Town of Pictou",
+		"munID":"PC",
+		"shpMunID":"PC"
+		},
+	"PH": {
+		"munFolder":"arcpy.env.scratchFolder + '/TownPortHawkesbury/'",
+		"munName":"TownPortHawkesbury",
+		"munFullName":"Town of Port Hawkesbury",
+		"munID":"PH",
+		"shpMunID":"PHK"
+		},
+	"SB": {
+		"munFolder":"arcpy.env.scratchFolder + '/TownShelburne/'",
+		"munName":"TownShelburne",
+		"munFullName":"Town of Shelburne",
+		"munID":"SB",
+		"shpMunID":"SHL"
+		},
+	"SP": {
+		"munFolder":"arcpy.env.scratchFolder + '/TownSpringhill/'",
+		"munName":"TownSpringhill",
+		"munFullName":"Town of Springhill",
+		"munID":"SP",
+		"shpMunID":"SP"
+		},
+	"SL": {
+		"munFolder":"arcpy.env.scratchFolder + '/TownStellarton/'",
+		"munName":"TownStellarton",
+		"munFullName":"Town of Stellarton",
+		"munID":"SL",
+		"shpMunID":"SL"
+		},
+	"SW": {
+		"munFolder":"arcpy.env.scratchFolder + '/TownStewiacke/'",
+		"munName":"TownStewiacke",
+		"munFullName":"Town of Stewiacke",
+		"munID":"SW",
+		"shpMunID":"SW"
+		},
+	"TN": {
+		"munFolder":"arcpy.env.scratchFolder + '/TownTrenton/'",
+		"munName":"TownTrenton",
+		"munFullName":"Town of Trenton",
+		"munID":"TN",
+		"shpMunID":"TN"
+		},
+	"TU": {
+		"munFolder":"arcpy.env.scratchFolder + '/TownTruro/'",
+		"munName":"TownTruro",
+		"munFullName":"Town of Truro",
+		"munID":"TU",
+		"shpMunID":"TU"
+		},
+	"WE": {
+		"munFolder":"arcpy.env.scratchFolder + '/TownWestville/'",
+		"munName":"TownWestville",
+		"munFullName":"Town of Westville",
+		"munID":"WE",
+		"shpMunID":"WE"
+		},
+	"WI": {
+		"munFolder":"arcpy.env.scratchFolder + '/TownWindsor/'",
+		"munName":"TownWindsor",
+		"munFullName":"Town of Windsor",
+		"munID":"WI",
+		"shpMunID":"WI"
+		},
+	"WO": {
+		"munFolder":"arcpy.env.scratchFolder + '/TownWolfville/'",
+		"munName":"TownWolfville",
+		"munFullName":"Town of Wolfville",
+		"munID":"WO",
+		"shpMunID":"WO"
+		},
+	"YM": {
+		"munFolder":"arcpy.env.scratchFolder + '/TownYarmouth/'",
+		"munName":"TownYarmouth",
+		"munFullName":"Town of Yarmouth",
+		"munID":"YM",
+		"shpMunID":"YM"
+		},
+	"VAY": {
+		"munFolder":"arcpy.env.scratchFolder + '/VillageAylesford/'",
+		"munName":"VillageAylesford",
+		"munFullName":"Village of Aylesford",
+		"munID":"VAY",
+		"shpMunID":"VAY"
+		},
+	"VBD": {
+		"munFolder":"arcpy.env.scratchFolder + '/VillageBaddeck/'",
+		"munName":"VillageBaddeck",
+		"munFullName":"Village of Baddeck",
+		"munID":"VBD",
+		"shpMunID":"VBD"
+		},
+	"VBH": {
+		"munFolder":"arcpy.env.scratchFolder + '/VillageBibleHill/'",
+		"munName":"VillageBibleHill",
+		"munFullName":"Village of Bible Hill",
+		"munID":"VBH",
+		"shpMunID":"VBH"
+		},
+	"VCN": {
+		"munFolder":"arcpy.env.scratchFolder + '/VillageCanning/'",
+		"munName":"VillageCanning",
+		"munFullName":"Village of Canning",
+		"munID":"VCN",
+		"shpMunID":"VCN"
+		},
+	"VCH": {
+		"munFolder":"arcpy.env.scratchFolder + '/VillageChester/'",
+		"munName":"VillageChester",
+		"munFullName":"Village of Chester",
+		"munID":"VCH",
+		"shpMunID":"VCH"
+		},
+	"VCS": {
+		"munFolder":"arcpy.env.scratchFolder + '/VillageCornwallisSquare/'",
+		"munName":"VillageCornwallisSquare",
+		"munFullName":"Village of Cornwallis Square",
+		"munID":"VCS",
+		"shpMunID":"VCS"
+		},
+	"VFP": {
+		"munFolder":"arcpy.env.scratchFolder + '/VillageFreeport/'",
+		"munName":"VillageFreeport",
+		"munFullName":"Village of Freeport",
+		"munID":"VFP",
+		"shpMunID":"VFP"
+		},
+	"VGW": {
+		"munFolder":"arcpy.env.scratchFolder + '/VillageGreenwood/'",
+		"munName":"VillageGreenwood",
+		"munFullName":"Village of Greenwood",
+		"munID":"VGW",
+		"shpMunID":"VGW"
+		},
+	"VHB": {
+		"munFolder":"arcpy.env.scratchFolder + '/VillageHavreBoucher/'",
+		"munName":"VillageHavreBoucher",
+		"munFullName":"Village of Havre Boucher",
+		"munID":"VHB",
+		"shpMunID":"VHB"
+		},
+	"VHE": {
+		"munFolder":"arcpy.env.scratchFolder + '/VillageHebbville/'",
+		"munName":"VillageHebbville",
+		"munFullName":"Village of Hebbville",
+		"munID":"VHE",
+		"shpMunID":"VHE"
+		},
+	"VKI": {
+		"munFolder":"arcpy.env.scratchFolder + '/VillageKingston/'",
+		"munName":"VillageKingston",
+		"munFullName":"Village of Kingston",
+		"munID":"VKI",
+		"shpMunID":"VKI"
+		},
+	"VLW": {
+		"munFolder":"arcpy.env.scratchFolder + '/VillageLawrencetown/'",
+		"munName":"VillageLawrencetown",
+		"munFullName":"Village of Lawrencetown",
+		"munID":"VLW",
+		"shpMunID":"VLW"
+		},
+	"VNM": {
+		"munFolder":"arcpy.env.scratchFolder + '/VillageNewMinas/'",
+		"munName":"VillageNewMinas",
+		"munFullName":"Village of New Minas",
+		"munID":"VNM",
+		"shpMunID":"VNM"
+		},
+	"VPW": {
+		"munFolder":"arcpy.env.scratchFolder + '/VillagePortWilliams/'",
+		"munName":"VillagePortWilliams",
+		"munFullName":"Village  of Port Williams",
+		"munID":"VPW",
+		"shpMunID":"VPW"
+		},
+	"VPG": {
+		"munFolder":"arcpy.env.scratchFolder + '/VillagePugwash/'",
+		"munName":"VillagePugwash",
+		"munFullName":"Village of Pugwash",
+		"munID":"VPG",
+		"shpMunID":"VPG"
+		},
+	"VRH": {
+		"munFolder":"arcpy.env.scratchFolder + '/VillageRiverHebert/'",
+		"munName":"VillageRiverHebert",
+		"munFullName":"Village of River Hebert",
+		"munID":"VRH",
+		"shpMunID":"VRH"
+		},
+	"VSP": {
+		"munFolder":"arcpy.env.scratchFolder + '/VillageStPeters/'",
+		"munName":"VillageStPeters",
+		"munFullName":"Village of St. Peter's",
+		"munID":"VSP",
+		"shpMunID":"VSP"
+		},
+	"VTM": {
+		"munFolder":"arcpy.env.scratchFolder + '/VillageTatamagouche/'",
+		"munName":"VillageTatamagouche",
+		"munFullName":"Village of Tatamagouche",
+		"munID":"VTM",
+		"shpMunID":"VTM"
+		},
+	"VTI": {
+		"munFolder":"arcpy.env.scratchFolder + '/VillageTiverton/'",
+		"munName":"VillageTiverton",
+		"munFullName":"Village of Tiverton",
+		"munID":"VTI",
+		"shpMunID":"VTI"
+		},
+	"VWP": {
+		"munFolder":"arcpy.env.scratchFolder + '/VillageWestport/'",
+		"munName":"VillageWestport",
+		"munFullName":"Village of Westport",
+		"munID":"VWP",
+		"shpMunID":"VWP"
+		},
+	"VWM": {
+		"munFolder":"arcpy.env.scratchFolder + '/VillageWeymouth/'",
+		"munName":"VillageWeymouth",
+		"munFullName":"Village of Weymouth",
+		"munID":"VWM",
+		"shpMunID":"VWM"
+		}
+}
