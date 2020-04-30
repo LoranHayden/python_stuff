@@ -27,6 +27,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="aFile.txt" />
+    <Content Include="feature_codes.json" />
     <Content Include="line_feature_fields.json" />
     <Content Include="municipalities.json" />
     <Content Include="water_supply_treatment_facility.json" />
