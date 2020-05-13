@@ -21,9 +21,13 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="app_utilities.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="municipality.py" />
     <Compile Include="municipality_list.py" />
     <Compile Include="PythonApplication2.py" />
+    <Compile Include="UploadTool_DMA.py" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="aFile.txt" />
