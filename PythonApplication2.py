@@ -3,6 +3,7 @@ import json
 import requests
 import math
 import app_utilities
+#import arcpy
 #def get_fields(url):
 #    x = requests.get(url, timeout = 15)
 #    if int(x.status_code) == 200:
@@ -40,8 +41,23 @@ import app_utilities
 #print(app_utilities.get_array('line_feature_fields.json')['outputFields_Line'])
 
 #print(get_fields('https://gis.energy.gov.ab.ca/arcgis/rest/services/Geoview/ERCB_Ext_PROD/MapServer/0?f=pjson'))
-print(app_utilities.get_object_dictionary('municipalities.json')['CB'])
-print(app_utilities.get_object_dictionary('municipalities.json')['CB']['munFolder'])
-print('************************************************')
+#print(app_utilities.get_object_dictionary('municipalities.json')['CB'])
+#print(app_utilities.get_object_dictionary('municipalities.json')['CB']['munFolder'])
+#muns = app_utilities.get_object_dictionary('municipalities.json')
+#asset_fields = app_utilities.get_array('asset_fields.json', 'asset_fields')
+#for mun in muns:
+#    current_municipality = app_utilities.get_object_dictionary('municipalities.json')[mun]
+#    munFolder = current_municipality['munFolder']
+#    munName = current_municipality['munName']
+#    munFullName = current_municipality['munFullName']
+#    munID = current_municipality['munID']
+#    shpMunID = current_municipality['shpMunID']
 
+#    print(munFolder)
+#    print(munName)
+#    print(munFullName)
+#    print(munID)
+#    print(shpMunID)
 
+#    print('************************************************')
+print(app_utilities.get_array('feature_codes.json', 'fcodes'))

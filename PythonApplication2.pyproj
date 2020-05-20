@@ -31,8 +31,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="aFile.txt" />
+    <Content Include="required_asset_fields.json" />
     <Content Include="feature_codes.json" />
     <Content Include="line_feature_fields.json" />
+    <Content Include="asset_fields.json" />
     <Content Include="municipalities.json" />
     <Content Include="water_supply_treatment_facility.json" />
     <Content Include="water_supply_booster_station.json" />

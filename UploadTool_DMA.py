@@ -6,863 +6,243 @@
 ## Python Version : 2.7
 ## #####################################################################################
 
-#import os
-#import sys
-#import glob
-#import shutil
-#import string
-#import numbers
-#import datetime
-#from datetime import timedelta
-#import copy
-#import shutil
-#import arcpy
-#import xlrd
-#import csv
-#import pandas as pd
-#import time
-#import smtplib
-#from email.MIMEMultipart import MIMEMultipart
-#from email.MIMEText import MIMEText
-#from email.MIMEBase import MIMEBase
-#from email import encoders
-#import zipfile
+import os
+import sys
+import glob
+import shutil
+import string
+import numbers
+import datetime
+from datetime import timedelta
+import copy
+import shutil
+import arcpy
+import xlrd
+import csv
+import pandas as pd
+import time
+import smtplib
+from email.MIMEMultipart import MIMEMultipart
+from email.MIMEText import MIMEText
+from email.MIMEBase import MIMEBase
+from email import encoders
+import zipfile
+import app_utilities
+
 
 
 ## Script name
-#scriptName = "UploadTool_DMA.py"
+scriptName = "UploadTool_DMA.py"
 
 
 ## Start Time...
-#starttime = datetime.datetime.now()
-
-##region Municipality codes
-## Municipality Codes
-## These are the Municipality codes that exist in the spreadsheets and geodatabase,
-## but there are remnants of the old IDs in the names of the shapefiles
-
-##CB = "Cape Breton Regional Municipality"
-##HX = "Halifax Regional Municipality"
-##FN = "First Nations"
-
-##AP = "County of Annapolis"
-##AT = "County of Antigonish"
-##CO = "County of Colchester"
-##CU = "County of Cumberland"
-##IN = "County of Inverness"
-##KI = "County of Kings"
-##PI = "County of Pictou"
-##RI = "County of Richmond"
-##VI = "County of Victoria"
-
-##AY = "District of Argyle"
-##BA = "District of Barrington"
-##CT = "District of Chester"
-##CL = "District of Clare"
-##DI = "District of Digby"
-##EH = "District of East Hants"
-##GU = "District of Guysborough"
-##LU = "District of Lunenburg"
-##SH = "District of Shelburne"
-##SM = "District of St. Mary's"
-##WH = "District of West Hants"
-##YA = "District of Yarmouth"
-
-##QU = "Region of Queens"
-
-##AM = "Town of Amherst"
-##AR = "Town of Annapolis Royal"
-##AS = "Town of Antigonish"
-##BE = "Town of Berwick"
-##BT = "Town of Bridgetown"
-##BW = "Town of Bridgewater"
-##CA = "Town of Canso"
-##CH = "Town of Clark's Harbour"
-##DG = "Town of Digby"
-##HP = "Town of Hantsport"
-##KE = "Town of Kentville"
-##LO = "Town of Lockeport"
-##LN = "Town of Lunenburg"
-##MB = "Town of Mahone Bay"
-##MI = "Town of Middleton"
-##MU = "Town of Mulgrave"
-##NG = "Town of New Glasgow"
-##OX = "Town of Oxford"
-##PA = "Town of Parrsboro"
-##PC = "Town of Pictou"
-##PH = "Town of Port Hawkesbury"
-##SB = "Town of Shelburne"
-##SP = "Town of Springhill"
-##SL = "Town of Stellarton"
-##SW = "Town of Stewiacke"
-##TN = "Town of Trenton"
-##TU = "Town of Truro"
-##WE = "Town of Westville"
-##WI = "Town of Windsor"
-##WO = "Town of Wolfville"
-##YM = "Town of Yarmouth"
-
-##VAY = "Village of Aylesford"
-##VBD = "Village of Baddeck"
-##VBH = "Village of Bible Hill"
-##VCN = "Village of Canning"
-##VCH = "Village of Chester"
-##VCS = "Village of Cornwallis Square"
-##VFP = "Village of Freeport"
-##VGW = "Village of Greenwood"
-##VHB = "Village of Havre Boucher"
-##VHE = "Village of Hebbville"
-##VKI = "Village of Kingston"
-##VLW = "Village of Lawrencetown"
-##VNM = "Village of New Minas"
-##VPW = "Village of Port Williams"
-##VPG = "Village of Pugwash"
-##VRH = "Village of River Hebert"
-##VSP = "Village of St. Peter's"
-##VTM = "Village of Tatamagouche"
-##VTI = "Village of Tiverton"
-##VWP = "Village of Westport"
-##VWM = "Village of Weymouth"
-##endregion
-
+starttime = datetime.datetime.now()
 
 ## Coordinate system of pilot municipality shapefiles (NAD83 UTM20)
-#srNAD83_UTM20 = arcpy.SpatialReference(26920)
+srNAD83_UTM20 = arcpy.SpatialReference(26920)
 ## Coordinate system of GDB feature classes (NAD83 CSRS UTM20)
+###################################TODO
 #srNAD83_CSRS_UTM20 = arcpy.SpatialReference(2961)
+###################################ENDTODO
 ## Datum transformation between the two
-#gt = "NAD_1983_To_WGS_1984_1 + NAD_1983_CSRS_To_WGS_1984_2"
+gt = "NAD_1983_To_WGS_1984_1 + NAD_1983_CSRS_To_WGS_1984_2"
 
 
 ## Initialize variable
-#edit = None
+edit = None
 
 
-outputFields_Point = app_utilities.get_array('point_feature_fields.json')['outputFields_Point']
-outputFields_Line = app_utilities.get_array('line_feature_fields.json')['outputFields_Line']
-outputFields_Table_WWCTF = app_utilities.get_array('waste_water_treatment_facility.json')['outputFields_Table_WWCTF']
-outputFields_Table_LPS = app_utilities.get_array('waste_water_lift_pump_station.json')['outputFields_Table_LPS']
-outputFields_Table_BST = app_utilities.get_array('water_supply_booster_station.json')['outputFields_Table_BST']
-outputFields_Table_WSTF = app_utilities.get_array('water_supply_treatment_facility.json')['outputFields_Table_WSTF']
+outputFields_Point = app_utilities.get_array('point_feature_fields.json','outputFields_Point')
+outputFields_Line = app_utilities.get_array('line_feature_fields.json','outputFields_Line')
+outputFields_Table_WWCTF = app_utilities.get_array('waste_water_treatment_facility.json','outputFields_Table_WWCTF')
+outputFields_Table_LPS = app_utilities.get_array('waste_water_lift_pump_station.json','outputFields_Table_LPS')
+outputFields_Table_BST = app_utilities.get_array('water_supply_booster_station.json','outputFields_Table_BST')
+outputFields_Table_WSTF = app_utilities.get_array('water_supply_treatment_facility.json','outputFields_Table_WSTF')
+
+def main():
+    Validate()
+
+def is_number(n):
+    try:
+        float(n)   # Type-casting the string to 'float'.
+                   # If string is not a valid 'float,
+                   # it'll raise 'ValueError' exception
+    except ValueError:
+        return False
+    return True
 
 
-
-
-#def main():
-
-#    Unzip()
-#    Validate()
-#    #Upload()
-
-
-#def is_number(n):
-#    try:
-#        float(n)   # Type-casting the string to 'float'.
-#                   # If string is not a valid 'float,
-#                   # it'll raise 'ValueError' exception
-#    except ValueError:
-#        return False
-#    return True
-
-
-#def rmdirContents(folder):
-#    for root, dirs, files in os.walk(folder):
-#        for f in files:
-#            os.unlink(os.path.join(root, f))
-#        for d in dirs:
-#            shutil.rmtree(os.path.join(root, d))
-
-
-#def Unzip():
-#    # Get the zip file parameter
-#    global munZipfile, zip_ref
-#    munZipfile = arcpy.GetParameterAsText(3)
-
-
-#def Validate():
-
-#    try:
-#        #global parentFolder, munFolder, munID, shpMunID, munName, mun
-#        global munFolder, munID, shpMunID, munName, mun, munFullName
-#        global method, shapefilesExist, gdb
-
-#        # Default value
-#        shapefilesExist = True
-
-#        # Get 2 of the parameters
-#        mun = arcpy.GetParameterAsText(0)
-#        method = arcpy.GetParameterAsText(1)
-#        #parentFolder = arcpy.GetParameterAsText(2) + "/"
-#        #gdb = arcpy.GetParameterAsText(3) + "/"
-
-
-#        # Set different variables according to what the input method is
-#        if method == "GIS":
-#            shapefilesExist = True
-#        elif method == "Survey":
-#            shapefilesExist = False
-
-
-#        # ===============================================================================
-#        # ===============================================================================
-#        # ===============================================================================
-#        # Hard-coded parent folder - on the VM
-#        #parentFolder = "C:/Projects/DMA/UploadTool/Uploads/"
-#        # On my machine
-#        #parentFolder = "C:/Work/Projects/DMA/UploadTool/Uploads/"
-
-#        arcpy.env.scratchWorkspace  = '%scratchworkspace%'
-
-#        # ===============================================================================
-#        # ===============================================================================
-#        # =======================================================================
+def rmdirContents(folder):
+    for root, dirs, files in os.walk(folder):
+        for f in files:
+            os.unlink(os.path.join(root, f))
+        for d in dirs:
+            shutil.rmtree(os.path.join(root, d))
 
 
 
-#        # Defaults
-#        munFolder = ""
-#        munID = ""
-#        shpMunID = ""
+def Validate():
+
+    try:
+        #global parentFolder, munFolder, munID, shpMunID, munName, mun
+        global munFolder, munID, shpMunID, munName, mun, munFullName
+        global method, shapefilesExist, gdb
+
+        # Default value
+        shapefilesExist = True
+
+        # Get 2 of the parameters
+        mun = arcpy.GetParameterAsText(0)
+        method = arcpy.GetParameterAsText(1)
+        #parentFolder = arcpy.GetParameterAsText(2) + "/"
+        #gdb = arcpy.GetParameterAsText(3) + "/"
 
 
-#        # The folder names on the server that store the whole structure of files (what's in the zip file)
-#        # need to be called these following names and paths:
+        # Set different variables according to what the input method is
+        if method == "GIS":
+            shapefilesExist = True
+        elif method == "Survey":
+            shapefilesExist = False
 
-#        # Get municipality folder, name and IDs from mun variable
-#        # Set variables accordingly
-#current_municipality = app_utilities.get_object_dictionary('municipalities.json')[mun]
-#munFolder = current_municipality.munFolder
 
-#        if mun == "CB":
-#            munFolder = arcpy.env.scratchFolder + "/CapeBreton/"
-#            munName = "CapeBreton"
-#            munFullName = "Cape Breton Regional Municipality"
-#            munID = "CB"
-#            shpMunID = "CB"
-#        elif mun == "HX":
-#            munFolder = arcpy.env.scratchFolder + "/Halifax/"
-#            munName = "Halifax"
-#            munFullName = "Halifax Regional Municipality"
-#            munID = "HX"
-#            shpMunID = "HX"
-#        elif mun == "FN":
-#            munFolder = arcpy.env.scratchFolder + "/FirstNations/"
-#            munName = "FirstNations"
-#            munFullName = "First Nations"
-#            munID = "FN"
-#            shpMunID = "FN"
-#        elif mun == "AP":
-#            munFolder = arcpy.env.scratchFolder + "/CountyAnnapolis/"
-#            munName = "CountyAnnapolis"
-#            munFullName = "County of Annapolis"
-#            munID = "AP"
-#            shpMunID = "AP"
-#        elif mun == "AT":
-#            munFolder = arcpy.env.scratchFolder + "/CountyAntigonish/"
-#            munName = "CountyAntigonish"
-#            munFullName = "County of Antigonish"
-#            munID = "AT"
-#            shpMunID = "AT"
-#        elif mun == "CO":
-#            munFolder = arcpy.env.scratchFolder + "/CountyColchester/"
-#            munName = "CountyColchester"
-#            munFullName = "County of Colchester"
-#            munID = "CO"
-#            shpMunID = "CO"
-#        elif mun == "CU":
-#            munFolder = arcpy.env.scratchFolder + "/CountyCumberland/"
-#            munName = "CountyCumberland"
-#            munFullName = "County of Cumberland"
-#            munID = "CU"
-#            shpMunID = "CU"
-#        elif mun == "IN":
-#            munFolder = arcpy.env.scratchFolder + "/CountyInverness/"
-#            munName = "CountyInverness"
-#            munFullName = "County of Inverness"
-#            munID = "IN"
-#            shpMunID = "IN"
-#        elif mun == "KI":
-#            munFolder = arcpy.env.scratchFolder + "/CountyKings/"
-#            munName = "CountyKings"
-#            munFullName = "County of Kings"
-#            munID = "KI"
-#            shpMunID = "KI"
-#        elif mun == "PI":
-#            munFolder = arcpy.env.scratchFolder + "/CountyPictou/"
-#            munName = "CountyPictou"
-#            munFullName = "County of Pictou"
-#            munID = "PI"
-#            shpMunID = "PI"
-#        elif mun == "RI":
-#            munFolder = arcpy.env.scratchFolder + "/CountyRichmond/"
-#            munName = "CountyRichmond"
-#            munFullName = "County of Richmond"
-#            munID = "RI"
-#            shpMunID = "RI"
-#        elif mun == "VI":
-#            munFolder = arcpy.env.scratchFolder + "/CountyVictoria/"
-#            munName = "CountyVictoria"
-#            munFullName = "County of Victoria"
-#            munID = "VI"
-#            shpMunID = "VI"
-#        elif mun == "AY":
-#            munFolder = arcpy.env.scratchFolder + "/DistrictArgyle/"
-#            munName = "DistrictArgyle"
-#            munFullName = "District of Argyle"
-#            munID = "AY"  # New IDs
-#            shpMunID = "ARG"  # Shapefiles have old IDs
-#        elif mun == "BA":
-#            munFolder = arcpy.env.scratchFolder + "/DistrictBarrington/"
-#            munName = "DistrictBarrington"
-#            munFullName = "District of Barrington"
-#            munID = "BA"
-#            shpMunID = "BA"
-#        elif mun == "CT":
-#            munFolder = arcpy.env.scratchFolder + "/DistrictChester/"
-#            munName = "DistrictChester"
-#            munFullName = "District of Chester"
-#            munID = "CT"
-#            shpMunID = "CT"
-#        elif mun == "CL":
-#            munFolder = arcpy.env.scratchFolder + "/DistrictClare/"
-#            munName = "DistrictClare"
-#            munFullName = "District of Clare"
-#            munID = "CL"
-#            shpMunID = "CL"
-#        elif mun == "DI":
-#            munFolder = arcpy.env.scratchFolder + "/DistrictDigby/"
-#            munName = "DistrictDigby"
-#            munFullName = "District of Digby"
-#            munID = "DI"
-#            shpMunID = "DI"
-#        elif mun == "EH":
-#            munFolder = arcpy.env.scratchFolder + "/DistrictEastHants/"
-#            munName = "DistrictEastHants"
-#            munFullName = "District of East Hants"
-#            munID = "EH"
-#            shpMunID = "EH"
-#        elif mun == "GU":
-#            munFolder = arcpy.env.scratchFolder + "/DistrictGuysborough/"
-#            munName = "DistrictGuysborough"
-#            munFullName = "District of Guysborough"
-#            munID = "GU"
-#            shpMunID = "GU"
-#        elif mun == "LU":
-#            munFolder = arcpy.env.scratchFolder + "/DistrictLunenburg/"
-#            munName = "DistrictLunenburg"
-#            munFullName = "District of Lunenburg"
-#            munID = "LU"
-#            shpMunID = "LU"
-#        elif mun == "SH":
-#            munFolder = arcpy.env.scratchFolder + "/DistrictShelburne/"
-#            munName = "DistrictShelburne"
-#            munFullName = "District of Shelburne"
-#            munID = "SH"
-#            shpMunID = "SH"
-#        elif mun == "SM":
-#            munFolder = arcpy.env.scratchFolder + "/DistrictStMarys/"
-#            munName = "DistrictStMarys"
-#            munFullName = "District of St. Mary's"
-#            munID = "SM"
-#            shpMunID = "SM"
-#        elif mun == "WH":
-#            munFolder = arcpy.env.scratchFolder + "/DistrictWestHants/"
-#            munName = "DistrictWestHants"
-#            munFullName = "District of West Hants"
-#            munID = "WH"
-#            shpMunID = "WH"
-#        elif mun == "YA":
-#            munFolder = arcpy.env.scratchFolder + "/DistrictYarmouth/"
-#            munName = "DistrictYarmouth"
-#            munFullName = "District of Yarmouth"
-#            munID = "YA"
-#            shpMunID = "YA"
-#        elif mun == "QU":
-#            munFolder = arcpy.env.scratchFolder + "/RegionQueens/"
-#            munName = "RegionQueens"
-#            munFullName = "Region of Queens"
-#            munID = "QU"
-#            shpMunID = "QU"
-#        elif mun == "AM":
-#            munFolder = arcpy.env.scratchFolder + "/TownAmherst/"
-#            munName = "TownAmherst"
-#            munFullName = "Town of Amherst"
-#            munID = "AM"
-#            shpMunID = "AM"
-#        elif mun == "AR":
-#            munFolder = arcpy.env.scratchFolder + "/TownAnnapolisRoyal/"
-#            munName = "TownAnnapolisRoyal"
-#            munFullName = "Town of Annapolis Royal"
-#            munID = "AR"
-#            shpMunID = "AR"
-#        elif mun == "AS":
-#            munFolder = arcpy.env.scratchFolder + "/TownAntigonish/"
-#            munName = "TownAntigonish"
-#            munFullName = "Town of Antigonish"
-#            munID = "AS"
-#            shpMunID = "AS"
-#        elif mun == "BE":
-#            munFolder = arcpy.env.scratchFolder + "/TownBerwick/"
-#            munName = "TownBerwick"
-#            munFullName = "Town of Berwick"
-#            munID = "BE"
-#            shpMunID = "BE"
-#        elif mun == "BT":
-#            munFolder = arcpy.env.scratchFolder + "/TownBridgetown/"
-#            munName = "TownBridgetown"
-#            munFullName = "Town of Bridgetown"
-#            munID = "BT"
-#            shpMunID = "BT"
-#        elif mun == "BW":
-#            munFolder = arcpy.env.scratchFolder + "/TownBridgewater/"
-#            munName = "TownBridgewater"
-#            munFullName = "Town of Bridgewater"
-#            munID = "BW"
-#            shpMunID = "BW"
-#        elif mun == "CA":
-#            munFolder = arcpy.env.scratchFolder + "/TownCanso/"
-#            munName = "TownCanso"
-#            munFullName = "Town of Canso"
-#            munID = "CA"
-#            shpMunID = "CA"
-#        elif mun == "CH":
-#            munFolder = arcpy.env.scratchFolder + "/TownClarksHarbour/"
-#            munName = "TownClarksHarbour"
-#            munFullName = "Town of Clark's Harbour"
-#            munID = "CH"
-#            shpMunID = "CH"
-#        elif mun == "DG":
-#            munFolder = arcpy.env.scratchFolder + "/TownDigby/"
-#            munName = "TownDigby"
-#            munFullName = "Town of Digby"
-#            munID = "DG"
-#            shpMunID = "DG"
-#        elif mun == "HP":
-#            munFolder = arcpy.env.scratchFolder + "/TownHantsport/"
-#            munName = "TownHantsport"
-#            munFullName = "Town of Hantsport"
-#            munID = "HP"
-#            shpMunID = "HP"
-#        elif mun == "KE":
-#            munFolder = arcpy.env.scratchFolder + "/TownKentville/"
-#            munName = "TownKentville"
-#            munFullName = "Town of Kentville"
-#            munID = "KE"
-#            shpMunID = "KE"
-#        elif mun == "LO":
-#            munFolder = arcpy.env.scratchFolder + "/TownLockeport/"
-#            munName = "TownLockeport"
-#            munFullName = "Town of Lockeport"
-#            munID = "LO"
-#            shpMunID = "LKP"
-#        elif mun == "LN":
-#            munFolder = arcpy.env.scratchFolder + "/TownLunenburg/"
-#            munName = "TownLunenburg"
-#            munFullName = "Town of Lunenburg"
-#            munID = "LN"
-#            shpMunID = "LN"
-#        elif mun == "MB":
-#            munFolder = arcpy.env.scratchFolder + "/TownMahoneBay/"
-#            munName = "TownMahoneBay"
-#            munFullName = "Town of Mahone Bay"
-#            munID = "MB"
-#            shpMunID = "MHB"
-#        elif mun == "MI":
-#            munFolder = arcpy.env.scratchFolder + "/TownMiddleton/"
-#            munName = "TownMiddleton"
-#            munFullName = "Town of Middleton"
-#            munID = "MI"
-#            shpMunID = "MI"
-#        elif mun == "MU":
-#            munFolder = arcpy.env.scratchFolder + "/TownMulgrave/"
-#            munName = "TownMulgrave"
-#            munFullName = "Town of Mulgrave"
-#            munID = "MU"
-#            shpMunID = "MU"
-#        elif mun == "NG":
-#            munFolder = arcpy.env.scratchFolder + "/TownNewGlasgow/"
-#            munName = "TownNewGlasgow"
-#            munFullName = "Town of New Glasgow"
-#            munID = "NG"
-#            shpMunID = "NG"
-#        elif mun == "OX":
-#            munFolder = arcpy.env.scratchFolder + "/TownOxford/"
-#            munName = "TownOxford"
-#            munFullName = "Town of Oxford"
-#            munID = "OX"
-#            shpMunID = "OX"
-#        elif mun == "PA":
-#            munFolder = arcpy.env.scratchFolder + "/TownParrsboro/"
-#            munName = "TownParrsboro"
-#            munFullName = "Town of Parrsboro"
-#            munID = "PA"
-#            shpMunID = "PA"
-#        elif mun == "PC":
-#            munFolder = arcpy.env.scratchFolder + "/TownPictou/"
-#            munName = "TownPictou"
-#            munFullName = "Town of Pictou"
-#            munID = "PC"
-#            shpMunID = "PC"
-#        elif mun == "PH":
-#            munFolder = arcpy.env.scratchFolder + "/TownPortHawkesbury/"
-#            munName = "TownPortHawkesbury"
-#            munFullName = "Town of Port Hawkesbury"
-#            munID = "PH"
-#            shpMunID = "PHK"
-#        elif mun == "SB":
-#            munFolder = arcpy.env.scratchFolder + "/TownShelburne/"
-#            munName = "TownShelburne"
-#            munFullName = "Town of Shelburne"
-#            munID = "SB"
-#            shpMunID = "SHL"
-#        elif mun == "SP":
-#            munFolder = arcpy.env.scratchFolder + "/TownSpringhill/"
-#            munName = "TownSpringhill"
-#            munFullName = "Town of Springhill"
-#            munID = "SP"
-#            shpMunID = "SP"
-#        elif mun == "SL":
-#            munFolder = arcpy.env.scratchFolder + "/TownStellarton/"
-#            munName = "TownStellarton"
-#            munFullName = "Town of Stellarton"
-#            munID = "SL"
-#            shpMunID = "SL"
-#        elif mun == "SW":
-#            munFolder = arcpy.env.scratchFolder + "/TownStewiacke/"
-#            munName = "TownStewiacke"
-#            munFullName = "Town of Stewiacke"
-#            munID = "SW"
-#            shpMunID = "SW"
-#        elif mun == "TN":
-#            munFolder = arcpy.env.scratchFolder + "/TownTrenton/"
-#            munName = "TownTrenton"
-#            munFullName = "Town of Trenton"
-#            munID = "TN"
-#            shpMunID = "TN"
-#        elif mun == "TU":
-#            munFolder = arcpy.env.scratchFolder + "/TownTruro/"
-#            munName = "TownTruro"
-#            munFullName = "Town of Truro"
-#            munID = "TU"
-#            shpMunID = "TU"
-#        elif mun == "WE":
-#            munFolder = arcpy.env.scratchFolder + "/TownWestville/"
-#            munName = "TownWestville"
-#            munFullName = "Town of Westville"
-#            munID = "WE"
-#            shpMunID = "WE"
-#        elif mun == "WI":
-#            munFolder = arcpy.env.scratchFolder + "/TownWindsor/"
-#            munName = "TownWindsor"
-#            munFullName = "Town of Windsor"
-#            munID = "WI"
-#            shpMunID = "WI"
-#        elif mun == "WO":
-#            munFolder = arcpy.env.scratchFolder + "/TownWolfville/"
-#            munName = "TownWolfville"
-#            munFullName = "Town of Wolfville"
-#            munID = "WO"
-#            shpMunID = "WO"
-#        elif mun == "YM":
-#            munFolder = arcpy.env.scratchFolder + "/TownYarmouth/"
-#            munName = "TownYarmouth"
-#            munFullName = "Town of Yarmouth"
-#            munID = "YM"
-#            shpMunID = "YM"
-#        elif mun == "VAY":
-#            munFolder = arcpy.env.scratchFolder + "/VillageAylesford/"
-#            munName = "VillageAylesford"
-#            munFullName = "Village of Aylesford"
-#            munID = "VAY"
-#            shpMunID = "VAY"
-#        elif mun == "VBD":
-#            munFolder = arcpy.env.scratchFolder + "/VillageBaddeck/"
-#            munName = "VillageBaddeck"
-#            munFullName = "Village of Baddeck"
-#            munID = "VBD"
-#            shpMunID = "VBD"
-#        elif mun == "VBH":
-#            munFolder = arcpy.env.scratchFolder + "/VillageBibleHill/"
-#            munName = "VillageBibleHill"
-#            munFullName = "Village of Bible Hill"
-#            munID = "VBH"
-#            shpMunID = "VBH"
-#        elif mun == "VCN":
-#            munFolder = arcpy.env.scratchFolder + "/VillageCanning/"
-#            munName = "VillageCanning"
-#            munFullName = "Village of Canning"
-#            munID = "VCN"
-#            shpMunID = "VCN"
-#        elif mun == "VCH":
-#            munFolder = arcpy.env.scratchFolder + "/VillageChester/"
-#            munName = "VillageChester"
-#            munFullName = "Village of Chester"
-#            munID = "VCH"
-#            shpMunID = "VCH"
-#        elif mun == "VCS":
-#            munFolder = arcpy.env.scratchFolder + "/VillageCornwallisSquare/"
-#            munName = "VillageCornwallisSquare"
-#            munFullName = "Village of Cornwallis Square"
-#            munID = "VCS"
-#            shpMunID = "VCS"
-#        elif mun == "VFP":
-#            munFolder = arcpy.env.scratchFolder + "/VillageFreeport/"
-#            munName = "VillageFreeport"
-#            munFullName = "Village of Freeport"
-#            munID = "VFP"
-#            shpMunID = "VFP"
-#        elif mun == "VGW":
-#            munFolder = arcpy.env.scratchFolder + "/VillageGreenwood/"
-#            munName = "VillageGreenwood"
-#            munFullName = "Village of Greenwood"
-#            munID = "VGW"
-#            shpMunID = "VGW"
-#        elif mun == "VHB":
-#            munFolder = arcpy.env.scratchFolder + "/VillageHavreBoucher/"
-#            munName = "VillageHavreBoucher"
-#            munFullName = "Village of Havre Boucher"
-#            munID = "VHB"
-#            shpMunID = "VHB"
-#        elif mun == "VHE":
-#            munFolder = arcpy.env.scratchFolder + "/VillageHebbville/"
-#            munName = "VillageHebbville"
-#            munFullName = "Village of Hebbville"
-#            munID = "VHE"
-#            shpMunID = "VHE"
-#        elif mun == "VKI":
-#            munFolder = arcpy.env.scratchFolder + "/VillageKingston/"
-#            munName = "VillageKingston"
-#            munFullName = "Village of Kingston"
-#            munID = "VKI"
-#            shpMunID = "VKI"
-#        elif mun == "VLW":
-#            munFolder = arcpy.env.scratchFolder + "/VillageLawrencetown/"
-#            munName = "VillageLawrencetown"
-#            munFullName = "Village of Lawrencetown"
-#            munID = "VLW"
-#            shpMunID = "VLW"
-#        elif mun == "VNM":
-#            munFolder = arcpy.env.scratchFolder + "/VillageNewMinas/"
-#            munName = "VillageNewMinas"
-#            munFullName = "Village of New Minas"
-#            munID = "VNM"
-#            shpMunID = "VNM"
-#        elif mun == "VPW":
-#            munFolder = arcpy.env.scratchFolder + "/VillagePortWilliams/"
-#            munName = "VillagePortWilliams"
-#            munFullName = "Village  of Port Williams"
-#            munID = "VPW"
-#            shpMunID = "VPW"
-#        elif mun == "VPG":
-#            munFolder = arcpy.env.scratchFolder + "/VillagePugwash/"
-#            munName = "VillagePugwash"
-#            munFullName = "Village of Pugwash"
-#            munID = "VPG"
-#            shpMunID = "VPG"
-#        elif mun == "VRH":
-#            munFolder = arcpy.env.scratchFolder + "/VillageRiverHebert/"
-#            munName = "VillageRiverHebert"
-#            munFullName = "Village of River Hebert"
-#            munID = "VRH"
-#            shpMunID = "VRH"
-#        elif mun == "VSP":
-#            munFolder = arcpy.env.scratchFolder + "/VillageStPeters/"
-#            munName = "VillageStPeters"
-#            munFullName = "Village of St. Peter's"
-#            munID = "VSP"
-#            shpMunID = "VSP"
-#        elif mun == "VTM":
-#            munFolder = arcpy.env.scratchFolder + "/VillageTatamagouche/"
-#            munName = "VillageTatamagouche"
-#            munFullName = "Village of Tatamagouche"
-#            munID = "VTM"
-#            shpMunID = "VTM"
-#        elif mun == "VTI":
-#            munFolder = arcpy.env.scratchFolder + "/VillageTiverton/"
-#            munName = "VillageTiverton"
-#            munFullName = "Village of Tiverton"
-#            munID = "VTI"
-#            shpMunID = "VTI"
-#        elif mun == "VWP":
-#            munFolder = arcpy.env.scratchFolder + "/VillageWestport/"
-#            munName = "VillageWestport"
-#            munFullName = "Village of Westport"
-#            munID = "VWP"
-#            shpMunID = "VWP"
-#        elif mun == "VWM":
-#            munFolder = arcpy.env.scratchFolder + "/VillageWeymouth/"
-#            munName = "VillageWeymouth"
-#            munFullName = "Village of Weymouth"
-#            munID = "VWM"
-#            shpMunID = "VWM"
+        # ===============================================================================
+        # ===============================================================================
+        # ===============================================================================
+        # Hard-coded parent folder - on the VM
+        #parentFolder = "C:/Projects/DMA/UploadTool/Uploads/"
+        # On my machine
+        #parentFolder = "C:/Work/Projects/DMA/UploadTool/Uploads/"
 
+        arcpy.env.scratchWorkspace  = '%scratchworkspace%'
+
+        # The folder names on the server that store the whole structure of files (what's in the zip file)
+        # need to be called these following names and paths:
+
+        # Get municipality folder, name and IDs from mun variable
+        # Set variables accordingly
+        current_municipality = app_utilities.get_object_dictionary('municipalities.json')[mun]
+        munFolder = arcpy.env.scratchWorkspace + current_municipality['munFolder']
+        munName = current_municipality['munName']
+        munFullName = current_municipality['munFullName']
+        munID = current_municipality['munID']
+        shpMunID = current_municipality['shpMunID']
 
 #        # Unzip the file to the munFolder
-#        global munZipfile, zip_ref
-#        zip_ref = zipfile.ZipFile(munZipfile, "r")
-#        # If munFolder doesn't exist, create it
-#        if not os.path.exists(munFolder):
-#            os.mkdir(munFolder)
-#        # If it does exist, clear out its contents (previous run)
-#        else:
-#            rmdirContents(munFolder)
+        global munZipfile, zip_ref
+        zip_ref = zipfile.ZipFile(munZipfile, "r")
+        # If munFolder doesn't exist, create it
+        if not os.path.exists(munFolder):
+            os.mkdir(munFolder)
+        # If it does exist, clear out its contents (previous run)
+        else:
+            rmdirContents(munFolder)
+
+        # Extract to municipality folder
+        zip_ref.extractall(munFolder)
+        zip_ref.close()
 
 
-#        # Extract to municipality folder
-#        zip_ref.extractall(munFolder)
-#        zip_ref.close()
+        # Count number of errors
+        errorCounter = 0
 
+        # Note: The coordinate system of the shapefiles for the pilot municipalities is NAD83 UTM20
+        # The current standard at NSGI is NAD83 CSRS UTM20, and the geodatabase feature classes
+        # will be using the new one. So, the data will be to be projected/transformed before input.
+        # In the future, any new data should be collected in NAD83 CSRS UTMN20 so won't need
+        # projecting/transforming
+        #
+        # Coordinate system of pilot municipality shapefiles (NAD83 UTM20)
+        srNAD83_UTM20 = arcpy.SpatialReference(26920)
+        # Coordinate system of GDB feature classes (NAD83 CSRS UTM20)
+        srNAD83_CSRS_UTM20 = arcpy.SpatialReference(2961)
+        # Datum transformation between the two
+        gt = "NAD_1983_To_WGS_1984_1 + NAD_1983_CSRS_To_WGS_1984_2"
 
-#        # Count number of errors
-#        errorCounter = 0
-
-#        # Note: The coordinate system of the shapefiles for the pilot municipalities is NAD83 UTM20
-#        # The current standard at NSGI is NAD83 CSRS UTM20, and the geodatabase feature classes
-#        # will be using the new one. So, the data will be to be projected/transformed before input.
-#        # In the future, any new data should be collected in NAD83 CSRS UTMN20 so won't need
-#        # projecting/transforming
-#        #
-#        # Coordinate system of pilot municipality shapefiles (NAD83 UTM20)
-#        srNAD83_UTM20 = arcpy.SpatialReference(26920)
-#        # Coordinate system of GDB feature classes (NAD83 CSRS UTM20)
-#        srNAD83_CSRS_UTM20 = arcpy.SpatialReference(2961)
-#        # Datum transformation between the two
-#        gt = "NAD_1983_To_WGS_1984_1 + NAD_1983_CSRS_To_WGS_1984_2"
-
-
-
-#        # Create CSV file to store file errors
-#        # ====================================
-###        csvFilenameShort = "UploadTool_FileErrors_" + str(datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S")) + ".csv"
-###        csvFilename = munFolder + csvFilenameShort
-###        csvFileErrors = open(csvFilename, "wb")
-###        writeFileErrors = csv.writer(csvFileErrors, quoting=csv.QUOTE_ALL)
-###        errorLogFile.write("File", "Issue", "Description"))
-
-#        #global errorFilenameShort, errorFilename
-#        dtNow = datetime.datetime.now()
-#        errorFilenameShort = "UploadTool_Errors_" + str(dtNow.strftime("%Y-%m-%d_%H-%M-%S")) + ".txt"
-#        errorFilename = munFolder + errorFilenameShort
-#        errorLogFile = open(errorFilename, "w")
-#        errorLogFile.write("Upload Tool Error Log for " + munFullName + "\n")
-#        errorLogFile.write(str(dtNow.strftime("%d %b %Y, %H:%M:%S")) + "\n")
-#        errorLogFile.write("---------------------\n\n")
+        # Extract to method?
+        dtNow = datetime.datetime.now()
+        errorFilenameShort = "UploadTool_Errors_" + str(dtNow.strftime("%Y-%m-%d_%H-%M-%S")) + ".txt"
+        errorFilename = munFolder + errorFilenameShort
+        errorLogFile = open(errorFilename, "w")
+        errorLogFile.write("Upload Tool Error Log for " + munFullName + "\n")
+        errorLogFile.write(str(dtNow.strftime("%d %b %Y, %H:%M:%S")) + "\n")
+        errorLogFile.write("---------------------\n\n")
 
 
 #        # Main Municipality spreadsheet (XLSM)
-#        for file in os.listdir(munFolder):
-#            if file.endswith(".xlsm") and file.startswith(munID):
-#                fileSpreadsheet = munFolder + file
-#                existSpreadsheet = True
-#                break
-#            else:
-#                existSpreadsheet = False
+        for file in os.listdir(munFolder):
+            if file.endswith(".xlsm") and file.startswith(munID):
+                fileSpreadsheet = munFolder + file
+                existSpreadsheet = True
+                break
+            else:
+                existSpreadsheet = False
 
-#        if existSpreadsheet == False:
-#            errorCounter = errorCounter + 1
-#            errorLogFile.write(str(errorCounter) + "." + "The " + munFullName + " spreadsheet (.XLSM)" + " cannot be found." + "\n")
+        if existSpreadsheet == False:
+            errorCounter = errorCounter + 1
+            errorLogFile.write(str(errorCounter) + "." + "The " + munFullName + " spreadsheet (.XLSM)" + " cannot be found." + "\n")
 
-#        else:
-#            # open the spredasheet and see what the fields are in the General Asset Information sheet
-#            wb = xlrd.open_workbook(fileSpreadsheet)
-#            sheet = wb.sheet_by_name("GENERAL ASSET INFORMATION")
-#            csvGenAssetInfo = open(munFolder + "GenAssetInfo_" + munID + ".csv", "wb")
-#            wr = csv.writer(csvGenAssetInfo, quoting=csv.QUOTE_ALL)
+        else:
+            # open the spreadsheet and see what the fields are in the General Asset Information sheet
+            wb = xlrd.open_workbook(fileSpreadsheet)
+            sheet = wb.sheet_by_name("GENERAL ASSET INFORMATION")
+            csvGenAssetInfo = open(munFolder + "GenAssetInfo_" + munID + ".csv", "wb")
+            wr = csv.writer(csvGenAssetInfo, quoting=csv.QUOTE_ALL)
 
-#            # Write rows with data (including header row)
-#            for rownum in xrange(sheet.nrows):
-#                # Skip the first two rows
-#                if rownum == 0 or rownum == 1:
-#                    continue
-#                # Write other row values to CSV
-#                wr.writerow(sheet.row_values(rownum))
+            # Write rows with data (including header row)
+            for rownum in xrange(sheet.nrows):
+                # Skip the first two rows
+                if rownum == 0 or rownum == 1:
+                    continue
+                # Write other row values to CSV
+                wr.writerow(sheet.row_values(rownum))
 
-#            # Close the spreadsheet and CSV
-#            wb.release_resources()
-#            del wb
-#            csvGenAssetInfo.close()
+            # Close the spreadsheet and CSV
+            wb.release_resources()
+            del wb
+            csvGenAssetInfo.close()
 
 
 #            # List of all fields that should exist in the spreadsheet (in this order)
-#            fieldsGenAssetInfoCSV = []
-#            fieldsGenAssetInfoCSV.append("Asset_Code")
-#            fieldsGenAssetInfoCSV.append("Descr")
-#            fieldsGenAssetInfoCSV.append("LocDesc")
-#            fieldsGenAssetInfoCSV.append("FeatureCode")
-#            fieldsGenAssetInfoCSV.append("Condition")
-#            fieldsGenAssetInfoCSV.append("Inspected")
-#            fieldsGenAssetInfoCSV.append("Status")
-#            fieldsGenAssetInfoCSV.append("Quantity")
-#            fieldsGenAssetInfoCSV.append("Age")
-#            fieldsGenAssetInfoCSV.append("Material")
-#            fieldsGenAssetInfoCSV.append("Other")
-#            fieldsGenAssetInfoCSV.append("Comments")
-#            fieldsGenAssetInfoCSV.append("Area")
-#            fieldsGenAssetInfoCSV.append("Department")
-#            fieldsGenAssetInfoCSV.append("Division")
-#            fieldsGenAssetInfoCSV.append("PersResp")
-#            fieldsGenAssetInfoCSV.append("Install yr")
-#            fieldsGenAssetInfoCSV.append("Useful Life")
-#            fieldsGenAssetInfoCSV.append("Estimated RUL")
-#            fieldsGenAssetInfoCSV.append("RplmtCst")
-#            fieldsGenAssetInfoCSV.append("ConditionBasis")
-#            fieldsGenAssetInfoCSV.append("ResidValue")
-#            fieldsGenAssetInfoCSV.append("DispDate")
-#            fieldsGenAssetInfoCSV.append("Risk")
-#            fieldsGenAssetInfoCSV.append("CnsqOfFail")
-#            fieldsGenAssetInfoCSV.append("DatLastAss")
-#            fieldsGenAssetInfoCSV.append("FollowUp")
-#            fieldsGenAssetInfoCSV.append("EditTag")
-#            fieldsGenAssetInfoCSV.append("Record Drawing")
-#            fieldsGenAssetInfoCSV.append("Replacement Year")
-#            fieldsGenAssetInfoCSV.append("CostLookup")
-#            fieldsGenAssetInfoCSV.append("Replace1")
-#            fieldsGenAssetInfoCSV.append("Replace2")
-#            fieldsGenAssetInfoCSV.append(" Replace3")
-#            fieldsGenAssetInfoCSV.append(" Replace4")
-#            fieldsGenAssetInfoCSV.append("Cost Factor")
-#            fieldsGenAssetInfoCSV.append("Unit Cost")
-#            fieldsGenAssetInfoCSV.append("Edit Tag")
-#            fieldsGenAssetInfoCSV.append("GIS Link")
-
-
-
+            fieldsGenAssetInfoCSV = app_utilities.get_array('asset_fields.json', 'asset_fields')
 #            # Check if all the necessary fields are in the spreadsheet CSV file
-#            fieldsCSV = []
-#            existCSV = True
-#            csvGenAssetInfo = open(munFolder + "GenAssetInfo_" + munID + ".csv", "rb")
-#            reader = csv.reader(csvGenAssetInfo)
-#            i = reader.next()
-#            for field in i:
-#                fieldsCSV.append(field.strip())
-#            for field in fieldsGenAssetInfoCSV:
-#                field = field.strip()
-#                if field not in fieldsCSV:
-#                    if field == "GIS Link":
-#                        if shapefilesExist == True:
-#                            errorCounter = errorCounter + 1
-#                            errorLogFile.write(str(errorCounter) + "." + "The " + field + " cannot be found in the " + munFullName + " spreadsheet (.XLSM) file." + "\n\n")
-#                    else:
-#                        errorCounter = errorCounter + 1
-#                        errorLogFile.write(str(errorCounter) + "." + "The " + field + " cannot be found in the " + munFullName + " spreadsheet (.XLSM) file." + "\n\n")
+            fieldsCSV = []
+            existCSV = True
+            csvGenAssetInfo = open(munFolder + "GenAssetInfo_" + munID + ".csv", "rb")
+            reader = csv.reader(csvGenAssetInfo)
+            # read the header
+            i = reader.next()
+            # load the stripped field names into an array
+            for field in i:
+                fieldsCSV.append(field.strip())
+            for field in fieldsGenAssetInfoCSV:
+                field = field.strip()
 
-#            # Close the spreadsheet CSV
-#            csvGenAssetInfo.close()
+                if field not in fieldsCSV:
+                    if field == "GIS Link":
+                        if shapefilesExist == True:
+                            errorCounter = errorCounter + 1
+                            errorLogFile.write(str(errorCounter) + "." + "The " + field + " cannot be found in the " + munFullName + " spreadsheet (.XLSM) file." + "\n\n")
+                    else:
+                        errorCounter = errorCounter + 1
+                        errorLogFile.write(str(errorCounter) + "." + "The " + field + " cannot be found in the " + munFullName + " spreadsheet (.XLSM) file." + "\n\n")
+
+            # Close the spreadsheet CSV
+            csvGenAssetInfo.close()
 
 #            # The sheet/CSV has too many empty or unneeded columns, so will only take ones we need
 #            # Need to export to a new CSV in the municipality folder
-#            f = pd.read_csv(munFolder + "GenAssetInfo_" + munID + ".csv")
-#            if shapefilesExist == False:
-#                keep_col = ["Asset_Code","Descr","LocDesc","FeatureCode","Condition","Inspected","Status","Quantity","Age","Material","Other","Comments","Area","Department","Division","PersResp","Install yr","Useful Life","Estimated RUL","RplmtCst","ConditionBasis","ResidValue","DispDate","Risk","CnsqOfFail","DatLastAss","FollowUp","EditTag","Record Drawing","Replacement Year","CostLookup","Replace1","Replace2"," Replace3"," Replace4","Cost Factor","Unit Cost","Edit Tag"]
-#            else:
-#                keep_col = ["Asset_Code","Descr","LocDesc","FeatureCode","Condition","Inspected","Status","Quantity","Age","Material","Other","Comments","Area","Department","Division","PersResp","Install yr","Useful Life","Estimated RUL","RplmtCst","ConditionBasis","ResidValue","DispDate","Risk","CnsqOfFail","DatLastAss","FollowUp","EditTag","Record Drawing","Replacement Year","CostLookup","Replace1","Replace2"," Replace3"," Replace4","Cost Factor","Unit Cost","Edit Tag","GIS Link"]
-#            new_f = f[keep_col]
-#            new_f.to_csv(munFolder + "GenAssetInfo.csv", index=False)
+            f = pd.read_csv(munFolder + "GenAssetInfo_" + munID + ".csv")
+            if shapefilesExist == False:
+                keep_col = app_utilities.get_array('required_asset_fields.json', 'required_asset_fields').remove('GIS Link')
+            else:
+                keep_col = app_utilities.get_array('required_asset_fields.json', 'required_asset_fields')
+            new_f = f[keep_col]
+            new_f.to_csv(munFolder + "GenAssetInfo.csv", index=False)
 
 #            # Will create a DBF in the municipality folder
 #            dbfGenAssetInfo = munFolder + "GenAssetInfo.dbf"
 #            # Convert CSV to DBF
-#            arcpy.TableToTable_conversion(munFolder + "GenAssetInfo.csv", munFolder, "GenAssetInfo.dbf")
+            arcpy.TableToTable_conversion(munFolder + "GenAssetInfo.csv", munFolder, "GenAssetInfo.dbf")
 
 
 
@@ -870,159 +250,138 @@ outputFields_Table_WSTF = app_utilities.get_array('water_supply_treatment_facili
 #            # =================================================
 #            # Check every FCode values against this full list
 #            # Added WWST May 06, 2019 - forgot to add it before
-#            fcodes = ["APV", "BST", "CB", "CLVT", "CLVT-S", "CS", "DIMN", "DIMN-S", "DRCH", "DRCH-S", \
-#                      "FL", "FL-S", "FTBD11", "FTBD22", "FTBD45", "FTBD90", "FTCAP", "FTCP", "FTHY", "FTHYTE", "FTRD", "FTTS", "FTTE", "FTTESAN", "FTVLHY", \
-#                      "GRVPCO", "GRVPCO-S", "GRVPSA", "GRVPSA-S", "GRVPST", "GRVPST-S", "GV", "HY", "IO", "IO-S", "LIFT", \
-#                      "METER", "MHCO", "MHSA", "MHST", "PMPS", "PND", "PRV", \
-#                      "RRCB-A", "RRCB-A-S", "RRCB-C", "RRCB-C-S", "RRRD-A", "RRRD-A-S", "RRGR", "RRGR-S", "RRBW-W", \
-#                      "RRBW-W-S", "RRDR-A", "RRDR-A-S", "RRGT", "RRGT-S", "RRPW", "RRPW-S", "RRSW", "RRSW-S", "RRSW-C", \
-#                      "RRSW-C-S", "RRSW-A", "RRSW-A-S", "RRSW-B", "RRSW-B-S", "RRTR", "RRTR-S", \
-#                      "SB", "SB-S", "SEPT", "STGR", "STGR-S", "STPR", "SWFRCM", "SWFRCM-S", \
-#                      "TFSLOR", "TFSL", "TFSP", "TFTL", "TRMTD", "TRNS", "TRNS-S", "TSIG", "UGS", "UTPO", \
-#                      "WS", "WSST", "WSTF", "WSTFAC", "WSTFBLD", "WSCCSYS", "WSCLLD", "WSCLAR", "WSCOMP", "WSCPMP", "WSDAFS", "WSDAFT", "WSELECM", "WSFLME", "WSGDTP", \
-#                      "WSTFGEN", "WSISV", "WSLAB", "WSMFS", "WSMMF", "WSOFS", "WSPTNK", "WSSCM", "WSSPMP", "WSTLEM", "WSTP", "WSUV", "WSVACCL", \
-#                      "WV", "WWCTF", "WWTFAC", "WWBSC", "WWBLWR", "WWTFBLD", "WWCCSYS", "WWCLCC", "WWCLAR", "WWCOMP", "WWCPMP", "WWDAFS", "WWDAFT", "WWELECM", \
-#                      "WWFFT", "WWFLME", "WWGDTP", "WWTFGEN", "WWISV", "WWLAB", "WWLAG", "WWOFS", "WWOXDI", "WWPADAE", "WWPTNK", \
-#                      "WWSBRT", "WWSCRC", "WWSDB", "WWSCM", "WWSPMP", "WWST", "WWTLEM", "WWFRCM", "WWFRCM-S"]
+            fcodes = app_utilities.get_array('feature_codes.json', 'fcodes')
 
 
 #            # Initialize line counter for DBF file
-#            dbfCounter = 1 # Start on line 2 (line 1 is headers)
+            dbfCounter = 1 # Start on line 2 (line 1 is headers)
 
-#            with arcpy.da.SearchCursor(dbfGenAssetInfo, "*") as dbfCursor:
-#                for dbfRec in dbfCursor:
-#                    # Go to next record if AssetCode is blank (some spreadsheets have blank records)
-#                    if str(dbfRec[1]) == "" or str(dbfRec[1]) == " ":
-#                        continue
+            with arcpy.da.SearchCursor(dbfGenAssetInfo, keep_col) as dbfCursor:
+                for dbfRec in dbfCursor:
+                    # Go to next record if AssetCode is blank (some spreadsheets have blank records)
+                    fieldidx = keep_col.index('AssetCode')
+                    field = dbfRec[fieldidx]
+                    if app_utilities.empty_string(str(field)):
+                        continue
+                    else:
+                        assetcode = str(field)
 
-#    ##                # Asset_Code
-#    ##                if not dbfRec[1]:
-#    ##                    errorCounter = errorCounter + 1
-#    ##                    errorLogFile.write(str(errorCounter) + "." + "Spreadsheet_Export.csv", "Data Value Check", "Line " + str(csvCounter) + ": Missing value for Asset_Code")
-#    ##                elif str(dbfRec[1]) == "" or str(dbfRec[1]) == " ":
-#    ##                    errorCounter = errorCounter + 1
-#    ##                    errorLogFile.write(str(errorCounter) + "." + "Spreadsheet_Export.csv", "Data Value Check", "Line " + str(csvCounter) + ": Missing value for Asset_Code")
-
-#                    # FeatureCod- dbfRec[4]
-#                    if not dbfRec[4]:
-#                        errorCounter = errorCounter + 1
-#                        errorLogFile.write(str(errorCounter) + "." + "Check the 'FeatureCode' value for the " + dbfRec[1] + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
-#                    elif str(dbfRec[4]) == "" or str(dbfRec[4]) == " ":
-#                        errorCounter = errorCounter + 1
-#                        errorLogFile.write(str(errorCounter) + "." + "Check the 'FeatureCode' value for the " + dbfRec[1] + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
-#                    else:
-#                        if not dbfRec[4] in fcodes:
-#                            errorCounter = errorCounter + 1
-#                            errorLogFile.write(str(errorCounter) + "." + "Check the 'FeatureCode' value for the " + dbfRec[1] + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
+                    # FeatureCod- dbfRec[4]
+                    fieldidx = keep_col.index('FeatureCode')
+                    field = dbfRec[fieldidx]
+                    if not field:
+                        errorCounter = errorCounter + 1
+                        errorLogFile.write(str(errorCounter) + "." + "Check the 'FeatureCode' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
+                    elif app_utilities.empty_string(str(field)):
+                        errorCounter = errorCounter + 1
+                        errorLogFile.write(str(errorCounter) + "." + "Check the 'FeatureCode' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
+                    else:
+                        if not str(field) in fcodes:
+                            errorCounter = errorCounter + 1
+                            errorLogFile.write(str(errorCounter) + "." + "Check the 'FeatureCode' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
 
 #                    # Condition - dbfRec[5]
-#                    if dbfRec[5] == None:
-#                        errorCounter = errorCounter + 1
-#                        errorLogFile.write(str(errorCounter) + "." + "Check the 'Condition' value for the " + dbfRec[1] + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
-#                    elif is_number(dbfRec[5]):
-#                        if int(dbfRec[5]) > 5:
-#                            errorCounter = errorCounter + 1
-#                            errorLogFile.write(str(errorCounter) + "." + "Check the 'Condition' value for the " + dbfRec[1] + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
-#                    else:
-#                        errorCounter = errorCounter + 1
-#                        errorLogFile.write(str(errorCounter) + "." + "Check the 'Condition' value for the " + dbfRec[1] + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
+                    fieldidx = keep_col.index('Condition')
+                    field = dbfRec[fieldidx]
+                    if field == None:
+                        errorCounter = errorCounter + 1
+                        errorLogFile.write(str(errorCounter) + "." + "Check the 'Condition' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
+                    elif is_number(field):
+                        if int(field) > 5:
+                            errorCounter = errorCounter + 1
+                            errorLogFile.write(str(errorCounter) + "." + "Check the 'Condition' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
+                    else:
+                        errorCounter = errorCounter + 1
+                        errorLogFile.write(str(errorCounter) + "." + "Check the 'Condition' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
 
 
 #                    # Quantity - dbfRec[8]
-#                    if dbfRec[8] == None:
-#                        errorCounter = errorCounter + 1
-#                        errorLogFile.write(str(errorCounter) + "." + "Check the 'Quantity' value for the " + dbfRec[1] + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
-#                    elif not is_number(dbfRec[8]):
-#                        errorCounter = errorCounter + 1
-#                        errorLogFile.write(str(errorCounter) + "." + "Check the 'Quantity' value for the " + dbfRec[1] + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
-#                    elif str(dbfRec[8]) == "" or str(dbfRec[8]) == " ":
-#                        errorCounter = errorCounter + 1
-#                        errorLogFile.write(str(errorCounter) + "." + "Check the 'Quantity' value for the " + dbfRec[1] + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
-
-#    ##                # Age - dbfRec[10]
-#    ##                if not is_number(dbfRec[10]):
-#    ##                    errorCounter = errorCounter + 1
-#    ##                    errorLogFile.write(str(errorCounter) + "." + "Check the 'Age' value for the " + dbfRec[1] + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
-#    ##                elif str(dbfRec[10]) == "" or str(dbfRec[10]) == " ":
-#    ##                    errorCounter = errorCounter + 1
-#    ##                    errorLogFile.write(str(errorCounter) + "." + "Check the 'Age' value for the " + dbfRec[1] + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
-#    ##                elif len(dbfRec[10]) == 4:
-#    ##                    errorCounter = errorCounter + 1
-#    ##                    errorLogFile.write(str(errorCounter) + "." + "Check the 'Age' value for the " + dbfRec[1] + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
-#    ##
-#    ##                # Install Year - dbfRec[18]
-#    ##                if not is_number(dbfRec[18]):
-#    ##                    errorCounter = errorCounter + 1
-#    ##                    errorLogFile.write(str(errorCounter) + "." + "Check the 'Install Year' value for the " + dbfRec[1] + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
-#    ##                elif str(dbfRec[18]) == "" or str(dbfRec[18]) == " ":
-#    ##                    errorCounter = errorCounter + 1
-#    ##                    errorLogFile.write(str(errorCounter) + "." + "Check the 'Install Year' value for the " + dbfRec[1] + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
-#    ##                elif len(dbfRec[18]) > 4:
-#    ##                    errorCounter = errorCounter + 1
-#    ##                    errorLogFile.write(str(errorCounter) + "." + "Check the 'Install Year' value for the " + dbfRec[1] + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
-
+                    fieldidx = keep_col.index('Quantity')
+                    field = dbfRec[fieldidx]
+                    if field == None:
+                        errorCounter = errorCounter + 1
+                        errorLogFile.write(str(errorCounter) + "." + "Check the 'Quantity' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
+                    elif not is_number(field):
+                        errorCounter = errorCounter + 1
+                        errorLogFile.write(str(errorCounter) + "." + "Check the 'Quantity' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
+                    elif app_utilities.empty_string(str(field)):
+                        errorCounter = errorCounter + 1
+                        errorLogFile.write(str(errorCounter) + "." + "Check the 'Quantity' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
 
 #                    # Estimated (Estimated RUL) - dbfRec[19]
-#                    if dbfRec[19] == None:
-#                        errorCounter = errorCounter + 1
-#                        errorLogFile.write(str(errorCounter) + "." + "Check the 'Estimated RUL' value for the " + dbfRec[1] + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
-#                    elif not is_number(dbfRec[19]):
-#                        errorCounter = errorCounter + 1
-#                        errorLogFile.write(str(errorCounter) + "." + "Check the 'Estimated RUL' value for the " + dbfRec[1] + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
-#                    elif str(dbfRec[19]) == "" or str(dbfRec[19]) == " ":
-#                        errorCounter = errorCounter + 1
-#                        errorLogFile.write(str(errorCounter) + "." + "Check the 'Estimated RUL' value for the " + dbfRec[1] + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
+                    fieldidx = keep_col.index('Estimated RUL')
+                    field = dbfRec[fieldidx]
+                    if field == None:
+                        errorCounter = errorCounter + 1
+                        errorLogFile.write(str(errorCounter) + "." + "Check the 'Estimated RUL' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
+                    elif not is_number(dbfRec[19]):
+                        errorCounter = errorCounter + 1
+                        errorLogFile.write(str(errorCounter) + "." + "Check the 'Estimated RUL' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
+                    elif str(dbfRec[19]) == "" or str(dbfRec[19]) == " ":
+                        errorCounter = errorCounter + 1
+                        errorLogFile.write(str(errorCounter) + "." + "Check the 'Estimated RUL' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
 
 
 #                    # RplmtCst - dbfRec[20]
-#                    if dbfRec[20] == None:
-#                        errorCounter = errorCounter + 1
-#                        errorLogFile.write(str(errorCounter) + "." + "Check the 'RplmtCost' value for the " + dbfRec[1] + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
-#                    elif not is_number(dbfRec[20]):
-#                        errorCounter = errorCounter + 1
-#                        errorLogFile.write(str(errorCounter) + "." + "Check the 'RplmtCost' value for the " + dbfRec[1] + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
-#                    elif str(dbfRec[20]) == "" or str(dbfRec[20]) == " ":
-#                        errorCounter = errorCounter + 1
-#                        errorLogFile.write(str(errorCounter) + "." + "Check the 'RplmtCost' value for the " + dbfRec[1] + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
+                    fieldidx = keep_col.index('RplmtCst')
+                    field = dbfRec[fieldidx]
+                    if field == None:
+                        errorCounter = errorCounter + 1
+                        errorLogFile.write(str(errorCounter) + "." + "Check the 'RplmtCost' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
+                    elif not is_number(field):
+                        errorCounter = errorCounter + 1
+                        errorLogFile.write(str(errorCounter) + "." + "Check the 'RplmtCost' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
+                    elif app_utilities.empty_string(str(field)):
+                        errorCounter = errorCounter + 1
+                        errorLogFile.write(str(errorCounter) + "." + "Check the 'RplmtCost' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
 
 
 #                    # ConditionB (ConditionBasis) - dbfRec[21]
-#                    if not dbfRec[21]:
-#                        errorCounter = errorCounter + 1
-#                        errorLogFile.write(str(errorCounter) + "." + "Check the 'ConditionBasis' value for the " + dbfRec[1] + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
-#                    elif str(dbfRec[21]) == "" or str(dbfRec[21]) == " ":
-#                        errorCounter = errorCounter + 1
-#                        errorLogFile.write(str(errorCounter) + "." + "Check the 'ConditionBasis' value for the " + dbfRec[1] + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
+                    fieldidx = keep_col.index('ConditionBasis')
+                    field = dbfRec[fieldidx]
+                    if not field:
+                        errorCounter = errorCounter + 1
+                        errorLogFile.write(str(errorCounter) + "." + "Check the 'ConditionBasis' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
+                    elif app_utilities.empty_string(str(field)):
+                        errorCounter = errorCounter + 1
+                        errorLogFile.write(str(errorCounter) + "." + "Check the 'ConditionBasis' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
 
 
 #                    # CostLookup - dbfRec[31]
-#                    if not dbfRec[31]:
-#                        errorCounter = errorCounter + 1
-#                        errorLogFile.write(str(errorCounter) + "." + "Check the 'CostLookup' value for the " + dbfRec[1] + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
-#                    elif str(dbfRec[31]) == "" or str(dbfRec[31]) == " ":
-#                        errorCounter = errorCounter + 1
-#                        errorLogFile.write(str(errorCounter) + "." + "Check the 'CostLookup' value for the " + dbfRec[1] + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
+                    fieldidx = keep_col.index('CostLookup')
+                    field = dbfRec[fieldidx]
+                    if not field:
+                        errorCounter = errorCounter + 1
+                        errorLogFile.write(str(errorCounter) + "." + "Check the 'CostLookup' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
+                    elif app_utilities.empty_string(str(field)):
+                        errorCounter = errorCounter + 1
+                        errorLogFile.write(str(errorCounter) + "." + "Check the 'CostLookup' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
 
 
 #                    # Unit_Cost - dbfRec[37]
-#                    if dbfRec[37] == None:
-#                        errorCounter = errorCounter + 1
-#                        errorLogFile.write(str(errorCounter) + "." + "Check the 'Unit Cost' value for the " + dbfRec[1] + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
-#                    elif not is_number(dbfRec[37]):
-#                        errorCounter = errorCounter + 1
-#                        errorLogFile.write(str(errorCounter) + "." + "Check the 'Unit Cost' value for the " + dbfRec[1] + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
-#                    elif str(dbfRec[37]) == "" or str(dbfRec[37]) == " ":
-#                        errorCounter = errorCounter + 1
-#                        errorLogFile.write(str(errorCounter) + "." + "Check the 'Unit Cost' value for the " + dbfRec[1] + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
 
-#                    if shapefilesExist == True:
-#                        # GIS_Link - dbfRec[39]
-#                        if not dbfRec[39]:
-#                            errorCounter = errorCounter + 1
-#                            errorLogFile.write(str(errorCounter) + "." + "Check the 'GIS_Link' value for the " + dbfRec[1] + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
-#                        elif str(dbfRec[39]) == "" or str(dbfRec[39]) == " ":
-#                            errorCounter = errorCounter + 1
-#                            errorLogFile.write(str(errorCounter) + "." + "Check the 'GIS_Link' value for the " + dbfRec[1] + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
+                    fieldidx = keep_col.index('Unit_Cost')
+                    field = dbfRec[fieldidx]
+                    if field == None:
+                        errorCounter = errorCounter + 1
+                        errorLogFile.write(str(errorCounter) + "." + "Check the 'Unit Cost' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
+                    elif not is_number(field):
+                        errorCounter = errorCounter + 1
+                        errorLogFile.write(str(errorCounter) + "." + "Check the 'Unit Cost' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
+                    elif app_utilities.empty_string(str(field)):
+                        errorCounter = errorCounter + 1
+                        errorLogFile.write(str(errorCounter) + "." + "Check the 'Unit Cost' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
+
+                    if shapefilesExist == True:
+                        # GIS_Link - dbfRec[39]
+                        fieldidx = keep_col.index('GIS_Link')
+                        field = dbfRec[fieldidx]
+                        if not field:
+                            errorCounter = errorCounter + 1
+                            errorLogFile.write(str(errorCounter) + "." + "Check the 'GIS_Link' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
+                        elif app_utilities.empty_string(str(field)):
+                            errorCounter = errorCounter + 1
+                            errorLogFile.write(str(errorCounter) + "." + "Check the 'GIS_Link' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
 
 #                    # Increase counter
 #                    dbfCounter = dbfCounter + 1
