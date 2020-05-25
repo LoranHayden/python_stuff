@@ -1,0 +1,8 @@
+{
+  "shapefile_fields": [
+    "Shape",
+    "Elev",
+    "Width",
+    "GIS_Link"
+  ]
+}

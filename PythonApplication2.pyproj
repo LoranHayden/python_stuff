@@ -31,6 +31,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="aFile.txt" />
+    <Content Include="shapefile_names.json" />
+    <Content Include="shapefile_fields.json" />
+    <Content Include="Copy of LO-20180514.xlsm" />
     <Content Include="required_asset_fields.json" />
     <Content Include="feature_codes.json" />
     <Content Include="line_feature_fields.json" />

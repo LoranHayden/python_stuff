@@ -5,7 +5,6 @@
 ##  Last modified : 03/09/2018
 ## Python Version : 2.7
 ## #####################################################################################
-
 import os
 import sys
 import glob
@@ -27,13 +26,9 @@ from email.MIMEText import MIMEText
 from email.MIMEBase import MIMEBase
 from email import encoders
 import zipfile
-import app_utilities
-
-
 
 ## Script name
 scriptName = "UploadTool_DMA.py"
-
 
 ## Start Time...
 starttime = datetime.datetime.now()
@@ -47,26 +42,22 @@ srNAD83_UTM20 = arcpy.SpatialReference(26920)
 ## Datum transformation between the two
 gt = "NAD_1983_To_WGS_1984_1 + NAD_1983_CSRS_To_WGS_1984_2"
 
-
 ## Initialize variable
 edit = None
 
-
-outputFields_Point = app_utilities.get_array('point_feature_fields.json','outputFields_Point')
-outputFields_Line = app_utilities.get_array('line_feature_fields.json','outputFields_Line')
-outputFields_Table_WWCTF = app_utilities.get_array('waste_water_treatment_facility.json','outputFields_Table_WWCTF')
-outputFields_Table_LPS = app_utilities.get_array('waste_water_lift_pump_station.json','outputFields_Table_LPS')
-outputFields_Table_BST = app_utilities.get_array('water_supply_booster_station.json','outputFields_Table_BST')
-outputFields_Table_WSTF = app_utilities.get_array('water_supply_treatment_facility.json','outputFields_Table_WSTF')
+outputFields_Point = get_array('point_feature_fields.json','outputFields_Point')
+outputFields_Line = get_array('line_feature_fields.json','outputFields_Line')
+outputFields_Table_WWCTF = get_array('waste_water_treatment_facility.json','outputFields_Table_WWCTF')
+outputFields_Table_LPS = get_array('waste_water_lift_pump_station.json','outputFields_Table_LPS')
+outputFields_Table_BST = get_array('water_supply_booster_station.json','outputFields_Table_BST')
+outputFields_Table_WSTF = get_array('water_supply_treatment_facility.json','outputFields_Table_WSTF')
 
 def main():
     Validate()
 
 def is_number(n):
     try:
-        float(n)   # Type-casting the string to 'float'.
-                   # If string is not a valid 'float,
-                   # it'll raise 'ValueError' exception
+        float(n)
     except ValueError:
         return False
     return True
@@ -79,7 +70,63 @@ def rmdirContents(folder):
         for d in dirs:
             shutil.rmtree(os.path.join(root, d))
 
+def writeError(logfile, errorfield, recordassetcode, errorcount, munfullname):
+    logfile.write(str(errorcount) + "." + "Check the '" + errorfield + "' value for the " + recordassetcode + " Asset_Code record in the " + munfullname + " spreadsheet (XLSM).\n\n")
 
+def get_array(path, array_field):
+    with open(path) as json_file:
+        data = json.load(json_file)
+        json_file.close()
+        return data[array_field]
+
+def get_object_dictionary(path):
+    with open(path) as json_file:
+        data = json.load(json_file)
+        json_file.close()
+        return data
+
+def empty_string(text):
+    return text == '' or text == ' '
+
+def writeShapeFolderError(logfile,errorCount,folder):
+    logfile.write(str(errorCounter) + ". ", "Unable to find folder '" + folder + "'.\n\n")
+
+def writeShapeFileError(logfile,errorCount,shapefile):
+    logfile.write(str(errorCounter) + ".", "Unable to find shapefile '" + shapefile + "'.\n\n")
+
+def writeMissingFieldError(logfile, fieldname, errorCount, shapefile):
+    logfile.write(str(errorCount) + ". The field '" + fieldname + "' field is missing in the '" + shapefile + "' shapefile.\n\n")
+
+def writeSpatialReferenceError(logfile, errorCount, shapefile):
+    logfile.write(str(errorCount) + ". The shapefile '" + shapefile + "' has an invalid spatial reference. The coordinate system must be 'NAD_1983_UTM_Zone_20N' or 'NAD_1983_CSRS_UTM_Zone_20N'.\n\n")
+
+def validateFiles(logfile, errorCount, shpFolder, shapefullpath, fieldsShapefile):
+    if not os.path.exists(shpFolder):
+        errorCount += 1
+        writeShapeFolderError(logfile, errorCount, shpFolder)
+    else:
+        if not arcpy.Exists(shapefullpath):
+            errorCounter += 1
+            writeShapeFileError(logfile, errorCount, shapefullpath)
+        else:
+            # Make sure its spatial reference is NAD83 UTM20
+            if arcpy.Describe(shapefullpath).spatialReference.factoryCode == 26920 or arcpy.Describe(shapefullpath).spatialReference.factoryCode == 2961:
+                # Check that it has all the correct fields
+                fieldsShpNames = arcpy.ListFields(shpfullpath)
+                # Check fields against mandatory shapefile fields
+                # Only Shape, Elevation, Width and GIS_Link are taken from the shapefiles; others come from the spreadsheet CSV
+                if ("Elev" not in fieldsShpNames) and ("Elevation" not in fieldsShpNames) and ("ELEVATION" not in fieldsShpNames):
+                    errorCounter += 1 
+                    writeMissingFieldError(logfile, "Elev", errorCount, shapefullpath)
+                for field in fieldsShapefile:
+                    if field == "Elev":
+                        continue
+                    if field not in fieldsShpNames:
+                        errorCounter += 1
+                        writeMissingFieldError(logfile, field, errorCount, shapefullpath)
+            else:
+                errorCounter += 1
+                writeSpatialReferenceError(logfile, errorCount, shapefullpath)
 
 def Validate():
 
@@ -104,7 +151,6 @@ def Validate():
         elif method == "Survey":
             shapefilesExist = False
 
-
         # ===============================================================================
         # ===============================================================================
         # ===============================================================================
@@ -113,14 +159,15 @@ def Validate():
         # On my machine
         #parentFolder = "C:/Work/Projects/DMA/UploadTool/Uploads/"
 
-        arcpy.env.scratchWorkspace  = '%scratchworkspace%'
+        arcpy.env.scratchWorkspace = '%scratchworkspace%'
 
-        # The folder names on the server that store the whole structure of files (what's in the zip file)
+        # The folder names on the server that store the whole structure of
+        # files (what's in the zip file)
         # need to be called these following names and paths:
 
         # Get municipality folder, name and IDs from mun variable
         # Set variables accordingly
-        current_municipality = app_utilities.get_object_dictionary('municipalities.json')[mun]
+        current_municipality = get_object_dictionary('municipalities.json')[mun]
         munFolder = arcpy.env.scratchWorkspace + current_municipality['munFolder']
         munName = current_municipality['munName']
         munFullName = current_municipality['munFullName']
@@ -145,10 +192,14 @@ def Validate():
         # Count number of errors
         errorCounter = 0
 
-        # Note: The coordinate system of the shapefiles for the pilot municipalities is NAD83 UTM20
-        # The current standard at NSGI is NAD83 CSRS UTM20, and the geodatabase feature classes
-        # will be using the new one. So, the data will be to be projected/transformed before input.
-        # In the future, any new data should be collected in NAD83 CSRS UTMN20 so won't need
+        # Note: The coordinate system of the shapefiles for the pilot
+        # municipalities is NAD83 UTM20
+        # The current standard at NSGI is NAD83 CSRS UTM20, and the geodatabase
+        # feature classes
+        # will be using the new one.  So, the data will be to be
+        # projected/transformed before input.
+        # In the future, any new data should be collected in NAD83 CSRS UTMN20
+        # so won't need
         # projecting/transforming
         #
         # Coordinate system of pilot municipality shapefiles (NAD83 UTM20)
@@ -178,11 +229,11 @@ def Validate():
                 existSpreadsheet = False
 
         if existSpreadsheet == False:
-            errorCounter = errorCounter + 1
+            errorCounter += 1
             errorLogFile.write(str(errorCounter) + "." + "The " + munFullName + " spreadsheet (.XLSM)" + " cannot be found." + "\n")
-
         else:
-            # open the spreadsheet and see what the fields are in the General Asset Information sheet
+            # open the spreadsheet and see what the fields are in the General
+            # Asset Information sheet
             wb = xlrd.open_workbook(fileSpreadsheet)
             sheet = wb.sheet_by_name("GENERAL ASSET INFORMATION")
             csvGenAssetInfo = open(munFolder + "GenAssetInfo_" + munID + ".csv", "wb")
@@ -201,12 +252,12 @@ def Validate():
             del wb
             csvGenAssetInfo.close()
 
-
-#            # List of all fields that should exist in the spreadsheet (in this order)
-            fieldsGenAssetInfoCSV = app_utilities.get_array('asset_fields.json', 'asset_fields')
-#            # Check if all the necessary fields are in the spreadsheet CSV file
+#            # List of all fields that should exist in the spreadsheet (in this
+#            order)
+            fieldsGenAssetInfoCSV = get_array('asset_fields.json', 'asset_fields')
+#            # Check if all the necessary fields are in the spreadsheet CSV
+#            file
             fieldsCSV = []
-            existCSV = True
             csvGenAssetInfo = open(munFolder + "GenAssetInfo_" + munID + ".csv", "rb")
             reader = csv.reader(csvGenAssetInfo)
             # read the header
@@ -220,586 +271,182 @@ def Validate():
                 if field not in fieldsCSV:
                     if field == "GIS Link":
                         if shapefilesExist == True:
-                            errorCounter = errorCounter + 1
+                            errorCounter += 1
                             errorLogFile.write(str(errorCounter) + "." + "The " + field + " cannot be found in the " + munFullName + " spreadsheet (.XLSM) file." + "\n\n")
                     else:
-                        errorCounter = errorCounter + 1
+                        errorCounter += 1
                         errorLogFile.write(str(errorCounter) + "." + "The " + field + " cannot be found in the " + munFullName + " spreadsheet (.XLSM) file." + "\n\n")
 
             # Close the spreadsheet CSV
             csvGenAssetInfo.close()
 
-#            # The sheet/CSV has too many empty or unneeded columns, so will only take ones we need
+#            # The sheet/CSV has too many empty or unneeded columns, so will
+#            only take ones we need
 #            # Need to export to a new CSV in the municipality folder
-            f = pd.read_csv(munFolder + "GenAssetInfo_" + munID + ".csv")
+            #f = pd.read_csv(munFolder + "GenAssetInfo_" + munID + ".csv")
             if shapefilesExist == False:
-                keep_col = app_utilities.get_array('required_asset_fields.json', 'required_asset_fields').remove('GIS Link')
+                keep_col = get_array('required_asset_fields.json', 'required_asset_fields').remove('GIS Link')
             else:
-                keep_col = app_utilities.get_array('required_asset_fields.json', 'required_asset_fields')
-            new_f = f[keep_col]
-            new_f.to_csv(munFolder + "GenAssetInfo.csv", index=False)
+                keep_col = get_array('required_asset_fields.json', 'required_asset_fields')
+            #new_f = f[keep_col]
+            #new_f.to_csv(munFolder + "GenAssetInfo.csv", index=False)
 
 #            # Will create a DBF in the municipality folder
-#            dbfGenAssetInfo = munFolder + "GenAssetInfo.dbf"
+            dbfGenAssetInfo = munFolder + "GenAssetInfo.dbf"
 #            # Convert CSV to DBF
             arcpy.TableToTable_conversion(munFolder + "GenAssetInfo.csv", munFolder, "GenAssetInfo.dbf")
-
-
 
 #            # Check the content of the CSV file for data errors
 #            # =================================================
 #            # Check every FCode values against this full list
 #            # Added WWST May 06, 2019 - forgot to add it before
-            fcodes = app_utilities.get_array('feature_codes.json', 'fcodes')
-
-
-#            # Initialize line counter for DBF file
-            dbfCounter = 1 # Start on line 2 (line 1 is headers)
+            fcodes = get_array('feature_codes.json', 'fcodes')
 
             with arcpy.da.SearchCursor(dbfGenAssetInfo, keep_col) as dbfCursor:
                 for dbfRec in dbfCursor:
-                    # Go to next record if AssetCode is blank (some spreadsheets have blank records)
-                    fieldidx = keep_col.index('AssetCode')
-                    field = dbfRec[fieldidx]
-                    if app_utilities.empty_string(str(field)):
-                        continue
-                    else:
-                        assetcode = str(field)
+                    # Go to next record if AssetCode is blank (some
+                    # spreadsheets have blank records)
+                    if dbfRec.isNull('Asset_Code'): continue
+                    field = dbfRec.getValue('Asset_Code')
+                    if empty_string(str(field)): continue
+                    else: assetcode = str(field)
 
                     # FeatureCod- dbfRec[4]
-                    fieldidx = keep_col.index('FeatureCode')
-                    field = dbfRec[fieldidx]
-                    if not field:
-                        errorCounter = errorCounter + 1
-                        errorLogFile.write(str(errorCounter) + "." + "Check the 'FeatureCode' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
-                    elif app_utilities.empty_string(str(field)):
-                        errorCounter = errorCounter + 1
-                        errorLogFile.write(str(errorCounter) + "." + "Check the 'FeatureCode' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
-                    else:
-                        if not str(field) in fcodes:
-                            errorCounter = errorCounter + 1
-                            errorLogFile.write(str(errorCounter) + "." + "Check the 'FeatureCode' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
+                    field = dbfRec.getValue('FeatureCode')
+                    if not field or empty_string(str(field)) or not str(field) in fcodes:
+                        errorCounter += 1
+                        writeError(errorLogFile, 'FeatureCode', assetcode, errorCounter, munFullName)
 
 #                    # Condition - dbfRec[5]
-                    fieldidx = keep_col.index('Condition')
-                    field = dbfRec[fieldidx]
-                    if field == None:
-                        errorCounter = errorCounter + 1
-                        errorLogFile.write(str(errorCounter) + "." + "Check the 'Condition' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
-                    elif is_number(field):
-                        if int(field) > 5:
-                            errorCounter = errorCounter + 1
-                            errorLogFile.write(str(errorCounter) + "." + "Check the 'Condition' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
-                    else:
-                        errorCounter = errorCounter + 1
-                        errorLogFile.write(str(errorCounter) + "." + "Check the 'Condition' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
-
+                    field = dbfRec.getValue('Condition')
+                    if field == None or not is_number(field) or is_number(field) > 5:
+                        errorCounter += 1
+                        writeError(errorLogFile, 'Condition', assetcode, errorCounter, munFullName)
 
 #                    # Quantity - dbfRec[8]
-                    fieldidx = keep_col.index('Quantity')
-                    field = dbfRec[fieldidx]
-                    if field == None:
-                        errorCounter = errorCounter + 1
-                        errorLogFile.write(str(errorCounter) + "." + "Check the 'Quantity' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
-                    elif not is_number(field):
-                        errorCounter = errorCounter + 1
-                        errorLogFile.write(str(errorCounter) + "." + "Check the 'Quantity' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
-                    elif app_utilities.empty_string(str(field)):
-                        errorCounter = errorCounter + 1
-                        errorLogFile.write(str(errorCounter) + "." + "Check the 'Quantity' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
+                    field = dbfRec.getValue('Quantity')
+                    if field == None or not is_number(field) or empty_string(field):
+                        errorCounter += 1
+                        writeError(errorLogFile, 'Quantity', assetcode, errorCounter, munFullName)
 
 #                    # Estimated (Estimated RUL) - dbfRec[19]
-                    fieldidx = keep_col.index('Estimated RUL')
-                    field = dbfRec[fieldidx]
-                    if field == None:
-                        errorCounter = errorCounter + 1
-                        errorLogFile.write(str(errorCounter) + "." + "Check the 'Estimated RUL' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
-                    elif not is_number(dbfRec[19]):
-                        errorCounter = errorCounter + 1
-                        errorLogFile.write(str(errorCounter) + "." + "Check the 'Estimated RUL' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
-                    elif str(dbfRec[19]) == "" or str(dbfRec[19]) == " ":
-                        errorCounter = errorCounter + 1
-                        errorLogFile.write(str(errorCounter) + "." + "Check the 'Estimated RUL' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
+                    field = dbfRec.getValue('Estimated RUL')
+                    if field == None or not is_number(field) or empty_string(field):
+                        errorCounter += 1
+                        writeError(errorLogFile, 'Estimated RUL', assetcode, errorCounter, munFullName)
 
 
 #                    # RplmtCst - dbfRec[20]
-                    fieldidx = keep_col.index('RplmtCst')
-                    field = dbfRec[fieldidx]
-                    if field == None:
-                        errorCounter = errorCounter + 1
-                        errorLogFile.write(str(errorCounter) + "." + "Check the 'RplmtCost' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
-                    elif not is_number(field):
-                        errorCounter = errorCounter + 1
-                        errorLogFile.write(str(errorCounter) + "." + "Check the 'RplmtCost' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
-                    elif app_utilities.empty_string(str(field)):
-                        errorCounter = errorCounter + 1
-                        errorLogFile.write(str(errorCounter) + "." + "Check the 'RplmtCost' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
+                    field = dbfRec.getValue('RplmtCst')
+                    if field == None or not is_number(field) or empty_string(field):
+                        errorCounter += 1
+                        writeError(errorLogFile, 'RplmtCst', assetcode, errorCounter, munFullName)
 
 
 #                    # ConditionB (ConditionBasis) - dbfRec[21]
-                    fieldidx = keep_col.index('ConditionBasis')
-                    field = dbfRec[fieldidx]
-                    if not field:
-                        errorCounter = errorCounter + 1
-                        errorLogFile.write(str(errorCounter) + "." + "Check the 'ConditionBasis' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
-                    elif app_utilities.empty_string(str(field)):
-                        errorCounter = errorCounter + 1
-                        errorLogFile.write(str(errorCounter) + "." + "Check the 'ConditionBasis' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
-
+                    field = dbfRec.getValue('ConditionBasis')
+                    if not field or empty_string(field):
+                        errorCounter += 1
+                        writeError(errorLogFile, 'ConditionBasis', assetcode, errorCounter, munFullName)
 
 #                    # CostLookup - dbfRec[31]
-                    fieldidx = keep_col.index('CostLookup')
-                    field = dbfRec[fieldidx]
-                    if not field:
-                        errorCounter = errorCounter + 1
-                        errorLogFile.write(str(errorCounter) + "." + "Check the 'CostLookup' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
-                    elif app_utilities.empty_string(str(field)):
-                        errorCounter = errorCounter + 1
-                        errorLogFile.write(str(errorCounter) + "." + "Check the 'CostLookup' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
-
+                    field = dbfRec.getValue('CostLookup')
+                    if not field or empty_string(field):
+                        errorCounter += 1
+                        writeError(errorLogFile, 'CostLookup', assetcode, errorCounter, munFullName)
 
 #                    # Unit_Cost - dbfRec[37]
-
-                    fieldidx = keep_col.index('Unit_Cost')
-                    field = dbfRec[fieldidx]
-                    if field == None:
-                        errorCounter = errorCounter + 1
-                        errorLogFile.write(str(errorCounter) + "." + "Check the 'Unit Cost' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
-                    elif not is_number(field):
-                        errorCounter = errorCounter + 1
-                        errorLogFile.write(str(errorCounter) + "." + "Check the 'Unit Cost' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
-                    elif app_utilities.empty_string(str(field)):
-                        errorCounter = errorCounter + 1
-                        errorLogFile.write(str(errorCounter) + "." + "Check the 'Unit Cost' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
-
+                    field = dbfRec.getValue('Unit Cost')
+                    if field == None or not is_number(field) or empty_string(field):
+                        errorCounter += 1
+                        writeError(errorLogFile, 'Unit Cost', assetcode, errorCounter, munFullName)
+                        
                     if shapefilesExist == True:
                         # GIS_Link - dbfRec[39]
-                        fieldidx = keep_col.index('GIS_Link')
-                        field = dbfRec[fieldidx]
-                        if not field:
-                            errorCounter = errorCounter + 1
-                            errorLogFile.write(str(errorCounter) + "." + "Check the 'GIS_Link' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
-                        elif app_utilities.empty_string(str(field)):
-                            errorCounter = errorCounter + 1
-                            errorLogFile.write(str(errorCounter) + "." + "Check the 'GIS_Link' value for the " + assetcode + " Asset_Code record in the " + munFullName + " spreadsheet (.XLSM)." + "\n\n")
-
-#                    # Increase counter
-#                    dbfCounter = dbfCounter + 1
-
+                        field = dbfRec.getValue('GIS Link')
+                        if not field or empty_string(field):
+                            errorCounter += 1
+                            writeError(errorLogFile, 'GIS Link', assetcode, errorCounter, munFullName)
 
 #            # Parent folder of all shapefiles
-#            shpFolder = munFolder + "GIS Imports/"
-#            if not os.path.exists(shpFolder):
-#                errorCounter = errorCounter + 1
-#                errorLogFile.write(str(errorCounter) + "." + "The 'GIS_Imports' folder cannot be found." + "\n\n")
+            shpFolder = munFolder + "GIS Imports/"
+            if not os.path.exists(shpFolder):
+                errorCounter += 1
+                errorLogFile.write(str(errorCounter) + "." + "The 'GIS_Imports' folder cannot be found." + "\n\n")
 
 
-#            # In some of the shapefiles, the fields are called different things (always in same order though)
-#            fieldsShapefile = []
-#            fieldsShapefile.append("Shape")
-#            fieldsShapefile.append("Elev")  #Sometimes called "Elevation"
-#            fieldsShapefile.append("Width")
-#            fieldsShapefile.append("GIS_Link")
+            # There is inconsistent naming across shapefiles for the various fields
+            # specifically:            
+            # "Elev"  Sometimes called "Elevation"
+            # "FCode" Sometimes called "FeatureCod" "FreatureCo" or "Feature"
+            # "N"     Sometimes called "Northing"
+            # "E"     Sometimes called "Easting"
+            # "Install_Yr" Sometimes called "Install Yr" or "Install_Da"
+            # "Comments"   Sometimes called "Comment"
+            # "Quantity"   Sometimes called "Length"
+            fieldsShapefile = get_array("shapefile_fields.json", "shapefile_fields")
 
-#            #fieldsShapefile.append("FID")
-#            #fieldsShapefile.append("Mun_ID")
-#            #fieldsShapefile.append("FCode")  #Sometimes called "FeatureCod" "FreatureCo" or "Feature"
-#            #fieldsShapefile.append("N")  #Sometimes called "Northing"
-#            #fieldsShapefile.append("E")  #Sometimes called "Easting"
-#            #fieldsShapefile.append("Condition")
-#            #fieldsShapefile.append("Material")
-#            #fieldsShapefile.append("Install_Yr")  #Sometimes called "Install Yr" or "Install_Da"
-#            #fieldsShapefile.append("LocDesc")
-#            #fieldsShapefile.append("Diameter")
-#            #fieldsShapefile.append("Comments")  #Sometimes called "Comment"
-#            #fieldsShapefile.append("Quantity")  #Sometimes called "Length"
-#            #fieldsShapefile.append("Status")
+            # Check fields in shapefiles if shapefilesExist = True (method = "GIS")
+            if shapefilesExist == True:
+                shapefileNames = get_array('shapefile_names.json', 'shapefile_names')
+                for shapefile_name in shapefileNames:
+                    shpfilefolder = shpFolder + shapefile_name + '/'
+                    shpfilename = shpMunID + ' ' + shapefile_name + '.shp'
+                    shpFullPath = shpfilefolder + shpFileName
+                    validateFiles(errorLogFile, errorCounter, shpfilefolder, shpFullPath, fieldsShapeFile)
 
-
-
-#            # Check fields in shapefiles if shapefilesExist = True (method = "GIS")
-#            if shapefilesExist == True:
-
-#                # PWS line
-#                # ========
-#                shpFolder_PWS_L = shpFolder + "PWS L/"
-#                shpFileName = shpMunID + " PWS L.shp"
-#                shpFullPath = shpFolder_PWS_L + shpFileName
-
-#                if not os.path.exists(shpFolder_PWS_L):
-#                    errorCounter = errorCounter + 1
-#                    errorLogFile.write(str(errorCounter) + "." + "The 'PWS L' sub-folder cannot be found under the 'GIS Imports' folder." + "\n\n")
-#                else:
-#                    if not arcpy.Exists(shpFullPath):
-#                        errorCounter = errorCounter + 1
-#                        errorLogFile.write(str(errorCounter) + "." + "The '" + shpFileName + "' shapefile cannot be found under the 'GIS Imports/PWS L' folder." + "\n\n")
-#                    else:
-#                        # Make sure its spatial reference is NAD83 UTM20
-#                        if arcpy.Describe(shpFullPath).spatialReference.factoryCode == 26920 or arcpy.Describe(shpFullPath).spatialReference.factoryCode == 2961:
-#                        #if arcpy.Describe(shpFullPath).spatialReference.factoryCode == 26920:
-#                            # Check that it has all the correct fields
-#                            fieldsShp = arcpy.ListFields(shpFullPath)
-#                            fieldsShpNames = []
-#                            for field in fieldsShp:
-#                                fieldsShpNames.append(field.name)
-#                            # Check fields against mandatory shapefile fields
-#                            # Only Shape, Elevation, Width and GIS_Link are taken from the shapefiles; others come from the spreadsheet CSV
-#                            for field in fieldsShapefile:
-#                                if field == "Elev":
-#                                    if "Elev" not in fieldsShpNames:
-#                                        if "Elevation" not in fieldsShpNames:
-#                                            if "ELEVATION" not in fieldsShpNames:
-#                                                errorCounter = errorCounter + 1
-#                                                errorLogFile.write(str(errorCounter) + "." + "The '" + field + "' field is missing from the '" + shpFileName + "' shapefile." + "\n\n")
-#                                else:
-#                                    if field not in fieldsShpNames:
-#                                        errorCounter = errorCounter + 1
-#                                        errorLogFile.write(str(errorCounter) + "." + "The '" + field + "' field is missing from the '" + shpFileName + "' shapefile." + "\n\n")
-#                        else:
-#                            errorCounter = errorCounter + 1
-#                            errorLogFile.write(str(errorCounter) + "." + "The '" + shpFileName + "' shapefile has an invalid Spatial Reference. The coordinate system must be 'NAD_1983_UTM_Zone_20N' or 'NAD_1983_CSRS_UTM_Zone_20N'." + "\n\n")
+        # Close the error log file
+        errorLogFile.close()
 
 
-#                # PWS point
-#                # ========
-#                shpFolder_PWS_P = shpFolder + "PWS P/"
-#                shpFileName = shpMunID + " PWS P.shp"
-#                shpFullPath = shpFolder_PWS_P + shpFileName
+        # =============================================================================================
+        # Send an email to the user if validation fails (with txt file), or after upload, if successful
 
-#                if not os.path.exists(shpFolder_PWS_P):
-#                    errorCounter = errorCounter + 1
-#                    errorLogFile.write(str(errorCounter) + "." + "The 'PWS P' sub-folder cannot be found under the 'GIS Imports' folder." + "\n\n")
-#                else:
-#                    if not arcpy.Exists(shpFullPath):
-#                        errorCounter = errorCounter + 1
-#                        errorLogFile.write(str(errorCounter) + "." + "The '" + shpFileName + "' shapefile cannot be found under the 'GIS Imports/PWS P' folder." + "\n\n")
-#                    else:
-#                        # Make sure its spatial reference is NAD83 UTM20
-#                        if arcpy.Describe(shpFullPath).spatialReference.factoryCode == 26920 or arcpy.Describe(shpFullPath).spatialReference.factoryCode == 2961:
-#                        #if arcpy.Describe(shpFullPath).spatialReference.factoryCode == 26920:
-#                            # Check that it has all the correct fields
-#                            fieldsShp = arcpy.ListFields(shpFullPath)
-#                            fieldsShpNames = []
-#                            for field in fieldsShp:
-#                                fieldsShpNames.append(field.name)
-#                            # Check fields against mandatory shapefile fields
-#                            # Only Shape, Elevation, Width and GIS_Link are taken from the shapefiles; others come from the spreadsheet CSV
-#                            for field in fieldsShapefile:
-#                                if field == "Elev":
-#                                    if "Elev" not in fieldsShpNames:
-#                                        if "Elevation" not in fieldsShpNames:
-#                                            if "ELEVATION" not in fieldsShpNames:
-#                                                errorCounter = errorCounter + 1
-#                                                errorLogFile.write(str(errorCounter) + "." + "The '" + field + "' field is missing from the '" + shpFileName + "' shapefile." + "\n\n")
-#                                else:
-#                                    if field not in fieldsShpNames:
-#                                        errorCounter = errorCounter + 1
-#                                        errorLogFile.write(str(errorCounter) + "." + "The '" + field + "' field is missing from the '" + shpFileName + "' shapefile." + "\n\n")
-#                        else:
-#                            errorCounter = errorCounter + 1
-#                            errorLogFile.write(str(errorCounter) + "." + "The '" + shpFileName + "' shapefile has an invalid Spatial Reference. The coordinate system must be 'NAD_1983_UTM_Zone_20N' or 'NAD_1983_CSRS_UTM_Zone_20N'." + "\n\n")
+        if errorCounter > 0:
+            #raise Exception?
+            UploadStatus = "Validation Failed"
+            NotifyClient(munFullName, errorFilenameShort, errorFilename, UploadStatus)
+            arcpy.AddError("Validation Failed")
+        else:
+            # Proceed with the Upload
+            UploadStatus = Upload()
 
+        # =============================================================================================
 
-#                # SWC line
-#                # ========
-#                shpFolder_SWC_L = shpFolder + "SWC L/"
-#                shpFileName = shpMunID + " SWC L.shp"
-#                shpFullPath = shpFolder_SWC_L + shpFileName
+    # NOTE: These exceptions are from the very beginning of the Validate method
+    except KeyboardInterrupt:
+        exit()
 
-#                if not os.path.exists(shpFolder_SWC_L):
-#                    errorCounter = errorCounter + 1
-#                    errorLogFile.write(str(errorCounter) + "." + "The 'SWC L' sub-folder cannot be found under the 'GIS Imports' folder." + "\n\n")
-#                else:
-#                    if not arcpy.Exists(shpFullPath):
-#                        errorCounter = errorCounter + 1
-#                        errorLogFile.write(str(errorCounter) + "." + "The '" + shpFileName + "' shapefile cannot be found under the 'GIS Imports/SWC L' folder." + "\n\n")
-#                    else:
-#                        # Make sure its spatial reference is NAD83 UTM20
-#                        if arcpy.Describe(shpFullPath).spatialReference.factoryCode == 26920 or arcpy.Describe(shpFullPath).spatialReference.factoryCode == 2961:
-#                        #if arcpy.Describe(shpFullPath).spatialReference.factoryCode == 26920:
-#                            # Check that it has all the correct fields
-#                            fieldsShp = arcpy.ListFields(shpFullPath)
-#                            fieldsShpNames = []
-#                            for field in fieldsShp:
-#                                fieldsShpNames.append(field.name)
-#                            # Check fields against mandatory shapefile fields
-#                            # Only Shape, Elevation, Width and GIS_Link are taken from the shapefiles; others come from the spreadsheet CSV
-#                            for field in fieldsShapefile:
-#                                if field == "Elev":
-#                                    if "Elev" not in fieldsShpNames:
-#                                        if "Elevation" not in fieldsShpNames:
-#                                            if "ELEVATION" not in fieldsShpNames:
-#                                                errorCounter = errorCounter + 1
-#                                                errorLogFile.write(str(errorCounter) + "." + "The '" + field + "' field is missing from the '" + shpFileName + "' shapefile." + "\n\n")
-#                                else:
-#                                    if field not in fieldsShpNames:
-#                                        errorCounter = errorCounter + 1
-#                                        errorLogFile.write(str(errorCounter) + "." + "The '" + field + "' field is missing from the '" + shpFileName + "' shapefile." + "\n\n")
-#                        else:
-#                            errorCounter = errorCounter + 1
-#                            errorLogFile.write(str(errorCounter) + "." + "The '" + shpFileName + "' shapefile has an invalid Spatial Reference. The coordinate system must be 'NAD_1983_UTM_Zone_20N' or 'NAD_1983_CSRS_UTM_Zone_20N'." + "\n\n")
+    except Exception, e:
+        arcpy.AddMessage("ERROR: Exception on line number: " + str(sys.exc_traceback.tb_lineno) + "\n" + str(e) + "\n")
+        UploadStatus = "Validation Failed"
+        NotifyClient(munFullName, errorFilenameShort, errorFilename, UploadStatus)
+    finally:
+        if not errorLogFile.closed:
+            errorLogFile.close()
 
-#                # SWC point
-#                # ========
-#                shpFolder_SWC_P = shpFolder + "SWC P/"
-#                shpFileName = shpMunID + " SWC P.shp"
-#                shpFullPath = shpFolder_SWC_P + shpFileName
+def Upload():
 
-#                if not os.path.exists(shpFolder_SWC_P):
-#                    errorCounter = errorCounter + 1
-#                    errorLogFile.write(str(errorCounter) + "." + "The 'SWC P' sub-folder cannot be found under the 'GIS Imports' folder." + "\n\n")
-#                else:
-#                    if not arcpy.Exists(shpFullPath):
-#                        errorCounter = errorCounter + 1
-#                        errorLogFile.write(str(errorCounter) + "." + "The '" + shpFileName + "' shapefile cannot be found under the 'GIS Imports/SWC P' folder." + "\n\n")
-#                    else:
-#                        # Make sure its spatial reference is NAD83 UTM20
-#                        if arcpy.Describe(shpFullPath).spatialReference.factoryCode == 26920 or arcpy.Describe(shpFullPath).spatialReference.factoryCode == 2961:
-#                        #if arcpy.Describe(shpFullPath).spatialReference.factoryCode == 26920:
-#                            # Check that it has all the correct fields
-#                            fieldsShp = arcpy.ListFields(shpFullPath)
-#                            fieldsShpNames = []
-#                            for field in fieldsShp:
-#                                fieldsShpNames.append(field.name)
-#                            # Check fields against mandatory shapefile fields
-#                            # Only Shape, Elevation, Width and GIS_Link are taken from the shapefiles; others come from the spreadsheet CSV
-#                            for field in fieldsShapefile:
-#                                if field == "Elev":
-#                                    if "Elev" not in fieldsShpNames:
-#                                        if "Elevation" not in fieldsShpNames:
-#                                            if "ELEVATION" not in fieldsShpNames:
-#                                                errorCounter = errorCounter + 1
-#                                                errorLogFile.write(str(errorCounter) + "." + "The '" + field + "' field is missing from the " + shpFileName + " shapefile." + "\n\n")
-#                                else:
-#                                    if field not in fieldsShpNames:
-#                                        errorCounter = errorCounter + 1
-#                                        errorLogFile.write(str(errorCounter) + "." + "The '" + field + "' field is missing from the " + shpFileName + " shapefile." + "\n\n")
-#                        else:
-#                            errorCounter = errorCounter + 1
-#                            errorLogFile.write(str(errorCounter) + "." + "The '" + shpFileName + "' shapefile has an invalid Spatial Reference. The coordinate system must be 'NAD_1983_UTM_Zone_20N' or 'NAD_1983_CSRS_UTM_Zone_20N'." + "\n\n")
+    try:
+        
+        global totalCounter
+
+        # Get the Spreadsheet Export folder
+        ssExportFolder = munFolder + "Spreadsheet Export/"
+        # Get folder where shapefiles reside (or will reside)
+        shpFolder = munFolder + "GIS Imports/"
+
+        # Set workspace to Spreadsheet Export folder
+        arcpy.env.workspace = ssExportFolder
+        # Overwrite any outputs
+        arcpy.env.overwriteOutput = True
 
 
-#                # TRN line
-#                # ========
-#                shpFolder_TRN_L = shpFolder + "TRN L/"
-#                shpFileName = shpMunID + " TRN L.shp"
-#                shpFullPath = shpFolder_TRN_L + shpFileName
-
-#                if not os.path.exists(shpFolder_TRN_L):
-#                    errorCounter = errorCounter + 1
-#                    errorLogFile.write(str(errorCounter) + "." + "The 'TRN L' sub-folder cannot be found under the 'GIS Imports' folder." + "\n\n")
-#                else:
-#                    if not arcpy.Exists(shpFullPath):
-#                        errorCounter = errorCounter + 1
-#                        errorLogFile.write(str(errorCounter) + "." + "The '" + shpFileName + "' shapefile cannot be found under the 'GIS Imports/TRN L' folder." + "\n\n")
-#                    else:
-#                        # Make sure its spatial reference is NAD83 UTM20
-#                        if arcpy.Describe(shpFullPath).spatialReference.factoryCode == 26920 or arcpy.Describe(shpFullPath).spatialReference.factoryCode == 2961:
-#                        #if arcpy.Describe(shpFullPath).spatialReference.factoryCode == 26920:
-#                            # Check that it has all the correct fields
-#                            fieldsShp = arcpy.ListFields(shpFullPath)
-#                            fieldsShpNames = []
-#                            for field in fieldsShp:
-#                                fieldsShpNames.append(field.name)
-#                            # Check fields against mandatory shapefile fields
-#                            # Only Shape, Elevation, Width and GIS_Link are taken from the shapefiles; others come from the spreadsheet CSV
-#                            for field in fieldsShapefile:
-#                                if field == "Elev":
-#                                    if "Elev" not in fieldsShpNames:
-#                                        if "Elevation" not in fieldsShpNames:
-#                                            if "ELEVATION" not in fieldsShpNames:
-#                                                errorCounter = errorCounter + 1
-#                                                errorLogFile.write(str(errorCounter) + "." + "The '" + field + "' field is missing from the '" + shpFileName + "' shapefile." + "\n\n")
-#                                else:
-#                                    if field not in fieldsShpNames:
-#                                        errorCounter = errorCounter + 1
-#                                        errorLogFile.write(str(errorCounter) + "." + "The '" + field + "' field is missing from the '" + shpFileName + "' shapefile." + "\n\n")
-#                        else:
-#                            errorCounter = errorCounter + 1
-#                            errorLogFile.write(str(errorCounter) + "." + "The '" + shpFileName + "' shapefile has an invalid Spatial Reference. The coordinate system must be 'NAD_1983_UTM_Zone_20N' or 'NAD_1983_CSRS_UTM_Zone_20N'." + "\n\n")
-
-
-#                # TRN point
-#                # ========
-#                shpFolder_TRN_P = shpFolder + "TRN P/"
-#                shpFileName = shpMunID + " TRN P.shp"
-#                shpFullPath = shpFolder_TRN_P + shpFileName
-
-#                if not os.path.exists(shpFolder_TRN_P):
-#                    errorCounter = errorCounter + 1
-#                    errorLogFile.write(str(errorCounter) + "." + "The 'TRN P' sub-folder cannot be found under the 'GIS Imports' folder." + "\n\n")
-#                else:
-#                    if not arcpy.Exists(shpFullPath):
-#                        errorCounter = errorCounter + 1
-#                        errorLogFile.write(str(errorCounter) + "." + "The '" + shpFileName + "' shapefile cannot be found under the 'GIS Imports/TRN P' folder." + "\n\n")
-#                    else:
-#                        # Make sure its spatial reference is NAD83 UTM20
-#                        if arcpy.Describe(shpFullPath).spatialReference.factoryCode == 26920 or arcpy.Describe(shpFullPath).spatialReference.factoryCode == 2961:
-#                        #if arcpy.Describe(shpFullPath).spatialReference.factoryCode == 26920:
-#                            # Check that it has all the correct fields
-#                            fieldsShp = arcpy.ListFields(shpFullPath)
-#                            fieldsShpNames = []
-#                            for field in fieldsShp:
-#                                fieldsShpNames.append(field.name)
-#                            # Check fields against mandatory shapefile fields
-#                            # Only Shape, Elevation, Width and GIS_Link are taken from the shapefiles; others come from the spreadsheet CSV
-#                            for field in fieldsShapefile:
-#                                if field == "Elev":
-#                                    if "Elev" not in fieldsShpNames:
-#                                        if "Elevation" not in fieldsShpNames:
-#                                            if "ELEVATION" not in fieldsShpNames:
-#                                                errorCounter = errorCounter + 1
-#                                                errorLogFile.write(str(errorCounter) + "." + "The '" + field + "' field is missing from the '" + shpFileName + "' shapefile." + "\n\n")
-#                                else:
-#                                    if field not in fieldsShpNames:
-#                                        errorCounter = errorCounter + 1
-#                                        errorLogFile.write(str(errorCounter) + "." + "The '" + field + "' field is missing from the '" + shpFileName + "' shapefile." + "\n\n")
-#                        else:
-#                            errorCounter = errorCounter + 1
-#                            errorLogFile.write(str(errorCounter) + "." + "The '" + shpFileName + "' shapefile has an invalid Spatial Reference. The coordinate system must be 'NAD_1983_UTM_Zone_20N' or 'NAD_1983_CSRS_UTM_Zone_20N'." + "\n\n")
-
-
-#                # WWC line
-#                # ========
-#                shpFolder_WWC_L = shpFolder + "WWC L/"
-#                shpFileName = shpMunID + " WWC L.shp"
-#                shpFullPath = shpFolder_WWC_L + shpFileName
-
-#                if not os.path.exists(shpFolder_WWC_L):
-#                    errorCounter = errorCounter + 1
-#                    errorLogFile.write(str(errorCounter) + "." + "The 'WWC L' sub-folder cannot be found under the 'GIS Imports' folder." + "\n\n")
-#                else:
-#                    if not arcpy.Exists(shpFullPath):
-#                        errorCounter = errorCounter + 1
-#                        errorLogFile.write(str(errorCounter) + "." + "The '" + shpFileName + "' shapefile cannot be found under the 'GIS Imports/WWC L' folder." + "\n\n")
-#                    else:
-#                        # Make sure its spatial reference is NAD83 UTM20
-#                        if arcpy.Describe(shpFullPath).spatialReference.factoryCode == 26920 or arcpy.Describe(shpFullPath).spatialReference.factoryCode == 2961:
-#                        #if arcpy.Describe(shpFullPath).spatialReference.factoryCode == 26920:
-#                            # Check that it has all the correct fields
-#                            fieldsShp = arcpy.ListFields(shpFullPath)
-#                            fieldsShpNames = []
-#                            for field in fieldsShp:
-#                                fieldsShpNames.append(field.name)
-#                            # Check fields against mandatory shapefile fields
-#                            # Only Shape, Elevation, Width and GIS_Link are taken from the shapefiles; others come from the spreadsheet CSV
-#                            for field in fieldsShapefile:
-#                                if field == "Elev":
-#                                    if "Elev" not in fieldsShpNames:
-#                                        if "Elevation" not in fieldsShpNames:
-#                                            if "ELEVATION" not in fieldsShpNames:
-#                                                errorCounter = errorCounter + 1
-#                                                errorLogFile.write(str(errorCounter) + "." + "The '" + field + "' field is missing from the '" + shpFileName + "' shapefile." + "\n\n")
-#                                else:
-#                                    if field not in fieldsShpNames:
-#                                        errorCounter = errorCounter + 1
-#                                        errorLogFile.write(str(errorCounter) + "." + "The '" + field + "' field is missing from the '" + shpFileName + "' shapefile." + "\n\n")
-#                        else:
-#                            errorCounter = errorCounter + 1
-#                            errorLogFile.write(str(errorCounter) + "." + "The '" + shpFileName + "' shapefile has an invalid Spatial Reference. The coordinate system must be 'NAD_1983_UTM_Zone_20N' or 'NAD_1983_CSRS_UTM_Zone_20N'." + "\n\n")
-
-
-#                # WWC point
-#                # ========
-#                shpFolder_WWC_P = shpFolder + "WWC P/"
-#                shpFileName = shpMunID + " WWC P.shp"
-#                shpFullPath = shpFolder_WWC_P + shpFileName
-
-#                if not os.path.exists(shpFolder_WWC_P):
-#                    errorCounter = errorCounter + 1
-#                    #errorLogFile.write(str(errorCounter) + "." + shpFolder_WWC_P, "File/Folder Check", "Folder Missing")
-#                    errorLogFile.write(str(errorCounter) + "." + "The 'WWC P' sub-folder cannot be found under the 'GIS Imports' folder." + "\n\n")
-#                else:
-#                    if not arcpy.Exists(shpFullPath):
-#                        errorCounter = errorCounter + 1
-#                        errorLogFile.write(str(errorCounter) + "." + "The '" + shpFileName + "' shapefile cannot be found under the 'GIS Imports/WWC P' folder." + "\n\n")
-#                    else:
-#                        # Make sure its spatial reference is NAD83 UTM20
-#                        if arcpy.Describe(shpFullPath).spatialReference.factoryCode == 26920 or arcpy.Describe(shpFullPath).spatialReference.factoryCode == 2961:
-#                        #if arcpy.Describe(shpFullPath).spatialReference.factoryCode == 26920:
-#                            # Check that it has all the correct fields
-#                            fieldsShp = arcpy.ListFields(shpFullPath)
-#                            fieldsShpNames = []
-#                            for field in fieldsShp:
-#                                fieldsShpNames.append(field.name)
-#                            # Check fields against mandatory shapefile fields
-#                            # Only Shape, Elevation, Width and GIS_Link are taken from the shapefiles; others come from the spreadsheet CSV
-#                            for field in fieldsShapefile:
-#                                if field == "Elev":
-#                                    if "Elev" not in fieldsShpNames:
-#                                        if "Elevation" not in fieldsShpNames:
-#                                            if "ELEVATION" not in fieldsShpNames:
-#                                                errorCounter = errorCounter + 1
-#                                                errorLogFile.write(str(errorCounter) + "." + "The '" + field + "' field is missing from the '" + shpFileName + "' shapefile." + "\n\n")
-#                                else:
-#                                    if field not in fieldsShpNames:
-#                                        errorCounter = errorCounter + 1
-#                                        errorLogFile.write(str(errorCounter) + "." + "The '" + field + "' field is missing from the '" + shpFileName + "' shapefile." + "\n\n")
-#                        else:
-#                            errorCounter = errorCounter + 1
-#                            errorLogFile.write(str(errorCounter) + "." + "The '" + shpFileName + "' shapefile has an invalid Spatial Reference. The coordinate system must be 'NAD_1983_UTM_Zone_20N' or 'NAD_1983_CSRS_UTM_Zone_20N'." + "\n\n")
-
-
-
-#        # Close the error log file
-#        errorLogFile.close()
-
-
-#        # =============================================================================================
-#        # Send an email to the user if validation fails (with txt file), or after upload, if successful
-
-#		# Commented out 25 Jan 2019
-#        ##errorCounter = 0
-
-#        if errorCounter > 0:
-#            #raise Exception
-#            UploadStatus = "Validation Failed"
-#            NotifyClient(munFullName, errorFilenameShort, errorFilename, UploadStatus)
-#            arcpy.AddError("Validation Failed")
-
-#        else:
-#            # Proceed with the Upload
-#            UploadStatus = Upload()
-
-#        # =============================================================================================
-
-
-#    except KeyboardInterrupt:
-#        exit()
-
-
-#    except Exception, e:
-#        arcpy.AddMessage("ERROR: Exception on line number:" + str(sys.exc_traceback.tb_lineno) + "\n" + str(e) + "\n")
-#        UploadStatus = "Validation Failed"
-#        NotifyClient(munFullName, errorFilenameShort, errorFilename, UploadStatus)
-#        #sys.exit(1)
-
-
-#def Upload():
-
-#    try:
-
-#        #global parentFolder, munFolder, munID, shpMunID, munName, munFullName, mun
-#        global munFolder, munID, shpMunID, munName, munFullName, mun
-#        global method, gdb, shapefilesExist, totalCounter
-
-
-#        # Get the Spreadsheet Export folder
-#        ssExportFolder = munFolder + "Spreadsheet Export/"
-#        # Get folder where shapefiles reside (or will reside)
-#        shpFolder = munFolder + "GIS Imports/"
-
-#        # Set workspace to Spreadsheet Export folder
-#        arcpy.env.workspace = ssExportFolder
-#        # Overwrite any outputs
-#        arcpy.env.overwriteOutput = True
-
-
-#        # Get the CSV file of spreadsheet (General Asset Information sheet)
-#        csvGenAssetInfo = munFolder + "GenAssetInfo.csv"
-#        # Convert CSV file to DBF
-#        arcpy.TableToTable_conversion(csvGenAssetInfo, munFolder, "GenAssetInfo.dbf")
-#        dbfGenAssetInfo = munFolder + "GenAssetInfo.dbf"
+        # Get the CSV file of spreadsheet (General Asset Information sheet)
+        csvGenAssetInfo = munFolder + "GenAssetInfo.csv"
+        # Convert CSV file to DBF
+        arcpy.TableToTable_conversion(csvGenAssetInfo, munFolder, "GenAssetInfo.dbf")
+        dbfGenAssetInfo = munFolder + "GenAssetInfo.dbf"
 
 
 #        # ==============================================================================================
@@ -2532,20 +2179,20 @@ def Validate():
 #        NotifyClient(munFullName, "", "", UploadStatus)
 
 
-#    except Exception, e:
+    except Exception, e:
 
-#        UploadStatus = "ERROR: Exception on line number:" + str(sys.exc_traceback.tb_lineno) + "\n" + str(e) + "\n"
-#        #NotifyClient(munFullName, None, None, UploadStatus)
-#        NotifyClient(munFullName, "", "", UploadStatus)
+        UploadStatus = "ERROR: Exception on line number:" + str(sys.exc_traceback.tb_lineno) + "\n" + str(e) + "\n"
+        #NotifyClient(munFullName, None, None, UploadStatus)
+        NotifyClient(munFullName, "", "", UploadStatus)
 
-#        # Abort edit operation
-#        if "edit" in locals() or "edit" in globals():
-#        #if edit is not None:
-#        #if not edit == None:
-#            if edit.isEditing == "true":
-#                edit.abortOperation()
-#                # Stop the edit session without saving any changes
-#                edit.stopEditing(False)
+        # Abort edit operation
+        if "edit" in locals() or "edit" in globals():
+        #if edit is not None:
+        #if not edit == None:
+            if edit.isEditing == "true":
+                edit.abortOperation()
+                # Stop the edit session without saving any changes
+                edit.stopEditing(False)
 
 
 #def NotifyClient(munFullName, errorFilenameShort, errorFilename, UploadStatus):

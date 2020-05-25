@@ -1,0 +1,1044 @@
+Asset_Code,Descr,LocDesc,FeatureCode,Condition,Inspected,Status,Quantity,Age,Material,Other,Comments,Area,Department,Division,PersResp,Install yr,Useful Life,Estimated RUL,RplmtCst,ConditionBasis,ResidValue,DispDate,Risk,CnsqOfFail,DatLastAss,FollowUp,EditTag,Record Drawing,Replacement Year,CostLookup,Replace1,Replace2, Replace3, Replace4,Cost Factor,Unit Cost,Edit Tag
+LO-PWS-TRN-TRNS-00001,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00002,Transmission Pipe,,TRNS,4.0,,active,300.0,,,,,,,,,,80.0,26.0,162750.0,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00003,Transmission Pipe,,TRNS,4.0,,active,457.0,,,,,,,,,,80.0,26.0,247922.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00004,Transmission Pipe,,TRNS,4.0,,active,457.0,,,,,,,,,,80.0,26.0,247922.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00005,Transmission Pipe,,TRNS,4.0,,active,457.0,,,,,,,,,,80.0,26.0,247922.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00006,Transmission Pipe,,TRNS,4.0,,active,457.0,,,,,,,,,,80.0,26.0,247922.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00007,Transmission Pipe,,TRNS,4.0,,active,457.0,,,,,,,,,,80.0,26.0,247922.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00008,Transmission Pipe,,TRNS,4.0,,active,457.0,,,,,,,,,,80.0,26.0,247922.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00009,Transmission Pipe,,TRNS,4.0,,active,457.0,,,,,,,,,,80.0,26.0,247922.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00010,Transmission Pipe,,TRNS,4.0,,active,457.0,,,,,,,,,,80.0,26.0,247922.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00011,Transmission Pipe,,TRNS,4.0,,active,457.0,,,,,,,,,,80.0,26.0,247922.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00012,Transmission Pipe,,TRNS,4.0,,active,457.0,,,,,,,,,,80.0,26.0,247922.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00013,Transmission Pipe,,TRNS,4.0,,active,457.0,,,,,,,,,,80.0,26.0,247922.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00014,Transmission Pipe,,TRNS,4.0,,active,457.0,,,,,,,,,,80.0,26.0,247922.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00015,Transmission Pipe,,TRNS,4.0,,active,457.0,,,,,,,,,,80.0,26.0,247922.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00016,Transmission Pipe,,TRNS,4.0,,active,457.0,,,,,,,,,,80.0,26.0,247922.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00017,Transmission Pipe,,TRNS,4.0,,active,457.0,,,,,,,,,,80.0,26.0,247922.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00018,Transmission Pipe,,TRNS,4.0,,active,457.0,,,,,,,,,,80.0,26.0,247922.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00019,Transmission Pipe,,TRNS,4.0,,active,457.0,,,,,,,,,,80.0,26.0,247922.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00020,Transmission Pipe,,TRNS,4.0,,active,457.0,,,,,,,,,,80.0,26.0,247922.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00021,Transmission Pipe,,TRNS,4.0,,active,457.0,,,,,,,,,,80.0,26.0,247922.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00022,Transmission Pipe,,TRNS,4.0,,active,457.0,,,,,,,,,,80.0,26.0,247922.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00023,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00024,Transmission Pipe,,TRNS,4.0,,active,457.0,,,,,,,,,,80.0,26.0,247922.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00025,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00026,Transmission Pipe,,TRNS,4.0,,active,457.0,,,,,,,,,,80.0,26.0,247922.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00027,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00028,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00029,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00030,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00031,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00032,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00033,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00034,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00035,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00036,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00037,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00038,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00039,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00040,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00041,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00042,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00043,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00044,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00045,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00046,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00047,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00048,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00049,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00050,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00051,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00052,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00053,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00054,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00055,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00056,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00057,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00058,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00059,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00060,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00061,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00062,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00063,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00064,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00065,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00066,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00067,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00068,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00069,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00070,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00071,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00072,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00073,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00074,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00075,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00076,Transmission Pipe,,TRNS,4.0,,active,355.0,,,,,,,,,,80.0,26.0,192587.5,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00077,Transmission Pipe,,TRNS,4.0,,active,406.0,,,,,,,,,,80.0,26.0,220255.0,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00078,Transmission Pipe,,TRNS,4.0,,active,406.0,,,,,,,,,,80.0,26.0,220255.0,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00079,Transmission Pipe,,TRNS,4.0,,active,406.0,,,,,,,,,,80.0,26.0,220255.0,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00080,Transmission Pipe,,TRNS,4.0,,active,406.0,,,,,,,,,,80.0,26.0,220255.0,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00081,Transmission Pipe,,TRNS,4.0,,active,406.0,,,,,,,,,,80.0,26.0,220255.0,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00082,Transmission Pipe,,TRNS,4.0,,active,406.0,,,,,,,,,,80.0,26.0,220255.0,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00083,Transmission Pipe,,TRNS,4.0,,active,406.0,,,,,,,,,,80.0,26.0,220255.0,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00084,Transmission Pipe,,TRNS,4.0,,active,406.0,,,,,,,,,,80.0,26.0,220255.0,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00085,Transmission Pipe,,TRNS,4.0,,active,406.0,,,,,,,,,,80.0,26.0,220255.0,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00086,Transmission Pipe,,TRNS,4.0,,active,406.0,,,,,,,,,,80.0,26.0,220255.0,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-TRN-TRNS-00087,Transmission Pipe,,TRNS,4.0,,active,406.0,,,,,,,,,,80.0,26.0,220255.0,Detailed,,,,,,,,,,TRNS,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-PWS-DIS-HY-00001,HYDRANT,,HY,3.0,,active,1.0,,,,,,,,,,80.0,40.0,10850.0,Detailed,,,,,,,,,,HY,2060.0,2140.0,2220.0,2300.0,,10850.0,Original
+LO-PWS-DIS-HY-00002,HYDRANT,,HY,3.0,,active,1.0,,,,,,,,,,80.0,40.0,10850.0,Detailed,,,,,,,,,,HY,2060.0,2140.0,2220.0,2300.0,,10850.0,Original
+LO-PWS-DIS-HY-00003,HYDRANT,,HY,3.0,,active,1.0,,,,,,,,,,80.0,40.0,10850.0,Detailed,,,,,,,,,,HY,2060.0,2140.0,2220.0,2300.0,,10850.0,Original
+LO-PWS-DIS-HY-00004,HYDRANT,,HY,3.0,,active,1.0,,,,,,,,,,80.0,40.0,10850.0,Detailed,,,,,,,,,,HY,2060.0,2140.0,2220.0,2300.0,,10850.0,Original
+LO-PWS-DIS-HY-00005,HYDRANT,,HY,3.0,,active,1.0,,,,,,,,,,80.0,40.0,10850.0,Detailed,,,,,,,,,,HY,2060.0,2140.0,2220.0,2300.0,,10850.0,Original
+LO-PWS-DIS-HY-00006,HYDRANT,,HY,3.0,,active,1.0,,,,,,,,,,80.0,40.0,10850.0,Detailed,,,,,,,,,,HY,2060.0,2140.0,2220.0,2300.0,,10850.0,Original
+LO-PWS-DIS-HY-00007,HYDRANT,,HY,2.0,,active,1.0,,,,,,,,,,80.0,54.0,10850.0,Detailed,,,,,,,,,,HY,2074.0,2154.0,2234.0,2314.0,,10850.0,Original
+LO-PWS-DIS-HY-00008,HYDRANT,,HY,2.0,,active,1.0,,,,,,,,,,80.0,54.0,10850.0,Detailed,,,,,,,,,,HY,2074.0,2154.0,2234.0,2314.0,,10850.0,Original
+LO-PWS-DIS-HY-00009,HYDRANT,,HY,2.0,,active,1.0,,,,,,,,,,80.0,54.0,10850.0,Detailed,,,,,,,,,,HY,2074.0,2154.0,2234.0,2314.0,,10850.0,Original
+LO-PWS-DIS-HY-00010,HYDRANT,,HY,2.0,,active,1.0,,,,,,,,,,80.0,54.0,10850.0,Detailed,,,,,,,,,,HY,2074.0,2154.0,2234.0,2314.0,,10850.0,Original
+LO-PWS-DIS-HY-00011,HYDRANT,,HY,2.0,,active,1.0,,,,,,,,,,80.0,54.0,10850.0,Detailed,,,,,,,,,,HY,2074.0,2154.0,2234.0,2314.0,,10850.0,Original
+LO-PWS-DIS-HY-00012,HYDRANT,,HY,2.0,,active,1.0,,,,,,,,,,80.0,54.0,10850.0,Detailed,,,,,,,,,,HY,2074.0,2154.0,2234.0,2314.0,,10850.0,Original
+LO-PWS-DIS-HY-00013,HYDRANT,,HY,2.0,,active,1.0,,,,,,,,,,80.0,54.0,10850.0,Detailed,,,,,,,,,,HY,2074.0,2154.0,2234.0,2314.0,,10850.0,Original
+LO-PWS-DIS-HY-00014,HYDRANT,,HY,2.0,,active,1.0,,,,,,,,,,80.0,54.0,10850.0,Detailed,,,,,,,,,,HY,2074.0,2154.0,2234.0,2314.0,,10850.0,Original
+LO-PWS-DIS-HY-00015,HYDRANT,,HY,3.0,,active,1.0,,,,,,,,,,80.0,40.0,10850.0,Detailed,,,,,,,,,,HY,2060.0,2140.0,2220.0,2300.0,,10850.0,Original
+LO-PWS-DIS-HY-00016,HYDRANT,,HY,3.0,,active,1.0,,,,,,,,,,80.0,40.0,10850.0,Detailed,,,,,,,,,,HY,2060.0,2140.0,2220.0,2300.0,,10850.0,Original
+LO-PWS-DIS-HY-00017,HYDRANT,,HY,3.0,,active,1.0,,,,,,,,,,80.0,40.0,10850.0,Detailed,,,,,,,,,,HY,2060.0,2140.0,2220.0,2300.0,,10850.0,Original
+LO-PWS-PRV-APV-00001,Pressure Relief Valve,,APV,4.0,,active,1.0,,,,,,,,,,80.0,26.0,232500.0,Detailed,,,,,,,,,,APV,2046.0,2126.0,2206.0,2286.0,,232500.0,Original
+LO-PWS-PRV-APV-00002,Pressure Relief Valve,,APV,5.0,,active,1.0,,,,,,,,,,80.0,14.0,232500.0,Detailed,,,,,,,,,,APV,2034.0,2114.0,2194.0,2274.0,,232500.0,Original
+LO-PWS-PRV-APV-00003,Pressure Relief Valve,,APV,4.0,,active,1.0,,,,,,,,,,80.0,26.0,232500.0,Detailed,,,,,,,,,,APV,2046.0,2126.0,2206.0,2286.0,,232500.0,Original
+LO-PWS-PRV-APV-00004,Pressure Relief Valve,,APV,4.0,,active,1.0,,,,,,,,,,80.0,26.0,232500.0,Detailed,,,,,,,,,,APV,2046.0,2126.0,2206.0,2286.0,,232500.0,Original
+LO-PWS-TRFWS-WSCPMP-00001,Conventional Pump,LO-PWS-TRFWS-WSTF-00001,WSCPMP,4.0,,active,1.0,,,,pump 1,,,,,,75.0,25.0,23250.0,Detailed,,,,,,,,,,WSCPMP,2045.0,2120.0,2195.0,2270.0,,23250.0,Original
+LO-PWS-TRFWS-WSCPMP-00002,Conventional Pump,LO-PWS-TRFWS-WSTF-00001,WSCPMP,4.0,,active,1.0,,,,pump 2,,,,,,75.0,25.0,23250.0,Detailed,,,,,,,,,,WSCPMP,2045.0,2120.0,2195.0,2270.0,,23250.0,Original
+LO-PWS-TRFWS-WSCPMP-00003,Conventional Pump,LO-PWS-TRFWS-WSTF-00001,WSCPMP,5.0,,active,1.0,,,,pump 3,,,,,,75.0,13.0,23250.0,Detailed,,,,,,,,,,WSCPMP,2033.0,2108.0,2183.0,2258.0,,23250.0,Original
+LO-PWS-TRFWS-WSCPMP-00004,Conventional Pump,LO-PWS-TRFWS-WSTF-00001,WSCPMP,5.0,,active,1.0,,,,pump 4,,,,,,75.0,13.0,23250.0,Detailed,,,,,,,,,,WSCPMP,2033.0,2108.0,2183.0,2258.0,,23250.0,Original
+LO-PWS-TRFWS-WSSPMP-00001,Submersible Pump,LO-PWS-TRFWS-WSTF-00001,WSSPMP,4.0,,active,1.0,,,,sub pump,,,,,,75.0,25.0,38750.0,Detailed,,,,,,,,,,WSSPMP,2045.0,2120.0,2195.0,2270.0,,38750.0,Original
+LO-PWS-TRFWS-WSMMF-00001,Mixed Media Filter,LO-PWS-TRFWS-WSTF-00001,WSMMF,4.0,,active,1.0,,,,mixed media filter,,,,,,75.0,25.0,7750.0,Detailed,,,,,,,,,,WSMMF,2045.0,2120.0,2195.0,2270.0,,7750.0,Original
+LO-PWS-TRFWS-WSCCSYS-00001,Chemical Feed System,LO-PWS-TRFWS-WSTF-00001,WSCCSYS,3.0,,active,1.0,,,,chemical feed system,,,,,,75.0,38.0,15500.0,Detailed,,,,,,,,,,WSCCSYS,2058.0,2133.0,2208.0,2283.0,,15500.0,Original
+LO-PWS-TRFWS-WSFLME-00001,Flow Meter,LO-PWS-TRFWS-WSTF-00001,WSFLME,2.0,,active,1.0,,,,flow meter 1,,,,,,75.0,50.0,3875.0,Detailed,,,,,,,,,,WSFLME,2070.0,2145.0,2220.0,2295.0,,3875.0,Original
+LO-PWS-TRFWS-WSFLME-00002,Flow Meter,LO-PWS-TRFWS-WSTF-00001,WSFLME,2.0,,active,1.0,,,,flow meter 2,,,,,,75.0,50.0,3875.0,Detailed,,,,,,,,,,WSFLME,2070.0,2145.0,2220.0,2295.0,,3875.0,Original
+LO-PWS-TRFWS-WSTFBLD-00001,Building,LO-PWS-TRFWS-WSTF-00001,WSTFBLD,4.0,,active,1.0,,,,building,,,,,,75.0,25.0,1550000.0,Detailed,,,,,,,,,,WSTFBLD,2045.0,2120.0,2195.0,2270.0,,1550000.0,Original
+LO-PWS-TRFWS-WSOFS-00001,Office Furniture and Supplies,LO-PWS-TRFWS-WSTF-00001,WSOFS,2.0,,active,1.0,,,,furniture,,,,,,75.0,50.0,15500.0,Detailed,,,,,,,,,,WSOFS,2070.0,2145.0,2220.0,2295.0,,15500.0,Original
+LO-PWS-TRFWS-WSCOMP-00001,Computer,LO-PWS-TRFWS-WSTF-00001,WSCOMP,3.0,,active,1.0,,,,computer 1,,,,,,75.0,38.0,1550.0,Detailed,,,,,,,,,,WSCOMP,2058.0,2133.0,2208.0,2283.0,,1550.0,Original
+LO-PWS-TRFWS-WSCOMP-00002,Computer,LO-PWS-TRFWS-WSTF-00001,WSCOMP,3.0,,active,1.0,,,,computer 2,,,,,,75.0,38.0,1550.0,Detailed,,,,,,,,,,WSCOMP,2058.0,2133.0,2208.0,2283.0,,1550.0,Original
+LO-PWS-TRFWS-WSISV-00001,Intake Structure and Valves,LO-PWS-TRFWS-WSTF-00001,WSISV,4.0,,active,1.0,,,,intake structures,,,,,,75.0,25.0,11625.0,Detailed,,,,,,,,,,WSISV,2045.0,2120.0,2195.0,2270.0,,11625.0,Original
+LO-PWS-TRFWS-WSLAB-00001,Lab Equipment,LO-PWS-TRFWS-WSTF-00001,WSLAB,3.0,,active,1.0,,,,lab equipment 1,,,,,,75.0,38.0,15500.0,Detailed,,,,,,,,,,WSLAB,2058.0,2133.0,2208.0,2283.0,,15500.0,Original
+LO-PWS-TRFWS-WSLAB-00002,Lab Equipment,LO-PWS-TRFWS-WSTF-00001,WSLAB,5.0,,active,1.0,,,,lab equipment 2,,,,,,75.0,13.0,15500.0,Detailed,,,,,,,,,,WSLAB,2033.0,2108.0,2183.0,2258.0,,15500.0,Original
+LO-PWS-TRFWS-WSCLAR-00001,Clarifier,LO-PWS-TRFWS-WSTF-00001,WSCLAR,4.0,,active,1.0,,,,clarifier,,,,,,75.0,25.0,775000.0,Detailed,,,,,,,,,,WSCLAR,2045.0,2120.0,2195.0,2270.0,,775000.0,Original
+LO-PWS-TRFWS-WSTFAC-00001,Air Compressor,LO-PWS-TRFWS-WSTF-00001,WSTFAC,4.0,,active,1.0,,,,air compressor,,,,,,75.0,25.0,19375.0,Detailed,,,,,,,,,,WSTFAC,2045.0,2120.0,2195.0,2270.0,,19375.0,Original
+LO-PWS-TRFWS-WSELECM-00001,Electric Motor ,LO-PWS-TRFWS-WSTF-00001,WSELECM,4.0,,active,1.0,,,,motor 1,,,,,,75.0,25.0,7750.0,Detailed,,,,,,,,,,WSELECM,2045.0,2120.0,2195.0,2270.0,,7750.0,Original
+LO-PWS-TRFWS-WSELECM-00002,Electric Motor ,LO-PWS-TRFWS-WSTF-00001,WSELECM,4.0,,active,1.0,,,,motor 2,,,,,,75.0,25.0,7750.0,Detailed,,,,,,,,,,WSELECM,2045.0,2120.0,2195.0,2270.0,,7750.0,Original
+LO-PWS-PWS-WS-00001,Water Source,,WS,3.0,,active,1.0,,,,,,,,,,100.0,50.0,0.0,Detailed,,,,,,,,,,WS,2070.0,2170.0,2270.0,2370.0,,0.0,Original
+LO-PWS-STO-WSST-00001,Water Supply Storage Tank,,WSST,4.0,,active,1.0,,,,,,,,,,80.0,26.0,15500.0,Detailed,,,,,,,,,,WSST,2046.0,2126.0,2206.0,2286.0,,15500.0,Original
+LO-PWS-STO-WSST-00002,Water Supply Storage Tank,LO-PWS-TRFWS-WSTF-00001,WSST,2.0,,active,1.0,,,,storage tank,,,,,,80.0,54.0,15500.0,Detailed,,,,,,,,,,WSST,2074.0,2154.0,2234.0,2314.0,,15500.0,Original
+LO-PWS-TRFWS-WSDAFS-00001,Daf Skimmer,LO-PWS-TRFWS-WSTF-00001,WSDAFS,4.0,,active,1.0,,,,skimmer,,,,,,75.0,25.0,15500.0,Detailed,,,,,,,,,,WSDAFS,2045.0,2120.0,2195.0,2270.0,,15500.0,Original
+LO-PWS-TRFWS-WSTP-00001,WATER SUPPLY TREATMENT POND,LO-PWS-TRFWS-WSTF-00001,WSTP,4.0,,active,1.0,,,,Water supply treatment pond,,,,,,80.0,26.0,23250.0,Detailed,,,,,,,,,,WSTP,2046.0,2126.0,2206.0,2286.0,,23250.0,Original
+LO-PWS-PRV-PRV-00001,Pressure Reducing Valve,,PRV,4.0,,active,1.0,,,,,,,,,,40.0,13.0,232500.0,Detailed,,,,,,,,,,PRV,2033.0,2073.0,2113.0,2153.0,,232500.0,Original
+LO-PWS-DIS-WV-00001,Water Valve,,WV,2.0,,active,1.0,,,,,,,,,,60.0,40.0,5425.0,Detailed,,,,,,,,,,WV,2060.0,2120.0,2180.0,2240.0,,5425.0,Original
+LO-PWS-DIS-WV-00002,Water Valve,,WV,4.0,,active,1.0,,,,,,,,,,60.0,20.0,5425.0,Detailed,,,,,,,,,,WV,2040.0,2100.0,2160.0,2220.0,,5425.0,Original
+LO-PWS-VLV-GV-00001,GATE VALVE,,GV,4.0,,active,1.0,,,,,,,,,,80.0,26.0,2325.0,Detailed,,,,,,,,,,GV,2046.0,2126.0,2206.0,2286.0,,2325.0,Original
+LO-PWS-VLV-GV-00002,GATE VALVE,,GV,3.0,,active,1.0,,,,,,,,,,80.0,40.0,2325.0,Detailed,,,,,,,,,,GV,2060.0,2140.0,2220.0,2300.0,,2325.0,Original
+LO-PWS-DIS-WV-00003,Water Valve,,WV,3.0,,active,1.0,,,,,,,,,,60.0,30.0,5425.0,Detailed,,,,,,,,,,WV,2050.0,2110.0,2170.0,2230.0,,5425.0,Original
+LO-PWS-DIS-WV-00004,Water Valve,,WV,3.0,,active,1.0,,,,,,,,,,60.0,30.0,5425.0,Detailed,,,,,,,,,,WV,2050.0,2110.0,2170.0,2230.0,,5425.0,Original
+LO-PWS-DIS-WV-00005,Water Valve,,WV,4.0,,active,1.0,,,,,,,,,,60.0,20.0,5425.0,Detailed,,,,,,,,,,WV,2040.0,2100.0,2160.0,2220.0,,5425.0,Original
+LO-PWS-DIS-WV-00006,Water Valve,,WV,3.0,,active,1.0,,,,,,,,,,60.0,30.0,5425.0,Detailed,,,,,,,,,,WV,2050.0,2110.0,2170.0,2230.0,,5425.0,Original
+LO-PWS-DIS-WV-00007,Water Valve,,WV,4.0,,active,1.0,,,,,,,,,,60.0,20.0,5425.0,Detailed,,,,,,,,,,WV,2040.0,2100.0,2160.0,2220.0,,5425.0,Original
+LO-PWS-DIS-WV-00008,Water Valve,,WV,3.0,,active,1.0,,,,,,,,,,60.0,30.0,5425.0,Detailed,,,,,,,,,,WV,2050.0,2110.0,2170.0,2230.0,,5425.0,Original
+LO-PWS-DIS-WV-00009,Water Valve,,WV,4.0,,active,1.0,,,,,,,,,,60.0,20.0,5425.0,Detailed,,,,,,,,,,WV,2040.0,2100.0,2160.0,2220.0,,5425.0,Original
+LO-PWS-DIS-WV-00010,Water Valve,,WV,4.0,,active,1.0,,,,,,,,,,60.0,20.0,5425.0,Detailed,,,,,,,,,,WV,2040.0,2100.0,2160.0,2220.0,,5425.0,Original
+LO-PWS-DIS-WV-00011,Water Valve,,WV,4.0,,active,1.0,,,,,,,,,,60.0,20.0,5425.0,Detailed,,,,,,,,,,WV,2040.0,2100.0,2160.0,2220.0,,5425.0,Original
+LO-PWS-DIS-WV-00012,Water Valve,,WV,2.0,,active,1.0,,,,,,,,,,60.0,40.0,5425.0,Detailed,,,,,,,,,,WV,2060.0,2120.0,2180.0,2240.0,,5425.0,Original
+LO-PWS-DIS-WV-00013,Water Valve,,WV,2.0,,active,1.0,,,,,,,,,,60.0,40.0,5425.0,Detailed,,,,,,,,,,WV,2060.0,2120.0,2180.0,2240.0,,5425.0,Original
+LO-PWS-DIS-WV-00014,Water Valve,,WV,3.0,,active,1.0,,,,,,,,,,60.0,30.0,5425.0,Detailed,,,,,,,,,,WV,2050.0,2110.0,2170.0,2230.0,,5425.0,Original
+LO-PWS-DIS-WV-00015,Water Valve,,WV,2.0,,active,1.0,,,,,,,,,,60.0,40.0,5425.0,Detailed,,,,,,,,,,WV,2060.0,2120.0,2180.0,2240.0,,5425.0,Original
+LO-PWS-DIS-WV-00016,Water Valve,,WV,2.0,,active,1.0,,,,,,,,,,60.0,40.0,5425.0,Detailed,,,,,,,,,,WV,2060.0,2120.0,2180.0,2240.0,,5425.0,Original
+LO-PWS-DIS-WV-00017,Water Valve,,WV,3.0,,active,1.0,,,,,,,,,,60.0,30.0,5425.0,Detailed,,,,,,,,,,WV,2050.0,2110.0,2170.0,2230.0,,5425.0,Original
+LO-PWS-DIS-WV-00018,Water Valve,,WV,2.0,,active,1.0,,,,,,,,,,60.0,40.0,5425.0,Detailed,,,,,,,,,,WV,2060.0,2120.0,2180.0,2240.0,,5425.0,Original
+LO-PWS-DIS-WV-00019,Water Valve,,WV,3.0,,active,1.0,,,,,,,,,,60.0,30.0,5425.0,Detailed,,,,,,,,,,WV,2050.0,2110.0,2170.0,2230.0,,5425.0,Original
+LO-PWS-VLV-GV-00003,GATE VALVE,,GV,5.0,,active,1.0,,,,,,,,,,80.0,14.0,2325.0,Detailed,,,,,,,,,,GV,2034.0,2114.0,2194.0,2274.0,,2325.0,Original
+LO-PWS-VLV-GV-00004,GATE VALVE,,GV,5.0,,active,1.0,,,,,,,,,,80.0,14.0,2325.0,Detailed,,,,,,,,,,GV,2034.0,2114.0,2194.0,2274.0,,2325.0,Original
+LO-PWS-VLV-GV-00005,GATE VALVE,,GV,5.0,,active,1.0,,,,,,,,,,80.0,14.0,2325.0,Detailed,,,,,,,,,,GV,2034.0,2114.0,2194.0,2274.0,,2325.0,Original
+LO-PWS-VLV-GV-00006,GATE VALVE,,GV,5.0,,active,1.0,,,,,,,,,,80.0,14.0,2325.0,Detailed,,,,,,,,,,GV,2034.0,2114.0,2194.0,2274.0,,2325.0,Original
+LO-PWS-VLV-GV-00007,GATE VALVE,,GV,5.0,,active,1.0,,,,,,,,,,80.0,14.0,2325.0,Detailed,,,,,,,,,,GV,2034.0,2114.0,2194.0,2274.0,,2325.0,Original
+LO-PWS-VLV-GV-00008,GATE VALVE,,GV,5.0,,active,1.0,,,,,,,,,,80.0,14.0,2325.0,Detailed,,,,,,,,,,GV,2034.0,2114.0,2194.0,2274.0,,2325.0,Original
+LO-PWS-VLV-GV-00009,GATE VALVE,,GV,5.0,,active,1.0,,,,,,,,,,80.0,14.0,2325.0,Detailed,,,,,,,,,,GV,2034.0,2114.0,2194.0,2274.0,,2325.0,Original
+LO-PWS-VLV-GV-00010,GATE VALVE,,GV,4.0,,active,1.0,,,,,,,,,,80.0,26.0,2325.0,Detailed,,,,,,,,,,GV,2046.0,2126.0,2206.0,2286.0,,2325.0,Original
+LO-PWS-DIS-WV-00020,Water Valve,,WV,4.0,,active,1.0,,,,,,,,,,60.0,20.0,5425.0,Detailed,,,,,,,,,,WV,2040.0,2100.0,2160.0,2220.0,,5425.0,Original
+LO-PWS-DIS-WV-00021,Water Valve,,WV,4.0,,active,1.0,,,,,,,,,,60.0,20.0,5425.0,Detailed,,,,,,,,,,WV,2040.0,2100.0,2160.0,2220.0,,5425.0,Original
+LO-PWS-DIS-WV-00022,Water Valve,,WV,4.0,,active,1.0,,,,,,,,,,60.0,20.0,5425.0,Detailed,,,,,,,,,,WV,2040.0,2100.0,2160.0,2220.0,,5425.0,Original
+LO-PWS-VLV-GV-00011,GATE VALVE,,GV,4.0,,active,1.0,,,,,,,,,,80.0,26.0,2325.0,Detailed,,,,,,,,,,GV,2046.0,2126.0,2206.0,2286.0,,2325.0,Original
+LO-PWS-VLV-GV-00012,GATE VALVE,,GV,5.0,,active,1.0,,,,,,,,,,80.0,14.0,2325.0,Detailed,,,,,,,,,,GV,2034.0,2114.0,2194.0,2274.0,,2325.0,Original
+LO-PWS-VLV-GV-00013,GATE VALVE,,GV,5.0,,active,1.0,,,,,,,,,,80.0,14.0,2325.0,Detailed,,,,,,,,,,GV,2034.0,2114.0,2194.0,2274.0,,2325.0,Original
+LO-PWS-DIS-FTRD-00001,FITTING REDUCER,,FTRD,5.0,,active,1.0,,,,,,,,,,80.0,14.0,775.0,Detailed,,,,,,,,,,FTRD,2034.0,2114.0,2194.0,2274.0,,775.0,Original
+LO-PWS-DIS-FTBD90-00001,FITTING BEND 90,,FTBD90,5.0,,active,1.0,,,,,,,,,,80.0,14.0,1085.0,Detailed,,,,,,,,,,FTBD90,2034.0,2114.0,2194.0,2274.0,,1085.0,Original
+LO-PWS-DIS-FTBD90-00002,FITTING BEND 90,,FTBD90,5.0,,active,1.0,,,,,,,,,,80.0,14.0,1085.0,Detailed,,,,,,,,,,FTBD90,2034.0,2114.0,2194.0,2274.0,,1085.0,Original
+LO-PWS-DIS-FTBD90-00003,FITTING BEND 90,,FTBD90,5.0,,active,1.0,,,,,,,,,,80.0,14.0,1085.0,Detailed,,,,,,,,,,FTBD90,2034.0,2114.0,2194.0,2274.0,,1085.0,Original
+LO-PWS-DIS-FTBD90-00004,FITTING BEND 90,,FTBD90,5.0,,active,1.0,,,,,,,,,,80.0,14.0,1085.0,Detailed,,,,,,,,,,FTBD90,2034.0,2114.0,2194.0,2274.0,,1085.0,Original
+LO-PWS-DIS-FTBD45-00001,FITTING BEND 45,,FTBD45,4.0,,active,1.0,,,,,,,,,,80.0,26.0,1085.0,Detailed,,,,,,,,,,FTBD45,2046.0,2126.0,2206.0,2286.0,,1085.0,Original
+LO-PWS-DIS-FTBD45-00002,FITTING BEND 45,,FTBD45,5.0,,active,1.0,,,,,,,,,,80.0,14.0,1085.0,Detailed,,,,,,,,,,FTBD45,2034.0,2114.0,2194.0,2274.0,,1085.0,Original
+LO-PWS-DIS-FTBD11-00001,FITTING BEND 11.25,,FTBD11,5.0,,active,1.0,,,,,,,,,,80.0,14.0,1085.0,Detailed,,,,,,,,,,FTBD11,2034.0,2114.0,2194.0,2274.0,,1085.0,Original
+LO-PWS-DIS-FTBD45-00003,FITTING BEND 45,,FTBD45,5.0,,active,1.0,,,,,,,,,,80.0,14.0,1085.0,Detailed,,,,,,,,,,FTBD45,2034.0,2114.0,2194.0,2274.0,,1085.0,Original
+LO-PWS-DIS-FTBD45-00004,FITTING BEND 45,,FTBD45,5.0,,active,1.0,,,,,,,,,,80.0,14.0,1085.0,Detailed,,,,,,,,,,FTBD45,2034.0,2114.0,2194.0,2274.0,,1085.0,Original
+LO-PWS-DIS-FTBD45-00005,FITTING BEND 45,,FTBD45,5.0,,active,1.0,,,,,,,,,,80.0,14.0,1085.0,Detailed,,,,,,,,,,FTBD45,2034.0,2114.0,2194.0,2274.0,,1085.0,Original
+LO-PWS-DIS-FTBD45-00006,FITTING BEND 45,,FTBD45,5.0,,active,1.0,,,,,,,,,,80.0,14.0,1085.0,Detailed,,,,,,,,,,FTBD45,2034.0,2114.0,2194.0,2274.0,,1085.0,Original
+LO-PWS-DIS-FTBD45-00007,FITTING BEND 45,,FTBD45,5.0,,active,1.0,,,,,,,,,,80.0,14.0,1085.0,Detailed,,,,,,,,,,FTBD45,2034.0,2114.0,2194.0,2274.0,,1085.0,Original
+LO-PWS-DIS-FTBD45-00008,FITTING BEND 45,,FTBD45,5.0,,active,1.0,,,,,,,,,,80.0,14.0,1085.0,Detailed,,,,,,,,,,FTBD45,2034.0,2114.0,2194.0,2274.0,,1085.0,Original
+LO-PWS-DIS-FTBD45-00009,FITTING BEND 45,,FTBD45,5.0,,active,1.0,,,,,,,,,,80.0,14.0,1085.0,Detailed,,,,,,,,,,FTBD45,2034.0,2114.0,2194.0,2274.0,,1085.0,Original
+LO-PWS-DIS-FTBD45-00010,FITTING BEND 45,,FTBD45,5.0,,active,1.0,,,,,,,,,,80.0,14.0,1085.0,Detailed,,,,,,,,,,FTBD45,2034.0,2114.0,2194.0,2274.0,,1085.0,Original
+LO-PWS-DIS-FTBD45-00011,FITTING BEND 45,,FTBD45,5.0,,active,1.0,,,,,,,,,,80.0,14.0,1085.0,Detailed,,,,,,,,,,FTBD45,2034.0,2114.0,2194.0,2274.0,,1085.0,Original
+LO-PWS-DIS-FTBD45-00012,FITTING BEND 45,,FTBD45,5.0,,active,1.0,,,,,,,,,,80.0,14.0,1085.0,Detailed,,,,,,,,,,FTBD45,2034.0,2114.0,2194.0,2274.0,,1085.0,Original
+LO-PWS-DIS-FTBD45-00013,FITTING BEND 45,,FTBD45,5.0,,active,1.0,,,,,,,,,,80.0,14.0,1085.0,Detailed,,,,,,,,,,FTBD45,2034.0,2114.0,2194.0,2274.0,,1085.0,Original
+LO-PWS-DIS-FTBD45-00014,FITTING BEND 45,,FTBD45,5.0,,active,1.0,,,,,,,,,,80.0,14.0,1085.0,Detailed,,,,,,,,,,FTBD45,2034.0,2114.0,2194.0,2274.0,,1085.0,Original
+LO-PWS-DIS-FTBD45-00015,FITTING BEND 45,,FTBD45,5.0,,active,1.0,,,,,,,,,,80.0,14.0,1085.0,Detailed,,,,,,,,,,FTBD45,2034.0,2114.0,2194.0,2274.0,,1085.0,Original
+LO-PWS-DIS-FTBD45-00016,FITTING BEND 45,,FTBD45,5.0,,active,1.0,,,,,,,,,,80.0,14.0,1085.0,Detailed,,,,,,,,,,FTBD45,2034.0,2114.0,2194.0,2274.0,,1085.0,Original
+LO-PWS-DIS-FTBD45-00017,FITTING BEND 45,,FTBD45,5.0,,active,1.0,,,,,,,,,,80.0,14.0,1085.0,Detailed,,,,,,,,,,FTBD45,2034.0,2114.0,2194.0,2274.0,,1085.0,Original
+LO-PWS-DIS-FTBD45-00018,FITTING BEND 45,,FTBD45,5.0,,active,1.0,,,,,,,,,,80.0,14.0,1085.0,Detailed,,,,,,,,,,FTBD45,2034.0,2114.0,2194.0,2274.0,,1085.0,Original
+LO-PWS-DIS-FTBD45-00019,FITTING BEND 45,,FTBD45,5.0,,active,1.0,,,,,,,,,,80.0,14.0,1085.0,Detailed,,,,,,,,,,FTBD45,2034.0,2114.0,2194.0,2274.0,,1085.0,Original
+LO-PWS-DIS-FTBD45-00020,FITTING BEND 45,,FTBD45,5.0,,active,1.0,,,,,,,,,,80.0,14.0,1085.0,Detailed,,,,,,,,,,FTBD45,2034.0,2114.0,2194.0,2274.0,,1085.0,Original
+LO-PWS-DIS-FTBD45-00021,FITTING BEND 45,,FTBD45,5.0,,active,1.0,,,,,,,,,,80.0,14.0,1085.0,Detailed,,,,,,,,,,FTBD45,2034.0,2114.0,2194.0,2274.0,,1085.0,Original
+LO-PWS-DIS-FTBD45-00022,FITTING BEND 45,,FTBD45,5.0,,active,1.0,,,,,,,,,,80.0,14.0,1085.0,Detailed,,,,,,,,,,FTBD45,2034.0,2114.0,2194.0,2274.0,,1085.0,Original
+LO-PWS-DIS-FTBD45-00023,FITTING BEND 45,,FTBD45,5.0,,active,1.0,,,,,,,,,,80.0,14.0,1085.0,Detailed,,,,,,,,,,FTBD45,2034.0,2114.0,2194.0,2274.0,,1085.0,Original
+LO-PWS-DIS-FTBD45-00024,FITTING BEND 45,,FTBD45,5.0,,active,1.0,,,,,,,,,,80.0,14.0,1085.0,Detailed,,,,,,,,,,FTBD45,2034.0,2114.0,2194.0,2274.0,,1085.0,Original
+LO-PWS-DIS-FTBD45-00025,FITTING BEND 45,,FTBD45,5.0,,active,1.0,,,,,,,,,,80.0,14.0,1085.0,Detailed,,,,,,,,,,FTBD45,2034.0,2114.0,2194.0,2274.0,,1085.0,Original
+LO-PWS-DIS-FTBD45-00026,FITTING BEND 45,,FTBD45,5.0,,active,1.0,,,,,,,,,,80.0,14.0,1085.0,Detailed,,,,,,,,,,FTBD45,2034.0,2114.0,2194.0,2274.0,,1085.0,Original
+LO-PWS-DIS-FTBD45-00027,FITTING BEND 45,,FTBD45,5.0,,active,1.0,,,,,,,,,,80.0,14.0,1085.0,Detailed,,,,,,,,,,FTBD45,2034.0,2114.0,2194.0,2274.0,,1085.0,Original
+LO-PWS-DIS-FTBD45-00028,FITTING BEND 45,,FTBD45,5.0,,active,1.0,,,,,,,,,,80.0,14.0,1085.0,Detailed,,,,,,,,,,FTBD45,2034.0,2114.0,2194.0,2274.0,,1085.0,Original
+LO-PWS-DIS-FTBD45-00029,FITTING BEND 45,,FTBD45,5.0,,active,1.0,,,,,,,,,,80.0,14.0,1085.0,Detailed,,,,,,,,,,FTBD45,2034.0,2114.0,2194.0,2274.0,,1085.0,Original
+LO-PWS-DIS-FTBD45-00030,FITTING BEND 45,,FTBD45,5.0,,active,1.0,,,,,,,,,,80.0,14.0,1085.0,Detailed,,,,,,,,,,FTBD45,2034.0,2114.0,2194.0,2274.0,,1085.0,Original
+LO-PWS-DIS-FTBD22-00001,FITTING BEND 22.5,,FTBD22,5.0,,active,1.0,,,,,,,,,,80.0,14.0,1085.0,Detailed,,,,,,,,,,FTBD22,2034.0,2114.0,2194.0,2274.0,,1085.0,Original
+LO-PWS-DIS-FTBD22-00002,FITTING BEND 22.5,,FTBD22,5.0,,active,1.0,,,,,,,,,,80.0,14.0,1085.0,Detailed,,,,,,,,,,FTBD22,2034.0,2114.0,2194.0,2274.0,,1085.0,Original
+LO-PWS-DIS-FTBD22-00003,FITTING BEND 22.5,,FTBD22,5.0,,active,1.0,,,,,,,,,,80.0,14.0,1085.0,Detailed,,,,,,,,,,FTBD22,2034.0,2114.0,2194.0,2274.0,,1085.0,Original
+LO-PWS-DIS-FTBD22-00004,FITTING BEND 22.5,,FTBD22,5.0,,active,1.0,,,,,,,,,,80.0,14.0,1085.0,Detailed,,,,,,,,,,FTBD22,2034.0,2114.0,2194.0,2274.0,,1085.0,Original
+LO-PWS-DIS-FTBD22-00005,FITTING BEND 22.5,,FTBD22,5.0,,active,1.0,,,,,,,,,,80.0,14.0,1085.0,Detailed,,,,,,,,,,FTBD22,2034.0,2114.0,2194.0,2274.0,,1085.0,Original
+LO-PWS-DIS-FTBD22-00006,FITTING BEND 22.5,,FTBD22,5.0,,active,1.0,,,,,,,,,,80.0,14.0,1085.0,Detailed,,,,,,,,,,FTBD22,2034.0,2114.0,2194.0,2274.0,,1085.0,Original
+LO-PWS-DIS-FTBD22-00007,FITTING BEND 22.5,,FTBD22,5.0,,active,1.0,,,,,,,,,,80.0,14.0,1085.0,Detailed,,,,,,,,,,FTBD22,2034.0,2114.0,2194.0,2274.0,,1085.0,Original
+LO-PWS-DIS-FTBD22-00008,FITTING BEND 22.5,,FTBD22,5.0,,active,1.0,,,,,,,,,,80.0,14.0,1085.0,Detailed,,,,,,,,,,FTBD22,2034.0,2114.0,2194.0,2274.0,,1085.0,Original
+LO-PWS-DIS-FTCAP-00001,FITTING CAP,,FTCAP,5.0,,active,1.0,,,,,,,,,,80.0,14.0,775.0,Detailed,,,,,,,,,,FTCAP,2034.0,2114.0,2194.0,2274.0,,775.0,Original
+LO-PWS-DIS-FTCAP-00002,FITTING CAP,,FTCAP,5.0,,active,1.0,,,,,,,,,,80.0,14.0,775.0,Detailed,,,,,,,,,,FTCAP,2034.0,2114.0,2194.0,2274.0,,775.0,Original
+LO-PWS-TRFWS-WSTF-00001,Water Supply Treatment Facility,LO-PWS-TRFWS-WSTF-00001,WSTF,0.0,,active,1.0,,,,treatment facility,,,,,,60.0,60.0,1550000.0,Unknown,,,,,,,,,,WSTF,2080.0,2140.0,2200.0,2260.0,,1550000.0,Original
+LO-SWC-CUL-CLVT-00001,Culvert,,CLVT,4.0,,active,9.0,,,,,,,,,,80.0,26.0,4882.5,Detailed,,,,,,,,,,CLVT,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-SWC-CUL-CLVT-00002,Culvert,,CLVT,3.0,,active,7.0,,,,,,,,,,80.0,40.0,3797.5,Detailed,,,,,,,,,,CLVT,2060.0,2140.0,2220.0,2300.0,,542.5,Original
+LO-SWC-CUL-CLVT-00003,Culvert,,CLVT,4.0,,active,8.0,,,,,,,,,,80.0,26.0,4340.0,Detailed,,,,,,,,,,CLVT,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-SWC-CUL-CLVT-00004,Culvert,,CLVT,3.0,,active,3.0,,,,,,,,,,80.0,40.0,1627.5,Detailed,,,,,,,,,,CLVT,2060.0,2140.0,2220.0,2300.0,,542.5,Original
+LO-SWC-CUL-CLVT-00005,Culvert,,CLVT,3.0,,active,8.0,,,,,,,,,,80.0,40.0,4340.0,Detailed,,,,,,,,,,CLVT,2060.0,2140.0,2220.0,2300.0,,542.5,Original
+LO-SWC-CUL-CLVT-00006,Culvert,,CLVT,4.0,,active,10.0,,,,,,,,,,80.0,26.0,5425.0,Detailed,,,,,,,,,,CLVT,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-SWC-CUL-CLVT-00007,Culvert,,CLVT,4.0,,active,5.0,,,,,,,,,,80.0,26.0,2712.5,Detailed,,,,,,,,,,CLVT,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-SWC-CUL-CLVT-00008,Culvert,,CLVT,3.0,,active,7.0,,,,,,,,,,80.0,40.0,3797.5,Detailed,,,,,,,,,,CLVT,2060.0,2140.0,2220.0,2300.0,,542.5,Original
+LO-SWC-CUL-CLVT-00009,Culvert,,CLVT,4.0,,active,2.0,,,,,,,,,,80.0,26.0,1085.0,Detailed,,,,,,,,,,CLVT,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-SWC-CUL-CLVT-00010,Culvert,,CLVT,3.0,,active,4.0,,,,,,,,,,80.0,40.0,2170.0,Detailed,,,,,,,,,,CLVT,2060.0,2140.0,2220.0,2300.0,,542.5,Original
+LO-SWC-CUL-CLVT-00011,Culvert,,CLVT,4.0,,active,2.0,,,,,,,,,,80.0,26.0,1085.0,Detailed,,,,,,,,,,CLVT,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-SWC-CUL-CLVT-00012,Culvert,,CLVT,3.0,,active,5.0,,,,,,,,,,80.0,40.0,2712.5,Detailed,,,,,,,,,,CLVT,2060.0,2140.0,2220.0,2300.0,,542.5,Original
+LO-SWC-CUL-CLVT-00013,Culvert,,CLVT,3.0,,active,8.0,,,,,,,,,,80.0,40.0,4340.0,Detailed,,,,,,,,,,CLVT,2060.0,2140.0,2220.0,2300.0,,542.5,Original
+LO-SWC-CUL-CLVT-00014,Culvert,,CLVT,5.0,,active,26.0,,,,,,,,,,80.0,14.0,14105.0,Detailed,,,,,,,,,,CLVT,2034.0,2114.0,2194.0,2274.0,,542.5,Original
+LO-SWC-CUL-CLVT-00015,Culvert,,CLVT,4.0,,active,11.0,,,,,,,,,,80.0,26.0,5967.5,Detailed,,,,,,,,,,CLVT,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-SWC-CUL-CLVT-00016,Culvert,,CLVT,3.0,,active,30.0,,,,,,,,,,80.0,40.0,16275.0,Detailed,,,,,,,,,,CLVT,2060.0,2140.0,2220.0,2300.0,,542.5,Original
+LO-SWC-CUL-CLVT-00017,Culvert,,CLVT,2.0,,active,6.0,,,,,,,,,,80.0,54.0,3255.0,Detailed,,,,,,,,,,CLVT,2074.0,2154.0,2234.0,2314.0,,542.5,Original
+LO-SWC-CUL-CLVT-00018,Culvert,,CLVT,3.0,,active,7.0,,,,,,,,,,80.0,40.0,3797.5,Detailed,,,,,,,,,,CLVT,2060.0,2140.0,2220.0,2300.0,,542.5,Original
+LO-SWC-CUL-CLVT-00019,Culvert,,CLVT,3.0,,active,7.0,,,,,,,,,,80.0,40.0,3797.5,Detailed,,,,,,,,,,CLVT,2060.0,2140.0,2220.0,2300.0,,542.5,Original
+LO-SWC-CUL-CLVT-00020,Culvert,,CLVT,3.0,,active,6.0,,,,,,,,,,80.0,40.0,3255.0,Detailed,,,,,,,,,,CLVT,2060.0,2140.0,2220.0,2300.0,,542.5,Original
+LO-SWC-CUL-CLVT-00021,Culvert,,CLVT,3.0,,active,5.0,,,,,,,,,,80.0,40.0,2712.5,Detailed,,,,,,,,,,CLVT,2060.0,2140.0,2220.0,2300.0,,542.5,Original
+LO-SWC-CUL-CLVT-00022,Culvert,,CLVT,3.0,,active,30.0,,,,,,,,,,80.0,40.0,16275.0,Detailed,,,,,,,,,,CLVT,2060.0,2140.0,2220.0,2300.0,,542.5,Original
+LO-SWC-CUL-CLVT-00023,Culvert,,CLVT,3.0,,active,14.0,,,,,,,,,,80.0,40.0,7595.0,Detailed,,,,,,,,,,CLVT,2060.0,2140.0,2220.0,2300.0,,542.5,Original
+LO-SWC-CUL-CLVT-00024,Culvert,,CLVT,3.0,,active,5.0,,,,,,,,,,80.0,40.0,2712.5,Detailed,,,,,,,,,,CLVT,2060.0,2140.0,2220.0,2300.0,,542.5,Original
+LO-SWC-CUL-CLVT-00025,Culvert,,CLVT,3.0,,active,6.0,,,,,,,,,,80.0,40.0,3255.0,Detailed,,,,,,,,,,CLVT,2060.0,2140.0,2220.0,2300.0,,542.5,Original
+LO-SWC-CUL-CLVT-00026,Culvert,,CLVT,3.0,,active,6.0,,,,,,,,,,80.0,40.0,3255.0,Detailed,,,,,,,,,,CLVT,2060.0,2140.0,2220.0,2300.0,,542.5,Original
+LO-SWC-CUL-CLVT-00027,Culvert,,CLVT,2.0,,active,3.0,,,,,,,,,,80.0,54.0,1627.5,Detailed,,,,,,,,,,CLVT,2074.0,2154.0,2234.0,2314.0,,542.5,Original
+LO-SWC-CUL-CLVT-00028,Culvert,,CLVT,4.0,,active,8.0,,,,,,,,,,80.0,26.0,4340.0,Detailed,,,,,,,,,,CLVT,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-SWC-CUL-CLVT-00029,Culvert,,CLVT,3.0,,active,2.0,,,,,,,,,,80.0,40.0,1085.0,Detailed,,,,,,,,,,CLVT,2060.0,2140.0,2220.0,2300.0,,542.5,Original
+LO-SWC-CUL-CLVT-00030,Culvert,,CLVT,3.0,,active,7.0,,,,,,,,,,80.0,40.0,3797.5,Detailed,,,,,,,,,,CLVT,2060.0,2140.0,2220.0,2300.0,,542.5,Original
+LO-SWC-CUL-CLVT-00031,Culvert,,CLVT,3.0,,active,7.0,,,,,,,,,,80.0,40.0,3797.5,Detailed,,,,,,,,,,CLVT,2060.0,2140.0,2220.0,2300.0,,542.5,Original
+LO-SWC-CUL-CLVT-00032,Culvert,,CLVT,3.0,,active,7.0,,,,,,,,,,80.0,40.0,3797.5,Detailed,,,,,,,,,,CLVT,2060.0,2140.0,2220.0,2300.0,,542.5,Original
+LO-SWC-CUL-CLVT-00033,Culvert,,CLVT,3.0,,active,8.0,,,,,,,,,,80.0,40.0,4340.0,Detailed,,,,,,,,,,CLVT,2060.0,2140.0,2220.0,2300.0,,542.5,Original
+LO-SWC-CUL-CLVT-00034,Culvert,,CLVT,3.0,,active,7.0,,,,,,,,,,80.0,40.0,3797.5,Detailed,,,,,,,,,,CLVT,2060.0,2140.0,2220.0,2300.0,,542.5,Original
+LO-SWC-CUL-CLVT-00035,Culvert,,CLVT,3.0,,active,11.0,,,,,,,,,,80.0,40.0,5967.5,Detailed,,,,,,,,,,CLVT,2060.0,2140.0,2220.0,2300.0,,542.5,Original
+LO-SWC-CUL-CLVT-00036,Culvert,,CLVT,3.0,,active,7.0,,,,,,,,,,80.0,40.0,3797.5,Detailed,,,,,,,,,,CLVT,2060.0,2140.0,2220.0,2300.0,,542.5,Original
+LO-SWC-CUL-CLVT-00037,Culvert,,CLVT,3.0,,active,10.0,,,,,,,,,,80.0,40.0,5425.0,Detailed,,,,,,,,,,CLVT,2060.0,2140.0,2220.0,2300.0,,542.5,Original
+LO-SWC-CUL-CLVT-00038,Culvert,,CLVT,3.0,,active,17.0,,,,,,,,,,80.0,40.0,9222.5,Detailed,,,,,,,,,,CLVT,2060.0,2140.0,2220.0,2300.0,,542.5,Original
+LO-SWC-CUL-CLVT-00039,Culvert,,CLVT,4.0,,active,13.0,,,,,,,,,,80.0,26.0,7052.5,Detailed,,,,,,,,,,CLVT,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-SWC-CUL-CLVT-00040,Culvert,,CLVT,4.0,,active,13.0,,,,,,,,,,80.0,26.0,7052.5,Detailed,,,,,,,,,,CLVT,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-SWC-CUL-CLVT-00041,Culvert,,CLVT,4.0,,active,6.0,,,,,,,,,,80.0,26.0,3255.0,Detailed,,,,,,,,,,CLVT,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-SWC-CUL-CLVT-00042,Culvert,,CLVT,3.0,,active,7.0,,,,,,,,,,80.0,40.0,3797.5,Detailed,,,,,,,,,,CLVT,2060.0,2140.0,2220.0,2300.0,,542.5,Original
+LO-SWC-CUL-CLVT-00043,Culvert,,CLVT,4.0,,active,15.0,,,,,,,,,,80.0,26.0,8137.5,Detailed,,,,,,,,,,CLVT,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-SWC-CUL-CLVT-00044,Culvert,,CLVT,4.0,,active,9.0,,,,,,,,,,80.0,26.0,4882.5,Detailed,,,,,,,,,,CLVT,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-SWC-CUL-CLVT-00045,Culvert,,CLVT,4.0,,active,3.0,,,,,,,,,,80.0,26.0,1627.5,Detailed,,,,,,,,,,CLVT,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-SWC-CUL-CLVT-00046,Culvert,,CLVT,3.0,,active,10.0,,,,,,,,,,80.0,40.0,5425.0,Detailed,,,,,,,,,,CLVT,2060.0,2140.0,2220.0,2300.0,,542.5,Original
+LO-SWC-CUL-CLVT-00047,Culvert,,CLVT,3.0,,active,9.0,,,,,,,,,,80.0,40.0,4882.5,Detailed,,,,,,,,,,CLVT,2060.0,2140.0,2220.0,2300.0,,542.5,Original
+LO-SWC-CUL-CLVT-00048,Culvert,,CLVT,3.0,,active,11.0,,,,,,,,,,80.0,40.0,5967.5,Detailed,,,,,,,,,,CLVT,2060.0,2140.0,2220.0,2300.0,,542.5,Original
+LO-SWC-CUL-CLVT-00049,Culvert,,CLVT,3.0,,active,39.0,,,,,,,,,,80.0,40.0,21157.5,Detailed,,,,,,,,,,CLVT,2060.0,2140.0,2220.0,2300.0,,542.5,Original
+LO-SWC-CUL-CLVT-00050,Culvert,,CLVT,3.0,,active,3.0,,,,,,,,,,80.0,40.0,1627.5,Detailed,,,,,,,,,,CLVT,2060.0,2140.0,2220.0,2300.0,,542.5,Original
+LO-SWC-CUL-CLVT-00051,Culvert,,CLVT,4.0,,active,14.0,,,,,,,,,,80.0,26.0,7595.0,Detailed,,,,,,,,,,CLVT,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-SWC-CUL-CLVT-00052,Culvert,,CLVT,4.0,,active,10.0,,,,,,,,,,80.0,26.0,5425.0,Detailed,,,,,,,,,,CLVT,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-SWC-CUL-CLVT-00053,Culvert,,CLVT,3.0,,active,6.0,,,,,,,,,,80.0,40.0,3255.0,Detailed,,,,,,,,,,CLVT,2060.0,2140.0,2220.0,2300.0,,542.5,Original
+LO-SWC-CUL-CLVT-00054,Culvert,,CLVT,4.0,,active,10.0,,,,,,,,,,80.0,26.0,5425.0,Detailed,,,,,,,,,,CLVT,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-SWC-CUL-CLVT-00055,Culvert,,CLVT,3.0,,active,18.0,,,,,,,,,,80.0,40.0,9765.0,Detailed,,,,,,,,,,CLVT,2060.0,2140.0,2220.0,2300.0,,542.5,Original
+LO-SWC-CUL-CLVT-00056,Culvert,,CLVT,3.0,,active,23.0,,,,,,,,,,80.0,40.0,12477.5,Detailed,,,,,,,,,,CLVT,2060.0,2140.0,2220.0,2300.0,,542.5,Original
+LO-SWC-CUL-CLVT-00057,Culvert,,CLVT,3.0,,active,39.0,,,,,,,,,,80.0,40.0,21157.5,Detailed,,,,,,,,,,CLVT,2060.0,2140.0,2220.0,2300.0,,542.5,Original
+LO-SWC-CUL-CLVT-00058,Culvert,,CLVT,4.0,,active,7.0,,,,,,,,,,80.0,26.0,3797.5,Detailed,,,,,,,,,,CLVT,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-SWC-CUL-CLVT-00059,Culvert,,CLVT,3.0,,active,2.0,,,,,,,,,,80.0,40.0,1085.0,Detailed,,,,,,,,,,CLVT,2060.0,2140.0,2220.0,2300.0,,542.5,Original
+LO-SWC-CUL-CLVT-00060,Culvert,,CLVT,3.0,,active,7.0,,,,,,,,,,80.0,40.0,3797.5,Detailed,,,,,,,,,,CLVT,2060.0,2140.0,2220.0,2300.0,,542.5,Original
+LO-SWC-CUL-CLVT-00061,Culvert,,CLVT,4.0,,active,71.0,,,,,,,,,,80.0,26.0,38517.5,Detailed,,,,,,,,,,CLVT,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-SWC-CUL-CLVT-00062,Culvert,,CLVT,4.0,,active,12.0,,,,,,,,,,80.0,26.0,6510.0,Detailed,,,,,,,,,,CLVT,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-SWC-CUL-CLVT-00063,Culvert,,CLVT,4.0,,active,9.0,,,,,,,,,,80.0,26.0,4882.5,Detailed,,,,,,,,,,CLVT,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-SWC-CUL-CLVT-00064,Culvert,,CLVT,4.0,,active,3.0,,,,,,,,,,80.0,26.0,1627.5,Detailed,,,,,,,,,,CLVT,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-SWC-CUL-CLVT-00065,Culvert,,CLVT,3.0,,active,9.0,,,,,,,,,,80.0,40.0,4882.5,Detailed,,,,,,,,,,CLVT,2060.0,2140.0,2220.0,2300.0,,542.5,Original
+LO-SWC-CUL-CLVT-00066,Culvert,,CLVT,4.0,,active,2.0,,,,,,,,,,80.0,26.0,1085.0,Detailed,,,,,,,,,,CLVT,2046.0,2126.0,2206.0,2286.0,,542.5,Original
+LO-SWC-CUL-CLVT-00067,Culvert,,CLVT,3.0,,active,7.0,,,,,,,,,,80.0,40.0,3797.5,Detailed,,,,,,,,,,CLVT,2060.0,2140.0,2220.0,2300.0,,542.5,Original
+LO-SWC-DRC-DRCH-00001,Drainage Channel,,DRCH,4.0,,active,48.0,,,,,,,,,,50.0,17.0,3720.0,Detailed,,,,,,,,,,DRCH,2037.0,2087.0,2137.0,2187.0,,77.5,Original
+LO-SWC-DRC-DRCH-00002,Drainage Channel,,DRCH,4.0,,active,35.0,,,,,,,,,,50.0,17.0,2712.5,Detailed,,,,,,,,,,DRCH,2037.0,2087.0,2137.0,2187.0,,77.5,Original
+LO-SWC-DRC-DRCH-00003,Drainage Channel,,DRCH,3.0,,active,19.0,,,,,,,,,,50.0,25.0,1472.5,Detailed,,,,,,,,,,DRCH,2045.0,2095.0,2145.0,2195.0,,77.5,Original
+LO-SWC-DRC-DRCH-00004,Drainage Channel,,DRCH,3.0,,active,31.0,,,,,,,,,,50.0,25.0,2402.5,Detailed,,,,,,,,,,DRCH,2045.0,2095.0,2145.0,2195.0,,77.5,Original
+LO-SWC-DRC-DRCH-00005,Drainage Channel,,DRCH,3.0,,active,27.0,,,,,,,,,,50.0,25.0,2092.5,Detailed,,,,,,,,,,DRCH,2045.0,2095.0,2145.0,2195.0,,77.5,Original
+LO-SWC-DRC-DRCH-00006,Drainage Channel,,DRCH,4.0,,active,2.0,,,,,,,,,,50.0,17.0,155.0,Detailed,,,,,,,,,,DRCH,2037.0,2087.0,2137.0,2187.0,,77.5,Original
+LO-SWC-DRC-DRCH-00007,Drainage Channel,,DRCH,3.0,,active,10.0,,,,,,,,,,50.0,25.0,775.0,Detailed,,,,,,,,,,DRCH,2045.0,2095.0,2145.0,2195.0,,77.5,Original
+LO-SWC-DRC-DRCH-00008,Drainage Channel,,DRCH,4.0,,active,19.0,,,,,,,,,,50.0,17.0,1472.5,Detailed,,,,,,,,,,DRCH,2037.0,2087.0,2137.0,2187.0,,77.5,Original
+LO-SWC-DRC-DRCH-00009,Drainage Channel,,DRCH,4.0,,active,7.0,,,,,,,,,,50.0,17.0,542.5,Detailed,,,,,,,,,,DRCH,2037.0,2087.0,2137.0,2187.0,,77.5,Original
+LO-SWC-DRC-DRCH-00010,Drainage Channel,,DRCH,4.0,,active,6.0,,,,,,,,,,50.0,17.0,465.0,Detailed,,,,,,,,,,DRCH,2037.0,2087.0,2137.0,2187.0,,77.5,Original
+LO-SWC-DRC-DRCH-00011,Drainage Channel,,DRCH,4.0,,active,31.0,,,,,,,,,,50.0,17.0,2402.5,Detailed,,,,,,,,,,DRCH,2037.0,2087.0,2137.0,2187.0,,77.5,Original
+LO-SWC-DRC-DRCH-00012,Drainage Channel,,DRCH,4.0,,active,56.0,,,,,,,,,,50.0,17.0,4340.0,Detailed,,,,,,,,,,DRCH,2037.0,2087.0,2137.0,2187.0,,77.5,Original
+LO-SWC-DRC-DRCH-00013,Drainage Channel,,DRCH,4.0,,active,7.0,,,,,,,,,,50.0,17.0,542.5,Detailed,,,,,,,,,,DRCH,2037.0,2087.0,2137.0,2187.0,,77.5,Original
+LO-SWC-DRC-DRCH-00014,Drainage Channel,,DRCH,4.0,,active,11.0,,,,,,,,,,50.0,17.0,852.5,Detailed,,,,,,,,,,DRCH,2037.0,2087.0,2137.0,2187.0,,77.5,Original
+LO-SWC-DRC-DRCH-00015,Drainage Channel,,DRCH,4.0,,active,30.0,,,,,,,,,,50.0,17.0,2325.0,Detailed,,,,,,,,,,DRCH,2037.0,2087.0,2137.0,2187.0,,77.5,Original
+LO-SWC-DRC-DRCH-00016,Drainage Channel,,DRCH,4.0,,active,56.0,,,,,,,,,,50.0,17.0,4340.0,Detailed,,,,,,,,,,DRCH,2037.0,2087.0,2137.0,2187.0,,77.5,Original
+LO-SWC-DRC-DRCH-00017,Drainage Channel,,DRCH,4.0,,active,26.0,,,,,,,,,,50.0,17.0,2015.0,Detailed,,,,,,,,,,DRCH,2037.0,2087.0,2137.0,2187.0,,77.5,Original
+LO-SWC-DRC-DRCH-00018,Drainage Channel,,DRCH,4.0,,active,14.0,,,,,,,,,,50.0,17.0,1085.0,Detailed,,,,,,,,,,DRCH,2037.0,2087.0,2137.0,2187.0,,77.5,Original
+LO-SWC-DRC-DRCH-00019,Drainage Channel,,DRCH,3.0,,active,34.0,,,,,,,,,,50.0,25.0,2635.0,Detailed,,,,,,,,,,DRCH,2045.0,2095.0,2145.0,2195.0,,77.5,Original
+LO-SWC-DRC-DRCH-00020,Drainage Channel,,DRCH,5.0,,active,14.0,,,,,,,,,,50.0,9.0,1085.0,Detailed,,,,,,,,,,DRCH,2029.0,2079.0,2129.0,2179.0,,77.5,Original
+LO-SWC-DRC-DRCH-00021,Drainage Channel,,DRCH,5.0,,active,4.0,,,,,,,,,,50.0,9.0,310.0,Detailed,,,,,,,,,,DRCH,2029.0,2079.0,2129.0,2179.0,,77.5,Original
+LO-SWC-DRC-DRCH-00022,Drainage Channel,,DRCH,3.0,,active,29.0,,,,,,,,,,50.0,25.0,2247.5,Detailed,,,,,,,,,,DRCH,2045.0,2095.0,2145.0,2195.0,,77.5,Original
+LO-SWC-DRC-DRCH-00023,Drainage Channel,,DRCH,3.0,,active,27.0,,,,,,,,,,50.0,25.0,2092.5,Detailed,,,,,,,,,,DRCH,2045.0,2095.0,2145.0,2195.0,,77.5,Original
+LO-SWC-DRC-DRCH-00024,Drainage Channel,,DRCH,3.0,,active,5.0,,,,,,,,,,50.0,25.0,387.5,Detailed,,,,,,,,,,DRCH,2045.0,2095.0,2145.0,2195.0,,77.5,Original
+LO-SWC-DRC-DRCH-00025,Drainage Channel,,DRCH,3.0,,active,6.0,,,,,,,,,,50.0,25.0,465.0,Detailed,,,,,,,,,,DRCH,2045.0,2095.0,2145.0,2195.0,,77.5,Original
+LO-SWC-DRC-DRCH-00026,Drainage Channel,,DRCH,3.0,,active,15.0,,,,,,,,,,50.0,25.0,1162.5,Detailed,,,,,,,,,,DRCH,2045.0,2095.0,2145.0,2195.0,,77.5,Original
+LO-SWC-DRC-DRCH-00027,Drainage Channel,,DRCH,3.0,,active,15.0,,,,,,,,,,50.0,25.0,1162.5,Detailed,,,,,,,,,,DRCH,2045.0,2095.0,2145.0,2195.0,,77.5,Original
+LO-SWC-DRC-DRCH-00028,Drainage Channel,,DRCH,3.0,,active,13.0,,,,,,,,,,50.0,25.0,1007.5,Detailed,,,,,,,,,,DRCH,2045.0,2095.0,2145.0,2195.0,,77.5,Original
+LO-SWC-DRC-DRCH-00029,Drainage Channel,,DRCH,3.0,,active,33.0,,,,,,,,,,50.0,25.0,2557.5,Detailed,,,,,,,,,,DRCH,2045.0,2095.0,2145.0,2195.0,,77.5,Original
+LO-SWC-DRC-DRCH-00030,Drainage Channel,,DRCH,4.0,,active,11.0,,,,,,,,,,50.0,17.0,852.5,Detailed,,,,,,,,,,DRCH,2037.0,2087.0,2137.0,2187.0,,77.5,Original
+LO-SWC-DRC-DRCH-00031,Drainage Channel,,DRCH,4.0,,active,27.0,,,,,,,,,,50.0,17.0,2092.5,Detailed,,,,,,,,,,DRCH,2037.0,2087.0,2137.0,2187.0,,77.5,Original
+LO-SWC-DRC-DRCH-00032,Drainage Channel,,DRCH,3.0,,active,13.0,,,,,,,,,,50.0,25.0,1007.5,Detailed,,,,,,,,,,DRCH,2045.0,2095.0,2145.0,2195.0,,77.5,Original
+LO-SWC-DRC-DRCH-00033,Drainage Channel,,DRCH,4.0,,active,91.0,,,,,,,,,,50.0,17.0,7052.5,Detailed,,,,,,,,,,DRCH,2037.0,2087.0,2137.0,2187.0,,77.5,Original
+LO-SWC-DRC-DRCH-00034,Drainage Channel,,DRCH,3.0,,active,31.0,,,,,,,,,,50.0,25.0,2402.5,Detailed,,,,,,,,,,DRCH,2045.0,2095.0,2145.0,2195.0,,77.5,Original
+LO-SWC-DRC-DRCH-00035,Drainage Channel,,DRCH,5.0,,active,6.0,,,,,,,,,,50.0,9.0,465.0,Detailed,,,,,,,,,,DRCH,2029.0,2079.0,2129.0,2179.0,,77.5,Original
+LO-SWC-DRC-DRCH-00036,Drainage Channel,,DRCH,3.0,,active,100.0,,,,,,,,,,50.0,25.0,7750.0,Detailed,,,,,,,,,,DRCH,2045.0,2095.0,2145.0,2195.0,,77.5,Original
+LO-SWC-DRC-DRCH-00037,Drainage Channel,,DRCH,3.0,,active,6.0,,,,,,,,,,50.0,25.0,465.0,Detailed,,,,,,,,,,DRCH,2045.0,2095.0,2145.0,2195.0,,77.5,Original
+LO-SWC-DRC-DRCH-00038,Drainage Channel,,DRCH,4.0,,active,44.0,,,,,,,,,,50.0,17.0,3410.0,Detailed,,,,,,,,,,DRCH,2037.0,2087.0,2137.0,2187.0,,77.5,Original
+LO-SWC-DRC-DRCH-00039,Drainage Channel,,DRCH,5.0,,active,26.0,,,,,,,,,,50.0,9.0,2015.0,Detailed,,,,,,,,,,DRCH,2029.0,2079.0,2129.0,2179.0,,77.5,Original
+LO-SWC-DRC-DRCH-00040,Drainage Channel,,DRCH,3.0,,active,53.0,,,,,,,,,,50.0,25.0,4107.5,Detailed,,,,,,,,,,DRCH,2045.0,2095.0,2145.0,2195.0,,77.5,Original
+LO-SWC-DRC-DRCH-00041,Drainage Channel,,DRCH,3.0,,active,59.0,,,,,,,,,,50.0,25.0,4572.5,Detailed,,,,,,,,,,DRCH,2045.0,2095.0,2145.0,2195.0,,77.5,Original
+LO-SWC-DRC-DRCH-00042,Drainage Channel,,DRCH,3.0,,active,38.0,,,,,,,,,,50.0,25.0,2945.0,Detailed,,,,,,,,,,DRCH,2045.0,2095.0,2145.0,2195.0,,77.5,Original
+LO-SWC-DRC-DRCH-00043,Drainage Channel,,DRCH,3.0,,active,26.0,,,,,,,,,,50.0,25.0,2015.0,Detailed,,,,,,,,,,DRCH,2045.0,2095.0,2145.0,2195.0,,77.5,Original
+LO-SWC-DRC-DRCH-00044,Drainage Channel,,DRCH,3.0,,active,29.0,,,,,,,,,,50.0,25.0,2247.5,Detailed,,,,,,,,,,DRCH,2045.0,2095.0,2145.0,2195.0,,77.5,Original
+LO-SWC-DRC-DRCH-00045,Drainage Channel,,DRCH,5.0,,active,23.0,,,,,,,,,,50.0,9.0,1782.5,Detailed,,,,,,,,,,DRCH,2029.0,2079.0,2129.0,2179.0,,77.5,Original
+LO-SWC-DRC-DRCH-00046,Drainage Channel,,DRCH,3.0,,active,40.0,,,,,,,,,,50.0,25.0,3100.0,Detailed,,,,,,,,,,DRCH,2045.0,2095.0,2145.0,2195.0,,77.5,Original
+LO-SWC-DRC-DRCH-00047,Drainage Channel,,DRCH,4.0,,active,20.0,,,,,,,,,,50.0,17.0,1550.0,Detailed,,,,,,,,,,DRCH,2037.0,2087.0,2137.0,2187.0,,77.5,Original
+LO-SWC-DRC-DRCH-00048,Drainage Channel,,DRCH,3.0,,active,17.0,,,,,,,,,,50.0,25.0,1317.5,Detailed,,,,,,,,,,DRCH,2045.0,2095.0,2145.0,2195.0,,77.5,Original
+LO-SWC-DRC-DRCH-00049,Drainage Channel,,DRCH,3.0,,active,82.0,,,,,,,,,,50.0,25.0,6355.0,Detailed,,,,,,,,,,DRCH,2045.0,2095.0,2145.0,2195.0,,77.5,Original
+LO-SWC-DRC-DRCH-00050,Drainage Channel,,DRCH,4.0,,active,9.0,,,,,,,,,,50.0,17.0,697.5,Detailed,,,,,,,,,,DRCH,2037.0,2087.0,2137.0,2187.0,,77.5,Original
+LO-SWC-DRC-DRCH-00051,Drainage Channel,,DRCH,4.0,,active,31.0,,,,,,,,,,50.0,17.0,2402.5,Detailed,,,,,,,,,,DRCH,2037.0,2087.0,2137.0,2187.0,,77.5,Original
+LO-SWC-DRC-DRCH-00052,Drainage Channel,,DRCH,4.0,,active,23.0,,,,,,,,,,50.0,17.0,1782.5,Detailed,,,,,,,,,,DRCH,2037.0,2087.0,2137.0,2187.0,,77.5,Original
+LO-SWC-DRC-DRCH-00053,Drainage Channel,,DRCH,3.0,,active,71.0,,,,,,,,,,50.0,25.0,5502.5,Detailed,,,,,,,,,,DRCH,2045.0,2095.0,2145.0,2195.0,,77.5,Original
+LO-SWC-DRC-DRCH-00054,Drainage Channel,,DRCH,3.0,,active,29.0,,,,,,,,,,50.0,25.0,2247.5,Detailed,,,,,,,,,,DRCH,2045.0,2095.0,2145.0,2195.0,,77.5,Original
+LO-SWC-DRC-DRCH-00055,Drainage Channel,,DRCH,3.0,,active,17.0,,,,,,,,,,50.0,25.0,1317.5,Detailed,,,,,,,,,,DRCH,2045.0,2095.0,2145.0,2195.0,,77.5,Original
+LO-SWC-DRC-DRCH-00056,Drainage Channel,,DRCH,3.0,,active,93.0,,,,,,,,,,50.0,25.0,7207.5,Detailed,,,,,,,,,,DRCH,2045.0,2095.0,2145.0,2195.0,,77.5,Original
+LO-SWC-DRC-DRCH-00057,Drainage Channel,,DRCH,3.0,,active,9.0,,,,,,,,,,50.0,25.0,697.5,Detailed,,,,,,,,,,DRCH,2045.0,2095.0,2145.0,2195.0,,77.5,Original
+LO-SWC-DRC-DRCH-00058,Drainage Channel,,DRCH,4.0,,active,3.0,,,,,,,,,,50.0,17.0,232.5,Detailed,,,,,,,,,,DRCH,2037.0,2087.0,2137.0,2187.0,,77.5,Original
+LO-SWC-DRC-DRCH-00059,Drainage Channel,,DRCH,4.0,,active,75.0,,,,,,,,,,50.0,17.0,5812.5,Detailed,,,,,,,,,,DRCH,2037.0,2087.0,2137.0,2187.0,,77.5,Original
+LO-SWC-DRC-DRCH-00060,Drainage Channel,,DRCH,3.0,,active,79.0,,,,,,,,,,50.0,25.0,6122.5,Detailed,,,,,,,,,,DRCH,2045.0,2095.0,2145.0,2195.0,,77.5,Original
+LO-SWC-DRC-DRCH-00061,Drainage Channel,,DRCH,3.0,,active,74.0,,,,,,,,,,50.0,25.0,5735.0,Detailed,,,,,,,,,,DRCH,2045.0,2095.0,2145.0,2195.0,,77.5,Original
+LO-SWC-DRC-DRCH-00062,Drainage Channel,,DRCH,3.0,,active,6.0,,,,,,,,,,50.0,25.0,465.0,Detailed,,,,,,,,,,DRCH,2045.0,2095.0,2145.0,2195.0,,77.5,Original
+LO-SWC-DRC-DRCH-00063,Drainage Channel,,DRCH,4.0,,active,3.0,,,,,,,,,,50.0,17.0,232.5,Detailed,,,,,,,,,,DRCH,2037.0,2087.0,2137.0,2187.0,,77.5,Original
+LO-SWC-DRC-DRCH-00064,Drainage Channel,,DRCH,3.0,,active,19.0,,,,,,,,,,50.0,25.0,1472.5,Detailed,,,,,,,,,,DRCH,2045.0,2095.0,2145.0,2195.0,,77.5,Original
+LO-SWC-DRC-DRCH-00065,Drainage Channel,,DRCH,3.0,,active,14.0,,,,,,,,,,50.0,25.0,1085.0,Detailed,,,,,,,,,,DRCH,2045.0,2095.0,2145.0,2195.0,,77.5,Original
+LO-SWC-DRC-DRCH-00066,Drainage Channel,,DRCH,4.0,,active,35.0,,,,,,,,,,50.0,17.0,2712.5,Detailed,,,,,,,,,,DRCH,2037.0,2087.0,2137.0,2187.0,,77.5,Original
+LO-SWC-DRC-DRCH-00067,Drainage Channel,,DRCH,3.0,,active,43.0,,,,,,,,,,50.0,25.0,3332.5,Detailed,,,,,,,,,,DRCH,2045.0,2095.0,2145.0,2195.0,,77.5,Original
+LO-SWC-DRC-DRCH-00068,Drainage Channel,,DRCH,3.0,,active,61.0,,,,,,,,,,50.0,25.0,4727.5,Detailed,,,,,,,,,,DRCH,2045.0,2095.0,2145.0,2195.0,,77.5,Original
+LO-SWC-DRC-DRCH-00069,Drainage Channel,,DRCH,3.0,,active,14.0,,,,,,,,,,50.0,25.0,1085.0,Detailed,,,,,,,,,,DRCH,2045.0,2095.0,2145.0,2195.0,,77.5,Original
+LO-SWC-DRC-DRCH-00070,Drainage Channel,,DRCH,3.0,,active,33.0,,,,,,,,,,50.0,25.0,2557.5,Detailed,,,,,,,,,,DRCH,2045.0,2095.0,2145.0,2195.0,,77.5,Original
+LO-SWC-DRC-DRCH-00071,Drainage Channel,,DRCH,4.0,,active,37.0,,,,,,,,,,50.0,17.0,2867.5,Detailed,,,,,,,,,,DRCH,2037.0,2087.0,2137.0,2187.0,,77.5,Original
+LO-SWC-DRC-DRCH-00072,Drainage Channel,,DRCH,3.0,,active,8.0,,,,,,,,,,50.0,25.0,620.0,Detailed,,,,,,,,,,DRCH,2045.0,2095.0,2145.0,2195.0,,77.5,Original
+LO-SWC-DRC-DRCH-00073,Drainage Channel,,DRCH,3.0,,active,7.0,,,,,,,,,,50.0,25.0,542.5,Detailed,,,,,,,,,,DRCH,2045.0,2095.0,2145.0,2195.0,,77.5,Original
+LO-SWC-DRC-DRCH-00074,Drainage Channel,,DRCH,4.0,,active,22.0,,,,,,,,,,50.0,17.0,1705.0,Detailed,,,,,,,,,,DRCH,2037.0,2087.0,2137.0,2187.0,,77.5,Original
+LO-SWC-DRC-DRCH-00075,Drainage Channel,,DRCH,4.0,,active,14.0,,,,,,,,,,50.0,17.0,1085.0,Detailed,,,,,,,,,,DRCH,2037.0,2087.0,2137.0,2187.0,,77.5,Original
+LO-SWC-DRC-DRCH-00076,Drainage Channel,,DRCH,5.0,,active,8.0,,,,,,,,,,50.0,9.0,620.0,Detailed,,,,,,,,,,DRCH,2029.0,2079.0,2129.0,2179.0,,77.5,Original
+LO-SWC-DRC-DRCH-00077,Drainage Channel,,DRCH,4.0,,active,8.0,,,,,,,,,,50.0,17.0,620.0,Detailed,,,,,,,,,,DRCH,2037.0,2087.0,2137.0,2187.0,,77.5,Original
+LO-SWC-DRC-DRCH-00078,Drainage Channel,,DRCH,4.0,,active,35.0,,,,,,,,,,50.0,17.0,2712.5,Detailed,,,,,,,,,,DRCH,2037.0,2087.0,2137.0,2187.0,,77.5,Original
+LO-SWC-DRC-DRCH-00079,Drainage Channel,,DRCH,3.0,,active,66.0,,,,,,,,,,50.0,25.0,5115.0,Detailed,,,,,,,,,,DRCH,2045.0,2095.0,2145.0,2195.0,,77.5,Original
+LO-SWC-DRC-DRCH-00080,Drainage Channel,,DRCH,3.0,,active,54.0,,,,,,,,,,50.0,25.0,4185.0,Detailed,,,,,,,,,,DRCH,2045.0,2095.0,2145.0,2195.0,,77.5,Original
+LO-SWC-DRC-DRCH-00081,Drainage Channel,,DRCH,3.0,,active,14.0,,,,,,,,,,50.0,25.0,1085.0,Detailed,,,,,,,,,,DRCH,2045.0,2095.0,2145.0,2195.0,,77.5,Original
+LO-SWC-DRC-DRCH-00082,Drainage Channel,,DRCH,3.0,,active,55.0,,,,,,,,,,50.0,25.0,4262.5,Detailed,,,,,,,,,,DRCH,2045.0,2095.0,2145.0,2195.0,,77.5,Original
+LO-SWC-CBN-CB-00001,CATCH BASIN,,CB,4.0,,active,1.0,,,,,,,,,,80.0,26.0,4650.0,Detailed,,,,,,,,,,CB,2046.0,2126.0,2206.0,2286.0,,4650.0,Original
+LO-SWC-CBN-CB-00002,CATCH BASIN,,CB,4.0,,active,1.0,,,,,,,,,,80.0,26.0,4650.0,Detailed,,,,,,,,,,CB,2046.0,2126.0,2206.0,2286.0,,4650.0,Original
+LO-SWC-CBN-CB-00003,CATCH BASIN,,CB,3.0,,active,1.0,,,,,,,,,,80.0,40.0,4650.0,Detailed,,,,,,,,,,CB,2060.0,2140.0,2220.0,2300.0,,4650.0,Original
+LO-SWC-CBN-CB-00004,CATCH BASIN,,CB,4.0,,active,1.0,,,,,,,,,,80.0,26.0,4650.0,Detailed,,,,,,,,,,CB,2046.0,2126.0,2206.0,2286.0,,4650.0,Original
+LO-SWC-CBN-CB-00005,CATCH BASIN,,CB,4.0,,active,1.0,,,,,,,,,,80.0,26.0,4650.0,Detailed,,,,,,,,,,CB,2046.0,2126.0,2206.0,2286.0,,4650.0,Original
+LO-SWC-CBN-CB-00006,CATCH BASIN,,CB,3.0,,active,1.0,,,,,,,,,,80.0,40.0,4650.0,Detailed,,,,,,,,,,CB,2060.0,2140.0,2220.0,2300.0,,4650.0,Original
+LO-SWC-CBN-CB-00007,CATCH BASIN,,CB,5.0,,active,1.0,,,,Rating as 0 in data pickup,,,,,,80.0,14.0,4650.0,Detailed,,,,,,,,,,CB,2034.0,2114.0,2194.0,2274.0,,4650.0,Original
+LO-SWC-CBN-CB-00008,CATCH BASIN,,CB,3.0,,active,1.0,,,,,,,,,,80.0,40.0,4650.0,Detailed,,,,,,,,,,CB,2060.0,2140.0,2220.0,2300.0,,4650.0,Original
+LO-SWC-CBN-CB-00009,CATCH BASIN,,CB,3.0,,active,1.0,,,,,,,,,,80.0,40.0,4650.0,Detailed,,,,,,,,,,CB,2060.0,2140.0,2220.0,2300.0,,4650.0,Original
+LO-SWC-CBN-CB-00010,CATCH BASIN,,CB,4.0,,active,1.0,,,,,,,,,,80.0,26.0,4650.0,Detailed,,,,,,,,,,CB,2046.0,2126.0,2206.0,2286.0,,4650.0,Original
+LO-SWC-CBN-CB-00011,CATCH BASIN,,CB,4.0,,active,1.0,,,,,,,,,,80.0,26.0,4650.0,Detailed,,,,,,,,,,CB,2046.0,2126.0,2206.0,2286.0,,4650.0,Original
+LO-SWC-CBN-CB-00012,CATCH BASIN,,CB,4.0,,active,1.0,,,,,,,,,,80.0,26.0,4650.0,Detailed,,,,,,,,,,CB,2046.0,2126.0,2206.0,2286.0,,4650.0,Original
+LO-SWC-CBN-CB-00013,CATCH BASIN,,CB,4.0,,active,1.0,,,,,,,,,,80.0,26.0,4650.0,Detailed,,,,,,,,,,CB,2046.0,2126.0,2206.0,2286.0,,4650.0,Original
+LO-SWC-CBN-CB-00014,CATCH BASIN,,CB,4.0,,active,1.0,,,,,,,,,,80.0,26.0,4650.0,Detailed,,,,,,,,,,CB,2046.0,2126.0,2206.0,2286.0,,4650.0,Original
+LO-SWC-CBN-CB-00015,CATCH BASIN,,CB,4.0,,active,1.0,,,,,,,,,,80.0,26.0,4650.0,Detailed,,,,,,,,,,CB,2046.0,2126.0,2206.0,2286.0,,4650.0,Original
+LO-SWC-CBN-CB-00016,CATCH BASIN,,CB,4.0,,active,1.0,,,,,,,,,,80.0,26.0,4650.0,Detailed,,,,,,,,,,CB,2046.0,2126.0,2206.0,2286.0,,4650.0,Original
+LO-SWC-CBN-CB-00017,CATCH BASIN,,CB,4.0,,active,1.0,,,,,,,,,,80.0,26.0,4650.0,Detailed,,,,,,,,,,CB,2046.0,2126.0,2206.0,2286.0,,4650.0,Original
+LO-SWC-CBN-CB-00018,CATCH BASIN,,CB,3.0,,active,1.0,,,,,,,,,,80.0,40.0,4650.0,Detailed,,,,,,,,,,CB,2060.0,2140.0,2220.0,2300.0,,4650.0,Original
+LO-SWC-CBN-CB-00019,CATCH BASIN,,CB,3.0,,active,1.0,,,,,,,,,,80.0,40.0,4650.0,Detailed,,,,,,,,,,CB,2060.0,2140.0,2220.0,2300.0,,4650.0,Original
+LO-SWC-CBN-CB-00020,CATCH BASIN,,CB,4.0,,active,1.0,,,,,,,,,,80.0,26.0,4650.0,Detailed,,,,,,,,,,CB,2046.0,2126.0,2206.0,2286.0,,4650.0,Original
+LO-SWC-CBN-CB-00021,CATCH BASIN,,CB,4.0,,active,1.0,,,,,,,,,,80.0,26.0,4650.0,Detailed,,,,,,,,,,CB,2046.0,2126.0,2206.0,2286.0,,4650.0,Original
+LO-SWC-CBN-CB-00022,CATCH BASIN,,CB,4.0,,active,1.0,,,,,,,,,,80.0,26.0,4650.0,Detailed,,,,,,,,,,CB,2046.0,2126.0,2206.0,2286.0,,4650.0,Original
+LO-SWC-CBN-CB-00023,CATCH BASIN,,CB,3.0,,active,1.0,,,,,,,,,,80.0,40.0,4650.0,Detailed,,,,,,,,,,CB,2060.0,2140.0,2220.0,2300.0,,4650.0,Original
+LO-SWC-CBN-CB-00024,CATCH BASIN,,CB,3.0,,active,1.0,,,,,,,,,,80.0,40.0,4650.0,Detailed,,,,,,,,,,CB,2060.0,2140.0,2220.0,2300.0,,4650.0,Original
+LO-SWC-CBN-CB-00025,CATCH BASIN,,CB,5.0,,active,1.0,,,,,,,,,,80.0,14.0,4650.0,Detailed,,,,,,,,,,CB,2034.0,2114.0,2194.0,2274.0,,4650.0,Original
+LO-SWC-MHSW-MHST-00001,MANHOLE STORM,,MHST,3.0,,active,1.0,,,,,,,,,,80.0,40.0,9300.0,Detailed,,,,,,,,,,MHST,2060.0,2140.0,2220.0,2300.0,,9300.0,Original
+LO-TRN-SWT-RRTR-00001,Trail,,RRTR,3.0,,active,1056.0,2020.0,,,,,,,,0.0,20.0,10.0,163680.0,Detailed,,,,,,,,,,RRTR,2030.0,2050.0,2070.0,2090.0,,155.0,Original
+LO-TRN-SWT-RRTR-00002,Trail,,RRTR,4.0,,active,92.0,2020.0,,,,,,,,0.0,20.0,7.0,14260.0,Detailed,,,,,,,,,,RRTR,2027.0,2047.0,2067.0,2087.0,,155.0,Original
+LO-TRN-SWT-RRSW-C-00001,Sidewalk - Concrete,,RRSW-C,4.0,,active,79.0,2020.0,,,,,,,,0.0,60.0,20.0,18367.5,Detailed,,,,,,,,,,RRSW-C,2040.0,2100.0,2160.0,2220.0,,232.5,Original
+LO-TRN-SWT-RRSW-C-00002,Sidewalk - Concrete,,RRSW-C,4.0,,active,13.0,2020.0,,,,,,,,0.0,60.0,20.0,3022.5,Detailed,,,,,,,,,,RRSW-C,2040.0,2100.0,2160.0,2220.0,,232.5,Original
+LO-TRN-SWT-RRSW-C-00003,Sidewalk - Concrete,,RRSW-C,3.0,,active,61.0,2020.0,,,,,,,,0.0,60.0,30.0,14182.5,Detailed,,,,,,,,,,RRSW-C,2050.0,2110.0,2170.0,2230.0,,232.5,Original
+LO-TRN-SWT-RRSW-C-00004,Sidewalk - Concrete,,RRSW-C,3.0,,active,87.0,2020.0,,,,,,,,0.0,60.0,30.0,20227.5,Detailed,,,,,,,,,,RRSW-C,2050.0,2110.0,2170.0,2230.0,,232.5,Original
+LO-TRN-SWT-RRSW-C-00005,Sidewalk - Concrete,,RRSW-C,4.0,,active,111.0,2020.0,,,,,,,,0.0,60.0,20.0,25807.5,Detailed,,,,,,,,,,RRSW-C,2040.0,2100.0,2160.0,2220.0,,232.5,Original
+LO-TRN-SWT-RRSW-C-00006,Sidewalk - Concrete,,RRSW-C,3.0,,active,32.0,2020.0,,,,,,,,0.0,60.0,30.0,7440.0,Detailed,,,,,,,,,,RRSW-C,2050.0,2110.0,2170.0,2230.0,,232.5,Original
+LO-TRN-SWT-RRSW-C-00007,Sidewalk - Concrete,,RRSW-C,3.0,,active,11.0,2020.0,,,,,,,,0.0,60.0,30.0,2557.5,Detailed,,,,,,,,,,RRSW-C,2050.0,2110.0,2170.0,2230.0,,232.5,Original
+LO-TRN-SWT-RRSW-C-00008,Sidewalk - Concrete,,RRSW-C,3.0,,active,11.0,2020.0,,,,,,,,0.0,60.0,30.0,2557.5,Detailed,,,,,,,,,,RRSW-C,2050.0,2110.0,2170.0,2230.0,,232.5,Original
+LO-TRN-SWT-RRSW-C-00009,Sidewalk - Concrete,,RRSW-C,3.0,,active,15.0,2020.0,,,,,,,,0.0,60.0,30.0,3487.5,Detailed,,,,,,,,,,RRSW-C,2050.0,2110.0,2170.0,2230.0,,232.5,Original
+LO-TRN-SWT-RRSW-C-00010,Sidewalk - Concrete,,RRSW-C,3.0,,active,12.0,2020.0,,,,,,,,0.0,60.0,30.0,2790.0,Detailed,,,,,,,,,,RRSW-C,2050.0,2110.0,2170.0,2230.0,,232.5,Original
+LO-TRN-SWT-RRSW-C-00011,Sidewalk - Concrete,,RRSW-C,3.0,,active,88.0,2020.0,,,,,,,,0.0,60.0,30.0,20460.0,Detailed,,,,,,,,,,RRSW-C,2050.0,2110.0,2170.0,2230.0,,232.5,Original
+LO-TRN-SWT-RRSW-C-00012,Sidewalk - Concrete,,RRSW-C,3.0,,active,85.0,2020.0,,,,,,,,0.0,60.0,30.0,19762.5,Detailed,,,,,,,,,,RRSW-C,2050.0,2110.0,2170.0,2230.0,,232.5,Original
+LO-TRN-SWT-RRSW-C-00013,Sidewalk - Concrete,,RRSW-C,4.0,,active,82.0,2020.0,,,,,,,,0.0,60.0,20.0,19065.0,Detailed,,,,,,,,,,RRSW-C,2040.0,2100.0,2160.0,2220.0,,232.5,Original
+LO-TRN-SWT-RRSW-C-00014,Sidewalk - Concrete,,RRSW-C,3.0,,active,80.0,2020.0,,,,,,,,0.0,60.0,30.0,18600.0,Detailed,,,,,,,,,,RRSW-C,2050.0,2110.0,2170.0,2230.0,,232.5,Original
+LO-TRN-SWT-RRSW-C-00015,Sidewalk - Concrete,,RRSW-C,3.0,,active,24.0,2020.0,,,,,,,,0.0,60.0,30.0,5580.0,Detailed,,,,,,,,,,RRSW-C,2050.0,2110.0,2170.0,2230.0,,232.5,Original
+LO-TRN-SWT-RRSW-C-00016,Sidewalk - Concrete,,RRSW-C,5.0,,active,13.0,2020.0,,,,,,,,0.0,60.0,10.0,3022.5,Detailed,,,,,,,,,,RRSW-C,2030.0,2090.0,2150.0,2210.0,,232.5,Original
+LO-TRN-SWT-RRSW-A-00001,Sidewalk Asphalt,,RRSW-A,3.0,,active,44.0,2020.0,,,,,,,,0.0,60.0,30.0,6820.0,Detailed,,,,,,,,,,RRSW-A,2050.0,2110.0,2170.0,2230.0,,155.0,Original
+LO-TRN-SWT-RRSW-C-00017,Sidewalk - Concrete,,RRSW-C,4.0,,active,75.0,2020.0,,,,,,,,0.0,60.0,20.0,17437.5,Detailed,,,,,,,,,,RRSW-C,2040.0,2100.0,2160.0,2220.0,,232.5,Original
+LO-TRN-RDS-RRRD-A-00001,Edge of Road - Asphalt,,RRRD-A,4.0,,active,152.0,2020.0,,,,,,,,0.0,20.0,7.0,169632.0,Detailed,,,,,,,,,,RRRD-A,2027.0,2047.0,2067.0,2087.0,,1116.0,Original
+LO-TRN-RDS-RRRD-A-00002,Edge of Road - Asphalt,,RRRD-A,5.0,,active,108.0,2020.0,,,,,,,,0.0,20.0,3.0,120528.0,Detailed,,,,,,,,,,RRRD-A,2023.0,2043.0,2063.0,2083.0,,1116.0,Original
+LO-TRN-RDS-RRRD-A-00003,Edge of Road - Asphalt,,RRRD-A,4.0,,active,91.0,2020.0,,,,,,,,0.0,20.0,7.0,101556.0,Detailed,,,,,,,,,,RRRD-A,2027.0,2047.0,2067.0,2087.0,,1116.0,Original
+LO-TRN-RDS-RRRD-A-00004,Edge of Road - Asphalt,,RRRD-A,5.0,,active,412.0,2020.0,,,,,,,,0.0,20.0,3.0,459792.0,Detailed,,,,,,,,,,RRRD-A,2023.0,2043.0,2063.0,2083.0,,1116.0,Original
+LO-TRN-RDS-RRRD-A-00005,Edge of Road - Asphalt,,RRRD-A,2.0,,active,246.0,2020.0,,,,,,,,0.0,20.0,13.0,274536.0,Detailed,,,,,,,,,,RRRD-A,2033.0,2053.0,2073.0,2093.0,,1116.0,Original
+LO-TRN-RDS-RRRD-A-00006,Edge of Road - Asphalt,,RRRD-A,5.0,,active,98.0,2020.0,,,,,,,,0.0,20.0,3.0,109368.0,Detailed,,,,,,,,,,RRRD-A,2023.0,2043.0,2063.0,2083.0,,1116.0,Original
+LO-TRN-RDS-RRRD-A-00007,Edge of Road - Asphalt,,RRRD-A,2.0,,active,79.0,2020.0,,,,,,,,0.0,20.0,13.0,88164.0,Detailed,,,,,,,,,,RRRD-A,2033.0,2053.0,2073.0,2093.0,,1116.0,Original
+LO-TRN-RDS-RRRD-A-00008,Edge of Road - Asphalt,,RRRD-A,5.0,,active,237.0,2020.0,,,,,,,,0.0,20.0,3.0,264492.0,Detailed,,,,,,,,,,RRRD-A,2023.0,2043.0,2063.0,2083.0,,1116.0,Original
+LO-TRN-RDS-RRRD-A-00009,Edge of Road - Asphalt,,RRRD-A,3.0,,active,319.0,2020.0,,,,,,,,0.0,20.0,10.0,356004.0,Detailed,,,,,,,,,,RRRD-A,2030.0,2050.0,2070.0,2090.0,,1116.0,Original
+LO-TRN-RDS-RRRD-A-00010,Edge of Road - Asphalt,,RRRD-A,4.0,,active,345.0,2020.0,,,,,,,,0.0,20.0,7.0,385020.0,Detailed,,,,,,,,,,RRRD-A,2027.0,2047.0,2067.0,2087.0,,1116.0,Original
+LO-TRN-RDS-RRRD-A-00011,Edge of Road - Asphalt,,RRRD-A,5.0,,active,261.0,2020.0,,,,,,,,0.0,20.0,3.0,291276.0,Detailed,,,,,,,,,,RRRD-A,2023.0,2043.0,2063.0,2083.0,,1116.0,Original
+LO-TRN-RDS-RRGR-00001,Road  Gravel,,RRGR,4.0,,active,129.0,2020.0,,,,,,,,0.0,30.0,10.0,35991.0,Detailed,,,,,,,,,,RRGR,2030.0,2060.0,2090.0,2120.0,,279.0,Original
+LO-TRN-RDS-RRRD-A-00012,Edge of Road - Asphalt,,RRRD-A,5.0,,active,703.0,2020.0,,,,,,,,0.0,20.0,3.0,784548.0,Detailed,,,,,,,,,,RRRD-A,2023.0,2043.0,2063.0,2083.0,,1116.0,Original
+LO-TRN-RDS-RRRD-A-00013,Edge of Road - Asphalt,,RRRD-A,4.0,,active,584.0,2020.0,,,,,,,,0.0,20.0,7.0,651744.0,Detailed,,,,,,,,,,RRRD-A,2027.0,2047.0,2067.0,2087.0,,1116.0,Original
+LO-TRN-RDS-RRRD-A-00014,Edge of Road - Asphalt,,RRRD-A,2.0,,active,354.0,2020.0,,,,,,,,0.0,20.0,13.0,395064.0,Detailed,,,,,,,,,,RRRD-A,2033.0,2053.0,2073.0,2093.0,,1116.0,Original
+LO-TRN-RDS-RRRD-A-00015,Edge of Road - Asphalt,,RRRD-A,4.0,,active,322.0,2020.0,,,,,,,,0.0,20.0,7.0,359352.0,Detailed,,,,,,,,,,RRRD-A,2027.0,2047.0,2067.0,2087.0,,1116.0,Original
+LO-TRN-RDS-RRRD-A-00016,Edge of Road - Asphalt,,RRRD-A,4.0,,active,619.0,2020.0,,,,,,,,0.0,20.0,7.0,690804.0,Detailed,,,,,,,,,,RRRD-A,2027.0,2047.0,2067.0,2087.0,,1116.0,Original
+LO-TRN-RDS-RRRD-A-00017,Edge of Road - Asphalt,,RRRD-A,4.0,,active,53.0,2020.0,,,,,,,,0.0,20.0,7.0,59148.0,Detailed,,,,,,,,,,RRRD-A,2027.0,2047.0,2067.0,2087.0,,1116.0,Original
+LO-TRN-RDS-RRRD-A-00018,Edge of Road - Asphalt,,RRRD-A,5.0,,active,1398.0,2020.0,,,,,,,,0.0,20.0,3.0,1560168.0,Detailed,,,,,,,,,,RRRD-A,2023.0,2043.0,2063.0,2083.0,,1116.0,Original
+LO-TRN-RDS-RRRD-A-00019,Edge of Road - Asphalt,,RRRD-A,5.0,,active,175.0,2020.0,,,,,,,,0.0,20.0,3.0,195300.0,Detailed,,,,,,,,,,RRRD-A,2023.0,2043.0,2063.0,2083.0,,1116.0,Original
+LO-TRN-RDS-RRRD-A-00020,Edge of Road - Asphalt,,RRRD-A,5.0,,active,145.0,2020.0,,,,,,,,0.0,20.0,3.0,161820.0,Detailed,,,,,,,,,,RRRD-A,2023.0,2043.0,2063.0,2083.0,,1116.0,Original
+LO-TRN-BAR-STGR-00001,Guiderail,,STGR,4.0,,active,4.0,2020.0,,,,,,,,0.0,60.0,20.0,930.0,Detailed,,,,,,,,,,STGR,2040.0,2100.0,2160.0,2220.0,,232.5,Original
+LO-TRN-BAR-STGR-00002,Guiderail,,STGR,4.0,,active,64.0,2020.0,,,,,,,,0.0,60.0,20.0,14880.0,Detailed,,,,,,,,,,STGR,2040.0,2100.0,2160.0,2220.0,,232.5,Original
+LO-TRN-BAR-STGR-00003,Guiderail,,STGR,3.0,,active,31.0,2020.0,,,,,,,,0.0,60.0,30.0,7207.5,Detailed,,,,,,,,,,STGR,2050.0,2110.0,2170.0,2230.0,,232.5,Original
+LO-TRN-BAR-STGR-00004,Guiderail,,STGR,3.0,,active,8.0,2020.0,,,,,,,,0.0,60.0,30.0,1860.0,Detailed,,,,,,,,,,STGR,2050.0,2110.0,2170.0,2230.0,,232.5,Original
+LO-TRN-BAR-STGR-00005,Guiderail,,STGR,4.0,,active,17.0,2020.0,,,,,,,,0.0,60.0,20.0,3952.5,Detailed,,,,,,,,,,STGR,2040.0,2100.0,2160.0,2220.0,,232.5,Original
+LO-TRN-BAR-STGR-00006,Guiderail,,STGR,4.0,,active,9.0,2020.0,,,,,,,,0.0,60.0,20.0,2092.5,Detailed,,,,,,,,,,STGR,2040.0,2100.0,2160.0,2220.0,,232.5,Original
+LO-TRN-BAR-STGR-00007,Guiderail,,STGR,3.0,,active,128.0,2020.0,,,,,,,,0.0,60.0,30.0,29760.0,Detailed,,,,,,,,,,STGR,2050.0,2110.0,2170.0,2230.0,,232.5,Original
+LO-TRN-BAR-STGR-00008,Guiderail,,STGR,4.0,,active,62.0,2020.0,,,,,,,,0.0,60.0,20.0,14415.0,Detailed,,,,,,,,,,STGR,2040.0,2100.0,2160.0,2220.0,,232.5,Original
+LO-TRN-BAR-STGR-00009,Guiderail,,STGR,3.0,,active,43.0,2020.0,,,,,,,,0.0,60.0,30.0,9997.5,Detailed,,,,,,,,,,STGR,2050.0,2110.0,2170.0,2230.0,,232.5,Original
+LO-TRN-BAR-STGR-00010,Guiderail,,STGR,4.0,,active,105.0,2020.0,,,,,,,,0.0,60.0,20.0,24412.5,Detailed,,,,,,,,,,STGR,2040.0,2100.0,2160.0,2220.0,,232.5,Original
+LO-TRN-BAR-STGR-00011,Guiderail,,STGR,4.0,,active,90.0,2020.0,,,,,,,,0.0,60.0,20.0,20925.0,Detailed,,,,,,,,,,STGR,2040.0,2100.0,2160.0,2220.0,,232.5,Original
+LO-TRN-BAR-STGR-00012,Guiderail,,STGR,5.0,,active,164.0,2020.0,,,,,,,,0.0,60.0,10.0,38130.0,Detailed,,,,,,,,,,STGR,2030.0,2090.0,2150.0,2210.0,,232.5,Original
+LO-TRN-BAR-STGR-00013,Guiderail,,STGR,5.0,,active,54.0,2020.0,,,,,,,,0.0,60.0,10.0,12555.0,Detailed,,,,,,,,,,STGR,2030.0,2090.0,2150.0,2210.0,,232.5,Original
+LO-TRN-BAR-STGR-00014,Guiderail,,STGR,5.0,,active,95.0,2020.0,,,,,,,,0.0,60.0,10.0,22087.5,Detailed,,,,,,,,,,STGR,2030.0,2090.0,2150.0,2210.0,,232.5,Original
+LO-TRN-BAR-STGR-00015,Guiderail,,STGR,5.0,,active,128.0,2020.0,,,,,,,,0.0,60.0,10.0,29760.0,Detailed,,,,,,,,,,STGR,2030.0,2090.0,2150.0,2210.0,,232.5,Original
+LO-TRN-SWT-RRBW-W-00001,Boardwalk Wood,,RRBW-W,4.0,,active,187.0,2020.0,,,,,,,,0.0,20.0,7.0,2898500.0,Detailed,,,,,,,,,,RRBW-W,2027.0,2047.0,2067.0,2087.0,,15500.0,Original
+LO-TRN-SWT-RRBW-W-00002,Boardwalk Wood,,RRBW-W,4.0,,active,17.0,2020.0,,,,,,,,0.0,20.0,7.0,263500.0,Detailed,,,,,,,,,,RRBW-W,2027.0,2047.0,2067.0,2087.0,,15500.0,Original
+LO-TRN-SWT-RRBW-W-00003,Boardwalk Wood,,RRBW-W,4.0,,active,279.0,2020.0,,,,,,,,0.0,20.0,7.0,4324500.0,Detailed,,,,,,,,,,RRBW-W,2027.0,2047.0,2067.0,2087.0,,15500.0,Original
+LO-TRN-SWT-RRBW-W-00004,Boardwalk Wood,,RRBW-W,4.0,,active,66.0,2020.0,,,,,,,,0.0,20.0,7.0,1023000.0,Detailed,,,,,,,,,,RRBW-W,2027.0,2047.0,2067.0,2087.0,,15500.0,Original
+LO-TRN-SWT-RRBW-W-00005,Boardwalk Wood,,RRBW-W,4.0,,active,198.0,2020.0,,,,,,,,0.0,20.0,7.0,3069000.0,Detailed,,,,,,,,,,RRBW-W,2027.0,2047.0,2067.0,2087.0,,15500.0,Original
+LO-TRN-SWT-RRBW-W-00006,Boardwalk Wood,,RRBW-W,4.0,,active,7.0,2020.0,,,,,,,,0.0,20.0,7.0,108500.0,Detailed,,,,,,,,,,RRBW-W,2027.0,2047.0,2067.0,2087.0,,15500.0,Original
+LO-TRN-SWT-RRBW-W-00007,Boardwalk Wood,,RRBW-W,4.0,,active,12.0,2020.0,,,,,,,,0.0,20.0,7.0,186000.0,Detailed,,,,,,,,,,RRBW-W,2027.0,2047.0,2067.0,2087.0,,15500.0,Original
+LO-TRN-SWT-RRBW-W-00008,Boardwalk Wood,,RRBW-W,4.0,,active,92.0,2020.0,,,,,,,,0.0,20.0,7.0,1426000.0,Detailed,,,,,,,,,,RRBW-W,2027.0,2047.0,2067.0,2087.0,,15500.0,Original
+LO-TRN-SWT-RRBW-W-00009,Boardwalk Wood,,RRBW-W,4.0,,active,35.0,2020.0,,,,,,,,0.0,20.0,7.0,542500.0,Detailed,,,,,,,,,,RRBW-W,2027.0,2047.0,2067.0,2087.0,,15500.0,Original
+LO-TRN-SWT-RRBW-W-00010,Boardwalk Wood,,RRBW-W,4.0,,active,3.0,2020.0,,,,,,,,0.0,20.0,7.0,46500.0,Detailed,,,,,,,,,,RRBW-W,2027.0,2047.0,2067.0,2087.0,,15500.0,Original
+LO-TRN-SWT-RRBW-W-00011,Boardwalk Wood,,RRBW-W,4.0,,active,6.0,2020.0,,,,,,,,0.0,20.0,7.0,93000.0,Detailed,,,,,,,,,,RRBW-W,2027.0,2047.0,2067.0,2087.0,,15500.0,Original
+LO-TRN-SWT-RRBW-W-00012,Boardwalk Wood,,RRBW-W,4.0,,active,6.0,2020.0,,,,,,,,0.0,20.0,7.0,93000.0,Detailed,,,,,,,,,,RRBW-W,2027.0,2047.0,2067.0,2087.0,,15500.0,Original
+LO-TRN-SWT-RRBW-W-00013,Boardwalk Wood,,RRBW-W,4.0,,active,6.0,2020.0,,,,,,,,0.0,20.0,7.0,93000.0,Detailed,,,,,,,,,,RRBW-W,2027.0,2047.0,2067.0,2087.0,,15500.0,Original
+LO-TRN-BRG-STPR-00001,Pier (Bridge Support),,STPR,3.0,,active,87.0,2020.0,,,,,,,,0.0,50.0,25.0,0.0,Detailed,,,,,,,,,,STPR,2045.0,2095.0,2145.0,2195.0,,0.0,Original
+LO-TRN-BRG-STPR-00002,Pier (Bridge Support),,STPR,3.0,,active,52.0,2020.0,,,,,,,,0.0,50.0,25.0,0.0,Detailed,,,,,,,,,,STPR,2045.0,2095.0,2145.0,2195.0,,0.0,Original
+LO-TRN-RDS-RRRD-A-00021,Edge of Road - Asphalt,,RRRD-A,4.0,,active,2416.0,2020.0,,,,,,,,0.0,20.0,7.0,2696256.0,Detailed,,,,,,,,,,RRRD-A,2027.0,2047.0,2067.0,2087.0,,1116.0,Original
+LO-TRN-STL-TFSL-00001,Street Light Standard,,TFSL,5.0,,active,1.0,,,,,,,,,,60.0,10.0,13950.0,Detailed,,,,,,,,,,TFSL,2030.0,2090.0,2150.0,2210.0,,13950.0,Original
+LO-TRN-STL-TFSL-00002,Street Light Standard,,TFSL,5.0,,active,1.0,,,,,,,,,,60.0,10.0,13950.0,Detailed,,,,,,,,,,TFSL,2030.0,2090.0,2150.0,2210.0,,13950.0,Original
+LO-TRN-STL-TFSL-00003,Street Light Standard,,TFSL,5.0,,active,1.0,,,,,,,,,,60.0,10.0,13950.0,Detailed,,,,,,,,,,TFSL,2030.0,2090.0,2150.0,2210.0,,13950.0,Original
+LO-TRN-STL-TFSL-00004,Street Light Standard,,TFSL,5.0,,active,1.0,,,,,,,,,,60.0,10.0,13950.0,Detailed,,,,,,,,,,TFSL,2030.0,2090.0,2150.0,2210.0,,13950.0,Original
+LO-TRN-STL-TFSL-00005,Street Light Standard,,TFSL,5.0,,active,1.0,,,,,,,,,,60.0,10.0,13950.0,Detailed,,,,,,,,,,TFSL,2030.0,2090.0,2150.0,2210.0,,13950.0,Original
+LO-TRN-STL-TFSL-00006,Street Light Standard,,TFSL,5.0,,active,1.0,,,,,,,,,,60.0,10.0,13950.0,Detailed,,,,,,,,,,TFSL,2030.0,2090.0,2150.0,2210.0,,13950.0,Original
+LO-TRN-STL-TFSL-00007,Street Light Standard,,TFSL,5.0,,active,1.0,,,,,,,,,,60.0,10.0,13950.0,Detailed,,,,,,,,,,TFSL,2030.0,2090.0,2150.0,2210.0,,13950.0,Original
+LO-TRN-STL-TFSL-00008,Street Light Standard,,TFSL,5.0,,active,1.0,,,,,,,,,,60.0,10.0,13950.0,Detailed,,,,,,,,,,TFSL,2030.0,2090.0,2150.0,2210.0,,13950.0,Original
+LO-TRN-STL-TFSL-00009,Street Light Standard,,TFSL,5.0,,active,1.0,,,,,,,,,,60.0,10.0,13950.0,Detailed,,,,,,,,,,TFSL,2030.0,2090.0,2150.0,2210.0,,13950.0,Original
+LO-TRN-STL-TFSL-00010,Street Light Standard,,TFSL,5.0,,active,1.0,,,,,,,,,,60.0,10.0,13950.0,Detailed,,,,,,,,,,TFSL,2030.0,2090.0,2150.0,2210.0,,13950.0,Original
+LO-TRN-STL-TFSL-00011,Street Light Standard,,TFSL,5.0,,active,1.0,,,,,,,,,,60.0,10.0,13950.0,Detailed,,,,,,,,,,TFSL,2030.0,2090.0,2150.0,2210.0,,13950.0,Original
+LO-TRN-STL-TFSL-00012,Street Light Standard,,TFSL,5.0,,active,1.0,,,,,,,,,,60.0,10.0,13950.0,Detailed,,,,,,,,,,TFSL,2030.0,2090.0,2150.0,2210.0,,13950.0,Original
+LO-TRN-STL-TFSL-00013,Street Light Standard,,TFSL,5.0,,active,1.0,,,,,,,,,,60.0,10.0,13950.0,Detailed,,,,,,,,,,TFSL,2030.0,2090.0,2150.0,2210.0,,13950.0,Original
+LO-TRN-STL-TFSL-00014,Street Light Standard,,TFSL,5.0,,active,1.0,,,,,,,,,,60.0,10.0,13950.0,Detailed,,,,,,,,,,TFSL,2030.0,2090.0,2150.0,2210.0,,13950.0,Original
+LO-TRN-STL-TFSL-00015,Street Light Standard,,TFSL,5.0,,active,1.0,,,,,,,,,,60.0,10.0,13950.0,Detailed,,,,,,,,,,TFSL,2030.0,2090.0,2150.0,2210.0,,13950.0,Original
+LO-TRN-STL-TFSL-00016,Street Light Standard,,TFSL,5.0,,active,1.0,,,,,,,,,,60.0,10.0,13950.0,Detailed,,,,,,,,,,TFSL,2030.0,2090.0,2150.0,2210.0,,13950.0,Original
+LO-TRN-STL-TFSL-00017,Street Light Standard,,TFSL,5.0,,active,1.0,,,,,,,,,,60.0,10.0,13950.0,Detailed,,,,,,,,,,TFSL,2030.0,2090.0,2150.0,2210.0,,13950.0,Original
+LO-TRN-STL-TFSL-00018,Street Light Standard,,TFSL,5.0,,active,1.0,,,,,,,,,,60.0,10.0,13950.0,Detailed,,,,,,,,,,TFSL,2030.0,2090.0,2150.0,2210.0,,13950.0,Original
+LO-TRN-STL-TFSL-00019,Street Light Standard,,TFSL,5.0,,active,1.0,,,,,,,,,,60.0,10.0,13950.0,Detailed,,,,,,,,,,TFSL,2030.0,2090.0,2150.0,2210.0,,13950.0,Original
+LO-TRN-STL-TFSL-00020,Street Light Standard,,TFSL,5.0,,active,1.0,,,,,,,,,,60.0,10.0,13950.0,Detailed,,,,,,,,,,TFSL,2030.0,2090.0,2150.0,2210.0,,13950.0,Original
+LO-TRN-STL-TFSL-00021,Street Light Standard,,TFSL,5.0,,active,1.0,,,,,,,,,,60.0,10.0,13950.0,Detailed,,,,,,,,,,TFSL,2030.0,2090.0,2150.0,2210.0,,13950.0,Original
+LO-TRN-STL-TFSL-00022,Street Light Standard,,TFSL,5.0,,active,1.0,,,,,,,,,,60.0,10.0,13950.0,Detailed,,,,,,,,,,TFSL,2030.0,2090.0,2150.0,2210.0,,13950.0,Original
+LO-TRN-SGN-TFSP-00001,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00002,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00003,Sign Post,,TFSP,4.0,,active,1.0,,,,,,,,,,40.0,13.0,697.5,Detailed,,,,,,,,,,TFSP,2033.0,2073.0,2113.0,2153.0,,697.5,Original
+LO-TRN-SGN-TFSP-00004,Sign Post,,TFSP,4.0,,active,1.0,,,,,,,,,,40.0,13.0,697.5,Detailed,,,,,,,,,,TFSP,2033.0,2073.0,2113.0,2153.0,,697.5,Original
+LO-TRN-SGN-TFSP-00005,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00006,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00007,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00008,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00009,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00010,Sign Post,,TFSP,2.0,,active,1.0,,,,,,,,,,40.0,27.0,697.5,Detailed,,,,,,,,,,TFSP,2047.0,2087.0,2127.0,2167.0,,697.5,Original
+LO-TRN-SGN-TFSP-00011,Sign Post,,TFSP,4.0,,active,1.0,,,,,,,,,,40.0,13.0,697.5,Detailed,,,,,,,,,,TFSP,2033.0,2073.0,2113.0,2153.0,,697.5,Original
+LO-TRN-SGN-TFSP-00012,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00013,Sign Post,,TFSP,4.0,,active,1.0,,,,,,,,,,40.0,13.0,697.5,Detailed,,,,,,,,,,TFSP,2033.0,2073.0,2113.0,2153.0,,697.5,Original
+LO-TRN-SGN-TFSP-00014,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00015,Sign Post,,TFSP,4.0,,active,1.0,,,,,,,,,,40.0,13.0,697.5,Detailed,,,,,,,,,,TFSP,2033.0,2073.0,2113.0,2153.0,,697.5,Original
+LO-TRN-SGN-TFSP-00016,Sign Post,,TFSP,4.0,,active,1.0,,,,,,,,,,40.0,13.0,697.5,Detailed,,,,,,,,,,TFSP,2033.0,2073.0,2113.0,2153.0,,697.5,Original
+LO-TRN-SGN-TFSP-00017,Sign Post,,TFSP,4.0,,active,1.0,,,,,,,,,,40.0,13.0,697.5,Detailed,,,,,,,,,,TFSP,2033.0,2073.0,2113.0,2153.0,,697.5,Original
+LO-TRN-SGN-TFSP-00018,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00019,Sign Post,,TFSP,4.0,,active,1.0,,,,,,,,,,40.0,13.0,697.5,Detailed,,,,,,,,,,TFSP,2033.0,2073.0,2113.0,2153.0,,697.5,Original
+LO-TRN-SGN-TFSP-00020,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00021,Sign Post,,TFSP,4.0,,active,1.0,,,,,,,,,,40.0,13.0,697.5,Detailed,,,,,,,,,,TFSP,2033.0,2073.0,2113.0,2153.0,,697.5,Original
+LO-TRN-SGN-TFSP-00022,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00023,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00024,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00025,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00026,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00027,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00028,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00029,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00030,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00031,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00032,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00033,Sign Post,,TFSP,4.0,,active,1.0,,,,,,,,,,40.0,13.0,697.5,Detailed,,,,,,,,,,TFSP,2033.0,2073.0,2113.0,2153.0,,697.5,Original
+LO-TRN-SGN-TFSP-00034,Sign Post,,TFSP,2.0,,active,1.0,,,,,,,,,,40.0,27.0,697.5,Detailed,,,,,,,,,,TFSP,2047.0,2087.0,2127.0,2167.0,,697.5,Original
+LO-TRN-SGN-TFSP-00035,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00036,Sign Post,,TFSP,4.0,,active,1.0,,,,,,,,,,40.0,13.0,697.5,Detailed,,,,,,,,,,TFSP,2033.0,2073.0,2113.0,2153.0,,697.5,Original
+LO-TRN-SGN-TFSP-00037,Sign Post,,TFSP,4.0,,active,1.0,,,,,,,,,,40.0,13.0,697.5,Detailed,,,,,,,,,,TFSP,2033.0,2073.0,2113.0,2153.0,,697.5,Original
+LO-TRN-SGN-TFSP-00038,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00039,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00040,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00041,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00042,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00043,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00044,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00045,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00046,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00047,Sign Post,,TFSP,4.0,,active,1.0,,,,,,,,,,40.0,13.0,697.5,Detailed,,,,,,,,,,TFSP,2033.0,2073.0,2113.0,2153.0,,697.5,Original
+LO-TRN-SGN-TFSP-00048,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00049,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00050,Sign Post,,TFSP,4.0,,active,1.0,,,,,,,,,,40.0,13.0,697.5,Detailed,,,,,,,,,,TFSP,2033.0,2073.0,2113.0,2153.0,,697.5,Original
+LO-TRN-SGN-TFSP-00051,Sign Post,,TFSP,4.0,,active,1.0,,,,,,,,,,40.0,13.0,697.5,Detailed,,,,,,,,,,TFSP,2033.0,2073.0,2113.0,2153.0,,697.5,Original
+LO-TRN-SGN-TFSP-00052,Sign Post,,TFSP,4.0,,active,1.0,,,,,,,,,,40.0,13.0,697.5,Detailed,,,,,,,,,,TFSP,2033.0,2073.0,2113.0,2153.0,,697.5,Original
+LO-TRN-SGN-TFSP-00053,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00054,Sign Post,,TFSP,4.0,,active,1.0,,,,,,,,,,40.0,13.0,697.5,Detailed,,,,,,,,,,TFSP,2033.0,2073.0,2113.0,2153.0,,697.5,Original
+LO-TRN-SGN-TFSP-00055,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00056,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00057,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00058,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00059,Sign Post,,TFSP,4.0,,active,1.0,,,,,,,,,,40.0,13.0,697.5,Detailed,,,,,,,,,,TFSP,2033.0,2073.0,2113.0,2153.0,,697.5,Original
+LO-TRN-SGN-TFSP-00060,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00061,Sign Post,,TFSP,4.0,,active,1.0,,,,,,,,,,40.0,13.0,697.5,Detailed,,,,,,,,,,TFSP,2033.0,2073.0,2113.0,2153.0,,697.5,Original
+LO-TRN-SGN-TFSP-00062,Sign Post,,TFSP,4.0,,active,1.0,,,,,,,,,,40.0,13.0,697.5,Detailed,,,,,,,,,,TFSP,2033.0,2073.0,2113.0,2153.0,,697.5,Original
+LO-TRN-SGN-TFSP-00063,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00064,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00065,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00066,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00067,Sign Post,,TFSP,4.0,,active,1.0,,,,,,,,,,40.0,13.0,697.5,Detailed,,,,,,,,,,TFSP,2033.0,2073.0,2113.0,2153.0,,697.5,Original
+LO-TRN-SGN-TFSP-00068,Sign Post,,TFSP,4.0,,active,1.0,,,,,,,,,,40.0,13.0,697.5,Detailed,,,,,,,,,,TFSP,2033.0,2073.0,2113.0,2153.0,,697.5,Original
+LO-TRN-SGN-TFSP-00069,Sign Post,,TFSP,4.0,,active,1.0,,,,,,,,,,40.0,13.0,697.5,Detailed,,,,,,,,,,TFSP,2033.0,2073.0,2113.0,2153.0,,697.5,Original
+LO-TRN-SGN-TFSP-00070,Sign Post,,TFSP,2.0,,active,1.0,,,,,,,,,,40.0,27.0,697.5,Detailed,,,,,,,,,,TFSP,2047.0,2087.0,2127.0,2167.0,,697.5,Original
+LO-TRN-SGN-TFSP-00071,Sign Post,,TFSP,4.0,,active,1.0,,,,,,,,,,40.0,13.0,697.5,Detailed,,,,,,,,,,TFSP,2033.0,2073.0,2113.0,2153.0,,697.5,Original
+LO-TRN-SGN-TFSP-00072,Sign Post,,TFSP,4.0,,active,1.0,,,,,,,,,,40.0,13.0,697.5,Detailed,,,,,,,,,,TFSP,2033.0,2073.0,2113.0,2153.0,,697.5,Original
+LO-TRN-SGN-TFSP-00073,Sign Post,,TFSP,4.0,,active,1.0,,,,,,,,,,40.0,13.0,697.5,Detailed,,,,,,,,,,TFSP,2033.0,2073.0,2113.0,2153.0,,697.5,Original
+LO-TRN-SGN-TFSP-00074,Sign Post,,TFSP,4.0,,active,1.0,,,,,,,,,,40.0,13.0,697.5,Detailed,,,,,,,,,,TFSP,2033.0,2073.0,2113.0,2153.0,,697.5,Original
+LO-TRN-SGN-TFSP-00075,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00076,Sign Post,,TFSP,2.0,,active,1.0,,,,,,,,,,40.0,27.0,697.5,Detailed,,,,,,,,,,TFSP,2047.0,2087.0,2127.0,2167.0,,697.5,Original
+LO-TRN-SGN-TFSP-00077,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00078,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00079,Sign Post,,TFSP,4.0,,active,1.0,,,,,,,,,,40.0,13.0,697.5,Detailed,,,,,,,,,,TFSP,2033.0,2073.0,2113.0,2153.0,,697.5,Original
+LO-TRN-SGN-TFSP-00080,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00081,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00082,Sign Post,,TFSP,4.0,,active,1.0,,,,,,,,,,40.0,13.0,697.5,Detailed,,,,,,,,,,TFSP,2033.0,2073.0,2113.0,2153.0,,697.5,Original
+LO-TRN-SGN-TFSP-00083,Sign Post,,TFSP,2.0,,active,1.0,,,,,,,,,,40.0,27.0,697.5,Detailed,,,,,,,,,,TFSP,2047.0,2087.0,2127.0,2167.0,,697.5,Original
+LO-TRN-SGN-TFSP-00084,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00085,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00086,Sign Post,,TFSP,2.0,,active,1.0,,,,,,,,,,40.0,27.0,697.5,Detailed,,,,,,,,,,TFSP,2047.0,2087.0,2127.0,2167.0,,697.5,Original
+LO-TRN-SGN-TFSP-00087,Sign Post,,TFSP,4.0,,active,1.0,,,,,,,,,,40.0,13.0,697.5,Detailed,,,,,,,,,,TFSP,2033.0,2073.0,2113.0,2153.0,,697.5,Original
+LO-TRN-SGN-TFSP-00088,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00089,Sign Post,,TFSP,4.0,,active,1.0,,,,,,,,,,40.0,13.0,697.5,Detailed,,,,,,,,,,TFSP,2033.0,2073.0,2113.0,2153.0,,697.5,Original
+LO-TRN-SGN-TFSP-00090,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00091,Sign Post,,TFSP,3.0,,active,1.0,,,,,,,,,,40.0,20.0,697.5,Detailed,,,,,,,,,,TFSP,2040.0,2080.0,2120.0,2160.0,,697.5,Original
+LO-TRN-SGN-TFSP-00092,Sign Post,,TFSP,4.0,,active,1.0,,,,,,,,,,40.0,13.0,697.5,Detailed,,,,,,,,,,TFSP,2033.0,2073.0,2113.0,2153.0,,697.5,Original
+LO-WWC-GPWW-GRVPSA-00001,Gravity Pipe,,GRVPSA,4.0,,active,16.0,,PVC,,,,,,,,80.0,26.0,11160.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00002,Gravity Pipe,,GRVPSA,4.0,,active,65.0,,PVC,,,,,,,,80.0,26.0,45337.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00003,Gravity Pipe,,GRVPSA,4.0,,active,79.0,,PVC,,,,,,,,80.0,26.0,55102.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00004,Gravity Pipe,,GRVPSA,4.0,,active,24.0,,PVC,,,,,,,,80.0,26.0,16740.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00005,Gravity Pipe,,GRVPSA,4.0,,active,72.0,,PVC,,,,,,,,80.0,26.0,50220.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00006,Gravity Pipe,,GRVPSA,4.0,,active,3.0,,PVC,,,,,,,,80.0,26.0,2092.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00007,Gravity Pipe,,GRVPSA,4.0,,active,11.0,,PVC,,,,,,,,80.0,26.0,7672.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00008,Gravity Pipe,,GRVPSA,4.0,,active,62.0,,PVC,,,,,,,,80.0,26.0,43245.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00009,Gravity Pipe,,GRVPSA,4.0,,active,92.0,,PVC,,,,,,,,80.0,26.0,64170.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00010,Gravity Pipe,,GRVPSA,4.0,,active,95.0,,PVC,,,,,,,,80.0,26.0,66262.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00011,Gravity Pipe,,GRVPSA,4.0,,active,138.0,,PVC,,,,,,,,80.0,26.0,96255.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00012,Gravity Pipe,,GRVPSA,4.0,,active,67.0,,PVC,,,,,,,,80.0,26.0,46732.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00013,Gravity Pipe,,GRVPSA,4.0,,active,16.0,,PVC,,,,,,,,80.0,26.0,11160.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00014,Gravity Pipe,,GRVPSA,4.0,,active,6.0,,PVC,,,,,,,,80.0,26.0,4185.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00015,Gravity Pipe,,GRVPSA,4.0,,active,69.0,,PVC,,,,,,,,80.0,26.0,48127.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00016,Gravity Pipe,,GRVPSA,4.0,,active,66.0,,PVC,,,,,,,,80.0,26.0,46035.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00017,Gravity Pipe,,GRVPSA,4.0,,active,17.0,,PVC,,,,,,,,80.0,26.0,13175.0,Detailed,,,,,,,,,,GRVPSA250,2046.0,2126.0,2206.0,2286.0,250.0,775.0,Original
+LO-WWC-GPWW-GRVPSA-00018,Gravity Pipe,,GRVPSA,4.0,,active,28.0,,PVC,,,,,,,,80.0,26.0,21700.0,Detailed,,,,,,,,,,GRVPSA250,2046.0,2126.0,2206.0,2286.0,250.0,775.0,Original
+LO-WWC-GPWW-GRVPSA-00019,Gravity Pipe,,GRVPSA,4.0,,active,88.0,,PVC,,,,,,,,80.0,26.0,68200.0,Detailed,,,,,,,,,,GRVPSA250,2046.0,2126.0,2206.0,2286.0,250.0,775.0,Original
+LO-WWC-GPWW-GRVPSA-00020,Gravity Pipe,,GRVPSA,4.0,,active,63.0,,PVC,,,,,,,,80.0,26.0,48825.0,Detailed,,,,,,,,,,GRVPSA250,2046.0,2126.0,2206.0,2286.0,250.0,775.0,Original
+LO-WWC-GPWW-GRVPSA-00021,Gravity Pipe,,GRVPSA,4.0,,active,80.0,,PVC,,,,,,,,80.0,26.0,55800.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00022,Gravity Pipe,,GRVPSA,4.0,,active,109.0,,PVC,,,,,,,,80.0,26.0,76027.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00023,Gravity Pipe,,GRVPSA,4.0,,active,91.0,,PVC,,,,,,,,80.0,26.0,63472.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00024,Gravity Pipe,,GRVPSA,4.0,,active,47.0,,PVC,,,,,,,,80.0,26.0,32782.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00025,Gravity Pipe,,GRVPSA,4.0,,active,93.0,,PVC,,,,,,,,80.0,26.0,64867.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00026,Gravity Pipe,,GRVPSA,4.0,,active,69.0,,PVC,,,,,,,,80.0,26.0,48127.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00027,Gravity Pipe,,GRVPSA,4.0,,active,75.0,,PVC,,,,,,,,80.0,26.0,52312.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00028,Gravity Pipe,,GRVPSA,4.0,,active,58.0,,PVC,,,,,,,,80.0,26.0,40455.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00029,Gravity Pipe,,GRVPSA,4.0,,active,91.0,,PVC,,,,,,,,80.0,26.0,63472.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00030,Gravity Pipe,,GRVPSA,4.0,,active,92.0,,PVC,,,,,,,,80.0,26.0,64170.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00031,Gravity Pipe,,GRVPSA,4.0,,active,83.0,,PVC,,,,,,,,80.0,26.0,57892.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00032,Gravity Pipe,,GRVPSA,4.0,,active,72.0,,PVC,,,,,,,,80.0,26.0,50220.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00033,Gravity Pipe,,GRVPSA,4.0,,active,92.0,,PVC,,,,,,,,80.0,26.0,64170.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00034,Gravity Pipe,,GRVPSA,4.0,,active,93.0,,PVC,,,,,,,,80.0,26.0,64867.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00035,Gravity Pipe,,GRVPSA,4.0,,active,81.0,,PVC,,,,,,,,80.0,26.0,56497.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00036,Gravity Pipe,,GRVPSA,4.0,,active,75.0,,PVC,,,,,,,,80.0,26.0,52312.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00037,Gravity Pipe,,GRVPSA,4.0,,active,55.0,,PVC,,,,,,,,80.0,26.0,38362.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00038,Gravity Pipe,,GRVPSA,4.0,,active,39.0,,PVC,,,,,,,,80.0,26.0,27202.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00039,Gravity Pipe,,GRVPSA,4.0,,active,3.0,,PVC,,,,,,,,80.0,26.0,2092.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00040,Gravity Pipe,,GRVPSA,4.0,,active,14.0,,PVC,,,,,,,,80.0,26.0,9765.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00041,Gravity Pipe,,GRVPSA,4.0,,active,99.0,,PVC,,,,,,,,80.0,26.0,69052.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00042,Gravity Pipe,,GRVPSA,4.0,,active,91.0,,PVC,,,,,,,,80.0,26.0,63472.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00043,Gravity Pipe,,GRVPSA,4.0,,active,40.0,,PVC,,,,,,,,80.0,26.0,27900.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00044,Gravity Pipe,,GRVPSA,4.0,,active,81.0,,PVC,,,,,,,,80.0,26.0,56497.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00045,Gravity Pipe,,GRVPSA,4.0,,active,42.0,,PVC,,,,,,,,80.0,26.0,29295.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00046,Gravity Pipe,,GRVPSA,4.0,,active,97.0,,PVC,,,,,,,,80.0,26.0,67657.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00047,Gravity Pipe,,GRVPSA,4.0,,active,93.0,,PVC,,,,,,,,80.0,26.0,64867.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00048,Gravity Pipe,,GRVPSA,4.0,,active,88.0,,PVC,,,,,,,,80.0,26.0,61380.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00049,Gravity Pipe,,GRVPSA,4.0,,active,50.0,,PVC,,,,,,,,80.0,26.0,34875.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00050,Gravity Pipe,,GRVPSA,4.0,,active,62.0,,PVC,,,,,,,,80.0,26.0,43245.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00051,Gravity Pipe,,GRVPSA,4.0,,active,62.0,,PVC,,,,,,,,80.0,26.0,43245.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00052,Gravity Pipe,,GRVPSA,4.0,,active,96.0,,PVC,,,,,,,,80.0,26.0,66960.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00053,Gravity Pipe,,GRVPSA,4.0,,active,43.0,,PVC,,,,,,,,80.0,26.0,29992.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00054,Gravity Pipe,,GRVPSA,4.0,,active,80.0,,PVC,,,,,,,,80.0,26.0,55800.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00055,Gravity Pipe,,GRVPSA,4.0,,active,90.0,,PVC,,,,,,,,80.0,26.0,62775.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00056,Gravity Pipe,,GRVPSA,4.0,,active,95.0,,PVC,,,,,,,,80.0,26.0,66262.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00057,Gravity Pipe,,GRVPSA,4.0,,active,45.0,,PVC,,,,,,,,80.0,26.0,31387.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00058,Gravity Pipe,,GRVPSA,4.0,,active,82.0,,PVC,,,,,,,,80.0,26.0,57195.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00059,Gravity Pipe,,GRVPSA,4.0,,active,3.0,,PVC,,,,,,,,80.0,26.0,2092.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00060,Gravity Pipe,,GRVPSA,4.0,,active,66.0,,PVC,,,,,,,,80.0,26.0,46035.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00061,Gravity Pipe,,GRVPSA,4.0,,active,63.0,,PVC,,,,,,,,80.0,26.0,43942.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00062,Gravity Pipe,,GRVPSA,4.0,,active,101.0,,PVC,,,,,,,,80.0,26.0,70447.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00063,Gravity Pipe,,GRVPSA,4.0,,active,91.0,,PVC,,,,,,,,80.0,26.0,63472.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00064,Gravity Pipe,,GRVPSA,4.0,,active,92.0,,PVC,,,,,,,,80.0,26.0,64170.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00065,Gravity Pipe,,GRVPSA,4.0,,active,13.0,,PVC,,,,,,,,80.0,26.0,9067.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00066,Gravity Pipe,,GRVPSA,4.0,,active,4.0,,PVC,,,,,,,,80.0,26.0,2790.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00067,Gravity Pipe,,GRVPSA,4.0,,active,89.0,,PVC,,,,,,,,80.0,26.0,62077.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00068,Gravity Pipe,,GRVPSA,4.0,,active,34.0,,PVC,,,,,,,,80.0,26.0,23715.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00069,Gravity Pipe,,GRVPSA,4.0,,active,27.0,,PVC,,,,,,,,80.0,26.0,18832.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00070,Gravity Pipe,,GRVPSA,4.0,,active,62.0,,PVC,,,,,,,,80.0,26.0,43245.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00071,Gravity Pipe,,GRVPSA,4.0,,active,65.0,,PVC,,,,,,,,80.0,26.0,45337.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00072,Gravity Pipe,,GRVPSA,4.0,,active,62.0,,PVC,,,,,,,,80.0,26.0,43245.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00073,Gravity Pipe,,GRVPSA,4.0,,active,73.0,,PVC,,,,,,,,80.0,26.0,50917.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00074,Gravity Pipe,,GRVPSA,4.0,,active,77.0,,PVC,,,,,,,,80.0,26.0,53707.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00075,Gravity Pipe,,GRVPSA,4.0,,active,75.0,,PVC,,,,,,,,80.0,26.0,52312.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00076,Gravity Pipe,,GRVPSA,4.0,,active,75.0,,PVC,,,,,,,,80.0,26.0,52312.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00077,Gravity Pipe,,GRVPSA,4.0,,active,42.0,,PVC,,,,,,,,80.0,26.0,29295.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00078,Gravity Pipe,,GRVPSA,4.0,,active,54.0,,PVC,,,,,,,,80.0,26.0,37665.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00079,Gravity Pipe,,GRVPSA,4.0,,active,31.0,,PVC,,,,,,,,80.0,26.0,21622.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00080,Gravity Pipe,,GRVPSA,4.0,,active,4.0,,PVC,,,,,,,,80.0,26.0,2790.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00081,Gravity Pipe,,GRVPSA,4.0,,active,87.0,,PVC,,,,,,,,80.0,26.0,60682.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00082,Gravity Pipe,,GRVPSA,4.0,,active,49.0,,PVC,,,,,,,,80.0,26.0,34177.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00083,Gravity Pipe,,GRVPSA,4.0,,active,79.0,,PVC,,,,,,,,80.0,26.0,55102.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00084,Gravity Pipe,,GRVPSA,4.0,,active,83.0,,PVC,,,,,,,,80.0,26.0,57892.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00085,Gravity Pipe,,GRVPSA,4.0,,active,76.0,,PVC,,,,,,,,80.0,26.0,53010.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00086,Gravity Pipe,,GRVPSA,4.0,,active,36.0,,PVC,,,,,,,,80.0,26.0,25110.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00087,Gravity Pipe,,GRVPSA,4.0,,active,91.0,,PVC,,,,,,,,80.0,26.0,63472.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00088,Gravity Pipe,,GRVPSA,4.0,,active,80.0,,PVC,,,,,,,,80.0,26.0,55800.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00089,Gravity Pipe,,GRVPSA,4.0,,active,94.0,,PVC,,,,,,,,80.0,26.0,65565.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00090,Gravity Pipe,,GRVPSA,4.0,,active,78.0,,PVC,,,,,,,,80.0,26.0,54405.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00091,Gravity Pipe,,GRVPSA,4.0,,active,5.0,,PVC,,,,,,,,80.0,26.0,3487.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00092,Gravity Pipe,,GRVPSA,4.0,,active,26.0,,PVC,,,,,,,,80.0,26.0,18135.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00093,Gravity Pipe,,GRVPSA,4.0,,active,98.0,,PVC,,,,,,,,80.0,26.0,68355.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00094,Gravity Pipe,,GRVPSA,4.0,,active,94.0,,PVC,,,,,,,,80.0,26.0,65565.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00095,Gravity Pipe,,GRVPSA,4.0,,active,124.0,,PVC,,,,,,,,80.0,26.0,86490.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00096,Gravity Pipe,,GRVPSA,4.0,,active,62.0,,PVC,,,,,,,,80.0,26.0,43245.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00097,Gravity Pipe,,GRVPSA,4.0,,active,92.0,,PVC,,,,,,,,80.0,26.0,64170.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00098,Gravity Pipe,,GRVPSA,4.0,,active,92.0,,PVC,,,,,,,,80.0,26.0,64170.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00099,Gravity Pipe,,GRVPSA,4.0,,active,64.0,,PVC,,,,,,,,80.0,26.0,44640.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00100,Gravity Pipe,,GRVPSA,4.0,,active,64.0,,PVC,,,,,,,,80.0,26.0,44640.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00101,Gravity Pipe,,GRVPSA,4.0,,active,64.0,,PVC,,,,,,,,80.0,26.0,44640.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00102,Gravity Pipe,,GRVPSA,4.0,,active,61.0,,PVC,,,,,,,,80.0,26.0,42547.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00103,Gravity Pipe,,GRVPSA,4.0,,active,60.0,,PVC,,,,,,,,80.0,26.0,41850.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00104,Gravity Pipe,,GRVPSA,4.0,,active,99.0,,PVC,,,,,,,,80.0,26.0,69052.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00105,Gravity Pipe,,GRVPSA,4.0,,active,91.0,,PVC,,,,,,,,80.0,26.0,63472.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00106,Gravity Pipe,,GRVPSA,4.0,,active,60.0,,PVC,,,,,,,,80.0,26.0,41850.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00107,Gravity Pipe,,GRVPSA,4.0,,active,91.0,,PVC,,,,,,,,80.0,26.0,63472.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00108,Gravity Pipe,,GRVPSA,4.0,,active,91.0,,PVC,,,,,,,,80.0,26.0,63472.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00109,Gravity Pipe,,GRVPSA,4.0,,active,91.0,,PVC,,,,,,,,80.0,26.0,63472.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00110,Gravity Pipe,,GRVPSA,4.0,,active,60.0,,PVC,,,,,,,,80.0,26.0,41850.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00111,Gravity Pipe,,GRVPSA,4.0,,active,92.0,,PVC,,,,,,,,80.0,26.0,64170.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00112,Gravity Pipe,,GRVPSA,4.0,,active,91.0,,PVC,,,,,,,,80.0,26.0,63472.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00113,Gravity Pipe,,GRVPSA,4.0,,active,92.0,,PVC,,,,,,,,80.0,26.0,64170.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00114,Gravity Pipe,,GRVPSA,4.0,,active,4.0,,PVC,,,,,,,,80.0,26.0,2790.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00115,Gravity Pipe,,GRVPSA,4.0,,active,82.0,,PVC,,,,,,,,80.0,26.0,57195.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00116,Gravity Pipe,,GRVPSA,4.0,,active,93.0,,PVC,,,,,,,,80.0,26.0,64867.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00117,Gravity Pipe,,GRVPSA,4.0,,active,86.0,,PVC,,,,,,,,80.0,26.0,59985.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00118,Gravity Pipe,,GRVPSA,4.0,,active,91.0,,PVC,,,,,,,,80.0,26.0,63472.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00119,Gravity Pipe,,GRVPSA,4.0,,active,90.0,,PVC,,,,,,,,80.0,26.0,62775.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00120,Gravity Pipe,,GRVPSA,4.0,,active,8.0,,PVC,,,,,,,,80.0,26.0,5580.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00121,Gravity Pipe,,GRVPSA,4.0,,active,82.0,,PVC,,,,,,,,80.0,26.0,57195.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00122,Gravity Pipe,,GRVPSA,4.0,,active,55.0,,PVC,,,,,,,,80.0,26.0,38362.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00123,Gravity Pipe,,GRVPSA,4.0,,active,108.0,,PVC,,,,,,,,80.0,26.0,75330.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00124,Gravity Pipe,,GRVPSA,4.0,,active,86.0,,PVC,,,,,,,,80.0,26.0,59985.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00125,Gravity Pipe,,GRVPSA,4.0,,active,94.0,,PVC,,,,,,,,80.0,26.0,65565.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00126,Gravity Pipe,,GRVPSA,4.0,,active,66.0,,PVC,,,,,,,,80.0,26.0,46035.0,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00127,Gravity Pipe,,GRVPSA,4.0,,active,75.0,,PVC,,,,,,,,80.0,26.0,52312.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00128,Gravity Pipe,,GRVPSA,4.0,,active,47.0,,PVC,,,,,,,,80.0,26.0,32782.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00129,Gravity Pipe,,GRVPSA,4.0,,active,51.0,,PVC,,,,,,,,80.0,26.0,35572.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-GPWW-GRVPSA-00130,Gravity Pipe,,GRVPSA,4.0,,active,3.0,,PVC,,,,,,,,80.0,26.0,2092.5,Detailed,,,,,,,,,,GRVPSA200,2046.0,2126.0,2206.0,2286.0,200.0,697.5,Original
+LO-WWC-PSP-WWFRCM-00001,Wastewater Forcemain,,WWFRCM,4.0,,active,175.0,,PVC,,,,,,,,80.0,26.0,67812.5,Detailed,,,,,,,,,,WWFRCM100,2046.0,2126.0,2206.0,2286.0,100.0,387.5,Original
+LO-WWC-PSP-WWFRCM-00002,Wastewater Forcemain,,WWFRCM,4.0,,active,185.0,,PVC,,,,,,,,80.0,26.0,71687.5,Detailed,,,,,,,,,,WWFRCM100,2046.0,2126.0,2206.0,2286.0,100.0,387.5,Original
+LO-WWC-PSP-WWFRCM-00003,Wastewater Forcemain,,WWFRCM,4.0,,active,170.0,,PVC,,,,,,,,80.0,26.0,65875.0,Detailed,,,,,,,,,,WWFRCM100,2046.0,2126.0,2206.0,2286.0,100.0,387.5,Original
+LO-WWC-PSP-WWFRCM-00004,Wastewater Forcemain,,WWFRCM,4.0,,active,174.0,,PVC,,,,,,,,80.0,26.0,80910.0,Detailed,,,,,,,,,,WWFRCM150,2046.0,2126.0,2206.0,2286.0,150.0,465.0,Original
+LO-WWC-PSP-WWFRCM-00005,Wastewater Forcemain,,WWFRCM,4.0,,active,133.0,,PVC,,,,,,,,80.0,26.0,51537.5,Detailed,,,,,,,,,,WWFRCM100,2046.0,2126.0,2206.0,2286.0,100.0,387.5,Original
+LO-WWC-PSP-WWFRCM-00006,Wastewater Forcemain,,WWFRCM,4.0,,active,85.0,,PVC,,,,,,,,80.0,26.0,32937.5,Detailed,,,,,,,,,,WWFRCM100,2046.0,2126.0,2206.0,2286.0,100.0,387.5,Original
+LO-WWC-PSP-WWFRCM-00007,Wastewater Forcemain,,WWFRCM,4.0,,active,112.0,,PVC,,,,,,,,80.0,26.0,43400.0,Detailed,,,,,,,,,,WWFRCM100,2046.0,2126.0,2206.0,2286.0,100.0,387.5,Original
+LO-WWC-PSP-WWFRCM-00008,Wastewater Forcemain,,WWFRCM,4.0,,active,337.0,,PVC,,,,,,,,80.0,26.0,130587.5,Detailed,,,,,,,,,,WWFRCM100,2046.0,2126.0,2206.0,2286.0,100.0,387.5,Original
+LO-WWC-PSP-WWFRCM-00009,Wastewater Forcemain,,WWFRCM,4.0,,active,284.0,,PVC,,,,,,,,80.0,26.0,143065.0,Detailed,,,,,,,,,,WWFRCM200,2046.0,2126.0,2206.0,2286.0,200.0,503.75,Original
+LO-WWC-PSP-WWFRCM-00010,Wastewater Forcemain,,WWFRCM,4.0,,active,82.0,,PVC,,,,,,,,80.0,26.0,31775.0,Detailed,,,,,,,,,,WWFRCM100,2046.0,2126.0,2206.0,2286.0,100.0,387.5,Original
+LO-WWC-PSP-WWFRCM-00011,Wastewater Forcemain,,WWFRCM,4.0,,active,278.0,,PVC,,,,,,,,80.0,26.0,107725.0,Detailed,,,,,,,,,,WWFRCM100,2046.0,2126.0,2206.0,2286.0,100.0,387.5,Original
+LO-WWC-PSP-WWFRCM-00012,Wastewater Forcemain,,WWFRCM,4.0,,active,620.0,,PVC,,,,,,,,80.0,26.0,240250.0,Detailed,,,,,,,,,,WWFRCM100,2046.0,2126.0,2206.0,2286.0,100.0,387.5,Original
+LO-WWC-PSP-WWFRCM-00013,Wastewater Forcemain,,WWFRCM,4.0,,active,375.0,,PVC,,,,,,,,80.0,26.0,145312.5,Detailed,,,,,,,,,,WWFRCM100,2046.0,2126.0,2206.0,2286.0,100.0,387.5,Original
+LO-WWC-LPS-PMPS-00001,Pump Station,,PMPS,4.0,,active,1.0,,,,,,,,,,50.0,17.0,186000.0,Detailed,,,,,,,,,,PMPS,2037.0,2087.0,2137.0,2187.0,,186000.0,Original
+LO-WWC-LPS-PMPS-00002,Pump Station,,PMPS,4.0,,active,1.0,,,,,,,,,,50.0,17.0,186000.0,Detailed,,,,,,,,,,PMPS,2037.0,2087.0,2137.0,2187.0,,186000.0,Original
+LO-WWC-LPS-PMPS-00003,Pump Station,,PMPS,3.0,,active,1.0,,,,,,,,,,50.0,25.0,186000.0,Detailed,,,,,,,,,,PMPS,2045.0,2095.0,2145.0,2195.0,,186000.0,Original
+LO-WWC-LPS-PMPS-00004,Pump Station,,PMPS,3.0,,active,1.0,,,,,,,,,,50.0,25.0,186000.0,Detailed,,,,,,,,,,PMPS,2045.0,2095.0,2145.0,2195.0,,186000.0,Original
+LO-WWC-LPS-PMPS-00005,Pump Station,,PMPS,4.0,,active,1.0,,,,,,,,,,50.0,17.0,186000.0,Detailed,,,,,,,,,,PMPS,2037.0,2087.0,2137.0,2187.0,,186000.0,Original
+LO-WWC-LPS-PMPS-00006,Pump Station,,PMPS,3.0,,active,1.0,,,,,,,,,,50.0,25.0,186000.0,Detailed,,,,,,,,,,PMPS,2045.0,2095.0,2145.0,2195.0,,186000.0,Original
+LO-WWC-LPS-PMPS-00007,Pump Station,,PMPS,3.0,,active,1.0,,,,,,,,,,50.0,25.0,186000.0,Detailed,,,,,,,,,,PMPS,2045.0,2095.0,2145.0,2195.0,,186000.0,Original
+LO-WWC-LPS-PMPS-00008,Pump Station,,PMPS,3.0,,active,1.0,,,,,,,,,,50.0,25.0,186000.0,Detailed,,,,,,,,,,PMPS,2045.0,2095.0,2145.0,2195.0,,186000.0,Original
+LO-WWC-LPS-PMPS-00009,Pump Station,,PMPS,4.0,,active,1.0,,,,,,,,,,50.0,17.0,186000.0,Detailed,,,,,,,,,,PMPS,2037.0,2087.0,2137.0,2187.0,,186000.0,Original
+LO-WWC-LPS-PMPS-00010,Pump Station,,PMPS,3.0,,active,1.0,,,,,,,,,,50.0,25.0,186000.0,Detailed,,,,,,,,,,PMPS,2045.0,2095.0,2145.0,2195.0,,186000.0,Original
+LO-WWC-LPS-PMPS-00011,Pump Station,,PMPS,4.0,,active,1.0,,,,,,,,,,50.0,17.0,186000.0,Detailed,,,,,,,,,,PMPS,2037.0,2087.0,2137.0,2187.0,,186000.0,Original
+LO-WWC-LPS-PMPS-00012,Pump Station,,PMPS,3.0,,active,1.0,,,,,,,,,,50.0,25.0,186000.0,Detailed,,,,,,,,,,PMPS,2045.0,2095.0,2145.0,2195.0,,186000.0,Original
+LO-WWC-LPS-PMPS-00013,Pump Station,,PMPS,3.0,,active,1.0,,,,,,,,,,50.0,25.0,186000.0,Detailed,,,,,,,,,,PMPS,2045.0,2095.0,2145.0,2195.0,,186000.0,Original
+LO-WWC-MHWW-MHSA-00001,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00002,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00003,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00004,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00005,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00006,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00007,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00008,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00009,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00010,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00011,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00012,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00013,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00014,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00015,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00016,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00017,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00018,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00019,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00020,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00021,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00022,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00023,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHCO-00001,MANHOLE COMBINED,,MHCO,3.0,,active,1.0,,,,,,,,,,80.0,40.0,9300.0,Detailed,,,,,,,,,,MHCO,2060.0,2140.0,2220.0,2300.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00024,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00025,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00026,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00027,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00028,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00029,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00030,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00031,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00032,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00033,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00034,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00035,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00036,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00037,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00038,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00039,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00040,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00041,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00042,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00043,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00044,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00045,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00046,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00047,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00048,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00049,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00050,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00051,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00052,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00053,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00054,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00055,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00056,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00057,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00058,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00059,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00060,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00061,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00062,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00063,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00064,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00065,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00066,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00067,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00068,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00069,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00070,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00071,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00072,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00073,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00074,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00075,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00076,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00077,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00078,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00079,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00080,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00081,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00082,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00083,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00084,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00085,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00086,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00087,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00088,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00089,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00090,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00091,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00092,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00093,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00094,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00095,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00096,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00097,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00098,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00099,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00100,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00101,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00102,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00103,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00104,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00105,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00106,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00107,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00108,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00109,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00110,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00111,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00112,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00113,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00114,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00115,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00116,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00117,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00118,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00119,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00120,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00121,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00122,MANHOLE SANITARY,,MHSA,4.0,,active,1.0,,,,,,,,,,80.0,26.0,9300.0,Detailed,,,,,,,,,,MHSA,2046.0,2126.0,2206.0,2286.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00123,MANHOLE SANITARY,,MHSA,5.0,,active,1.0,,,,,,,,,,80.0,14.0,9300.0,Detailed,,,,,,,,,,MHSA,2034.0,2114.0,2194.0,2274.0,,9300.0,Original
+LO-WWC-MHWW-MHSA-00124,MANHOLE SANITARY,,MHSA,3.0,,active,1.0,,,,,,,,,,80.0,40.0,9300.0,Detailed,,,,,,,,,,MHSA,2060.0,2140.0,2220.0,2300.0,,9300.0,Original
+LO-WWC-TRFWW-WWSPMP-00001,Submersible Pump,LO-WWC-TRFWW-WWCTF-00001,WWSPMP,4.0,,active,1.0,,,,Pump 1,,,,,,20.0,7.0,23250.0,Detailed,,,,,,,,,,WWSPMP,2027.0,2047.0,2067.0,2087.0,,23250.0,Original
+LO-WWC-TRFWW-WWSPMP-00002,Submersible Pump,LO-WWC-TRFWW-WWCTF-00001,WWSPMP,4.0,,active,1.0,,,,pump 2,,,,,,20.0,7.0,23250.0,Detailed,,,,,,,,,,WWSPMP,2027.0,2047.0,2067.0,2087.0,,23250.0,Original
+LO-WWC-TRFWW-WWSPMP-00003,Submersible Pump,LO-WWC-TRFWW-WWCTF-00001,WWSPMP,5.0,,active,1.0,,,,pump 3,,,,,,20.0,3.0,23250.0,Detailed,,,,,,,,,,WWSPMP,2023.0,2043.0,2063.0,2083.0,,23250.0,Original
+LO-WWC-TRFWW-WWSPMP-00004,Submersible Pump,LO-WWC-TRFWW-WWCTF-00001,WWSPMP,5.0,,active,1.0,,,,pump 4,,,,,,20.0,3.0,23250.0,Detailed,,,,,,,,,,WWSPMP,2023.0,2043.0,2063.0,2083.0,,23250.0,Original
+LO-WWC-TRFWW-WWBSC-00001,Bar Screen Chamber,LO-WWC-TRFWW-WWCTF-00001,WWBSC,2.0,,active,1.0,,,,Bar screen,,,,,,75.0,50.0,15500.0,Detailed,,,,,,,,,,WWBSC,2070.0,2145.0,2220.0,2295.0,,15500.0,Original
+LO-WWC-TRFWW-WWFLME-00001,Flow Meter,LO-WWC-TRFWW-WWCTF-00001,WWFLME,4.0,,active,1.0,,,,Flow meter,,,,,,75.0,25.0,3875.0,Detailed,,,,,,,,,,WWFLME,2045.0,2120.0,2195.0,2270.0,,3875.0,Original
+LO-WWC-TRFWW-WWTFBLD-00001,Building,LO-WWC-TRFWW-WWCTF-00001,WWTFBLD,4.0,,active,1.0,,,,building,,,,,,75.0,25.0,1550000.0,Detailed,,,,,,,,,,WWTFBLD,2045.0,2120.0,2195.0,2270.0,,1550000.0,Original
+LO-WWC-TRFWW-WWOFS-00001,Office Furniture and Supplies,LO-WWC-TRFWW-WWCTF-00001,WWOFS,1.0,,active,1.0,,,,furniture,,,,,,75.0,62.0,38750.0,Detailed,,,,,,,,,,WWOFS,2082.0,2157.0,2232.0,2307.0,,38750.0,Original
+LO-WWC-TRFWW-WWLAB-00001,Lab Equipment,LO-WWC-TRFWW-WWCTF-00001,WWLAB,3.0,,active,1.0,,,,lab equipm,,,,,,75.0,38.0,15500.0,Detailed,,,,,,,,,,WWLAB,2058.0,2133.0,2208.0,2283.0,,15500.0,Original
+LO-WWC-TRFWW-WWELECM-00001,Electric Motor ,LO-WWC-TRFWW-WWCTF-00001,WWELECM,5.0,,active,1.0,,,,motor 1,,,,,,75.0,13.0,3875.0,Detailed,,,,,,,,,,WWELECM,2033.0,2108.0,2183.0,2258.0,,3875.0,Original
+LO-WWC-TRFWW-WWELECM-00002,Electric Motor ,LO-WWC-TRFWW-WWCTF-00001,WWELECM,4.0,,active,1.0,,,,motor 2,,,,,,75.0,25.0,3875.0,Detailed,,,,,,,,,,WWELECM,2045.0,2120.0,2195.0,2270.0,,3875.0,Original
+LO-WWC-TRFWW-WWOXDI-00001,Oxidation Ditch,LO-WWC-TRFWW-WWCTF-00001,WWOXDI,4.0,,active,1.0,,,,ox. ditch,,,,,,75.0,25.0,38750.0,Detailed,,,,,,,,,,WWOXDI,2045.0,2120.0,2195.0,2270.0,,38750.0,Original
+LO-WWC-TRFWW-WWPADAE-00001,Paddle Aerators ,LO-WWC-TRFWW-WWCTF-00001,WWPADAE,4.0,,active,1.0,,,,paddle aer,,,,,,75.0,25.0,62000.0,Detailed,,,,,,,,,,WWPADAE,2045.0,2120.0,2195.0,2270.0,,62000.0,Original
+LO-WWC-TRFWW-WWCLAR-00001,Clarifier,LO-WWC-TRFWW-WWCTF-00001,WWCLAR,3.0,,active,1.0,,,,clarifier,,,,,,75.0,38.0,775000.0,Detailed,,,,,,,,,,WWCLAR,2058.0,2133.0,2208.0,2283.0,,775000.0,Original
+LO-WWC-TRFWW-WWCTF-00001,Wastewater Treatment Facility,LO-WWC-TRFWW-WWCTF-00001,WWCTF,0.0,,active,1.0,,,,wwtf,,,,,,60.0,60.0,1550000.0,Unknown,,,,,,,,,,WWCTF,2080.0,2140.0,2200.0,2260.0,,1550000.0,Original
+LO-WWC-TRFWW-WWSDB-00001,Sludge Drying Bed,LO-WWC-TRFWW-WWCTF-00001,WWSDB,4.0,,active,1.0,,,,sludge bed,,,,,,75.0,25.0,38750.0,Detailed,,,,,,,,,,WWSDB,2045.0,2120.0,2195.0,2270.0,,38750.0,Original
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,RRCB-A,2.0,,,,,,,,,,,,,,,,Detailed,,,,,,,,,,,,,,,,,
