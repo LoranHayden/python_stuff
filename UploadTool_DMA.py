@@ -451,214 +451,132 @@ def Upload():
 
 #        # ==============================================================================================
 
-#        # If the Survey method is chosen, then we have to input the data into the shapefiles first
-#        if shapefilesExist == False:
+        # If the Survey method is chosen, then we have to input the data into the shapefiles first
+        if shapefilesExist == False:
 
-#            # Get the actual spreadsheet
-#            for file in os.listdir(munFolder):
-#                if file.endswith(".xlsm") and file.startswith(munID):
-#                    fileSpreadsheet = munFolder + file
-#                    break
-
-
-#            # Get the Asset Details sheet
-#            wb = xlrd.open_workbook(fileSpreadsheet)
-#            sheetAssetDetails = wb.sheet_by_name("Asset Details")
-#            csvAssetDetails = open(munFolder + "AssetDetails.csv", "wb")
-#            wr = csv.writer(csvAssetDetails, quoting=csv.QUOTE_ALL)
-
-#            # Write remaining rows with data
-#            for rownum in xrange(sheetAssetDetails.nrows):
-#                # Skip the first two rows
-#                if rownum == 0 or rownum == 1:
-#                    continue
-#                # Write other row values to CSV
-#                wr.writerow(sheetAssetDetails.row_values(rownum))
-
-#            # Close the spreadsheet and CSV
-#            wb.release_resources()
-#            del wb
-#            csvAssetDetails.close()
+            # Get the actual spreadsheet
+            for file in os.listdir(munFolder):
+                if file.endswith(".xlsm") and file.startswith(munID):
+                    fileSpreadsheet = munFolder + file
+                    break
 
 
+            # Get the Asset Details sheet
+            wb = xlrd.open_workbook(fileSpreadsheet)
+            sheetAssetDetails = wb.sheet_by_name("Asset Details")
+            csvAssetDetails = open(munFolder + "AssetDetails.csv", "wb")
+            wr = csv.writer(csvAssetDetails, quoting=csv.QUOTE_ALL)
 
-#            # Will create a temporary DBF in the municipality folder
-#            dbfFile = munFolder + "AssetDetails.dbf"
-#            # Delete if already there
-#            if os.path.isfile(dbfFile):
-#                os.remove(dbfFile)
-#            # Might also be a dbf.xml file
-#            if os.path.isfile(munFolder + "AssetDetails.dbf.xml"):
-#                os.remove(munFolder + "AssetDetails.dbf.xml")
-#            # Convert CSV to DBF
-#            arcpy.TableToTable_conversion(munFolder + "AssetDetails.csv", munFolder, "AssetDetails.dbf")
+            # Write remaining rows with data
+            for rownum in xrange(sheetAssetDetails.nrows):
+                # Skip the first two rows
+                if rownum == 0 or rownum == 1:
+                    continue
+                # Write other row values to CSV
+                wr.writerow(sheetAssetDetails.row_values(rownum))
+
+            # Close the spreadsheet and CSV
+            wb.release_resources()
+            del wb
+            csvAssetDetails.close()
 
 
-#            # Need to create all the shapefiles in the various subfolders of the GIS Imports folder
-#            arcpy.env.workspace = shpFolder
-#            arcpy.env.overwriteOutput = True
 
-#            # Will create them in UTM 20 NAD83 CSRS spatial reference
-#            srNAD83_CSRS_UTM20 = arcpy.SpatialReference(2961)
+            # Will create a temporary DBF in the municipality folder
+            dbfFile = munFolder + "AssetDetails.dbf"
+            # Delete if already there
+            if os.path.isfile(dbfFile):
+                os.remove(dbfFile)
+            # Might also be a dbf.xml file
+            if os.path.isfile(munFolder + "AssetDetails.dbf.xml"):
+                os.remove(munFolder + "AssetDetails.dbf.xml")
+            # Convert CSV to DBF
+            arcpy.TableToTable_conversion(munFolder + "AssetDetails.csv", munFolder, "AssetDetails.dbf")
+
+
+            # Need to create all the shapefiles in the various subfolders of the GIS Imports folder
+            arcpy.env.workspace = shpFolder
+            arcpy.env.overwriteOutput = True
+
+            # Will create them in UTM 20 NAD83 CSRS spatial reference
+            srNAD83_CSRS_UTM20 = arcpy.SpatialReference(2961)
 
 #            #print "Creating shapefiles from the AssetDetails sheet..." + "\n"
-
-
-#            # Delete any shapefiles in the sub-folders
-#            # PWS L
-#            if arcpy.Exists(shpFolder + "PWS L/" + shpMunID + " PWS L.shp"):
-#                arcpy.Delete_management(shpFolder + "PWS L/" + shpMunID + " PWS L.shp")
-#            # PWS P
-#            if arcpy.Exists(shpFolder + "PWS P/" + shpMunID + " PWS P.shp"):
-#                arcpy.Delete_management(shpFolder + "PWS P/" + shpMunID + " PWS P.shp")
-#            # SWC L
-#            if arcpy.Exists(shpFolder + "SWC L/" + shpMunID + " SWC L.shp"):
-#                arcpy.Delete_management(shpFolder + "SWC L/" + shpMunID + " SWC L.shp")
-#            # SWC P
-#            if arcpy.Exists(shpFolder + "SWC P/" + shpMunID + " SWC P.shp"):
-#                arcpy.Delete_management(shpFolder + "SWC P/" + shpMunID + " SWC P.shp")
-#            # TRN L
-#            if arcpy.Exists(shpFolder + "TRN L/" + shpMunID + " TRN L.shp"):
-#                arcpy.Delete_management(shpFolder + "TRN L/" + shpMunID + " TRN L.shp")
-#            # TRN P
-#            if arcpy.Exists(shpFolder + "TRN P/" + shpMunID + " TRN P.shp"):
-#                arcpy.Delete_management(shpFolder + "TRN P/" + shpMunID + " TRN P.shp")
-#            # WWC L
-#            if arcpy.Exists(shpFolder + "WWC L/" + shpMunID + " WWC L.shp"):
-#                arcpy.Delete_management(shpFolder + "WWC L/" + shpMunID + " WWC L.shp")
-#            # WWC P
-#            if arcpy.Exists(shpFolder + "WWC P/" + shpMunID + " WWC P.shp"):
-#                arcpy.Delete_management(shpFolder + "WWC P/" + shpMunID + " WWC P.shp")
-
-
-#            # Create point and line shapefiles for each Asset Class based on the above template shapefiles
-#            shapefileName = shpFolder + "PWS P/" + shpMunID + " PWS P.shp"
-#            arcpy.CreateFeatureclass_management(shpFolder + "PWS P", shpMunID + " PWS P", "POINT", "", "DISABLED", "DISABLED", srNAD83_CSRS_UTM20)
-#            arcpy.AddField_management(shapefileName, "AssetCode", "TEXT", "", "", 50)
-#            arcpy.AddField_management(shapefileName, "Mun_ID", "TEXT", "", "", 254)
-#            arcpy.AddField_management(shapefileName, "FCode", "TEXT", "", "", 50)
-#            arcpy.AddField_management(shapefileName, "Elevation", "LONG")
-#            arcpy.AddField_management(shapefileName, "Width", "LONG")
-
-#            shapefileName = shpFolder + "PWS L/" + shpMunID + " PWS L.shp"
-#            arcpy.CreateFeatureclass_management(shpFolder + "PWS L", shpMunID + " PWS L", "POLYLINE", "", "DISABLED", "DISABLED", srNAD83_CSRS_UTM20)
-#            arcpy.AddField_management(shapefileName, "AssetCode", "TEXT", "", "", 50)
-#            arcpy.AddField_management(shapefileName, "Mun_ID", "TEXT", "", "", 254)
-#            arcpy.AddField_management(shapefileName, "FCode", "TEXT", "", "", 50)
-#            arcpy.AddField_management(shapefileName, "Elevation", "LONG")
-#            arcpy.AddField_management(shapefileName, "Width", "LONG")
-
-#            shapefileName = shpFolder + "SWC P/" + shpMunID + " SWC P.shp"
-#            arcpy.CreateFeatureclass_management(shpFolder + "SWC P", shpMunID + " SWC P", "POINT", "", "DISABLED", "DISABLED", srNAD83_CSRS_UTM20)
-#            arcpy.AddField_management(shapefileName, "AssetCode", "TEXT", "", "", 50)
-#            arcpy.AddField_management(shapefileName, "Mun_ID", "TEXT", "", "", 254)
-#            arcpy.AddField_management(shapefileName, "FCode", "TEXT", "", "", 50)
-#            arcpy.AddField_management(shapefileName, "Elevation", "LONG")
-#            arcpy.AddField_management(shapefileName, "Width", "LONG")
-
-#            shapefileName = shpFolder + "SWC L/" + shpMunID + " SWC L.shp"
-#            arcpy.CreateFeatureclass_management(shpFolder + "SWC L", shpMunID + " SWC L", "POLYLINE", "", "DISABLED", "DISABLED", srNAD83_CSRS_UTM20)
-#            arcpy.AddField_management(shapefileName, "AssetCode", "TEXT", "", "", 50)
-#            arcpy.AddField_management(shapefileName, "Mun_ID", "TEXT", "", "", 254)
-#            arcpy.AddField_management(shapefileName, "FCode", "TEXT", "", "", 50)
-#            arcpy.AddField_management(shapefileName, "Elevation", "LONG")
-#            arcpy.AddField_management(shapefileName, "Width", "LONG")
-
-#            shapefileName = shpFolder + "TRN P/" + shpMunID + " TRN P.shp"
-#            arcpy.CreateFeatureclass_management(shpFolder + "TRN P", shpMunID + " TRN P", "POINT", "", "DISABLED", "DISABLED", srNAD83_CSRS_UTM20)
-#            arcpy.AddField_management(shapefileName, "AssetCode", "TEXT", "", "", 50)
-#            arcpy.AddField_management(shapefileName, "Mun_ID", "TEXT", "", "", 254)
-#            arcpy.AddField_management(shapefileName, "FCode", "TEXT", "", "", 50)
-#            arcpy.AddField_management(shapefileName, "Elevation", "LONG")
-#            arcpy.AddField_management(shapefileName, "Width", "LONG")
-
-#            shapefileName = shpFolder + "TRN L/" + shpMunID + " TRN L.shp"
-#            arcpy.CreateFeatureclass_management(shpFolder + "TRN L", shpMunID + " TRN L", "POLYLINE", "", "DISABLED", "DISABLED", srNAD83_CSRS_UTM20)
-#            arcpy.AddField_management(shapefileName, "AssetCode", "TEXT", "", "", 50)
-#            arcpy.AddField_management(shapefileName, "Mun_ID", "TEXT", "", "", 254)
-#            arcpy.AddField_management(shapefileName, "FCode", "TEXT", "", "", 50)
-#            arcpy.AddField_management(shapefileName, "Elevation", "LONG")
-#            arcpy.AddField_management(shapefileName, "Width", "LONG")
-
-#            shapefileName = shpFolder + "WWC P/" + shpMunID + " WWC P.shp"
-#            arcpy.CreateFeatureclass_management(shpFolder + "WWC P", shpMunID + " WWC P", "POINT", "", "DISABLED", "DISABLED", srNAD83_CSRS_UTM20)
-#            arcpy.AddField_management(shapefileName, "AssetCode", "TEXT", "", "", 50)
-#            arcpy.AddField_management(shapefileName, "Mun_ID", "TEXT", "", "", 254)
-#            arcpy.AddField_management(shapefileName, "FCode", "TEXT", "", "", 50)
-#            arcpy.AddField_management(shapefileName, "Elevation", "LONG")
-#            arcpy.AddField_management(shapefileName, "Width", "LONG")
-
-#            shapefileName = shpFolder + "WWC L/" + shpMunID + " WWC L.shp"
-#            arcpy.CreateFeatureclass_management(shpFolder + "WWC L", shpMunID + " WWC L", "POLYLINE", "", "DISABLED", "DISABLED", srNAD83_CSRS_UTM20)
-#            arcpy.AddField_management(shapefileName, "AssetCode", "TEXT", "", "", 50)
-#            arcpy.AddField_management(shapefileName, "Mun_ID", "TEXT", "", "", 254)
-#            arcpy.AddField_management(shapefileName, "FCode", "TEXT", "", "", 50)
-#            arcpy.AddField_management(shapefileName, "Elevation", "LONG")
-#            arcpy.AddField_management(shapefileName, "Width", "LONG")
-
+            shapefileNames = get_array('shapefile_names.json', 'shapefile_names')
+            for sfname in shapefileNames:
+                if arcpy.Exists(shpFolder + sfname + '/' + shpMunID + ' ' + sfname + '.shp'):
+                    arcpy.Delete_management(shpFolder + sfname + '/' + shpMunID + ' ' + sfname + '.shp')
+                shapefileName = shpFolder + sfname + "/" + shpMunID + " " + sfname + ".shp"
+                arcpy.CreateFeatureclass_management(shpFolder + sfname, shpMunID + " " + sfname, "POINT", "", "DISABLED", "DISABLED", srNAD83_CSRS_UTM20)
+                arcpy.AddField_management(shapefileName, "AssetCode", "TEXT", "", "", 50)
+                arcpy.AddField_management(shapefileName, "Mun_ID", "TEXT", "", "", 254)
+                arcpy.AddField_management(shapefileName, "FCode", "TEXT", "", "", 50)
+                arcpy.AddField_management(shapefileName, "Elevation", "LONG")
+                arcpy.AddField_management(shapefileName, "Width", "LONG")
 
 #            # Cursor through DBF file and put things in the appropriate shapefiles
-#            inputFields_AssetDetails = ["Asset_Code", "Northing", "Easting", "Elevation", "Width", "FC"]
-#            outputFields_Shp_Point = ["SHAPE@X", "SHAPE@Y", "AssetCode", "Mun_ID", "FCode", "Elevation", "Width"]
-#            outputFields_Shp_Line = ["SHAPE@", "AssetCode", "Mun_ID", "FCode", "Elevation", "Width"]
+            inputFields_AssetDetails = get_array("asset_details.json", "asset_details")
+            outputFields_Shp_Point = 
+            outputFields_Shp_Line = ["SHAPE@", "AssetCode", "Mun_ID", "FCode", "Elevation", "Width"]
 
 
 #            # Initialize counter
-#            counter = 0
-
-
+            counter = 0
 #            # Write values to output tables corresponding to Asset Class
-#            tabAssetDetails = munFolder + "AssetDetails.dbf"
+            tabAssetDetails = munFolder + "AssetDetails.dbf"
+
+            # -----------------------------------------------------------------------------------------------------------------------------------------------------------
+            tabPWS_P = "AssetDetails_PWS_P"
+            queryPWS_P = "\"FC\" IN ('BST','CS','WV','FTBD11','FTBD22','FTBD45','FTBD90','FTCAP',\
+            'FTCP','FTHY','FTHYTE','FTRD','FTTS','FTTE','HY','METER','PRV','APV','WSST','WSTF',\
+            'FTVLHY','GV','WS','WSTFAC','WSCPMP','WSISV','WSSPMP','WSTFBLD','WSCCSYS','WSCLLD',\
+            'WSCLAR','WSCOMP','WSDAFS','WSDAFT','WSELECM','WSFLME','WSGDTP','WSTFGEN','WSLAB',\
+            'WSMFS','WSMMF','WSOFS','WSPTNK','WSSCM','WSTLEM','WSUV','WSVACCL')"
+            arcpy.MakeTableView_management(tabAssetDetails, tabPWS_P, queryPWS_P)
+            countPWS_P = arcpy.GetCount_management(tabPWS_P).getOutput(0)
+            if countPWS_P > 0:
+                arcpy.CopyRows_management(tabPWS_P, munFolder + "AssetDetails_PWS_P.dbf")
 
 
-#            # -----------------------------------------------------------------------------------------------------------------------------------------------------------
-#            tabPWS_P = "AssetDetails_PWS_P"
-#            queryPWS_P = "\"FC\" IN ('BST','CS','WV','FTBD11','FTBD22','FTBD45','FTBD90','FTCAP','FTCP','FTHY','FTHYTE','FTRD','FTTS','FTTE','HY','METER','PRV','APV','WSST','WSTF','FTVLHY','GV','WS','WSTFAC','WSCPMP','WSISV','WSSPMP','WSTFBLD','WSCCSYS','WSCLLD','WSCLAR','WSCOMP','WSDAFS','WSDAFT','WSELECM','WSFLME','WSGDTP','WSTFGEN','WSLAB','WSMFS','WSMMF','WSOFS','WSPTNK','WSSCM','WSTLEM','WSUV','WSVACCL')"
-#            arcpy.MakeTableView_management(tabAssetDetails, tabPWS_P, queryPWS_P)
-#            countPWS_P = arcpy.GetCount_management(tabPWS_P).getOutput(0)
-#            if countPWS_P > 0:
-#                arcpy.CopyRows_management(tabPWS_P, munFolder + "AssetDetails_PWS_P.dbf")
+            # Output shapefile
+            outputShapeFile = shpFolder + "PWS P/" + shpMunID + " PWS P.shp"
+
+            # Start editing - without an undo/redo stack
+            editShapefile = arcpy.da.Editor(shpFolder + "PWS P/")
+            editShapefile.startEditing(False, True)
+            # Start an edit operation
+            editShapefile.startOperation()
 
 
-#            # Output shapefile
-#            outputShapeFile = shpFolder + "PWS P/" + shpMunID + " PWS P.shp"
+            # Cursor through input table and write points to shapefile
+            with arcpy.da.SearchCursor(munFolder + "AssetDetails_PWS_P.dbf", inputFields_AssetDetails) as inputCursor:
 
-#            # Start editing - without an undo/redo stack
-#            editShapefile = arcpy.da.Editor(shpFolder + "PWS P/")
-#            editShapefile.startEditing(False, True)
-#            # Start an edit operation
-#            editShapefile.startOperation()
+                for inputRec in inputCursor:
+                    # Create shape from Northing and Easting coordinates
+                    x = inputRec[2]  # Easting
+                    y = inputRec[1]  # Northing
+                    # AssetCode
+                    AssetCode = inputRec[0]
+                    # Elevation
+                    Elev = float(inputRec[3])
+                    # Width
+                    if is_number(inputRec[4]):
+                        Width = Dbl(inputRec[4])
+                    else:
+                        Width = 0
+                    # Feature Code
+                    FCode = inputRec[5]
 
-
-#            # Cursor through input table and write points to shapefile
-#            with arcpy.da.SearchCursor(munFolder + "AssetDetails_PWS_P.dbf", inputFields_AssetDetails) as inputCursor:
-
-#                for inputRec in inputCursor:
-#                    # Create shape from Northing and Easting coordinates
-#                    x = inputRec[2]  # Easting
-#                    y = inputRec[1]  # Northing
-#                    # AssetCode
-#                    AssetCode = inputRec[0]
-#                    # Elevation
-#                    Elev = float(inputRec[3])
-#                    # Width
-#                    if is_number(inputRec[4]):
-#                        Width = Dbl(inputRec[4])
-#                    else:
-#                        Width = 0
-#                    # Feature Code
-#                    FCode = inputRec[5]
-
-#                    # Write values to output shapefile
-#                    with arcpy.da.InsertCursor(outputShapeFile, outputFields_Shp_Point) as outputCursor:
-#                       # Insert the feature
-#                       outputCursor.insertRow((x, y, AssetCode, munID, FCode, Elev, Width))
+                    # Write values to output shapefile
+                    with arcpy.da.InsertCursor(outputShapeFile, outputFields_Shp_Point) as outputCursor:
+                       # Insert the feature
+                       outputCursor.insertRow((x, y, AssetCode, munID, FCode, Elev, Width))
 
 
-#            # Stop the edit operation
-#            editShapefile.stopOperation()
-#            # Stop the edit session and save the changes
-#            editShapefile.stopEditing(True)
+            # Stop the edit operation
+            editShapefile.stopOperation()
+            # Stop the edit session and save the changes
+            editShapefile.stopEditing(True)
 
 
 #            # -----------------------------------------------------------------------------------------------------------------------------------------------------------

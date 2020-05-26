@@ -1,0 +1,3 @@
+{
+  "point_fields": [ "SHAPE@X", "SHAPE@Y", "AssetCode", "Mun_ID", "FCode", "Elevation", "Width" ]
+}
