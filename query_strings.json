@@ -1,0 +1,10 @@
+{
+  "queryPWS_P": "\"FC\" IN (\"BST\",\"CS\",\"WV\",\"FTBD11\",\"FTBD22\",\"FTBD45\",\"FTBD90\",\"FTCAP\",\"FTCP\",\"FTHY\",\"FTHYTE\",\"FTRD\",\"FTTS\",\"FTTE\",\"HY\",\"METER\",\"PRV\",\"APV\",\"WSST\",\"WSTF\",\"FTVLHY\",\"GV\",\"WS\",\"WSTFAC\",\"WSCPMP\",\"WSISV\",\"WSSPMP\",\"WSTFBLD\",\"WSCCSYS\",\"WSCLLD\",\"WSCLAR\",\"WSCOMP\",\"WSDAFS\",\"WSDAFT\",\"WSELECM\",\"WSFLME\",\"WSGDTP\",\"WSTFGEN\",\"WSLAB\",\"WSMFS\",\"WSMMF\",\"WSOFS\",\"WSPTNK\",\"WSSCM\",\"WSTLEM\",\"WSUV\",\"WSVACCL\")",
+  "querySWC_P": "\"FC\" IN (\"CB\",\"IO\",\"LIFT\",\"MHST\",\"PND\",\"TRMTD\",\"UGS\")",
+  "queryTRN_P": "\"FC\" IN (\"STPR\",\"TFSP\",\"TFTL\",\"TSIG\",\"UTPO\",\"TFSLOR\",\"TFSL\")",
+  "queryWWC_P": "\"FC\" IN (\"FTTESAN\",\"PMPS\",\"MHCO\",\"MHSA\",\"SEPT\",\"WWCTF\",\"WWCPMP\",\"WWTFGEN\",\"WWSPMP\",\"WWTFAC\",\"WWBSC\",\"WWBLWR\",\"WWTFBLD\",\"WWCCSYS\",\"WWCLCC\",\"WWCLAR\",\"WWCOMP\",\"WWDAFS\",\"WWDAFT\",\"WWELECM\",\"WWFFT\",\"WFLME\",\"WWGDTP\",\"WWISV\",\"WWLAB\",\"WWLAG\",\"WWOFS\",\"WWOXDI\",\"WWPADAE\",\"WWPTNK\",\"WWSBRT\",\"WWSCRC\",\"WWSDB\",\"WWSCM\",\"WWST\",\"WWTLEM\")",
+  "queryPWS_L": "\"FC\" IN (\"DIMN\",\"DIMN-S\",\"TRNS\",\"TRNS-S\")",
+  "querySWC_L": "\"FC\" IN (\"CLVT\",\"CLVT-S\",\"DRCH\",\"DRCH-S\",\"RRGT\",\"RRGT-S\",\"GRVPST\",\"GRVPST-S\",\"SWFRCM\",\"SWFRCM-S\")",
+  "queryTRN_L": "\"FC\" IN (\"FL\",\"FL-S\",\"STGR\",\"STGR-S\",\"SB\",\"SB-S\",\"RRCB-A\",\"RRCB-A-S\",\"RRCB-C\",\"RRCB-C-S\",\"RRRD-A\",\"RRRD-A-S\",\"RRGR\",\"RRGR-S\",\"RRBW-W\",\"RRBW-W-S\",\"RRDR-A\",\"RRDR-A-S\",\"RRPW\",\"RRPW-S\",\"RRSW-C\",\"RRSW-C-S\",\"RRSW-A\",\"RRSW-A-S\",\"RRSW-B\",\"RRSW-B-S\",\"RRTR\",\"RRTR-S\",\"RRSW\",\"RRSW-S\")",
+  "queryWWC_L": "\"FC\" IN (\"GRVPSA\",\"GRVPSA-S\",\"GRVPCO\",\"GRVPCO-S\",\"WWFRCM\",\"WWFRCM-S\")"
+}

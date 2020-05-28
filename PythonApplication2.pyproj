@@ -27,10 +27,17 @@
     <Compile Include="municipality.py" />
     <Compile Include="municipality_list.py" />
     <Compile Include="PythonApplication2.py" />
+    <Compile Include="timer_example.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="UploadTool_DMA.py" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="aFile.txt" />
+    <Content Include="dataset_table_names.json" />
+    <Content Include="dataset_names.json" />
+    <Content Include="query_strings.json" />
+    <Content Include="polyline_fields.json" />
     <Content Include="point_fields.json" />
     <Content Include="asset_details.json" />
     <Content Include="shapefile_names.json" />

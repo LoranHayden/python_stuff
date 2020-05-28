@@ -38,6 +38,13 @@ def get_object_dictionary(path):
         json_file.close()
         return data
 
+def get_object_value(path, object_name):
+    with open(path) as json_file:
+        data = json.load(json_file)
+        json_file.close()
+        return data[object_name]
+
+
 def empty_string(text):
     return text == '' or text == ' '
 #import arcpy
@@ -157,13 +164,26 @@ def empty_string(text):
 
 ##            # Will create a DBF in the municipality folder
 #dbfGenAssetInfo = "GenAssetInfo.dbf"
-fieldsShapefile = get_array("shapefile_fields.json", "shapefile_fields")
-def stupid1():
-    global a
-    a = 3
-def stupid2():
-    a = 4
-stupid1()
-stupid2()
-print(str(a))
-print('erk')
+#fieldsShapefile = get_array("shapefile_fields.json", "shapefile_fields")
+#def stupid1():
+#    global a
+#    a = 3
+#def stupid2():
+#    a = 4
+#stupid1()
+#stupid2()
+#print(str(a))
+sfnames = get_array('shapefile_names.json', 'shapefile_names')
+for sfname in sfnames:
+    usfname = sfname.replace(' ', '_')
+    q = 'query' + usfname
+    o = get_object_value('query_strings.json', q)
+    print(o)
+#a = get_object_value('query_strings.json', 'queryPWS_L')
+#b = get_object_value('query_strings.json', 'querySWC_L')
+#c = get_object_value('query_strings.json', 'queryTRN_L')
+#d = get_object_value('query_strings.json', 'queryWWC_L')
+#print(a)
+#print(b)
+#print(c)
+#print(d)

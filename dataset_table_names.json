@@ -1,0 +1,8 @@
+{
+  "dataset_table_names": [
+    "PWS_BoosterStation_Assets",
+    "PWS_TreatmentFacility_Assets",
+    "WWC_LiftPumpStation_Assets",
+    "WWC_TreatmentFacility_Assets"
+  ]
+}

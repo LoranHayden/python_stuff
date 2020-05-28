@@ -71,7 +71,9 @@ def rmdirContents(folder):
             shutil.rmtree(os.path.join(root, d))
 
 def writeError(logfile, errorfield, recordassetcode, errorcount, munfullname):
+    errorcount += 1
     logfile.write(str(errorcount) + "." + "Check the '" + errorfield + "' value for the " + recordassetcode + " Asset_Code record in the " + munfullname + " spreadsheet (XLSM).\n\n")
+    return errorcount
 
 def get_array(path, array_field):
     with open(path) as json_file:
@@ -84,6 +86,12 @@ def get_object_dictionary(path):
         data = json.load(json_file)
         json_file.close()
         return data
+
+def get_object_value(path, object_name):
+    with open(path) as json_file:
+        data = json.load(json_file)
+        json_file.close()
+        return data[object_name]
 
 def empty_string(text):
     return text == '' or text == ' '
@@ -114,7 +122,8 @@ def validateFiles(logfile, errorCount, shpFolder, shapefullpath, fieldsShapefile
                 # Check that it has all the correct fields
                 fieldsShpNames = arcpy.ListFields(shpfullpath)
                 # Check fields against mandatory shapefile fields
-                # Only Shape, Elevation, Width and GIS_Link are taken from the shapefiles; others come from the spreadsheet CSV
+                # Only Shape, Elevation, Width and GIS_Link are taken from the
+                # shapefiles; others come from the spreadsheet CSV
                 if ("Elev" not in fieldsShpNames) and ("Elevation" not in fieldsShpNames) and ("ELEVATION" not in fieldsShpNames):
                     errorCounter += 1 
                     writeMissingFieldError(logfile, "Elev", errorCount, shapefullpath)
@@ -314,59 +323,50 @@ def Validate():
                     # FeatureCod- dbfRec[4]
                     field = dbfRec.getValue('FeatureCode')
                     if not field or empty_string(str(field)) or not str(field) in fcodes:
-                        errorCounter += 1
-                        writeError(errorLogFile, 'FeatureCode', assetcode, errorCounter, munFullName)
+                        errorCounter = writeError(errorLogFile, 'FeatureCode', assetcode, errorCounter, munFullName)
 
 #                    # Condition - dbfRec[5]
                     field = dbfRec.getValue('Condition')
                     if field == None or not is_number(field) or is_number(field) > 5:
-                        errorCounter += 1
-                        writeError(errorLogFile, 'Condition', assetcode, errorCounter, munFullName)
+                        errorCounter = writeError(errorLogFile, 'Condition', assetcode, errorCounter, munFullName)
 
 #                    # Quantity - dbfRec[8]
                     field = dbfRec.getValue('Quantity')
                     if field == None or not is_number(field) or empty_string(field):
-                        errorCounter += 1
-                        writeError(errorLogFile, 'Quantity', assetcode, errorCounter, munFullName)
+                        errorCounter = writeError(errorLogFile, 'Quantity', assetcode, errorCounter, munFullName)
 
 #                    # Estimated (Estimated RUL) - dbfRec[19]
                     field = dbfRec.getValue('Estimated RUL')
                     if field == None or not is_number(field) or empty_string(field):
-                        errorCounter += 1
-                        writeError(errorLogFile, 'Estimated RUL', assetcode, errorCounter, munFullName)
+                        errorCounter = writeError(errorLogFile, 'Estimated RUL', assetcode, errorCounter, munFullName)
 
 
 #                    # RplmtCst - dbfRec[20]
                     field = dbfRec.getValue('RplmtCst')
                     if field == None or not is_number(field) or empty_string(field):
-                        errorCounter += 1
-                        writeError(errorLogFile, 'RplmtCst', assetcode, errorCounter, munFullName)
+                        errorCounter = writeError(errorLogFile, 'RplmtCst', assetcode, errorCounter, munFullName)
 
 
 #                    # ConditionB (ConditionBasis) - dbfRec[21]
                     field = dbfRec.getValue('ConditionBasis')
                     if not field or empty_string(field):
-                        errorCounter += 1
-                        writeError(errorLogFile, 'ConditionBasis', assetcode, errorCounter, munFullName)
+                        errorCounter = writeError(errorLogFile, 'ConditionBasis', assetcode, errorCounter, munFullName)
 
 #                    # CostLookup - dbfRec[31]
                     field = dbfRec.getValue('CostLookup')
                     if not field or empty_string(field):
-                        errorCounter += 1
-                        writeError(errorLogFile, 'CostLookup', assetcode, errorCounter, munFullName)
+                        errorCounter = writeError(errorLogFile, 'CostLookup', assetcode, errorCounter, munFullName)
 
 #                    # Unit_Cost - dbfRec[37]
                     field = dbfRec.getValue('Unit Cost')
                     if field == None or not is_number(field) or empty_string(field):
-                        errorCounter += 1
-                        writeError(errorLogFile, 'Unit Cost', assetcode, errorCounter, munFullName)
+                        errorCounter = writeError(errorLogFile, 'Unit Cost', assetcode, errorCounter, munFullName)
                         
                     if shapefilesExist == True:
                         # GIS_Link - dbfRec[39]
                         field = dbfRec.getValue('GIS Link')
                         if not field or empty_string(field):
-                            errorCounter += 1
-                            writeError(errorLogFile, 'GIS Link', assetcode, errorCounter, munFullName)
+                            errorCounter = writeError(errorLogFile, 'GIS Link', assetcode, errorCounter, munFullName)
 
 #            # Parent folder of all shapefiles
             shpFolder = munFolder + "GIS Imports/"
@@ -375,18 +375,20 @@ def Validate():
                 errorLogFile.write(str(errorCounter) + "." + "The 'GIS_Imports' folder cannot be found." + "\n\n")
 
 
-            # There is inconsistent naming across shapefiles for the various fields
-            # specifically:            
-            # "Elev"  Sometimes called "Elevation"
+            # There is inconsistent naming across shapefiles for the various
+            # fields
+            # specifically:
+            # "Elev" Sometimes called "Elevation"
             # "FCode" Sometimes called "FeatureCod" "FreatureCo" or "Feature"
-            # "N"     Sometimes called "Northing"
-            # "E"     Sometimes called "Easting"
+            # "N" Sometimes called "Northing"
+            # "E" Sometimes called "Easting"
             # "Install_Yr" Sometimes called "Install Yr" or "Install_Da"
-            # "Comments"   Sometimes called "Comment"
-            # "Quantity"   Sometimes called "Length"
+            # "Comments" Sometimes called "Comment"
+            # "Quantity" Sometimes called "Length"
             fieldsShapefile = get_array("shapefile_fields.json", "shapefile_fields")
 
-            # Check fields in shapefiles if shapefilesExist = True (method = "GIS")
+            # Check fields in shapefiles if shapefilesExist = True (method =
+            # "GIS")
             if shapefilesExist == True:
                 shapefileNames = get_array('shapefile_names.json', 'shapefile_names')
                 for shapefile_name in shapefileNames:
@@ -400,7 +402,8 @@ def Validate():
 
 
         # =============================================================================================
-        # Send an email to the user if validation fails (with txt file), or after upload, if successful
+        # Send an email to the user if validation fails (with txt file), or
+        # after upload, if successful
 
         if errorCounter > 0:
             #raise Exception?
@@ -449,9 +452,13 @@ def Upload():
         dbfGenAssetInfo = munFolder + "GenAssetInfo.dbf"
 
 
-#        # ==============================================================================================
 
-        # If the Survey method is chosen, then we have to input the data into the shapefiles first
+#        ====================================================================================================================
+#        Begin of Survey-method-only code
+#        ====================================================================================================================
+
+        # If the Survey method is chosen, then we have to input the data into
+        # the shapefiles first
         if shapefilesExist == False:
 
             # Get the actual spreadsheet
@@ -481,7 +488,6 @@ def Upload():
             csvAssetDetails.close()
 
 
-
             # Will create a temporary DBF in the municipality folder
             dbfFile = munFolder + "AssetDetails.dbf"
             # Delete if already there
@@ -494,7 +500,8 @@ def Upload():
             arcpy.TableToTable_conversion(munFolder + "AssetDetails.csv", munFolder, "AssetDetails.dbf")
 
 
-            # Need to create all the shapefiles in the various subfolders of the GIS Imports folder
+            # Need to create all the shapefiles in the various subfolders of
+            # the GIS Imports folder
             arcpy.env.workspace = shpFolder
             arcpy.env.overwriteOutput = True
 
@@ -514,791 +521,274 @@ def Upload():
                 arcpy.AddField_management(shapefileName, "Elevation", "LONG")
                 arcpy.AddField_management(shapefileName, "Width", "LONG")
 
-#            # Cursor through DBF file and put things in the appropriate shapefiles
+            # Cursor through DBF file and put things in the appropriate
+            # shapefiles
             inputFields_AssetDetails = get_array("asset_details.json", "asset_details")
-            outputFields_Shp_Point = 
-            outputFields_Shp_Line = ["SHAPE@", "AssetCode", "Mun_ID", "FCode", "Elevation", "Width"]
-
+            outputFields_Shp_Point = get_array("point_fields.json", "point_fields")
+            outputFields_Shp_Line = get_array("polyline_fields.json", "polyline_fields")
 
 #            # Initialize counter
-            counter = 0
-#            # Write values to output tables corresponding to Asset Class
-            tabAssetDetails = munFolder + "AssetDetails.dbf"
-
-            # -----------------------------------------------------------------------------------------------------------------------------------------------------------
-            tabPWS_P = "AssetDetails_PWS_P"
-            queryPWS_P = "\"FC\" IN ('BST','CS','WV','FTBD11','FTBD22','FTBD45','FTBD90','FTCAP',\
-            'FTCP','FTHY','FTHYTE','FTRD','FTTS','FTTE','HY','METER','PRV','APV','WSST','WSTF',\
-            'FTVLHY','GV','WS','WSTFAC','WSCPMP','WSISV','WSSPMP','WSTFBLD','WSCCSYS','WSCLLD',\
-            'WSCLAR','WSCOMP','WSDAFS','WSDAFT','WSELECM','WSFLME','WSGDTP','WSTFGEN','WSLAB',\
-            'WSMFS','WSMMF','WSOFS','WSPTNK','WSSCM','WSTLEM','WSUV','WSVACCL')"
-            arcpy.MakeTableView_management(tabAssetDetails, tabPWS_P, queryPWS_P)
-            countPWS_P = arcpy.GetCount_management(tabPWS_P).getOutput(0)
-            if countPWS_P > 0:
-                arcpy.CopyRows_management(tabPWS_P, munFolder + "AssetDetails_PWS_P.dbf")
-
-
-            # Output shapefile
-            outputShapeFile = shpFolder + "PWS P/" + shpMunID + " PWS P.shp"
-
-            # Start editing - without an undo/redo stack
-            editShapefile = arcpy.da.Editor(shpFolder + "PWS P/")
-            editShapefile.startEditing(False, True)
-            # Start an edit operation
-            editShapefile.startOperation()
-
-
-            # Cursor through input table and write points to shapefile
-            with arcpy.da.SearchCursor(munFolder + "AssetDetails_PWS_P.dbf", inputFields_AssetDetails) as inputCursor:
-
-                for inputRec in inputCursor:
-                    # Create shape from Northing and Easting coordinates
-                    x = inputRec[2]  # Easting
-                    y = inputRec[1]  # Northing
-                    # AssetCode
-                    AssetCode = inputRec[0]
-                    # Elevation
-                    Elev = float(inputRec[3])
-                    # Width
-                    if is_number(inputRec[4]):
-                        Width = Dbl(inputRec[4])
-                    else:
-                        Width = 0
-                    # Feature Code
-                    FCode = inputRec[5]
-
-                    # Write values to output shapefile
-                    with arcpy.da.InsertCursor(outputShapeFile, outputFields_Shp_Point) as outputCursor:
-                       # Insert the feature
-                       outputCursor.insertRow((x, y, AssetCode, munID, FCode, Elev, Width))
-
-
-            # Stop the edit operation
-            editShapefile.stopOperation()
-            # Stop the edit session and save the changes
-            editShapefile.stopEditing(True)
-
-
-#            # -----------------------------------------------------------------------------------------------------------------------------------------------------------
-#            tabPWS_L = "AssetDetails_PWS_L"
-#            queryPWS_L = "\"FC\" IN ('DIMN','DIMN-S','TRNS','TRNS-S')"
-#            arcpy.MakeTableView_management(tabAssetDetails, tabPWS_L, queryPWS_L)
-#            countPWS_L = arcpy.GetCount_management(tabPWS_L).getOutput(0)
-#            if countPWS_L > 0:
-#                arcpy.CopyRows_management(tabPWS_L, munFolder + "AssetDetails_PWS_L.dbf")
-
-#            # Make a list of AssetCodes
-#            lstAssetCodes = []
-
-#            # Cursor through input table and get a list of asset codes
-#            with arcpy.da.SearchCursor(munFolder + "AssetDetails_PWS_L.dbf", inputFields_AssetDetails) as inputCursor:
-#                # Cursor through all records to get a unique list
-#                for inputRec in inputCursor:
-#                    #print inputRec[0]
-#                    if inputRec[0] not in lstAssetCodes:
-#                        lstAssetCodes.append(inputRec[0])
-
-
-#            # Output shapefile
-#            outputShapeFile = shpFolder + "PWS L/" + shpMunID + " PWS L.shp"
-#            editShapefile = arcpy.da.Editor(shpFolder + "PWS L/")
-
-#            # Start editing - without an undo/redo stack
-#            editShapefile.startEditing(False, True)
-#            # Start an edit operation
-#            editShapefile.startOperation()
-
-
-#            #print "Importing PWS Line asset data..."
-
-
-#            # For each Asset Code, query the table and make polylines
-#            for ac in lstAssetCodes:
-
-#                # Create query
-#                queryAssetCode = "\"Asset_Code\" = '" + ac + "'"
-#                with arcpy.da.SearchCursor(munFolder + "AssetDetails_PWS_L.dbf", inputFields_AssetDetails, queryAssetCode) as inputCursor:
-
-#                    # Create an empty array
-#                    arrayPoints = arcpy.Array()
-
-#                    for inputRec in inputCursor:
-#                        # Get Feature Code first
-#                        FCode = inputRec[5]
-#                        #print FCode
-
-#                        # If FCode has "-S" at the end, create a point and add to the array.
-#                        # Then just go to the next record
-#                        if "-S" in FCode:
-#                            # Northing and Easting coordinates for Start Point
-#                            x = inputRec[2]  # Easting
-#                            y = inputRec[1]  # Northing
-#                            # Create point
-#                            pntStart = arcpy.Point(x, y)
-#                            # Add start point to the array
-#                            arrayPoints.add(pntStart)
-#                        else:
-#                            # AssetCode
-#                            AssetCode = inputRec[0]
-#                            # Elevation
-#                            Elev = float(inputRec[3])
-#                            # Width
-#                            if is_number(inputRec[4]):
-#                                Width = Dbl(inputRec[4])
-#                            else:
-#                                Width = 0
-#                            # FCode
-#                            FCode = inputRec[5]
-#                            # Northing and Easting coordinates for next Point
-#                            x = inputRec[2]  # Easting
-#                            y = inputRec[1]  # Northing
-#                            # Create point
-#                            pntNext = arcpy.Point(x, y)
-#                            # Add to array
-#                            arrayPoints.add(pntNext)
-
-#                    # Make sure array has at least 2 points
-#                    if arrayPoints.count >= 2:
-#                        # Make the line once all points collected (usually just 2)
-#                        polyline = arcpy.Polyline(arrayPoints, srNAD83_CSRS_UTM20)
-
-#                        # Write values to output shapefile
-#                        with arcpy.da.InsertCursor(outputShapeFile, outputFields_Shp_Line) as outputCursor:
-#                            # Insert the feature
-#                            outputCursor.insertRow(((polyline), AssetCode, munID, FCode, Elev, Width))
-
-
-#            # Stop the edit operation
-#            editShapefile.stopOperation()
-#            # Stop the edit session and save the changes
-#            editShapefile.stopEditing(True)
-
-
-#            # -----------------------------------------------------------------------------------------------------------------------------------------------------------
-#            tabSWC_P = "AssetDetails_SWC_P"
-#            querySWC_P = "\"FC\" IN ('CB','IO','LIFT','MHST','PND','TRMTD','UGS')"
-#            arcpy.MakeTableView_management(tabAssetDetails, tabSWC_P, querySWC_P)
-#            countSWC_P = arcpy.GetCount_management(tabSWC_P).getOutput(0)
-#            if countSWC_P > 0:
-#                arcpy.CopyRows_management(tabSWC_P, munFolder + "AssetDetails_SWC_P.dbf")
-
-
-#            # Output shapefile
-#            outputShapeFile = shpFolder + "SWC P/" + shpMunID + " SWC P.shp"
-
-#            # Start editing - without an undo/redo stack
-#            editShapefile = arcpy.da.Editor(shpFolder + "SWC P/")
-#            editShapefile.startEditing(False, True)
-#            # Start an edit operation
-#            editShapefile.startOperation()
-
-
-#            #print "Importing SWC Point asset data..."
-
-
-#            # Cursor through input table and write points to shapefile
-#            with arcpy.da.SearchCursor(munFolder + "AssetDetails_SWC_P.dbf", inputFields_AssetDetails) as inputCursor:
-
-#                for inputRec in inputCursor:
-#                    # Create shape from Northing and Easting coordinates
-#                    x = inputRec[2]  # Easting
-#                    y = inputRec[1]  # Northing
-#                    # AssetCode
-#                    AssetCode = inputRec[0]
-#                    # Elevation
-#                    Elev = float(inputRec[3])
-#                    # Width
-#                    if is_number(inputRec[4]):
-#                        Width = Dbl(inputRec[4])
-#                    else:
-#                        Width = 0
-#                    # Feature Code
-#                    FCode = inputRec[5]
-
-#                    # Write values to output shapefile
-#                    with arcpy.da.InsertCursor(outputShapeFile, outputFields_Shp_Point) as outputCursor:
-#                       # Insert the feature
-#                       outputCursor.insertRow((x, y, AssetCode, munID, FCode, Elev, Width))
-
-
-#            # Stop the edit operation
-#            editShapefile.stopOperation()
-#            # Stop the edit session and save the changes
-#            editShapefile.stopEditing(True)
-
-
-#            # -----------------------------------------------------------------------------------------------------------------------------------------------------------
-#            tabSWC_L = "AssetDetails_SWC_L"
-#            querySWC_L = "\"FC\" IN ('CLVT','CLVT-S','DRCH','DRCH-S','RRGT','RRGT-S','GRVPST','GRVPST-S','SWFRCM','SWFRCM-S')"
-#            arcpy.MakeTableView_management(tabAssetDetails, tabSWC_L, querySWC_L)
-#            countSWC_L = arcpy.GetCount_management(tabSWC_L).getOutput(0)
-#            if countSWC_L > 0:
-#                arcpy.CopyRows_management(tabSWC_L, munFolder + "AssetDetails_SWC_L.dbf")
-
-#            # Make a list of AssetCodes
-#            lstAssetCodes = []
-
-#            # Cursor through input table and get a list of asset codes
-#            with arcpy.da.SearchCursor(munFolder + "AssetDetails_SWC_L.dbf", inputFields_AssetDetails) as inputCursor:
-
-#                # Cursor through all records to get a unique list
-#                for inputRec in inputCursor:
-#                    if inputRec[0] not in lstAssetCodes:
-#                        lstAssetCodes.append(inputRec[0])
-
-
-#            # Output shapefile
-#            outputShapeFile = shpFolder + "SWC L/" + shpMunID + " SWC L.shp"
-#            editShapefile = arcpy.da.Editor(shpFolder + "SWC L/")
-
-#            # Start editing - without an undo/redo stack
-#            editShapefile.startEditing(False, True)
-#            # Start an edit operation
-#            editShapefile.startOperation()
-
-
-#            #print "Importing SWC Line asset data..."
-
-
-#            # For each Asset Code, query the table and make polylines
-#            for ac in lstAssetCodes:
-
-#                # Create query
-#                queryAssetCode = "\"Asset_Code\" = '" + ac + "'"
-#                with arcpy.da.SearchCursor(munFolder + "AssetDetails_SWC_L.dbf", inputFields_AssetDetails, queryAssetCode) as inputCursor:
-
-#                    # Create an empty array
-#                    arrayPoints = arcpy.Array()
-
-#                    for inputRec in inputCursor:
-#                        # Get Feature Code first
-#                        FCode = inputRec[5]
-
-#                        # If FCode has "-S" at the end, create a point and add to the array.
-#                        # Then just go to the next record
-#                        if "-S" in FCode:
-#                            # Northing and Easting coordinates for Start Point
-#                            x = inputRec[2]  # Easting
-#                            y = inputRec[1]  # Northing
-#                            # Create point
-#                            pntStart = arcpy.Point(x, y)
-#                            # Add start point to the array
-#                            arrayPoints.add(pntStart)
-#                        else:
-#                            # AssetCode
-#                            AssetCode = inputRec[0]
-#                            # Elevation
-#                            Elev = float(inputRec[3])
-#                            # Width
-#                            if is_number(inputRec[4]):
-#                                Width = Dbl(inputRec[4])
-#                            else:
-#                                Width = 0
-#                            # FCode
-#                            FCode = inputRec[5]
-#                            # Northing and Easting coordinates for next Point
-#                            x = inputRec[2]  # Easting
-#                            y = inputRec[1]  # Northing
-#                            # Create point
-#                            pntNext = arcpy.Point(x, y)
-#                            # Add to array
-#                            arrayPoints.add(pntNext)
-
-#                    # Make sure array has at least 2 points
-#                    if arrayPoints.count >= 2:
-#                        # Make the line once all points collected (usually just 2)
-#                        polyline = arcpy.Polyline(arrayPoints, srNAD83_CSRS_UTM20)
-
-#                        # Write values to output shapefile
-#                        with arcpy.da.InsertCursor(outputShapeFile, outputFields_Shp_Line) as outputCursor:
-#                            # Insert the feature
-#                            outputCursor.insertRow(((polyline), AssetCode, munID, FCode, Elev, Width))
-
-
-#            # Stop the edit operation
-#            editShapefile.stopOperation()
-#            # Stop the edit session and save the changes
-#            editShapefile.stopEditing(True)
-
-
-#            # -----------------------------------------------------------------------------------------------------------------------------------------------------------
-#            tabTRN_P = "AssetDetails_TRN_P"
-#            queryTRN_P = "\"FC\" IN ('STPR','TFSP','TFTL','TSIG','UTPO','TFSLOR','TFSL')"
-#            arcpy.MakeTableView_management(tabAssetDetails, tabTRN_P, queryTRN_P)
-#            countTRN_P = arcpy.GetCount_management(tabTRN_P).getOutput(0)
-#            if countTRN_P > 0:
-#                arcpy.CopyRows_management(tabTRN_P, munFolder + "AssetDetails_TRN_P.dbf")
-
-#            # Output shapefile
-#            outputShapeFile = shpFolder + "TRN P/" + shpMunID + " TRN P.shp"
-
-#            # Start editing - without an undo/redo stack
-#            editShapefile = arcpy.da.Editor(shpFolder + "TRN P/")
-#            editShapefile.startEditing(False, True)
-#            # Start an edit operation
-#            editShapefile.startOperation()
-
-
-#            #print "Importing TRN Point asset data..."
-
-
-#            # Cursor through input table and write points to shapefile
-#            with arcpy.da.SearchCursor(munFolder + "AssetDetails_TRN_P.dbf", inputFields_AssetDetails) as inputCursor:
-
-#                for inputRec in inputCursor:
-#                    # Create shape from Northing and Easting coordinates
-#                    x = inputRec[2]  # Easting
-#                    y = inputRec[1]  # Northing
-#                    # AssetCode
-#                    AssetCode = inputRec[0]
-#                    # Elevation
-#                    Elev = float(inputRec[3])
-#                    # Width
-#                    if is_number(inputRec[4]):
-#                        Width = Dbl(inputRec[4])
-#                    else:
-#                        Width = 0
-#                    # Feature Code
-#                    FCode = inputRec[5]
-
-#                    # Write values to output shapefile
-#                    with arcpy.da.InsertCursor(outputShapeFile, outputFields_Shp_Point) as outputCursor:
-#                       # Insert the feature
-#                       outputCursor.insertRow((x, y, AssetCode, munID, FCode, Elev, Width))
-
-#            # Stop the edit operation
-#            editShapefile.stopOperation()
-#            # Stop the edit session and save the changes
-#            editShapefile.stopEditing(True)
-
-
-#            # -----------------------------------------------------------------------------------------------------------------------------------------------------------
-#            tabTRN_L = "AssetDetails_TRN_L"
-#            queryTRN_L = "\"FC\" IN ('FL','FL-S','STGR','STGR-S','SB','SB-S','RRCB-A','RRCB-A-S','RRCB-C','RRCB-C-S','RRRD-A','RRRD-A-S','RRGR','RRGR-S','RRBW-W','RRBW-W-S','RRDR-A','RRDR-A-S','RRPW','RRPW-S','RRSW-C','RRSW-C-S','RRSW-A','RRSW-A-S','RRSW-B','RRSW-B-S','RRTR','RRTR-S','RRSW','RRSW-S')"
-#            arcpy.MakeTableView_management(tabAssetDetails, tabTRN_L, queryTRN_L)
-#            countTRN_L = arcpy.GetCount_management(tabTRN_L).getOutput(0)
-#            if countTRN_L > 0:
-#                arcpy.CopyRows_management(tabTRN_L, munFolder + "AssetDetails_TRN_L.dbf")
-
-
-#            # Make a list of AssetCodes
-#            lstAssetCodes = []
-
-#            # Cursor through input table and get a list of asset codes
-#            with arcpy.da.SearchCursor(munFolder + "AssetDetails_TRN_L.dbf", inputFields_AssetDetails) as inputCursor:
-#                # Cursor through all records to get a unique list
-#                for inputRec in inputCursor:
-#                    #print inputRec[0]
-#                    if inputRec[0] not in lstAssetCodes:
-#                        lstAssetCodes.append(inputRec[0])
-
-#            # Output shapefile
-#            outputShapeFile = shpFolder + "TRN L/" + shpMunID + " TRN L.shp"
-
-#            # Start editing - without an undo/redo stack
-#            editShapefile = arcpy.da.Editor(shpFolder + "TRN L/")
-#            editShapefile.startEditing(False, True)
-#            # Start an edit operation
-#            editShapefile.startOperation()
-
-
-#            #print "Importing TRN Line asset data..."
-
-
-#            # For each Asset Code, query the table and make polylines
-#            for ac in lstAssetCodes:
-
-#                # Create query
-#                queryAssetCode = "\"Asset_Code\" = '" + ac + "'"
-#                with arcpy.da.SearchCursor(munFolder + "AssetDetails_TRN_L.dbf", inputFields_AssetDetails, queryAssetCode) as inputCursor:
-
-#                    # Create an empty array
-#                    arrayPoints = arcpy.Array()
-
-#                    for inputRec in inputCursor:
-#                        # Get Feature Code first
-#                        FCode = inputRec[5]
-
-#                        # If FCode has "-S" at the end, create a point and add to the array.
-#                        # Then just go to the next record
-#                        if "-S" in FCode:
-#                            # Northing and Easting coordinates for Start Point
-#                            x = inputRec[2]  # Easting
-#                            y = inputRec[1]  # Northing
-#                            # Create point
-#                            pntStart = arcpy.Point(x, y)
-#                            # Add start point to the array
-#                            arrayPoints.add(pntStart)
-#                        else:
-#                            # AssetCode
-#                            AssetCode = inputRec[0]
-#                            # Elevation
-#                            Elev = float(inputRec[3])
-#                            # Width
-#                            if is_number(inputRec[4]):
-#                                Width = Dbl(inputRec[4])
-#                            else:
-#                                Width = 0
-#                            # FCode
-#                            FCode = inputRec[5]
-#                            # Northing and Easting coordinates for next Point
-#                            x = inputRec[2]  # Easting
-#                            y = inputRec[1]  # Northing
-#                            # Create point
-#                            pntNext = arcpy.Point(x, y)
-#                            # Add to array
-#                            arrayPoints.add(pntNext)
-
-#                    # Make sure array has at least 2 points
-#                    if arrayPoints.count >= 2:
-#                        # Make the line once all points collected (usually just 2)
-#                        polyline = arcpy.Polyline(arrayPoints, srNAD83_CSRS_UTM20)
-
-#                        # Write values to output shapefile
-#                        with arcpy.da.InsertCursor(outputShapeFile, outputFields_Shp_Line) as outputCursor:
-#                            # Insert the feature
-#                            outputCursor.insertRow(((polyline), AssetCode, munID, FCode, Elev, Width))
-
-
-#            # Stop the edit operation
-#            editShapefile.stopOperation()
-#            # Stop the edit session and save the changes
-#            editShapefile.stopEditing(True)
-
-
-#            # -----------------------------------------------------------------------------------------------------------------------------------------------------------
-#            tabWWC_P = "AssetDetails_WWC_P"
-#			# Added WWST May 06, 2019 - forgot to add it before
-#            queryWWC_P = "\"FC\" IN ('FTTESAN','PMPS','MHCO','MHSA','SEPT','WWCTF','WWCPMP','WWTFGEN','WWSPMP','WWTFAC','WWBSC','WWBLWR','WWTFBLD','WWCCSYS','WWCLCC','WWCLAR','WWCOMP','WWDAFS','WWDAFT','WWELECM','WWFFT','WFLME','WWGDTP','WWISV','WWLAB','WWLAG','WWOFS','WWOXDI','WWPADAE','WWPTNK','WWSBRT','WWSCRC','WWSDB','WWSCM','WWST','WWTLEM')"
-#            arcpy.MakeTableView_management(tabAssetDetails, tabWWC_P, queryWWC_P)
-#            countWWC_P = arcpy.GetCount_management(tabWWC_P).getOutput(0)
-#            if countWWC_P > 0:
-#                arcpy.CopyRows_management(tabWWC_P, munFolder + "AssetDetails_WWC_P.dbf")
-
-
-#            # Output shapefile
-#            outputShapeFile = shpFolder + "WWC P/" + shpMunID + " WWC P.shp"
-
-#            # Start editing - without an undo/redo stack
-#            editShapefile = arcpy.da.Editor(shpFolder + "WWC P/")
-#            editShapefile.startEditing(False, True)
-#            # Start an edit operation
-#            editShapefile.startOperation()
-
-
-#            #print "Importing WWC Point asset data..."
-
-
-#            # Cursor through input table and write points to shapefile
-#            with arcpy.da.SearchCursor(munFolder + "AssetDetails_WWC_P.dbf", inputFields_AssetDetails) as inputCursor:
-
-#                for inputRec in inputCursor:
-#                    # Create shape from Northing and Easting coordinates
-#                    x = inputRec[2]  # Easting
-#                    y = inputRec[1]  # Northing
-#                    # AssetCode
-#                    AssetCode = inputRec[0]
-#                    # Elevation
-#                    Elev = float(inputRec[3])
-#                    # Width
-#                    if is_number(inputRec[4]):
-#                        Width = Dbl(inputRec[4])
-#                    else:
-#                        Width = 0
-#                    # Feature Code
-#                    FCode = inputRec[5]
-
-#                    # Write values to output shapefile
-#                    with arcpy.da.InsertCursor(outputShapeFile, outputFields_Shp_Point) as outputCursor:
-#                       # Insert the feature
-#                       outputCursor.insertRow((x, y, AssetCode, munID, FCode, Elev, Width))
-
-#            # Stop the edit operation
-#            editShapefile.stopOperation()
-#            # Stop the edit session and save the changes
-#            editShapefile.stopEditing(True)
-
-
-#            # -----------------------------------------------------------------------------------------------------------------------------------------------------------
-#            tabWWC_L = "AssetDetails_WWC_L"
-#            queryWWC_L = "\"FC\" IN ('GRVPSA','GRVPSA-S','GRVPCO','GRVPCO-S','WWFRCM','WWFRCM-S')"
-#            arcpy.MakeTableView_management(tabAssetDetails, tabWWC_L, queryWWC_L)
-#            countWWC_L = arcpy.GetCount_management(tabWWC_L).getOutput(0)
-#            if countWWC_L > 0:
-#                arcpy.CopyRows_management(tabWWC_L, munFolder + "AssetDetails_WWC_L.dbf")
-
-#            # Make a list of AssetCodes
-#            lstAssetCodes = []
-
-#            # Cursor through input table and get a list of asset codes
-#            with arcpy.da.SearchCursor(munFolder + "AssetDetails_WWC_L.dbf", inputFields_AssetDetails) as inputCursor:
-
-#                # Cursor through all records to get a unique list
-#                for inputRec in inputCursor:
-#                    if inputRec[0] not in lstAssetCodes:
-#                        lstAssetCodes.append(inputRec[0])
-
-
-#            # Output shapefile
-#            outputShapeFile = shpFolder + "WWC L/" + shpMunID + " WWC L.shp"
-
-#            # Start editing - without an undo/redo stack
-#            editShapefile = arcpy.da.Editor(shpFolder + "WWC L/")
-#            editShapefile.startEditing(False, True)
-#            # Start an edit operation
-#            editShapefile.startOperation()
-
-
-#            #print "Importing WWC Line asset data..."
-
-
-#            # For each Asset Code, query the table and make polylines
-#            for ac in lstAssetCodes:
-
-#                # Create query
-#                queryAssetCode = "\"Asset_Code\" = '" + ac + "'"
-#                with arcpy.da.SearchCursor(munFolder + "AssetDetails_WWC_L.dbf", inputFields_AssetDetails, queryAssetCode) as inputCursor:
-
-#                    # Create an empty array
-#                    arrayPoints = arcpy.Array()
-
-#                    for inputRec in inputCursor:
-#                        # Get Feature Code first
-#                        FCode = inputRec[5]
-
-#                        # If FCode has "-S" at the end, create a point and add to the array.
-#                        # Then just go to the next record
-#                        if "-S" in FCode:
-#                            # Northing and Easting coordinates for Start Point
-#                            x = inputRec[2]  # Easting
-#                            y = inputRec[1]  # Northing
-#                            # Create point
-#                            pntStart = arcpy.Point(x, y)
-#                            # Add start point to the array
-#                            arrayPoints.add(pntStart)
-#                        else:
-#                            # AssetCode
-#                            AssetCode = inputRec[0]
-#                            # Elevation
-#                            Elev = float(inputRec[3])
-#                            # Width
-#                            if is_number(inputRec[4]):
-#                                Width = Dbl(inputRec[4])
-#                            else:
-#                                Width = 0
-#                            # FCode
-#                            FCode = inputRec[5]
-#                            # Northing and Easting coordinates for next Point
-#                            x = inputRec[2]  # Easting
-#                            y = inputRec[1]  # Northing
-#                            # Create point
-#                            pntNext = arcpy.Point(x, y)
-#                            # Add to array
-#                            arrayPoints.add(pntNext)
-
-#                    # Make sure array has at least 2 points
-#                    if arrayPoints.count >= 2:
-#                        # Make the line once all points collected (usually just 2)
-#                        polyline = arcpy.Polyline(arrayPoints, srNAD83_CSRS_UTM20)
-
-#                        # Write values to output shapefile
-#                        with arcpy.da.InsertCursor(outputShapeFile, outputFields_Shp_Line) as outputCursor:
-#                            # Insert the feature
-#                            outputCursor.insertRow(((polyline), AssetCode, munID, FCode, Elev, Width))
-
-
-#            # Stop the edit operation
-#            editShapefile.stopOperation()
-#            # Stop the edit session and save the changes
-#            editShapefile.stopEditing(True)
-
-
-#        # ====================================================================================================================
+            counter = 0 # not sure this is ever used?????
+
+            #region load point features
+            for sfname in shapefileNames:
+                if sfname.endswith(' P'):
+                    usfname = sfname.replace(' ', '_') # need a version with an underscore instead of space
+                    tab_P = "AssetDetails_" + usfname
+                    query = get_object_value('query_strings.json', 'query' + usfname)
+                    arcpy.MakeTableView_management(tabAssetDetails, tab_P, query)
+                    count_P = arcpy.GetCount_management(tab_P).getOutput(0)
+                    if count_P > 0:
+                        arcpy.CopyRows_management(tab_P, munFolder + "AssetDetails_" + usfname + ".dbf")
+
+                    outputShapeFile = shpFolder + sfname + "/" + shpMunID + " " + sfname + ".shp"
+                    editShapefile = arcpy.da.Editor(shpFolder + sfname + "/")
+                    editShapefile.startEditing(False, True)
+                    editShapefile.startOperation()
+                    current_dbf = munFolder + "AssetDetails_" + usfname + ".dbf"
+                    with arcpy.da.SearchCursor(current_dbf, inputFields_AssetDetails) as inputCursor:
+                        for inputRec in inputCursor:
+                            # Create shape from Northing and Easting coordinates
+                            x = inputRec[2]  # Easting
+                            y = inputRec[1]  # Northing
+                            # AssetCode
+                            AssetCode = inputRec[0]
+                            # Elevation
+                            Elev = float(inputRec[3])
+                            # Width
+                            if is_number(inputRec[4]):
+                                Width = Dbl(inputRec[4])
+                            else:
+                                Width = 0
+                            # Feature Code
+                            FCode = inputRec[5]
+                            # Write values to output shapefile
+                            with arcpy.da.InsertCursor(outputShapeFile, outputFields_Shp_Point) as outputCursor:
+                               # Insert the feature
+                               outputCursor.insertRow((x, y, AssetCode, munID, FCode, Elev, Width))
+                    # Stop the edit operation
+                    editShapefile.stopOperation()
+                    # Stop the edit session and save the changes
+                    editShapefile.stopEditing(True)
+            #endregion
+
+            #region load line features
+            for sfname in shapefileNames:
+                print(sfname)
+                if sfname.endswith(' L'):
+                    #print(sfname)
+                    usfname = sfname.replace(' ', '_') # also need a version with underscore instead of space
+                    udbf = munFolder + "AssetDetails_" + usfname + ".dbf"
+                    tab_L = "AssetDetails_" + usfname
+                    query = get_object_value('query_strings.json', 'query' + usfname)
+                    arcpy.MakeTableView_management(tabAssetDetails, tab_L, query)
+                    count_L = arcpy.GetCount_management(tab_L).getOutput(0)
+                    if count_L > 0:
+                        arcpy.CopyRows_management(tabPWS_L, udbf)
+                    # Make a list of AssetCodes
+                    lstAssetCodes = []
+                    
+                    # Cursor through input table and get a list of asset codes
+                    with arcpy.da.SearchCursor(udbf, inputFields_AssetDetails) as inputCursor:
+                        # Cursor through all records to get a unique list
+                        for inputRec in inputCursor:
+                            if inputRec[0] not in lstAssetCodes: lstAssetCodes.append(inputRec[0])
+                    # Output shapefile
+                    outputShapeFile = shpFolder + sfname + "/" + shpMunID + " " + sfname + ".shp"
+                    editShapefile = arcpy.da.Editor(shpFolder + sfname + "/")
+
+                    # Start editing - without an undo/redo stack
+                    editShapefile.startEditing(False, True)
+                    # Start an edit operation
+                    editShapefile.startOperation()
+
+                    # For each Asset Code, query the table and make polylines
+                    for ac in lstAssetCodes:
+
+                        # Create query
+                        queryAssetCode = "\"Asset_Code\" = '" + ac + "'"
+                        with arcpy.da.SearchCursor(udbf, inputFields_AssetDetails, queryAssetCode) as inputCursor:
+
+                            # Create an empty array
+                            arrayPoints = arcpy.Array()
+
+                            for inputRec in inputCursor:
+                                # Get Feature Code first
+                                FCode = inputRec[5]
+                                #print FCode
+
+                                # If FCode has "-S" at the end, create a point and add
+                                #to the array.
+                                # Then just go to the next record
+                                if "-S" in FCode:
+                                    # Northing and Easting coordinates for Start Point
+                                    x = inputRec[2] # Easting
+                                    y = inputRec[1] # Northing
+                                    # Create point
+                                    pntStart = arcpy.Point(x, y)
+                                    # Add start point to the array
+                                    arrayPoints.add(pntStart)
+                                else:
+                                    # AssetCode
+                                    AssetCode = inputRec[0]
+                                    # Elevation
+                                    Elev = float(inputRec[3])
+                                    # Width
+                                    if is_number(inputRec[4]):
+                                        Width = Dbl(inputRec[4])
+                                    else:
+                                        Width = 0
+                                    # FCode
+                                    FCode = inputRec[5]
+                                    # Northing and Easting coordinates for next Point
+                                    x = inputRec[2] # Easting
+                                    y = inputRec[1] # Northing
+                                    # Create point
+                                    pntNext = arcpy.Point(x, y)
+                                    # Add to array
+                                    arrayPoints.add(pntNext)
+
+                            # Make sure array has at least 2 points
+                            if arrayPoints.count >= 2:
+                                # Make the line once all points collected (usually just 2)
+                                polyline = arcpy.Polyline(arrayPoints, srNAD83_CSRS_UTM20)
+
+                                # Write values to output shapefile
+                                with arcpy.da.InsertCursor(outputShapeFile,
+                                outputFields_Shp_Line) as outputCursor:
+                                    # Insert the feature
+                                    outputCursor.insertRow(((polyline), AssetCode, munID, FCode, Elev, Width))
+
+
+                    # Stop the edit operation
+                    editShapefile.stopOperation()
+                    # Stop the edit session and save the changes
+                    editShapefile.stopEditing(True)
+#endregion
+
+
+#        ====================================================================================================================
 #        # End of Survey-method-only code
-#        # ====================================================================================================================
+#        ====================================================================================================================
+
+#        ====================================================================================================================
+#        # Begin of GIS-method-only code
+#        ====================================================================================================================
+        # Hard-code the gdb connection
+        # NSGI
+        gdb = "D:/SDEConnect/AssetViewer.sde"
+
+        # Check if any features/records for this municipality exist already and truncate them if they do
 
 
+        # Set the current workspace
+        arcpy.env.workspace = gdb
+
+        # Start editing on the output file GDB
+        edit = arcpy.da.Editor(gdb)
+        # Start editing - without an undo/redo stack
+        edit.startEditing(False, False)
+        # Start an edit operation
+        edit.startOperation()
+
+        # Query the municipality code
+        munQuery = "MunID = '" + munID + "'"
+
+        fds = get_array('dataset_names.json', 'dataset_names')
+        for dsname in fds:
+            for fc in arcpy.ListFeatureClasses("", "", dsname):
+                if not arcpy.TestSchemaLock(fc):
+                    # Make a feature layer with any features matching the MunID query
+                    fcLayer = fc + "_" + munID
+                    arcpy.MakeFeatureLayer_management(fc, fcLayer, munQuery)
+                    countMunID = arcpy.GetCount_management(fc + "_" + munID).getOutput(0)
+                    if countMunID > 0:
+                        # Delete any dataset features for that municipality
+                        arcpy.DeleteRows_management(fc + "_" + munID)
+                else:
+                    arcpy.AddError("The database is locked by another user or process.")
+                    raise Exception
+        # Stand-alone tables
+        dstn = get_array('dataset_table_names.json', 'dataset_table_names')
+        for tab in arcpy.ListTables():
+            if not arcpy.TestSchemaLock(tab):
+                for dst in dstn:
+                    if dst in tab:
+                        # Make a table view with any records matching the MunID query
+                        tabView = tab + "_" + munID
+                        arcpy.MakeTableView_management(tab, tabView, munQuery)
+                        countMunID = arcpy.GetCount_management(tabView).getOutput(0)
+                        #print "Records found in " + tab + ": " + countMunID
+                        if countMunID > 0:
+                            # Delete any records in stand-alone tables for that municipality
+                            #print "Deleting " + countMunID + " records in " + tab + "\n"
+                            arcpy.DeleteRows_management(tab + "_" + munID)
+                        break;
+                else:
+                    arcpy.AddError("The database is locked by another user or process.")
+                    raise Exception
 
 
-#        # ======================================================================
-#        # Hard-code the gdb connection
-#        # NSGI
-#        gdb = "D:/SDEConnect/AssetViewer.sde"
+        # Stop the edit operation
+        edit.stopOperation()
 
-#        # ======================================================================
+        # Initialize total counter
+        global totalcounter
+        totalcounter = 0
 
+        # Go into each shapefile folder, find shapefile and join to spreadsheet CSV file
+        subFolders = [x[0] for x in os.walk(shpFolder)] # a list comprehension
 
+        for subFolder in subFolders:
 
+            # Don't need to do the root folder
+            if subFolder == shpFolder:
+                continue
 
-#        # Check if any features/records for this municipality exist already and truncate them if they do
-#        # ==============================================================================================
+            # Start an edit operation
+            edit.startOperation()
 
-#        # Set the current workspace
-#        arcpy.env.workspace = gdb
+            # Set the workspace to be the current shapefile folder
+            shpWorkspace = subFolder
+            arcpy.env.workspace = shpWorkspace
+            arcpy.env.overwriteOutput = True
 
-#        # Start editing on the output file GDB
-#        edit = arcpy.da.Editor(gdb)
-#        # Start editing - without an undo/redo stack
-#        edit.startEditing(False, False)
-#        # Start an edit operation
-#        edit.startOperation()
+            shapefile = ""
 
+            if subFolder[-5:] == "PWS L":
+                # Shapefile will be called "<shpMunID> PWS L.shp"
+                shapefile = shpMunID + " PWS L.shp"
 
-#        # Query the municipality code
-#        munQuery = "MunID = '" + munID + "'"
+            elif subFolder[-5:] == "PWS P":
+                # Shapefile will be called "<shpMunID> PWS P.shp"
+                shapefile = shpMunID + " PWS P.shp"
 
+            elif subFolder[-5:] == "SWC L":
+                # Shapefile will be called "<shpMunID> SWC L.shp"
+                shapefile = shpMunID + " SWC L.shp"
 
-#        # Go through each feature dataset
-#        # -------------------------------
-#        # Stormwater
-#        for fc in arcpy.ListFeatureClasses("", "", "Stormwater"):
-#            if not arcpy.TestSchemaLock(fc):
-#                # Make a feature layer with any features matching the MunID query
-#                fcLayer = fc + "_" + munID
-#                arcpy.MakeFeatureLayer_management(fc, fcLayer, munQuery)
-#                countMunID = arcpy.GetCount_management(fc + "_" + munID).getOutput(0)
-#                #print "Records found in " + fc + ": " + countMunID
-#                if countMunID > 0:
-#                    # Delete any Stormwater features for that municipality
-#                    #print "Deleting " + countMunID + " records in " + fc + "\n"
-#                    arcpy.DeleteRows_management(fc + "_" + munID)
-#            else:
-#                arcpy.AddError("The database is locked by another user or process.")
-#                raise Exception
+            elif subFolder[-5:] == "SWC P":
+                # Shapefile will be called "<shpMunID> SWC P.shp"
+                shapefile = shpMunID + " SWC P.shp"
 
-#        # Transportation
-#        for fc in arcpy.ListFeatureClasses("", "", "Transportation"):
-#            if not arcpy.TestSchemaLock(fc):
-#                # Make a feature layer with any features matching the MunID query
-#                fcLayer = fc + "_" + munID
-#                arcpy.MakeFeatureLayer_management(fc, fcLayer, munQuery)
-#                countMunID = arcpy.GetCount_management(fc + "_" + munID).getOutput(0)
-#                #print "Records found in " + fc + ": " + countMunID
-#                if countMunID > 0:
-#                    # Delete any Transportation features for that municipality
-#                    #print "Deleting " + countMunID + " records in " + fc + "\n"
-#                    arcpy.DeleteRows_management(fc + "_" + munID)
-#            else:
-#                arcpy.AddError("The database is locked by another user or process.")
-#                raise Exception
+            elif subFolder[-5:] == "TRN L":
+                # Shapefile will be called "<shpMunID> TRN L.shp"
+                shapefile = shpMunID + " TRN L.shp"
 
-#        # Wastewater
-#        for fc in arcpy.ListFeatureClasses("", "", "Wastewater"):
-#            if not arcpy.TestSchemaLock(fc):
-#                # Make a feature layer with any features matching the MunID query
-#                fcLayer = fc + "_" + munID
-#                arcpy.MakeFeatureLayer_management(fc, fcLayer, munQuery)
-#                countMunID = arcpy.GetCount_management(fc + "_" + munID).getOutput(0)
-#                #print "Records found in " + fc + ": " + countMunID
-#                if countMunID > 0:
-#                    # Delete any Wastewater features for that municipality
-#                    #print "Deleting " + countMunID + " records in " + fc + "\n"
-#                    arcpy.DeleteRows_management(fc + "_" + munID)
-#            else:
-#                arcpy.AddError("The database is locked by another user or process.")
-#                raise Exception
+            elif subFolder[-5:] == "TRN P":
+                # Shapefile will be called "<shpMunID> TRN P.shp"
+                shapefile = shpMunID + " TRN P.shp"
 
-#        # Water Supply
-#        for fc in arcpy.ListFeatureClasses("", "", "WaterSupply"):
-#            if not arcpy.TestSchemaLock(fc):
-#                # Make a feature layer with any features matching the MunID query
-#                fcLayer = fc + "_" + munID
-#                arcpy.MakeFeatureLayer_management(fc, fcLayer, munQuery)
-#                countMunID = arcpy.GetCount_management(fcLayer).getOutput(0)
-#                #print "Records found in " + fc + ": " + countMunID
-#                if countMunID > 0:
-#                    # Delete any Water Supply features for that municipality
-#                    #print "Deleting " + countMunID + " records in " + fc + "\n"
-#                    arcpy.DeleteRows_management(fc + "_" + munID)
-#            else:
-#                arcpy.AddError("The database is locked by another user or process.")
-#                raise Exception
+            elif subFolder[-5:] == "WWC L":
+                # Shapefile will be called "<shpMunID> WWC L.shp"
+                shapefile = shpMunID + " WWC L.shp"
 
-#        # Stand-alone tables
-#        for tab in arcpy.ListTables():
-#            if not arcpy.TestSchemaLock(tab):
-#                if "PWS_BoosterStation_Assets" in tab or "PWS_TreatmentFacility_Assets" in tab or "WWC_LiftPumpStation_Assets" in tab or "WWC_TreatmentFacility_Assets" in tab:
-#                    # Make a table view with any records matching the MunID query
-#                    tabView = tab + "_" + munID
-#                    arcpy.MakeTableView_management(tab, tabView, munQuery)
-#                    countMunID = arcpy.GetCount_management(tabView).getOutput(0)
-#                    #print "Records found in " + tab + ": " + countMunID
-#                    if countMunID > 0:
-#                        # Delete any records in stand-alone tables for that municipality
-#                        #print "Deleting " + countMunID + " records in " + tab + "\n"
-#                        arcpy.DeleteRows_management(tab + "_" + munID)
-#            else:
-#                arcpy.AddError("The database is locked by another user or process.")
-#                raise Exception
+            elif subFolder[-5:] == "WWC P":
+                # Shapefile will be called "<shpMunID> WWC P.shp"
+                shapefile = shpMunID + " WWC P.shp"
 
-
-#        # Stop the edit operation
-#        edit.stopOperation()
-
-#        # ==============================================================================================
-
-
-#        # Initialize total counter
-#        global totalcounter
-#        totalcounter = 0
-
-
-
-#        # ====================================================================================================================
-#        #
-#        # Go into each shapefile folder, find shapefile and join to spreadsheet CSV file
-#        subFolders = [x[0] for x in os.walk(shpFolder)]
-
-#        for subFolder in subFolders:
-
-#            # Don't need to do the root folder
-#            if subFolder == shpFolder:
-#                continue
-
-#            # Start an edit operation
-#            edit.startOperation()
-
-#            # Set the workspace to be the current shapefile folder
-#            shpWorkspace = subFolder
-#            arcpy.env.workspace = shpWorkspace
-#            arcpy.env.overwriteOutput = True
-
-#            shapefile = ""
-
-#            if subFolder[-5:] == "PWS L":
-#                # Shapefile will be called "<shpMunID> PWS L.shp"
-#                shapefile = shpMunID + " PWS L.shp"
-
-#            elif subFolder[-5:] == "PWS P":
-#                # Shapefile will be called "<shpMunID> PWS P.shp"
-#                shapefile = shpMunID + " PWS P.shp"
-
-#            elif subFolder[-5:] == "SWC L":
-#                # Shapefile will be called "<shpMunID> SWC L.shp"
-#                shapefile = shpMunID + " SWC L.shp"
-
-#            elif subFolder[-5:] == "SWC P":
-#                # Shapefile will be called "<shpMunID> SWC P.shp"
-#                shapefile = shpMunID + " SWC P.shp"
-
-#            elif subFolder[-5:] == "TRN L":
-#                # Shapefile will be called "<shpMunID> TRN L.shp"
-#                shapefile = shpMunID + " TRN L.shp"
-
-#            elif subFolder[-5:] == "TRN P":
-#                # Shapefile will be called "<shpMunID> TRN P.shp"
-#                shapefile = shpMunID + " TRN P.shp"
-
-#            elif subFolder[-5:] == "WWC L":
-#                # Shapefile will be called "<shpMunID> WWC L.shp"
-#                shapefile = shpMunID + " WWC L.shp"
-
-#            elif subFolder[-5:] == "WWC P":
-#                # Shapefile will be called "<shpMunID> WWC P.shp"
-#                shapefile = shpMunID + " WWC P.shp"
-
-#            else:
-#                shapefile = ""
+            else:
+                shapefile = ""
 
 
 #            # Set fc to the shapefile and get shape type
@@ -1314,14 +804,17 @@ def Upload():
 #            gt = "NAD_1983_To_WGS_1984_1 + NAD_1983_CSRS_To_WGS_1984_2"
 
 
-#            # If shapefiles already existed (i.e. GIS Method)
+#            # If shapefiles already existed (i.e.  GIS Method)
 #            if shapefilesExist == True:
 
-#                # Project the shapefile to UTM 20 NAD83 CSRS if not already in that coordinate system
+#                # Project the shapefile to UTM 20 NAD83 CSRS if not already in
+#                that coordinate system
 #                if arcpy.Describe(fc).spatialReference.factoryCode == 26920:
-#                    # Project tool doesn't like spaces, so need to get rid of them
+#                    # Project tool doesn't like spaces, so need to get rid of
+#                    them
 #                    fcProj = fc.replace(" ", "_")[:-4] + "_Proj.shp"
-#                    arcpy.Project_management(fc, fcProj, srNAD83_CSRS_UTM20, gt)
+#                    arcpy.Project_management(fc, fcProj, srNAD83_CSRS_UTM20,
+#                    gt)
 #                    # Join the shapefile to the spreadsheet dbf
 #                    fcJoin = fc.replace(" ", "_")[:-4] + "_Join"
 #                    arcpy.MakeFeatureLayer_management(fcProj, fcJoin)
@@ -1333,12 +826,14 @@ def Upload():
 #                    # Join the shapefile to the spreadsheet dbf
 #                    fcJoin = fc.replace(" ", "_")[:-4] + "_Join"
 #                    arcpy.MakeFeatureLayer_management(fc, fcJoin)
-#                    # Commented out 02 May 2019 and replaced with line below it
+#                    # Commented out 02 May 2019 and replaced with line below
+#                    it
 #                    #shapefileName = fc.replace(" ", "_")[:-4]
 #                    shapefileName = fc.replace(" ", " ")[:-4]
 
 #                # Join the shapefile with the dbf based on the GIS_Link field
-#                arcpy.AddJoin_management(fcJoin, "GIS_Link", dbfGenAssetInfo, "GIS_Link")
+#                arcpy.AddJoin_management(fcJoin, "GIS_Link", dbfGenAssetInfo,
+#                "GIS_Link")
 
 #            else:
 #                # Join the shapefile to the spreadsheet dbf
@@ -1346,11 +841,13 @@ def Upload():
 #                arcpy.MakeFeatureLayer_management(fc, fcJoin)
 
 #                # Join the shapefile with the dbf based on the AssetCode field
-#                arcpy.AddJoin_management(fcJoin, "AssetCode", dbfGenAssetInfo, "Asset_Code")
+#                arcpy.AddJoin_management(fcJoin, "AssetCode", dbfGenAssetInfo,
+#                "Asset_Code")
 #                shapefileName = fc[:-4]
 
 
-#            # Check if the Elevation field is called Elevation, ELEVATION, Elev or ELEV
+#            # Check if the Elevation field is called Elevation, ELEVATION,
+#            Elev or ELEV
 #            fieldNames = [f.name for f in arcpy.ListFields(fcJoin)]
 #            fieldElevName = ""
 #            for fieldName in fieldNames:
@@ -1368,27 +865,67 @@ def Upload():
 #            # Only some of these fields are necessary for the upload
 #            if method == "GIS":
 #                shapefilesExist = True
-#                inputFields = ["Shape@", shapefileName + "." + fieldElevName, shapefileName + ".Width", \
-#                               "GenAssetInfo.Asset_Code", "GenAssetInfo.LocDesc", "GenAssetInfo.FeatureCod", "GenAssetInfo.Condition", \
-#                               "GenAssetInfo.Inspected", "GenAssetInfo.Status", "GenAssetInfo.Quantity", "GenAssetInfo.Age", \
-#                               "GenAssetInfo.Material", "GenAssetInfo.Comments", "GenAssetInfo.Area", "GenAssetInfo.Department", \
-#                               "GenAssetInfo.Division", "GenAssetInfo.PersResp", "GenAssetInfo.Install_yr", "GenAssetInfo.Estimated", \
-#                               "GenAssetInfo.RplmtCst", "GenAssetInfo.ConditionB", "GenAssetInfo.ResidValue", "GenAssetInfo.DispDate", \
-#                               "GenAssetInfo.Risk", "GenAssetInfo.CnsqOfFail", "GenAssetInfo.FollowUp", "GenAssetInfo.Record_Dra", \
-#                               "GenAssetInfo.Replacemen", "GenAssetInfo.CostLookup", "GenAssetInfo.Cost_Facto", "GenAssetInfo.Unit_Cost"]
+#                inputFields = ["Shape@", shapefileName + "." + fieldElevName,
+#                shapefileName + ".Width", \
+#                               "GenAssetInfo.Asset_Code",
+#                               "GenAssetInfo.LocDesc",
+#                               "GenAssetInfo.FeatureCod",
+#                               "GenAssetInfo.Condition", \
+#                               "GenAssetInfo.Inspected",
+#                               "GenAssetInfo.Status", "GenAssetInfo.Quantity",
+#                               "GenAssetInfo.Age", \
+#                               "GenAssetInfo.Material",
+#                               "GenAssetInfo.Comments", "GenAssetInfo.Area",
+#                               "GenAssetInfo.Department", \
+#                               "GenAssetInfo.Division",
+#                               "GenAssetInfo.PersResp",
+#                               "GenAssetInfo.Install_yr",
+#                               "GenAssetInfo.Estimated", \
+#                               "GenAssetInfo.RplmtCst",
+#                               "GenAssetInfo.ConditionB",
+#                               "GenAssetInfo.ResidValue",
+#                               "GenAssetInfo.DispDate", \
+#                               "GenAssetInfo.Risk", "GenAssetInfo.CnsqOfFail",
+#                               "GenAssetInfo.FollowUp",
+#                               "GenAssetInfo.Record_Dra", \
+#                               "GenAssetInfo.Replacemen",
+#                               "GenAssetInfo.CostLookup",
+#                               "GenAssetInfo.Cost_Facto",
+#                               "GenAssetInfo.Unit_Cost"]
 
-#            # Need extra AssetCode and FCode fields in case there is no matching record when joined
+#            # Need extra AssetCode and FCode fields in case there is no
+#            matching record when joined
 #            elif method == "Survey":
 #                shapefilesExist = False
-#                inputFields = ["Shape@", shapefileName + "." + fieldElevName, shapefileName + ".Width", \
-#                               "GenAssetInfo.Asset_Code", "GenAssetInfo.LocDesc", "GenAssetInfo.FeatureCod", "GenAssetInfo.Condition", \
-#                               "GenAssetInfo.Inspected", "GenAssetInfo.Status", "GenAssetInfo.Quantity", "GenAssetInfo.Age", \
-#                               "GenAssetInfo.Material", "GenAssetInfo.Comments", "GenAssetInfo.Area", "GenAssetInfo.Department", \
-#                               "GenAssetInfo.Division", "GenAssetInfo.PersResp", "GenAssetInfo.Install_yr", "GenAssetInfo.Estimated", \
-#                               "GenAssetInfo.RplmtCst", "GenAssetInfo.ConditionB", "GenAssetInfo.ResidValue", "GenAssetInfo.DispDate", \
-#                               "GenAssetInfo.Risk", "GenAssetInfo.CnsqOfFail", "GenAssetInfo.FollowUp", "GenAssetInfo.Record_Dra", \
-#                               "GenAssetInfo.Replacemen", "GenAssetInfo.CostLookup", "GenAssetInfo.Cost_Facto", "GenAssetInfo.Unit_Cost", \
-#                               shapefileName + ".AssetCode", shapefileName + ".FCode"]
+#                inputFields = ["Shape@", shapefileName + "." + fieldElevName,
+#                shapefileName + ".Width", \
+#                               "GenAssetInfo.Asset_Code",
+#                               "GenAssetInfo.LocDesc",
+#                               "GenAssetInfo.FeatureCod",
+#                               "GenAssetInfo.Condition", \
+#                               "GenAssetInfo.Inspected",
+#                               "GenAssetInfo.Status", "GenAssetInfo.Quantity",
+#                               "GenAssetInfo.Age", \
+#                               "GenAssetInfo.Material",
+#                               "GenAssetInfo.Comments", "GenAssetInfo.Area",
+#                               "GenAssetInfo.Department", \
+#                               "GenAssetInfo.Division",
+#                               "GenAssetInfo.PersResp",
+#                               "GenAssetInfo.Install_yr",
+#                               "GenAssetInfo.Estimated", \
+#                               "GenAssetInfo.RplmtCst",
+#                               "GenAssetInfo.ConditionB",
+#                               "GenAssetInfo.ResidValue",
+#                               "GenAssetInfo.DispDate", \
+#                               "GenAssetInfo.Risk", "GenAssetInfo.CnsqOfFail",
+#                               "GenAssetInfo.FollowUp",
+#                               "GenAssetInfo.Record_Dra", \
+#                               "GenAssetInfo.Replacemen",
+#                               "GenAssetInfo.CostLookup",
+#                               "GenAssetInfo.Cost_Facto",
+#                               "GenAssetInfo.Unit_Cost", \
+#                               shapefileName + ".AssetCode", shapefileName +
+#                               ".FCode"]
 
 
 #            # Initialize counter
@@ -1424,12 +961,14 @@ def Upload():
 #                        Width = None
 
 #                    # Asset Code
-#                    # Depending on whether shapefiles existed (method), get AssetCode from one of two fields
+#                    # Depending on whether shapefiles existed (method), get
+#                    AssetCode from one of two fields
 #                    if not inputRec[3] and shapefilesExist == False:
 #                        AssetCode = str(inputRec[31])
 #                        if AssetCode is not None:
 #                            MunID = inputRec[31].split("-")[0]
-#                            # Make sure MunID in AssetCode is the same as the current municipality
+#                            # Make sure MunID in AssetCode is the same as the
+#                            current municipality
 #                            if MunID == munID:
 #                                AssetClass = inputRec[31].split("-")[1]
 #                                AssetSubtype = inputRec[31].split("-")[2]
@@ -1445,7 +984,8 @@ def Upload():
 #                        NoneType = type(None)
 #                        if not isinstance(AssetCode, NoneType):
 #                            MunID = inputRec[3].split("-")[0]
-#                            # Make sure MunID in AssetCode is the same as the current municipality
+#                            # Make sure MunID in AssetCode is the same as the
+#                            current municipality
 #                            if MunID == munID:
 #                                AssetClass = inputRec[3].split("-")[1]
 #                                AssetSubtype = inputRec[3].split("-")[2]
@@ -1488,7 +1028,8 @@ def Upload():
 #                        Condition = None
 
 #                    # Inspection Date
-#                    # There are currently no Inspection Dates in spreadsheets - this may change? Not sure how they will be formatted.
+#                    # There are currently no Inspection Dates in spreadsheets
+#                    - this may change?  Not sure how they will be formatted.
 #                    if not inputRec[7]:
 #                        InspectDate = None
 #                    elif str(inputRec[7]) == "" or str(inputRec[7]) == " ":
@@ -1496,12 +1037,15 @@ def Upload():
 #                    else:
 #                        InspectDate = inputRec[7]
 
-#                    # Status - often in spreadsheets as "active" or "activate" or "Activate"
+#                    # Status - often in spreadsheets as "active" or "activate"
+#                    or "Activate"
 #                    if not inputRec[8]:
 #                        Status = None
 #                    elif str(inputRec[8]) == "" or str(inputRec[8]) == " ":
 #                        Status = "Active"
-#                    elif str(inputRec[8]) == "active" or str(inputRec[8]) == "Active" or str(inputRec[8]) == "activate" or str(inputRec[8]) == "Activate":
+#                    elif str(inputRec[8]) == "active" or str(inputRec[8]) ==
+#                    "Active" or str(inputRec[8]) == "activate" or
+#                    str(inputRec[8]) == "Activate":
 #                        Status = "Active"
 #                    else:
 #                        Status = str(inputRec[8])
@@ -1515,7 +1059,8 @@ def Upload():
 #                                MeasuredLength = 0
 #                            else:
 #                                #MeasuredLength = int(float(inputRec[9]))
-#                                MeasuredLength = int(round(float(inputRec[9])))
+#                                MeasuredLength =
+#                                int(round(float(inputRec[9])))
 #                        else:
 #                            MeasuredLength = 0
 #                    else:
@@ -1523,9 +1068,11 @@ def Upload():
 
 #                    # Material
 #                    # Check some road and sidewalk/trail fcodes for materials
-#                    if FCode in ("RRCB-A", "RRCB-A-S", "RRRD-A", "RRRD-A-S", "RRDR-A", "RRDR-A-S", "RRSW-A", "RRSW-A-S"):
+#                    if FCode in ("RRCB-A", "RRCB-A-S", "RRRD-A", "RRRD-A-S",
+#                    "RRDR-A", "RRDR-A-S", "RRSW-A", "RRSW-A-S"):
 #                        Material = "Asphalt"
-#                    elif FCode in ("RRCB-C", "RRCB-C-S", "RRSW-C", "RRSW-C-S"):
+#                    elif FCode in ("RRCB-C", "RRCB-C-S", "RRSW-C",
+#                    "RRSW-C-S"):
 #                        Material = "Concrete"
 #                    elif FCode in ("RRGR", "RRGR-S"):
 #                        Material = "Gravel"
@@ -1534,7 +1081,8 @@ def Upload():
 #                    else:
 #                        if not inputRec[11]:
 #                            Material = "Unknown"
-#                        elif str(inputRec[11]) == "" or str(inputRec[11]) == " ":
+#                        elif str(inputRec[11]) == "" or str(inputRec[11]) == "
+#                        ":
 #                            Material = "Unknown"
 #                        else:
 #                            Material = str(inputRec[11])
@@ -1637,7 +1185,8 @@ def Upload():
 
 #                    # Disposal Date
 #                    #DisposalDate = inputRec[22]
-#                    # There are no Disposal Dates in spreadsheets - this may change?
+#                    # There are no Disposal Dates in spreadsheets - this may
+#                    change?
 #                    DisposalDate = None
 
 #                    # Risk
@@ -1707,28 +1256,45 @@ def Upload():
 #                        UnitCost = None
 
 
-#                    # If certain fields aren't filled out with values, then we need to flag them as Incomplete and set
-#                    # a default FollowUp Date of 2 weeks from the day of upload.
+#                    # If certain fields aren't filled out with values, then we
+#                    need to flag them as Incomplete and set
+#                    # a default FollowUp Date of 2 weeks from the day of
+#                    upload.
 #                    Complete = "Yes"
 #                    if shapeType == "Point":
-#                        if AssetCode == None or AssetClass == None or AssetSubtype == None or FCode == None or LocDesc == None or Status == None or InstallYear == None or Age == None or Condition == None or Condition == 0 or ConditionBasis == None or EstimatedRUL == None or CostCode == None or UnitCost == None or ReplacementCost == None:
+#                        if AssetCode == None or AssetClass == None or
+#                        AssetSubtype == None or FCode == None or LocDesc ==
+#                        None or Status == None or InstallYear == None or Age
+#                        == None or Condition == None or Condition == 0 or
+#                        ConditionBasis == None or EstimatedRUL == None or
+#                        CostCode == None or UnitCost == None or
+#                        ReplacementCost == None:
 #                            Complete = "No"
-#                            FollowUpDate = datetime.datetime.now().date() + timedelta(days=14)
+#                            FollowUpDate = datetime.datetime.now().date() +
+#                            timedelta(days=14)
 #                        else:
 #                            Complete = "Yes"
 #                            FollowUpDate = None
 
 #                    elif shapeType == "Polyline":
 #                        # Need to check for MeasuredLength as well
-#                        if AssetCode == None or AssetClass == None or AssetSubtype == None or FCode == None or LocDesc == None or Status == None or InstallYear == None or Age == None or Condition == None or Condition == 0 or ConditionBasis == None or EstimatedRUL == None or CostCode == None or UnitCost == None or ReplacementCost == None or MeasuredLength == 0:
+#                        if AssetCode == None or AssetClass == None or
+#                        AssetSubtype == None or FCode == None or LocDesc ==
+#                        None or Status == None or InstallYear == None or Age
+#                        == None or Condition == None or Condition == 0 or
+#                        ConditionBasis == None or EstimatedRUL == None or
+#                        CostCode == None or UnitCost == None or
+#                        ReplacementCost == None or MeasuredLength == 0:
 #                            Complete = "No"
-#                            FollowUpDate = datetime.datetime.now().date() + timedelta(days=14)
+#                            FollowUpDate = datetime.datetime.now().date() +
+#                            timedelta(days=14)
 #                        else:
 #                            Complete = "Yes"
 #                            FollowUpDate = None
 
 
-#                    # Query the FCode value to see which feature class the feature should go into
+#                    # Query the FCode value to see which feature class the
+#                    feature should go into
 #                    outputfc = ""
 #                    outputtab = ""
 #                    gdbOwner = "ASSETVIEWER."
@@ -1737,85 +1303,140 @@ def Upload():
 #                    # Point feature class FCodes
 #                    if shapeType == "Point":
 #                        if FCode == "CB":
-#                            outputfc = gdb + "/" + gdbOwner + "Stormwater/" + gdbOwner + "SWC_Catchbasin"
+#                            outputfc = gdb + "/" + gdbOwner + "Stormwater/" +
+#                            gdbOwner + "SWC_Catchbasin"
 #                        elif FCode == "IO" or FCode == "IO-S":
-#                            outputfc = gdb + "/" + gdbOwner + "Stormwater/" + gdbOwner + "SWC_InletOutlet"
+#                            outputfc = gdb + "/" + gdbOwner + "Stormwater/" +
+#                            gdbOwner + "SWC_InletOutlet"
 #                        elif FCode == "LIFT":
-#                            outputfc = gdb + "/" + gdbOwner + "Stormwater/" + gdbOwner + "SWC_LiftStation"
+#                            outputfc = gdb + "/" + gdbOwner + "Stormwater/" +
+#                            gdbOwner + "SWC_LiftStation"
 #                        elif FCode == "MHST":
-#                            outputfc = gdb + "/" + gdbOwner + "Stormwater/" + gdbOwner + "SWC_Manhole"
+#                            outputfc = gdb + "/" + gdbOwner + "Stormwater/" +
+#                            gdbOwner + "SWC_Manhole"
 #                        elif FCode == "PND":
-#                            outputfc = gdb + "/" + gdbOwner + "Stormwater/" + gdbOwner + "SWC_Pond"
+#                            outputfc = gdb + "/" + gdbOwner + "Stormwater/" +
+#                            gdbOwner + "SWC_Pond"
 #                        elif FCode == "TRMTD":
-#                            outputfc = gdb + "/" + gdbOwner + "Stormwater/" + gdbOwner + "SWC_TreatmentDevice"
+#                            outputfc = gdb + "/" + gdbOwner + "Stormwater/" +
+#                            gdbOwner + "SWC_TreatmentDevice"
 #                        elif FCode == "UGS":
-#                            outputfc = gdb + "/" + gdbOwner + "Stormwater/" + gdbOwner + "SWC_UndergroundStorage"
+#                            outputfc = gdb + "/" + gdbOwner + "Stormwater/" +
+#                            gdbOwner + "SWC_UndergroundStorage"
 #                        elif FCode == "STPR":
-#                            outputfc = gdb + "/" + gdbOwner + "Transportation/" + gdbOwner + "TRN_Bridge"
+#                            outputfc = gdb + "/" + gdbOwner +
+#                            "Transportation/" + gdbOwner + "TRN_Bridge"
 #                        elif FCode == "TFSP":
-#                            outputfc = gdb + "/" + gdbOwner + "Transportation/" + gdbOwner + "TRN_Sign"
+#                            outputfc = gdb + "/" + gdbOwner +
+#                            "Transportation/" + gdbOwner + "TRN_Sign"
 #                        elif FCode == "TFTL":
-#                            outputfc = gdb + "/" + gdbOwner + "Transportation/" + gdbOwner + "TRN_Signal"
-#                        elif FCode == "TSIG" or FCode == "UTPO" or FCode == "TFSLOR" or FCode == "TFSL":
-#                            outputfc = gdb + "/" + gdbOwner + "Transportation/" + gdbOwner + "TRN_Streetlight"
+#                            outputfc = gdb + "/" + gdbOwner +
+#                            "Transportation/" + gdbOwner + "TRN_Signal"
+#                        elif FCode == "TSIG" or FCode == "UTPO" or FCode ==
+#                        "TFSLOR" or FCode == "TFSL":
+#                            outputfc = gdb + "/" + gdbOwner +
+#                            "Transportation/" + gdbOwner + "TRN_Streetlight"
 #                        elif FCode == "FTTESAN":
-#                            outputfc = gdb + "/" + gdbOwner + "Wastewater/" + gdbOwner + "WWC_Fitting"
+#                            outputfc = gdb + "/" + gdbOwner + "Wastewater/" +
+#                            gdbOwner + "WWC_Fitting"
 #                        elif FCode == "PMPS":
-#                            outputfc = gdb + "/" + gdbOwner + "Wastewater/" + gdbOwner + "WWC_LiftPumpStation"
+#                            outputfc = gdb + "/" + gdbOwner + "Wastewater/" +
+#                            gdbOwner + "WWC_LiftPumpStation"
 #                        elif FCode == "MHCO" or FCode == "MHSA":
-#                            outputfc = gdb + "/" + gdbOwner + "Wastewater/" + gdbOwner + "WWC_Manhole"
+#                            outputfc = gdb + "/" + gdbOwner + "Wastewater/" +
+#                            gdbOwner + "WWC_Manhole"
 #                        elif FCode == "SEPT":
-#                            outputfc = gdb + "/" + gdbOwner + "Wastewater/" + gdbOwner + "WWC_SepticField"
+#                            outputfc = gdb + "/" + gdbOwner + "Wastewater/" +
+#                            gdbOwner + "WWC_SepticField"
 #                        elif FCode == "WWCTF":
-#                            outputfc = gdb + "/" + gdbOwner + "Wastewater/" + gdbOwner + "WWC_TreatmentFacility"
+#                            outputfc = gdb + "/" + gdbOwner + "Wastewater/" +
+#                            gdbOwner + "WWC_TreatmentFacility"
 #                        elif FCode in ("WWCPMP", "WWTFGEN", "WWSPMP"):
-#                            # Check the contents of the LocDesc field to see what the related feature is
+#                            # Check the contents of the LocDesc field to see
+#                            what the related feature is
 #                            if not LocDesc== None: # If not <Null>
 #                                if "-WWC-LPS-PMPS-" in LocDesc:
-#                                    outputtab = gdb + "/" + gdbOwner + "WWC_LiftPumpStation_Assets"
+#                                    outputtab = gdb + "/" + gdbOwner +
+#                                    "WWC_LiftPumpStation_Assets"
 #                                elif "-WWC-TRFWW-WWCTF-" in LocDesc:
-#                                    outputtab = gdb + "/" + gdbOwner + "WWC_TreatmentFacility_Assets"
+#                                    outputtab = gdb + "/" + gdbOwner +
+#                                    "WWC_TreatmentFacility_Assets"
 #                                else:
-#                                    outputfc = gdb + "/" + gdbOwner + "Wastewater/" + gdbOwner + "WWC_TreatmentFacility"
+#                                    outputfc = gdb + "/" + gdbOwner +
+#                                    "Wastewater/" + gdbOwner +
+#                                    "WWC_TreatmentFacility"
 #                            else: #In case LocDesc is empty, put record here:
-#                                outputfc = gdb + "/" + gdbOwner + "Wastewater/" + gdbOwner + "WWC_TreatmentFacility"
-#                        elif FCode in ("WWTFAC", "WWBSC", "WWBLWR", "WWTFBLD", "WWCCSYS", "WWCLCC", "WWCLAR", "WWCOMP", "WWDAFS", "WWDAFT", "WWELECM", "WWFFT", "WWFLME", "WWGDTP", "WWISV", "WWLAB", "WWLAG", "WWOFS", "WWOXDI", "WWPADAE", "WWPTNK", "WWSBRT", "WWSCRC", "WWSDB", "WWSCM", "WWST","WWTLEM"):
-#                            outputtab = gdb + "/" + gdbOwner + "WWC_TreatmentFacility_Assets"
+#                                outputfc = gdb + "/" + gdbOwner +
+#                                "Wastewater/" + gdbOwner +
+#                                "WWC_TreatmentFacility"
+#                        elif FCode in ("WWTFAC", "WWBSC", "WWBLWR", "WWTFBLD",
+#                        "WWCCSYS", "WWCLCC", "WWCLAR", "WWCOMP", "WWDAFS",
+#                        "WWDAFT", "WWELECM", "WWFFT", "WWFLME", "WWGDTP",
+#                        "WWISV", "WWLAB", "WWLAG", "WWOFS", "WWOXDI",
+#                        "WWPADAE", "WWPTNK", "WWSBRT", "WWSCRC", "WWSDB",
+#                        "WWSCM", "WWST","WWTLEM"):
+#                            outputtab = gdb + "/" + gdbOwner +
+#                            "WWC_TreatmentFacility_Assets"
 #                        elif FCode == "BST":
-#                            outputfc = gdb + "/" + gdbOwner + "WaterSupply/" + gdbOwner + "PWS_BoosterStation"
+#                            outputfc = gdb + "/" + gdbOwner + "WaterSupply/" +
+#                            gdbOwner + "PWS_BoosterStation"
 #                        elif FCode == "CS":
-#                            outputfc = gdb + "/" + gdbOwner + "WaterSupply/" + gdbOwner + "PWS_CorporationStop"
+#                            outputfc = gdb + "/" + gdbOwner + "WaterSupply/" +
+#                            gdbOwner + "PWS_CorporationStop"
 #                        elif FCode == "WV":
-#                            outputfc = gdb + "/" + gdbOwner + "WaterSupply/" + gdbOwner + "PWS_CurbStop"
-#                        elif FCode in ("FTBD11", "FTBD22", "FTBD45", "FTBD90", "FTCAP", "FTCP", "FTHY", "FTHYTE", "FTRD", "FTTS", "FTTE"):
-#                            outputfc = gdb + "/" + gdbOwner + "WaterSupply/" + gdbOwner + "PWS_Fitting"
+#                            outputfc = gdb + "/" + gdbOwner + "WaterSupply/" +
+#                            gdbOwner + "PWS_CurbStop"
+#                        elif FCode in ("FTBD11", "FTBD22", "FTBD45", "FTBD90",
+#                        "FTCAP", "FTCP", "FTHY", "FTHYTE", "FTRD", "FTTS",
+#                        "FTTE"):
+#                            outputfc = gdb + "/" + gdbOwner + "WaterSupply/" +
+#                            gdbOwner + "PWS_Fitting"
 #                        elif FCode == "HY":
-#                            outputfc = gdb + "/" + gdbOwner + "WaterSupply/" + gdbOwner + "PWS_Hydrant"
+#                            outputfc = gdb + "/" + gdbOwner + "WaterSupply/" +
+#                            gdbOwner + "PWS_Hydrant"
 #                        elif FCode == "METER":
-#                            outputfc = gdb + "/" + gdbOwner + "WaterSupply/" + gdbOwner + "PWS_MeteringSystem"
+#                            outputfc = gdb + "/" + gdbOwner + "WaterSupply/" +
+#                            gdbOwner + "PWS_MeteringSystem"
 #                        elif FCode == "PRV" or FCode == "APV":
-#                            outputfc = gdb + "/" + gdbOwner + "WaterSupply/" + gdbOwner + "PWS_PRV"
+#                            outputfc = gdb + "/" + gdbOwner + "WaterSupply/" +
+#                            gdbOwner + "PWS_PRV"
 #                        elif FCode == "WSST":
-#                            outputfc = gdb + "/" + gdbOwner + "WaterSupply/" + gdbOwner + "PWS_StorageTank"
+#                            outputfc = gdb + "/" + gdbOwner + "WaterSupply/" +
+#                            gdbOwner + "PWS_StorageTank"
 #                        elif FCode == "WSTF":
-#                            outputfc = gdb + "/" + gdbOwner + "WaterSupply/" + gdbOwner + "PWS_TreatmentFacility"
+#                            outputfc = gdb + "/" + gdbOwner + "WaterSupply/" +
+#                            gdbOwner + "PWS_TreatmentFacility"
 #                        elif FCode == "FTVLHY" or FCode == "GV":
-#                            outputfc = gdb + "/" + gdbOwner + "WaterSupply/" + gdbOwner + "PWS_Valve"
+#                            outputfc = gdb + "/" + gdbOwner + "WaterSupply/" +
+#                            gdbOwner + "PWS_Valve"
 #                        elif FCode == "WS":
-#                            outputfc = gdb + "/" + gdbOwner + "WaterSupply/" + gdbOwner + "PWS_WaterSource"
+#                            outputfc = gdb + "/" + gdbOwner + "WaterSupply/" +
+#                            gdbOwner + "PWS_WaterSource"
 #                        elif FCode in ("WSTFAC", "WSCPMP", "WSISV", "WSSPMP"):
-#                            # Check the contents of the LocDesc field to see what the related feature is
-#                            if not LocDesc == None:  #If not <Null>
+#                            # Check the contents of the LocDesc field to see
+#                            what the related feature is
+#                            if not LocDesc == None: #If not <Null>
 #                                if "-PWS-BST-BST-" in LocDesc:
-#                                    outputtab = gdb + "/" + gdbOwner + "PWS_BoosterStation_Assets"
+#                                    outputtab = gdb + "/" + gdbOwner +
+#                                    "PWS_BoosterStation_Assets"
 #                                elif "-PWS-TRFWS-WSTF-" in LocDesc:
-#                                    outputtab = gdb + "/" + gdbOwner + "PWS_TreatmentFacility_Assets"
+#                                    outputtab = gdb + "/" + gdbOwner +
+#                                    "PWS_TreatmentFacility_Assets"
 #                                else:
-#                                    outputfc = gdb + "/" + gdbOwner + "WaterSupply/" + gdbOwner + "PWS_TreatmentFacility"
-#                            else:  #In case LocDesc is empty, put record here:
-#                                outputfc = gdb + "/" + gdbOwner + "WaterSupply/" + gdbOwner + "PWS_TreatmentFacility"
-#                        elif FCode in ("WSTFBLD", "WSCCSYS", "WSCLLD", "WSCLAR", "WSCOMP", "WSDAFS", "WSDAFT", "WSELECM", "WSFLME", "WSGDTP", "WSTFGEN", "WSLAB", "WSMFS", "WSMMF", "WSOFS", "WSPTNK", "WSSCM", "WSTLEM", "WSTP", "WSUV", "WSVACCL"):
-#                            outputtab = gdb + "/" + gdbOwner + "PWS_TreatmentFacility_Assets"
+#                                    outputfc = gdb + "/" + gdbOwner +
+#                                    "WaterSupply/" + gdbOwner +
+#                                    "PWS_TreatmentFacility"
+#                            else: #In case LocDesc is empty, put record here:
+#                                outputfc = gdb + "/" + gdbOwner +
+#                                "WaterSupply/" + gdbOwner +
+#                                "PWS_TreatmentFacility"
+#                        elif FCode in ("WSTFBLD", "WSCCSYS", "WSCLLD",
+#                        "WSCLAR", "WSCOMP", "WSDAFS", "WSDAFT", "WSELECM",
+#                        "WSFLME", "WSGDTP", "WSTFGEN", "WSLAB", "WSMFS",
+#                        "WSMMF", "WSOFS", "WSPTNK", "WSSCM", "WSTLEM", "WSTP",
+#                        "WSUV", "WSVACCL"):
+#                            outputtab = gdb + "/" + gdbOwner +
+#                            "PWS_TreatmentFacility_Assets"
 #                        else:
 #                            outputfc = ""
 #                            outputtab = ""
@@ -1823,27 +1444,45 @@ def Upload():
 #                    # Polyline feature class FCodes
 #                    elif shapeType == "Polyline":
 #                        if FCode == "CLVT" or FCode == "CLVT-S":
-#                            outputfc = gdb + "/" + gdbOwner + "Stormwater/" + gdbOwner + "SWC_Culvert"
+#                            outputfc = gdb + "/" + gdbOwner + "Stormwater/" +
+#                            gdbOwner + "SWC_Culvert"
 #                        elif FCode in ("DRCH", "DRCH-S", "RRGT", "RRGT-S"):
-#                            outputfc = gdb + "/" + gdbOwner + "Stormwater/" + gdbOwner + "SWC_DrainageChannel"
+#                            outputfc = gdb + "/" + gdbOwner + "Stormwater/" +
+#                            gdbOwner + "SWC_DrainageChannel"
 #                        elif FCode == "GRVPST" or FCode == "GRVPST-S":
-#                            outputfc = gdb + "/" + gdbOwner + "Stormwater/" + gdbOwner + "SWC_GravityPipe"
+#                            outputfc = gdb + "/" + gdbOwner + "Stormwater/" +
+#                            gdbOwner + "SWC_GravityPipe"
 #                        elif FCode == "SWFRCM" or FCode == "SWFRCM-S":
-#                            outputfc = gdb + "/" + gdbOwner + "Stormwater/" + gdbOwner + "SWC_PressureStormPipe"
-#                        elif FCode in ("FL", "FL-S", "STGR", "STGR-S", "SB", "SB-S"):
-#                            outputfc = gdb + "/" + gdbOwner + "Transportation/" + gdbOwner + "TRN_BarrierGuardrail"
-#                        elif FCode in ("RRCB-A", "RRCB-A-S", "RRCB-C", "RRCB-C-S", "RRRD-A", "RRRD-A-S", "RRGR", "RRGR-S"):
-#                            outputfc = gdb + "/" + gdbOwner + "Transportation/" + gdbOwner + "TRN_Road"
-#                        elif FCode in ("RRBW-W", "RRBW-W-S", "RRDR-A", "RRDR-A-S", "RRPW", "RRPW-S", "RRSW-C", "RRSW-C-S", "RRSW-A", "RRSW-A-S", "RRSW-B", "RRSW-B-S", "RRTR", "RRTR-S", "RRSW", "RRSW-S"):
-#                            outputfc = gdb + "/" + gdbOwner + "Transportation/" + gdbOwner + "TRN_SidewalkTrail"
-#                        elif FCode in ("GRVPSA", "GRVPSA-S", "GRVPCO", "GRVPCO-S"):
-#                            outputfc = gdb + "/" + gdbOwner + "Wastewater/" + gdbOwner + "WWC_GravityPipe"
+#                            outputfc = gdb + "/" + gdbOwner + "Stormwater/" +
+#                            gdbOwner + "SWC_PressureStormPipe"
+#                        elif FCode in ("FL", "FL-S", "STGR", "STGR-S", "SB",
+#                        "SB-S"):
+#                            outputfc = gdb + "/" + gdbOwner +
+#                            "Transportation/" + gdbOwner +
+#                            "TRN_BarrierGuardrail"
+#                        elif FCode in ("RRCB-A", "RRCB-A-S", "RRCB-C",
+#                        "RRCB-C-S", "RRRD-A", "RRRD-A-S", "RRGR", "RRGR-S"):
+#                            outputfc = gdb + "/" + gdbOwner +
+#                            "Transportation/" + gdbOwner + "TRN_Road"
+#                        elif FCode in ("RRBW-W", "RRBW-W-S", "RRDR-A",
+#                        "RRDR-A-S", "RRPW", "RRPW-S", "RRSW-C", "RRSW-C-S",
+#                        "RRSW-A", "RRSW-A-S", "RRSW-B", "RRSW-B-S", "RRTR",
+#                        "RRTR-S", "RRSW", "RRSW-S"):
+#                            outputfc = gdb + "/" + gdbOwner +
+#                            "Transportation/" + gdbOwner + "TRN_SidewalkTrail"
+#                        elif FCode in ("GRVPSA", "GRVPSA-S", "GRVPCO",
+#                        "GRVPCO-S"):
+#                            outputfc = gdb + "/" + gdbOwner + "Wastewater/" +
+#                            gdbOwner + "WWC_GravityPipe"
 #                        elif FCode == "WWFRCM" or FCode == "WWFRCM-S":
-#                            outputfc = gdb + "/" + gdbOwner + "Wastewater/" + gdbOwner + "WWC_PressureSewerPipe"
+#                            outputfc = gdb + "/" + gdbOwner + "Wastewater/" +
+#                            gdbOwner + "WWC_PressureSewerPipe"
 #                        elif FCode == "DIMN" or FCode == "DIMN-S":
-#                            outputfc = gdb + "/" + gdbOwner + "WaterSupply/" + gdbOwner + "PWS_DistributionPipe"
+#                            outputfc = gdb + "/" + gdbOwner + "WaterSupply/" +
+#                            gdbOwner + "PWS_DistributionPipe"
 #                        elif FCode == "TRNS" or FCode == "TRNS-S":
-#                            outputfc = gdb + "/" + gdbOwner + "WaterSupply/" + gdbOwner + "PWS_TransmissionPipe"
+#                            outputfc = gdb + "/" + gdbOwner + "WaterSupply/" +
+#                            gdbOwner + "PWS_TransmissionPipe"
 #                        else:
 #                            outputfc = ""
 #                            outputtab = ""
@@ -1852,38 +1491,102 @@ def Upload():
 #                    #arcpy.AddMessage(outputtab)
 
 
-#                    # Insert a feature into an output fc or record into an output table
+#                    # Insert a feature into an output fc or record into an
+#                    output table
 #                    if outputfc != "":
 #                        if shapeType == "Point":
-#                            with arcpy.da.InsertCursor(outputfc, outputFields_Point) as outputCursor:
+#                            with arcpy.da.InsertCursor(outputfc,
+#                            outputFields_Point) as outputCursor:
 #                                # Insert the feature
-#                                outputCursor.insertRow([shp, AssetCode, MunID, AssetClass, AssetSubtype, FCode, LocDesc, Elev, Status, Material, CostFactor, Width, InstallYear, Age, Condition, ConditionBasis, InspectDate, EstimatedRUL, ReplacementYear, CostCode, UnitCost, ReplacementCost, ResidValue, DisposalDate, CnsqOfFail, Risk, RecordDrawing, Region, Dept, Division, PersResp, FollowUpDate, Comments, Complete])
+#                                outputCursor.insertRow([shp, AssetCode, MunID,
+#                                AssetClass, AssetSubtype, FCode, LocDesc,
+#                                Elev, Status, Material, CostFactor, Width,
+#                                InstallYear, Age, Condition, ConditionBasis,
+#                                InspectDate, EstimatedRUL, ReplacementYear,
+#                                CostCode, UnitCost, ReplacementCost,
+#                                ResidValue, DisposalDate, CnsqOfFail, Risk,
+#                                RecordDrawing, Region, Dept, Division,
+#                                PersResp, FollowUpDate, Comments, Complete])
 
 #                        elif shapeType == "Polyline":
-#                            with arcpy.da.InsertCursor(outputfc, outputFields_Line) as outputCursor:
+#                            with arcpy.da.InsertCursor(outputfc,
+#                            outputFields_Line) as outputCursor:
 #                                # Insert the feature
-#                                outputCursor.insertRow([shp, AssetCode, MunID, AssetClass, AssetSubtype, FCode, LocDesc, Status, Material, CostFactor, Width, MeasuredLength, InstallYear, Age, Condition, ConditionBasis, InspectDate, EstimatedRUL, ReplacementYear, CostCode, UnitCost, ReplacementCost, ResidValue, DisposalDate, CnsqOfFail, Risk, RecordDrawing, Region, Dept, Division, PersResp, FollowUpDate, Comments, Complete])
+#                                outputCursor.insertRow([shp, AssetCode, MunID,
+#                                AssetClass, AssetSubtype, FCode, LocDesc,
+#                                Status, Material, CostFactor, Width,
+#                                MeasuredLength, InstallYear, Age, Condition,
+#                                ConditionBasis, InspectDate, EstimatedRUL,
+#                                ReplacementYear, CostCode, UnitCost,
+#                                ReplacementCost, ResidValue, DisposalDate,
+#                                CnsqOfFail, Risk, RecordDrawing, Region, Dept,
+#                                Division, PersResp, FollowUpDate, Comments,
+#                                Complete])
 
 #                    if outputtab != "":
-#                        if outputtab == gdb + "/" + gdbOwner + "PWS_BoosterStation_Assets":
-#                            with arcpy.da.InsertCursor(outputtab, outputFields_Table_BST) as outputCursor:
+#                        if outputtab == gdb + "/" + gdbOwner +
+#                        "PWS_BoosterStation_Assets":
+#                            with arcpy.da.InsertCursor(outputtab,
+#                            outputFields_Table_BST) as outputCursor:
 #                                # Insert the record (no geometry)
-#                                outputCursor.insertRow([AssetCode, MunID, AssetClass, AssetSubtype, FCode, LocDesc, Status, Material, CostFactor, Width, InstallYear, Age, Condition, ConditionBasis, InspectDate, EstimatedRUL, ReplacementYear, CostCode, UnitCost, ReplacementCost, ResidValue, DisposalDate, CnsqOfFail, Risk, RecordDrawing, Region, Dept, Division, PersResp, FollowUpDate, Comments, LocDesc, Complete])
+#                                outputCursor.insertRow([AssetCode, MunID,
+#                                AssetClass, AssetSubtype, FCode, LocDesc,
+#                                Status, Material, CostFactor, Width,
+#                                InstallYear, Age, Condition, ConditionBasis,
+#                                InspectDate, EstimatedRUL, ReplacementYear,
+#                                CostCode, UnitCost, ReplacementCost,
+#                                ResidValue, DisposalDate, CnsqOfFail, Risk,
+#                                RecordDrawing, Region, Dept, Division,
+#                                PersResp, FollowUpDate, Comments, LocDesc,
+#                                Complete])
 
-#                        elif outputtab == gdb + "/" + gdbOwner + "PWS_TreatmentFacility_Assets":
-#                            with arcpy.da.InsertCursor(outputtab, outputFields_Table_WSTF) as outputCursor:
+#                        elif outputtab == gdb + "/" + gdbOwner +
+#                        "PWS_TreatmentFacility_Assets":
+#                            with arcpy.da.InsertCursor(outputtab,
+#                            outputFields_Table_WSTF) as outputCursor:
 #                                # Insert the record (no geometry)
-#                                outputCursor.insertRow([AssetCode, MunID, AssetClass, AssetSubtype, FCode, LocDesc, Status, Material, CostFactor, Width, InstallYear, Age, Condition, ConditionBasis, InspectDate, EstimatedRUL, ReplacementYear, CostCode, UnitCost, ReplacementCost, ResidValue, DisposalDate, CnsqOfFail, Risk, RecordDrawing, Region, Dept, Division, PersResp, FollowUpDate, Comments, LocDesc, Complete])
+#                                outputCursor.insertRow([AssetCode, MunID,
+#                                AssetClass, AssetSubtype, FCode, LocDesc,
+#                                Status, Material, CostFactor, Width,
+#                                InstallYear, Age, Condition, ConditionBasis,
+#                                InspectDate, EstimatedRUL, ReplacementYear,
+#                                CostCode, UnitCost, ReplacementCost,
+#                                ResidValue, DisposalDate, CnsqOfFail, Risk,
+#                                RecordDrawing, Region, Dept, Division,
+#                                PersResp, FollowUpDate, Comments, LocDesc,
+#                                Complete])
 
-#                        elif outputtab == gdb + "/" + gdbOwner + "WWC_LiftPumpStation_Assets":
-#                            with arcpy.da.InsertCursor(outputtab, outputFields_Table_LPS) as outputCursor:
+#                        elif outputtab == gdb + "/" + gdbOwner +
+#                        "WWC_LiftPumpStation_Assets":
+#                            with arcpy.da.InsertCursor(outputtab,
+#                            outputFields_Table_LPS) as outputCursor:
 #                                # Insert the record (no geometry)
-#                                outputCursor.insertRow([AssetCode, MunID, AssetClass, AssetSubtype, FCode, LocDesc, Status, Material, CostFactor, Width, InstallYear, Age, Condition, ConditionBasis, InspectDate, EstimatedRUL, ReplacementYear, CostCode, UnitCost, ReplacementCost, ResidValue, DisposalDate, CnsqOfFail, Risk, RecordDrawing, Region, Dept, Division, PersResp, FollowUpDate, Comments, LocDesc, Complete])
+#                                outputCursor.insertRow([AssetCode, MunID,
+#                                AssetClass, AssetSubtype, FCode, LocDesc,
+#                                Status, Material, CostFactor, Width,
+#                                InstallYear, Age, Condition, ConditionBasis,
+#                                InspectDate, EstimatedRUL, ReplacementYear,
+#                                CostCode, UnitCost, ReplacementCost,
+#                                ResidValue, DisposalDate, CnsqOfFail, Risk,
+#                                RecordDrawing, Region, Dept, Division,
+#                                PersResp, FollowUpDate, Comments, LocDesc,
+#                                Complete])
 
-#                        elif outputtab == gdb + "/" + gdbOwner + "WWC_TreatmentFacility_Assets":
-#                            with arcpy.da.InsertCursor(outputtab, outputFields_Table_WWCTF) as outputCursor:
+#                        elif outputtab == gdb + "/" + gdbOwner +
+#                        "WWC_TreatmentFacility_Assets":
+#                            with arcpy.da.InsertCursor(outputtab,
+#                            outputFields_Table_WWCTF) as outputCursor:
 #                                # Insert the record (no geometry)
-#                                outputCursor.insertRow([AssetCode, MunID, AssetClass, AssetSubtype, FCode, LocDesc, Status, Material, CostFactor, Width, InstallYear, Age, Condition, ConditionBasis, InspectDate, EstimatedRUL, ReplacementYear, CostCode, UnitCost, ReplacementCost, ResidValue, DisposalDate, CnsqOfFail, Risk, RecordDrawing, Region, Dept, Division, PersResp, FollowUpDate, Comments, LocDesc, Complete])
+#                                outputCursor.insertRow([AssetCode, MunID,
+#                                AssetClass, AssetSubtype, FCode, LocDesc,
+#                                Status, Material, CostFactor, Width,
+#                                InstallYear, Age, Condition, ConditionBasis,
+#                                InspectDate, EstimatedRUL, ReplacementYear,
+#                                CostCode, UnitCost, ReplacementCost,
+#                                ResidValue, DisposalDate, CnsqOfFail, Risk,
+#                                RecordDrawing, Region, Dept, Division,
+#                                PersResp, FollowUpDate, Comments, LocDesc,
+#                                Complete])
 
 #                    # Update counter
 #                    counter = counter + 1
@@ -1907,20 +1610,26 @@ def Upload():
 #            del inputFields
 
 
-#        # Use this to save ? so that it can be displayed in Dashboard
-#        arcpy.AddMessage("Total records processed and uploaded: " + str(totalcounter))
+#        # Use this to save ?  so that it can be displayed in Dashboard
+#        arcpy.AddMessage("Total records processed and uploaded: " +
+#        str(totalcounter))
 
 #        # Stop the edit session and save the changes
 #        edit.stopEditing(True)
 
 
-#        # ###################################################################################
-#        # Import the UnitCost sheet into the UnitCost table for the municipality
-#        # ###################################################################################
+#        #
+#        ###################################################################################
+#        # Import the UnitCost sheet into the UnitCost table for the
+#        municipality
+#        #
+#        ###################################################################################
 
-#        # Have to get actual spreadsheet for the UnitCost information, convert to a CSV, then to a DBF and then load into UnitCost table
+#        # Have to get actual spreadsheet for the UnitCost information, convert
+#        to a CSV, then to a DBF and then load into UnitCost table
 
-#        # Find spreadsheet and the Unit Cost sheet, export to a CSV in the municipality folder
+#        # Find spreadsheet and the Unit Cost sheet, export to a CSV in the
+#        municipality folder
 #        for file in os.listdir(munFolder):
 #            if file.endswith(".xlsm") and file.startswith(munID):
 #                fileSpreadsheet = munFolder + file
@@ -1931,8 +1640,11 @@ def Upload():
 #        csvUnitCost = open(munFolder + "UnitCost.csv", "wb")
 #        wr = csv.writer(csvUnitCost, quoting=csv.QUOTE_ALL)
 
-#        # Need to write header manually since sheet has merged rows and won't export perfectly
-#        wr.writerow(("Field1","Item","Lookup Code","Cost Factor","Life","Unit","Base Cost","Field2","Total Cost","Field4","Field5","Field6","Field7","Field8","Field9","Field10","Field11"))
+#        # Need to write header manually since sheet has merged rows and won't
+#        export perfectly
+#        wr.writerow(("Field1","Item","Lookup Code","Cost
+#        Factor","Life","Unit","Base Cost","Field2","Total
+#        Cost","Field4","Field5","Field6","Field7","Field8","Field9","Field10","Field11"))
 
 
 #        # Write remaining rows with data
@@ -1951,11 +1663,13 @@ def Upload():
 
 
 
-#        # The sheet/CSV has too many empty or unneeded columns, so will only take ones we need
+#        # The sheet/CSV has too many empty or unneeded columns, so will only
+#        take ones we need
 #        # Need to export to a new CSV in the municipality folder
 #        #global munName
 #        f = pd.read_csv(munFolder + "UnitCost.csv")
-#        keep_col = ["Item", "Lookup Code", "Cost Factor", "Life", "Unit", "Base Cost", "Total Cost"]
+#        keep_col = ["Item", "Lookup Code", "Cost Factor", "Life", "Unit",
+#        "Base Cost", "Total Cost"]
 #        new_f = f[keep_col]
 #        new_f.to_csv(munFolder + "UnitCost_" + munID + ".csv", index=False)
 
@@ -1968,7 +1682,8 @@ def Upload():
 #        if os.path.isfile(munFolder + "UnitCost_" + munID + ".dbf.xml"):
 #            os.remove(munFolder + "UnitCost_" + munID + ".dbf.xml")
 #        # Convert CSV to DBF
-#        arcpy.TableToTable_conversion(munFolder + "UnitCost_" + munID + ".csv", munFolder, "UnitCost_" + munID + ".dbf")
+#        arcpy.TableToTable_conversion(munFolder + "UnitCost_" + munID +
+#        ".csv", munFolder, "UnitCost_" + munID + ".dbf")
 
 #        # Truncate UnitCost table in the GDB before loading new data in
 #        arcpy.env.workspace = gdb
@@ -1984,20 +1699,24 @@ def Upload():
 #        edit.startOperation()
 
 #        # Input fields from DBF and output GDB fields
-#        inputDBFFields = ["Item", "Lookup_Cod", "Cost_Facto", "Life", "Unit", "Base_Cost", "Total_Cost"]
-#        outputGDBFields = ["ItemDesc", "CostCode", "CostFactor", "UsefulLife", "Unit", "BaseCost", "TotalCost"]
+#        inputDBFFields = ["Item", "Lookup_Cod", "Cost_Facto", "Life", "Unit",
+#        "Base_Cost", "Total_Cost"]
+#        outputGDBFields = ["ItemDesc", "CostCode", "CostFactor", "UsefulLife",
+#        "Unit", "BaseCost", "TotalCost"]
 
 #        # Initialize counter (might not need this)
 #        unitCostCounter = 0
 
 
 #        # Cursor through input dbf
-#        with arcpy.da.SearchCursor(munFolder + "UnitCost_" + munID + ".dbf", inputDBFFields) as inputDBFCursor:
+#        with arcpy.da.SearchCursor(munFolder + "UnitCost_" + munID + ".dbf",
+#        inputDBFFields) as inputDBFCursor:
 
 #            # Write values to output feature class
 #            for inputDBFRec in inputDBFCursor:
 
-#                # To get rid of the rows with blank values at the end of CSV/DBF - skip over these
+#                # To get rid of the rows with blank values at the end of
+#                CSV/DBF - skip over these
 #                if inputDBFRec[0] == " ":
 #                    continue
 #                else:
@@ -2021,7 +1740,8 @@ def Upload():
 #                            CostFactor = inputDBFRec[2]
 
 #                    # Useful Life
-#                    if str(inputDBFRec[3]) == "" or str(inputDBFRec[3]) == " ":
+#                    if str(inputDBFRec[3]) == "" or str(inputDBFRec[3]) == "
+#                    ":
 #                        UsefulLife = None
 #                    else:
 #                        if is_number(inputDBFRec[3]):
@@ -2036,21 +1756,25 @@ def Upload():
 #                        Unit = inputDBFRec[4]
 
 #                    # Base Cost
-#                    if str(inputDBFRec[5]) == "" or str(inputDBFRec[5]) == " ":
+#                    if str(inputDBFRec[5]) == "" or str(inputDBFRec[5]) == "
+#                    ":
 #                        BaseCost = None
 #                    else:
 #                        BaseCost = inputDBFRec[5]
 
 #                    # Total Cost
-#                    if str(inputDBFRec[6]) == "" or str(inputDBFRec[6]) == " ":
+#                    if str(inputDBFRec[6]) == "" or str(inputDBFRec[6]) == "
+#                    ":
 #                        TotalCost = None
 #                    else:
 #                        TotalCost = inputDBFRec[6]
 
 #                    # Write values to UnitCost table in GDB
-#                    with arcpy.da.InsertCursor(unitCostTab, outputGDBFields) as unitCostCursor:
+#                    with arcpy.da.InsertCursor(unitCostTab, outputGDBFields)
+#                    as unitCostCursor:
 #                        # Insert the record
-#                        unitCostCursor.insertRow([Item, CostCode, CostFactor, UsefulLife, Unit, BaseCost, TotalCost])
+#                        unitCostCursor.insertRow([Item, CostCode, CostFactor,
+#                        UsefulLife, Unit, BaseCost, TotalCost])
 #                        # Update counter
 #                        unitCostCounter = unitCostCounter + 1
 
