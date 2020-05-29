@@ -36,13 +36,9 @@ starttime = datetime.datetime.now()
 ## Coordinate system of pilot municipality shapefiles (NAD83 UTM20)
 srNAD83_UTM20 = arcpy.SpatialReference(26920)
 ## Coordinate system of GDB feature classes (NAD83 CSRS UTM20)
-###################################TODO
-#srNAD83_CSRS_UTM20 = arcpy.SpatialReference(2961)
-###################################ENDTODO
 ## Datum transformation between the two
 gt = "NAD_1983_To_WGS_1984_1 + NAD_1983_CSRS_To_WGS_1984_2"
 
-## Initialize variable
 edit = None
 
 outputFields_Point = get_array('point_feature_fields.json','outputFields_Point')
@@ -107,6 +103,9 @@ def writeMissingFieldError(logfile, fieldname, errorCount, shapefile):
 
 def writeSpatialReferenceError(logfile, errorCount, shapefile):
     logfile.write(str(errorCount) + ". The shapefile '" + shapefile + "' has an invalid spatial reference. The coordinate system must be 'NAD_1983_UTM_Zone_20N' or 'NAD_1983_CSRS_UTM_Zone_20N'.\n\n")
+
+def set_output_fc(_gdb, _gdbOwner, _infClass, _infType):
+    return _gdb + "/" + _gdbOwner + _infClass + "/" + _gdbOwner + _infType
 
 def validateFiles(logfile, errorCount, shpFolder, shapefullpath, fieldsShapefile):
     if not os.path.exists(shpFolder):
@@ -548,7 +547,8 @@ def Upload():
                     current_dbf = munFolder + "AssetDetails_" + usfname + ".dbf"
                     with arcpy.da.SearchCursor(current_dbf, inputFields_AssetDetails) as inputCursor:
                         for inputRec in inputCursor:
-                            # Create shape from Northing and Easting coordinates
+                            # Create shape from Northing and Easting
+                            # coordinates
                             x = inputRec[2]  # Easting
                             y = inputRec[1]  # Northing
                             # AssetCode
@@ -617,11 +617,13 @@ def Upload():
                                 FCode = inputRec[5]
                                 #print FCode
 
-                                # If FCode has "-S" at the end, create a point and add
+                                # If FCode has "-S" at the end, create a point
+                                # and add
                                 #to the array.
                                 # Then just go to the next record
                                 if "-S" in FCode:
-                                    # Northing and Easting coordinates for Start Point
+                                    # Northing and Easting coordinates for
+                                    # Start Point
                                     x = inputRec[2] # Easting
                                     y = inputRec[1] # Northing
                                     # Create point
@@ -640,7 +642,8 @@ def Upload():
                                         Width = 0
                                     # FCode
                                     FCode = inputRec[5]
-                                    # Northing and Easting coordinates for next Point
+                                    # Northing and Easting coordinates for next
+                                    # Point
                                     x = inputRec[2] # Easting
                                     y = inputRec[1] # Northing
                                     # Create point
@@ -650,7 +653,8 @@ def Upload():
 
                             # Make sure array has at least 2 points
                             if arrayPoints.count >= 2:
-                                # Make the line once all points collected (usually just 2)
+                                # Make the line once all points collected
+                                # (usually just 2)
                                 polyline = arcpy.Polyline(arrayPoints, srNAD83_CSRS_UTM20)
 
                                 # Write values to output shapefile
@@ -678,7 +682,8 @@ def Upload():
         # NSGI
         gdb = "D:/SDEConnect/AssetViewer.sde"
 
-        # Check if any features/records for this municipality exist already and truncate them if they do
+        # Check if any features/records for this municipality exist already and
+        # truncate them if they do
 
 
         # Set the current workspace
@@ -698,7 +703,8 @@ def Upload():
         for dsname in fds:
             for fc in arcpy.ListFeatureClasses("", "", dsname):
                 if not arcpy.TestSchemaLock(fc):
-                    # Make a feature layer with any features matching the MunID query
+                    # Make a feature layer with any features matching the MunID
+                    # query
                     fcLayer = fc + "_" + munID
                     arcpy.MakeFeatureLayer_management(fc, fcLayer, munQuery)
                     countMunID = arcpy.GetCount_management(fc + "_" + munID).getOutput(0)
@@ -714,16 +720,19 @@ def Upload():
             if not arcpy.TestSchemaLock(tab):
                 for dst in dstn:
                     if dst in tab:
-                        # Make a table view with any records matching the MunID query
+                        # Make a table view with any records matching the MunID
+                        # query
                         tabView = tab + "_" + munID
                         arcpy.MakeTableView_management(tab, tabView, munQuery)
                         countMunID = arcpy.GetCount_management(tabView).getOutput(0)
                         #print "Records found in " + tab + ": " + countMunID
                         if countMunID > 0:
-                            # Delete any records in stand-alone tables for that municipality
-                            #print "Deleting " + countMunID + " records in " + tab + "\n"
+                            # Delete any records in stand-alone tables for that
+                            # municipality
+                            #print "Deleting " + countMunID + " records in " +
+                            #tab + "\n"
                             arcpy.DeleteRows_management(tab + "_" + munID)
-                        break;
+                        break
                 else:
                     arcpy.AddError("The database is locked by another user or process.")
                     raise Exception
@@ -736,18 +745,16 @@ def Upload():
         global totalcounter
         totalcounter = 0
 
-        # Go into each shapefile folder, find shapefile and join to spreadsheet CSV file
+        # Go into each shapefile folder, find shapefile and join to spreadsheet
+        # CSV file
         subFolders = [x[0] for x in os.walk(shpFolder)] # a list comprehension
 
         for subFolder in subFolders:
-
             # Don't need to do the root folder
             if subFolder == shpFolder:
                 continue
-
             # Start an edit operation
             edit.startOperation()
-
             # Set the workspace to be the current shapefile folder
             shpWorkspace = subFolder
             arcpy.env.workspace = shpWorkspace
@@ -759,38 +766,29 @@ def Upload():
             if subFolder[-5:] == "PWS L":
                 # Shapefile will be called "<shpMunID> PWS L.shp"
                 shapefile = shpMunID + " PWS L.shp"
-
             elif subFolder[-5:] == "PWS P":
                 # Shapefile will be called "<shpMunID> PWS P.shp"
                 shapefile = shpMunID + " PWS P.shp"
-
             elif subFolder[-5:] == "SWC L":
                 # Shapefile will be called "<shpMunID> SWC L.shp"
                 shapefile = shpMunID + " SWC L.shp"
-
             elif subFolder[-5:] == "SWC P":
                 # Shapefile will be called "<shpMunID> SWC P.shp"
                 shapefile = shpMunID + " SWC P.shp"
-
             elif subFolder[-5:] == "TRN L":
                 # Shapefile will be called "<shpMunID> TRN L.shp"
                 shapefile = shpMunID + " TRN L.shp"
-
             elif subFolder[-5:] == "TRN P":
                 # Shapefile will be called "<shpMunID> TRN P.shp"
                 shapefile = shpMunID + " TRN P.shp"
-
             elif subFolder[-5:] == "WWC L":
                 # Shapefile will be called "<shpMunID> WWC L.shp"
                 shapefile = shpMunID + " WWC L.shp"
-
             elif subFolder[-5:] == "WWC P":
                 # Shapefile will be called "<shpMunID> WWC P.shp"
                 shapefile = shpMunID + " WWC P.shp"
-
             else:
                 shapefile = ""
-
 
             # Set fc to the shapefile and get shape type
             fc = shapefile
@@ -805,12 +803,14 @@ def Upload():
             gt = "NAD_1983_To_WGS_1984_1 + NAD_1983_CSRS_To_WGS_1984_2"
 
 
-            # If shapefiles already existed (i.e. GIS Method)
+            # If shapefiles already existed (i.e.  GIS Method)
             if shapefilesExist == True:
 
-                # Project the shapefile to UTM 20 NAD83 CSRS if not already in that coordinate system
+                # Project the shapefile to UTM 20 NAD83 CSRS if not already in
+                # that coordinate system
                 if arcpy.Describe(fc).spatialReference.factoryCode == 26920:
-                    # Project tool doesn't like spaces, so need to get rid of them
+                    # Project tool doesn't like spaces, so need to get rid of
+                    # them
                     fcProj = fc.replace(" ", "_")[:-4] + "_Proj.shp"
                     arcpy.Project_management(fc, fcProj, srNAD83_CSRS_UTM20, gt)
                     # Join the shapefile to the spreadsheet dbf
@@ -842,7 +842,8 @@ def Upload():
                 shapefileName = fc[:-4]
 
 
-            # Check if the Elevation field is called Elevation, ELEVATION, Elev or ELEV
+            # Check if the Elevation field is called Elevation, ELEVATION, Elev
+            # or ELEV
             fieldNames = [f.name for f in arcpy.ListFields(fcJoin)]
             fieldElevName = ""
             if "Elevation" in fieldNames:
@@ -854,1037 +855,858 @@ def Upload():
             elif "ELEV" in fieldNames:
                 fieldElevName = "ELEV"
 
-
-
 #            # Only some of these fields are necessary for the upload
+            input_fields = get_array('input_fields.json', 'input_fields')
+            inputFields = ["Shape@", shapefileName + "." + fieldElevName, shapefileName + ".Width"]
+            inputFields += input_fields
             if method == "GIS":
-                shapefilesExist = True
-                inputFields = ["Shape@", shapefileName + "." + fieldElevName,
-                shapefileName + ".Width", "GenAssetInfo.Asset_Code",
-                               "GenAssetInfo.LocDesc",
-                               "GenAssetInfo.FeatureCod",
-                               "GenAssetInfo.Condition",
-                               "GenAssetInfo.Inspected",
-                               "GenAssetInfo.Status", 
-                               "GenAssetInfo.Quantity",
-                               "GenAssetInfo.Age",
-                               "GenAssetInfo.Material",
-                               "GenAssetInfo.Comments", 
-                               "GenAssetInfo.Area",
-                               "GenAssetInfo.Department",
-                               "GenAssetInfo.Division",
-                               "GenAssetInfo.PersResp",
-                               "GenAssetInfo.Install_yr",
-                               "GenAssetInfo.Estimated",
-                               "GenAssetInfo.RplmtCst",
-                               "GenAssetInfo.ConditionB",
-                               "GenAssetInfo.ResidValue",
-                               "GenAssetInfo.DispDate",
-                               "GenAssetInfo.Risk", 
-                               "GenAssetInfo.CnsqOfFail",
-                               "GenAssetInfo.FollowUp",
-                               "GenAssetInfo.Record_Dra",
-                               "GenAssetInfo.Replacemen",
-                               "GenAssetInfo.CostLookup",
-                               "GenAssetInfo.Cost_Facto",
-                               "GenAssetInfo.Unit_Cost"]
-
-            # Need extra AssetCode and FCode fields in case there is no matching record when joined
+                shapefilesExist = True    
+            # Need extra AssetCode and FCode fields in case there is no
+            # matching record when joined
             elif method == "Survey":
                 shapefilesExist = False
-                inputFields = ["Shape@", 
-                               shapefileName + "." + fieldElevName, 
-                               shapefileName + ".Width", 
-                               "GenAssetInfo.Asset_Code",
-                               "GenAssetInfo.LocDesc",
-                               "GenAssetInfo.FeatureCod",
-                               "GenAssetInfo.Condition",
-                               "GenAssetInfo.Inspected",
-                               "GenAssetInfo.Status", 
-                               "GenAssetInfo.Quantity",
-                               "GenAssetInfo.Age",
-                               "GenAssetInfo.Material",
-                               "GenAssetInfo.Comments", 
-                               "GenAssetInfo.Area",
-                               "GenAssetInfo.Department",
-                               "GenAssetInfo.Division",
-                               "GenAssetInfo.PersResp",
-                               "GenAssetInfo.Install_yr",
-                               "GenAssetInfo.Estimated",
-                               "GenAssetInfo.RplmtCst",
-                               "GenAssetInfo.ConditionB",
-                               "GenAssetInfo.ResidValue",
-                               "GenAssetInfo.DispDate",
-                               "GenAssetInfo.Risk", 
-                               "GenAssetInfo.CnsqOfFail",
-                               "GenAssetInfo.FollowUp",
-                               "GenAssetInfo.Record_Dra",
-                               "GenAssetInfo.Replacemen",
-                               "GenAssetInfo.CostLookup",
-                               "GenAssetInfo.Cost_Facto",
-                               "GenAssetInfo.Unit_Cost",
-                               shapefileName + ".AssetCode", 
-                               shapefileName + ".FCode"]
-
-
-#            # Initialize counter
-#            counter = 0
-
-
-
-#            # Cursor through input feature class using query
-#            with arcpy.da.SearchCursor(fcJoin, inputFields) as inputCursor:
-
-#                # Write values to output feature class
-#                for inputRec in inputCursor:
-
-#                    # Get shape
-#                    shp = inputRec[0]
-
-#                    # Elevation
-#                    if inputRec[1] == None:
-#                        Elev = None
-#                    elif is_number(inputRec[1]):
-#                        Elev = float(inputRec[1])
-#                    else:
-#                        Elev = None
-
-#                    # Width
-#                    if inputRec[2] == None:
-#                        Width = None
-#                    elif is_number(inputRec[2]):
-#                        #Width = int(inputRec[2])
-#                        Width = int(round(inputRec[2]))
-#                        #Width = float(inputRec[2])
-#                    else:
-#                        Width = None
-
-#                    # Asset Code
-#                    # Depending on whether shapefiles existed (method), get
-#                    AssetCode from one of two fields
-#                    if not inputRec[3] and shapefilesExist == False:
-#                        AssetCode = str(inputRec[31])
-#                        if AssetCode is not None:
-#                            MunID = inputRec[31].split("-")[0]
-#                            # Make sure MunID in AssetCode is the same as the
-#                            current municipality
-#                            if MunID == munID:
-#                                AssetClass = inputRec[31].split("-")[1]
-#                                AssetSubtype = inputRec[31].split("-")[2]
-#                            else:
-#                                continue
-#                        else:
-#                            continue
-#                    elif str(inputRec[3]) == "" or str(inputRec[3]) == " ":
-#                        AssetCode = None
-#                        continue
-#                    else:
-#                        AssetCode = inputRec[3]
-#                        NoneType = type(None)
-#                        if not isinstance(AssetCode, NoneType):
-#                            MunID = inputRec[3].split("-")[0]
-#                            # Make sure MunID in AssetCode is the same as the
-#                            current municipality
-#                            if MunID == munID:
-#                                AssetClass = inputRec[3].split("-")[1]
-#                                AssetSubtype = inputRec[3].split("-")[2]
-#                            else:
-#                                continue
-#                        else:
-#                            continue
-
-
-#                    # Location Description
-#                    if not inputRec[4]:
-#                        LocDesc = None
-#                    elif str(inputRec[4]) == "" or str(inputRec[4]) == " ":
-#                        LocDesc = None
-#                    else:
-#                        LocDesc = str(inputRec[4])
-
-#                    # FCode
-#                    if not inputRec[5]:
-#                        if shapefilesExist == False:
-#                            FCode = str(inputRec[32])
-#                        else:
-#                            FCode = None
-#                    elif str(inputRec[5]) == "" or str(inputRec[5]) == " ":
-#                        FCode = None
-#                    else:
-#                        FCode = str(inputRec[5])
-
-#                    # Condition
-#                    if inputRec[6] == None:
-#                        Condition = None
-#                    elif is_number(inputRec[6]):
-#                        if int(inputRec[6]) == 0:
-#                            Condition = 0
-#                        elif int(inputRec[6]) > 5:
-#                            Condition = None
-#                        else:
-#                            Condition = int(inputRec[6])
-#                    else:
-#                        Condition = None
-
-#                    # Inspection Date
-#                    # There are currently no Inspection Dates in spreadsheets
-#                    - this may change?  Not sure how they will be formatted.
-#                    if not inputRec[7]:
-#                        InspectDate = None
-#                    elif str(inputRec[7]) == "" or str(inputRec[7]) == " ":
-#                        InspectDate = None
-#                    else:
-#                        InspectDate = inputRec[7]
-
-#                    # Status - often in spreadsheets as "active" or "activate"
-#                    or "Activate"
-#                    if not inputRec[8]:
-#                        Status = None
-#                    elif str(inputRec[8]) == "" or str(inputRec[8]) == " ":
-#                        Status = "Active"
-#                    elif str(inputRec[8]) == "active" or str(inputRec[8]) ==
-#                    "Active" or str(inputRec[8]) == "activate" or
-#                    str(inputRec[8]) == "Activate":
-#                        Status = "Active"
-#                    else:
-#                        Status = str(inputRec[8])
-
-#                    # Quantity
-#                    if shapeType == "Polyline":
-#                        if inputRec[9] == None:
-#                            MeasuredLength = None
-#                        elif is_number(inputRec[9]):
-#                            if inputRec[9] == 0:
-#                                MeasuredLength = 0
-#                            else:
-#                                #MeasuredLength = int(float(inputRec[9]))
-#                                MeasuredLength =
-#                                int(round(float(inputRec[9])))
-#                        else:
-#                            MeasuredLength = 0
-#                    else:
-#                        MeasuredLength = 0
-
-#                    # Material
-#                    # Check some road and sidewalk/trail fcodes for materials
-#                    if FCode in ("RRCB-A", "RRCB-A-S", "RRRD-A", "RRRD-A-S",
-#                    "RRDR-A", "RRDR-A-S", "RRSW-A", "RRSW-A-S"):
-#                        Material = "Asphalt"
-#                    elif FCode in ("RRCB-C", "RRCB-C-S", "RRSW-C",
-#                    "RRSW-C-S"):
-#                        Material = "Concrete"
-#                    elif FCode in ("RRGR", "RRGR-S"):
-#                        Material = "Gravel"
-#                    elif FCode in ("RRSW-B", "RRSW-B-S"):
-#                        Material = "Brick"
-#                    else:
-#                        if not inputRec[11]:
-#                            Material = "Unknown"
-#                        elif str(inputRec[11]) == "" or str(inputRec[11]) == "
-#                        ":
-#                            Material = "Unknown"
-#                        else:
-#                            Material = str(inputRec[11])
-
-#                    # Comments
-#                    if not inputRec[12]:
-#                        Comments = None
-#                    elif str(inputRec[12]) == "" or str(inputRec[12]) == " ":
-#                        Comments = None
-#                    else:
-#                        Comments = str(inputRec[12])
-
-#                    # Region
-#                    if not inputRec[13]:
-#                        Region = None
-#                    elif str(inputRec[13]) == "" or str(inputRec[13]) == " ":
-#                        Region = None
-#                    else:
-#                        Region = str(inputRec[13])
-
-#                    # Department
-#                    if not inputRec[14]:
-#                        Dept = None
-#                    elif str(inputRec[14]) == "" or str(inputRec[14]) == " ":
-#                        Dept = None
-#                    else:
-#                        Dept = str(inputRec[14])
-
-#                    # Division
-#                    if not inputRec[15]:
-#                        Division = None
-#                    elif str(inputRec[15]) == "" or str(inputRec[15]) == " ":
-#                        Division = None
-#                    else:
-#                        Division= str(inputRec[15])
-
-#                    # Person Responsible
-#                    if not inputRec[16]:
-#                        PersResp = None
-#                    elif str(inputRec[16]) == "" or str(inputRec[16]) == " ":
-#                        PersResp = None
-#                    else:
-#                        PersResp = str(inputRec[16])
-
-#                    # Install Year
-#                    if inputRec[17] == None:
-#                        InstallYear = None
-#                    elif is_number(inputRec[17]):
-#                        if inputRec[17] == 0:
-#                            InstallYear = None
-#                        else:
-#                            InstallYear = int(float(inputRec[17]))
-#                    else:
-#                        InstallYear = None
-
-#                    # Age
-#                    if inputRec[10] == None:
-#                        Age = None
-#                    elif is_number(inputRec[10]):
-#                        if inputRec[10] == 0:
-#                            Age = None
-#                        else:
-#                            Age = int(float(inputRec[10]))
-#                    else:
-#                        Age = None
-
-#                    # Estimated RUL
-#                    if inputRec[18] == None:
-#                        EstimatedRUL = None
-#                    elif is_number(inputRec[18]):
-#                        EstimatedRUL = int(inputRec[18])
-#                        #EstimatedRUL = int(float(inputRec[18]))
-#                    else:
-#                        EstimatedRUL = None
-
-#                    # Replacement Cost
-#                    if inputRec[19] == None:
-#                        ReplacementCost = None
-#                    elif is_number(inputRec[19]):
-#                        ReplacementCost = float(inputRec[19])
-#                    else:
-#                        ReplacementCost = None
-
-#                    # Condition Basis
-#                    if not inputRec[20]:
-#                        ConditionBasis = None
-#                    elif str(inputRec[20]) == "" or str(inputRec[20]) == " ":
-#                        ConditionBasis = None
-#                    else:
-#                        ConditionBasis = str(inputRec[20])
-
-#                    # Residual Value
-#                    if inputRec[21] == None:
-#                        ResidValue = None
-#                    elif is_number(inputRec[21]):
-#                        #ResidValue = int(inputRec[21])
-#                        ResidValue = float(inputRec[21])
-#                    else:
-#                        ResidValue = None
-
-#                    # Disposal Date
-#                    #DisposalDate = inputRec[22]
-#                    # There are no Disposal Dates in spreadsheets - this may
-#                    change?
-#                    DisposalDate = None
-
-#                    # Risk
-#                    if inputRec[23] == None:
-#                        Risk = None
-#                    elif is_number(inputRec[23]):
-#                        Risk = int(inputRec[23])
-#                    else:
-#                        Risk = None
-
-#                    # Consequences of Failure
-#                    if inputRec[24] == None:
-#                        CnsqOfFail = None
-#                    elif is_number(inputRec[24]):
-#                        CnsqOfFail = int(inputRec[24])
-#                    else:
-#                        CnsqOfFail = None
-
-#                    # Follow-up Date
-#                    #FollowUpDate = inputRec[25]
-#                    # Should never be Follow-up Dates in spreadsheets
-#                    FollowUpDate = None
-
-#                    # Record Drawing
-#                    if not inputRec[26]:
-#                        RecordDrawing = None
-#                    elif str(inputRec[26]) == "" or str(inputRec[26]) == " ":
-#                        RecordDrawing = None
-#                    else:
-#                        RecordDrawing = str(inputRec[26])
-
-#                    # Replacement Year
-#                    if inputRec[27] == None:
-#                        ReplacementYear = None
-#                    elif is_number(inputRec[27]):
-#                        ReplacementYear = int(float(inputRec[27]))
-#                    else:
-#                        ReplacementYear = None
-
-#                    # Cost Code (lookup)
-#                    if not inputRec[28]:
-#                        CostCode = None
-#                    elif str(inputRec[28]) == "" or str(inputRec[28]) == " ":
-#                        CostCode = None
-#                    else:
-#                        CostCode = str(inputRec[28])
-
-#                    # Cost Factor
-#                    if inputRec[29] == None:
-#                        CostFactor = None
-#                    elif inputRec[29] == 0:
-#                        CostFactor = None
-#                    elif str(inputRec[29]) == "" or str(inputRec[29]) == " ":
-#                        CostFactor = None
-#                    else:
-#                        CostFactor = str(int(float(inputRec[29])))
-
-#                    # Unit Cost
-#                    if inputRec[30] == None:
-#                        UnitCost = None
-#                    elif is_number(inputRec[30]):
-#                        if inputRec[30] == 0:
-#                            UnitCost = None
-#                        else:
-#                            UnitCost = float(inputRec[30])
-#                    else:
-#                        UnitCost = None
-
-
-#                    # If certain fields aren't filled out with values, then we
-#                    need to flag them as Incomplete and set
-#                    # a default FollowUp Date of 2 weeks from the day of
-#                    upload.
-#                    Complete = "Yes"
-#                    if shapeType == "Point":
-#                        if AssetCode == None or AssetClass == None or
-#                        AssetSubtype == None or FCode == None or LocDesc ==
-#                        None or Status == None or InstallYear == None or Age
-#                        == None or Condition == None or Condition == 0 or
-#                        ConditionBasis == None or EstimatedRUL == None or
-#                        CostCode == None or UnitCost == None or
-#                        ReplacementCost == None:
-#                            Complete = "No"
-#                            FollowUpDate = datetime.datetime.now().date() +
-#                            timedelta(days=14)
-#                        else:
-#                            Complete = "Yes"
-#                            FollowUpDate = None
-
-#                    elif shapeType == "Polyline":
-#                        # Need to check for MeasuredLength as well
-#                        if AssetCode == None or AssetClass == None or
-#                        AssetSubtype == None or FCode == None or LocDesc ==
-#                        None or Status == None or InstallYear == None or Age
-#                        == None or Condition == None or Condition == 0 or
-#                        ConditionBasis == None or EstimatedRUL == None or
-#                        CostCode == None or UnitCost == None or
-#                        ReplacementCost == None or MeasuredLength == 0:
-#                            Complete = "No"
-#                            FollowUpDate = datetime.datetime.now().date() +
-#                            timedelta(days=14)
-#                        else:
-#                            Complete = "Yes"
-#                            FollowUpDate = None
-
-
-#                    # Query the FCode value to see which feature class the
-#                    feature should go into
-#                    outputfc = ""
-#                    outputtab = ""
-#                    gdbOwner = "ASSETVIEWER."
-
-
-#                    # Point feature class FCodes
-#                    if shapeType == "Point":
-#                        if FCode == "CB":
-#                            outputfc = gdb + "/" + gdbOwner + "Stormwater/" +
-#                            gdbOwner + "SWC_Catchbasin"
-#                        elif FCode == "IO" or FCode == "IO-S":
-#                            outputfc = gdb + "/" + gdbOwner + "Stormwater/" +
-#                            gdbOwner + "SWC_InletOutlet"
-#                        elif FCode == "LIFT":
-#                            outputfc = gdb + "/" + gdbOwner + "Stormwater/" +
-#                            gdbOwner + "SWC_LiftStation"
-#                        elif FCode == "MHST":
-#                            outputfc = gdb + "/" + gdbOwner + "Stormwater/" +
-#                            gdbOwner + "SWC_Manhole"
-#                        elif FCode == "PND":
-#                            outputfc = gdb + "/" + gdbOwner + "Stormwater/" +
-#                            gdbOwner + "SWC_Pond"
-#                        elif FCode == "TRMTD":
-#                            outputfc = gdb + "/" + gdbOwner + "Stormwater/" +
-#                            gdbOwner + "SWC_TreatmentDevice"
-#                        elif FCode == "UGS":
-#                            outputfc = gdb + "/" + gdbOwner + "Stormwater/" +
-#                            gdbOwner + "SWC_UndergroundStorage"
-#                        elif FCode == "STPR":
-#                            outputfc = gdb + "/" + gdbOwner +
-#                            "Transportation/" + gdbOwner + "TRN_Bridge"
-#                        elif FCode == "TFSP":
-#                            outputfc = gdb + "/" + gdbOwner +
-#                            "Transportation/" + gdbOwner + "TRN_Sign"
-#                        elif FCode == "TFTL":
-#                            outputfc = gdb + "/" + gdbOwner +
-#                            "Transportation/" + gdbOwner + "TRN_Signal"
-#                        elif FCode == "TSIG" or FCode == "UTPO" or FCode ==
-#                        "TFSLOR" or FCode == "TFSL":
-#                            outputfc = gdb + "/" + gdbOwner +
-#                            "Transportation/" + gdbOwner + "TRN_Streetlight"
-#                        elif FCode == "FTTESAN":
-#                            outputfc = gdb + "/" + gdbOwner + "Wastewater/" +
-#                            gdbOwner + "WWC_Fitting"
-#                        elif FCode == "PMPS":
-#                            outputfc = gdb + "/" + gdbOwner + "Wastewater/" +
-#                            gdbOwner + "WWC_LiftPumpStation"
-#                        elif FCode == "MHCO" or FCode == "MHSA":
-#                            outputfc = gdb + "/" + gdbOwner + "Wastewater/" +
-#                            gdbOwner + "WWC_Manhole"
-#                        elif FCode == "SEPT":
-#                            outputfc = gdb + "/" + gdbOwner + "Wastewater/" +
-#                            gdbOwner + "WWC_SepticField"
-#                        elif FCode == "WWCTF":
-#                            outputfc = gdb + "/" + gdbOwner + "Wastewater/" +
-#                            gdbOwner + "WWC_TreatmentFacility"
-#                        elif FCode in ("WWCPMP", "WWTFGEN", "WWSPMP"):
-#                            # Check the contents of the LocDesc field to see
-#                            what the related feature is
-#                            if not LocDesc== None: # If not <Null>
-#                                if "-WWC-LPS-PMPS-" in LocDesc:
-#                                    outputtab = gdb + "/" + gdbOwner +
-#                                    "WWC_LiftPumpStation_Assets"
-#                                elif "-WWC-TRFWW-WWCTF-" in LocDesc:
-#                                    outputtab = gdb + "/" + gdbOwner +
-#                                    "WWC_TreatmentFacility_Assets"
-#                                else:
-#                                    outputfc = gdb + "/" + gdbOwner +
-#                                    "Wastewater/" + gdbOwner +
-#                                    "WWC_TreatmentFacility"
-#                            else: #In case LocDesc is empty, put record here:
-#                                outputfc = gdb + "/" + gdbOwner +
-#                                "Wastewater/" + gdbOwner +
-#                                "WWC_TreatmentFacility"
-#                        elif FCode in ("WWTFAC", "WWBSC", "WWBLWR", "WWTFBLD",
-#                        "WWCCSYS", "WWCLCC", "WWCLAR", "WWCOMP", "WWDAFS",
-#                        "WWDAFT", "WWELECM", "WWFFT", "WWFLME", "WWGDTP",
-#                        "WWISV", "WWLAB", "WWLAG", "WWOFS", "WWOXDI",
-#                        "WWPADAE", "WWPTNK", "WWSBRT", "WWSCRC", "WWSDB",
-#                        "WWSCM", "WWST","WWTLEM"):
-#                            outputtab = gdb + "/" + gdbOwner +
-#                            "WWC_TreatmentFacility_Assets"
-#                        elif FCode == "BST":
-#                            outputfc = gdb + "/" + gdbOwner + "WaterSupply/" +
-#                            gdbOwner + "PWS_BoosterStation"
-#                        elif FCode == "CS":
-#                            outputfc = gdb + "/" + gdbOwner + "WaterSupply/" +
-#                            gdbOwner + "PWS_CorporationStop"
-#                        elif FCode == "WV":
-#                            outputfc = gdb + "/" + gdbOwner + "WaterSupply/" +
-#                            gdbOwner + "PWS_CurbStop"
-#                        elif FCode in ("FTBD11", "FTBD22", "FTBD45", "FTBD90",
-#                        "FTCAP", "FTCP", "FTHY", "FTHYTE", "FTRD", "FTTS",
-#                        "FTTE"):
-#                            outputfc = gdb + "/" + gdbOwner + "WaterSupply/" +
-#                            gdbOwner + "PWS_Fitting"
-#                        elif FCode == "HY":
-#                            outputfc = gdb + "/" + gdbOwner + "WaterSupply/" +
-#                            gdbOwner + "PWS_Hydrant"
-#                        elif FCode == "METER":
-#                            outputfc = gdb + "/" + gdbOwner + "WaterSupply/" +
-#                            gdbOwner + "PWS_MeteringSystem"
-#                        elif FCode == "PRV" or FCode == "APV":
-#                            outputfc = gdb + "/" + gdbOwner + "WaterSupply/" +
-#                            gdbOwner + "PWS_PRV"
-#                        elif FCode == "WSST":
-#                            outputfc = gdb + "/" + gdbOwner + "WaterSupply/" +
-#                            gdbOwner + "PWS_StorageTank"
-#                        elif FCode == "WSTF":
-#                            outputfc = gdb + "/" + gdbOwner + "WaterSupply/" +
-#                            gdbOwner + "PWS_TreatmentFacility"
-#                        elif FCode == "FTVLHY" or FCode == "GV":
-#                            outputfc = gdb + "/" + gdbOwner + "WaterSupply/" +
-#                            gdbOwner + "PWS_Valve"
-#                        elif FCode == "WS":
-#                            outputfc = gdb + "/" + gdbOwner + "WaterSupply/" +
-#                            gdbOwner + "PWS_WaterSource"
-#                        elif FCode in ("WSTFAC", "WSCPMP", "WSISV", "WSSPMP"):
-#                            # Check the contents of the LocDesc field to see
-#                            what the related feature is
-#                            if not LocDesc == None: #If not <Null>
-#                                if "-PWS-BST-BST-" in LocDesc:
-#                                    outputtab = gdb + "/" + gdbOwner +
-#                                    "PWS_BoosterStation_Assets"
-#                                elif "-PWS-TRFWS-WSTF-" in LocDesc:
-#                                    outputtab = gdb + "/" + gdbOwner +
-#                                    "PWS_TreatmentFacility_Assets"
-#                                else:
-#                                    outputfc = gdb + "/" + gdbOwner +
-#                                    "WaterSupply/" + gdbOwner +
-#                                    "PWS_TreatmentFacility"
-#                            else: #In case LocDesc is empty, put record here:
-#                                outputfc = gdb + "/" + gdbOwner +
-#                                "WaterSupply/" + gdbOwner +
-#                                "PWS_TreatmentFacility"
-#                        elif FCode in ("WSTFBLD", "WSCCSYS", "WSCLLD",
-#                        "WSCLAR", "WSCOMP", "WSDAFS", "WSDAFT", "WSELECM",
-#                        "WSFLME", "WSGDTP", "WSTFGEN", "WSLAB", "WSMFS",
-#                        "WSMMF", "WSOFS", "WSPTNK", "WSSCM", "WSTLEM", "WSTP",
-#                        "WSUV", "WSVACCL"):
-#                            outputtab = gdb + "/" + gdbOwner +
-#                            "PWS_TreatmentFacility_Assets"
-#                        else:
-#                            outputfc = ""
-#                            outputtab = ""
-
-#                    # Polyline feature class FCodes
-#                    elif shapeType == "Polyline":
-#                        if FCode == "CLVT" or FCode == "CLVT-S":
-#                            outputfc = gdb + "/" + gdbOwner + "Stormwater/" +
-#                            gdbOwner + "SWC_Culvert"
-#                        elif FCode in ("DRCH", "DRCH-S", "RRGT", "RRGT-S"):
-#                            outputfc = gdb + "/" + gdbOwner + "Stormwater/" +
-#                            gdbOwner + "SWC_DrainageChannel"
-#                        elif FCode == "GRVPST" or FCode == "GRVPST-S":
-#                            outputfc = gdb + "/" + gdbOwner + "Stormwater/" +
-#                            gdbOwner + "SWC_GravityPipe"
-#                        elif FCode == "SWFRCM" or FCode == "SWFRCM-S":
-#                            outputfc = gdb + "/" + gdbOwner + "Stormwater/" +
-#                            gdbOwner + "SWC_PressureStormPipe"
-#                        elif FCode in ("FL", "FL-S", "STGR", "STGR-S", "SB",
-#                        "SB-S"):
-#                            outputfc = gdb + "/" + gdbOwner +
-#                            "Transportation/" + gdbOwner +
-#                            "TRN_BarrierGuardrail"
-#                        elif FCode in ("RRCB-A", "RRCB-A-S", "RRCB-C",
-#                        "RRCB-C-S", "RRRD-A", "RRRD-A-S", "RRGR", "RRGR-S"):
-#                            outputfc = gdb + "/" + gdbOwner +
-#                            "Transportation/" + gdbOwner + "TRN_Road"
-#                        elif FCode in ("RRBW-W", "RRBW-W-S", "RRDR-A",
-#                        "RRDR-A-S", "RRPW", "RRPW-S", "RRSW-C", "RRSW-C-S",
-#                        "RRSW-A", "RRSW-A-S", "RRSW-B", "RRSW-B-S", "RRTR",
-#                        "RRTR-S", "RRSW", "RRSW-S"):
-#                            outputfc = gdb + "/" + gdbOwner +
-#                            "Transportation/" + gdbOwner + "TRN_SidewalkTrail"
-#                        elif FCode in ("GRVPSA", "GRVPSA-S", "GRVPCO",
-#                        "GRVPCO-S"):
-#                            outputfc = gdb + "/" + gdbOwner + "Wastewater/" +
-#                            gdbOwner + "WWC_GravityPipe"
-#                        elif FCode == "WWFRCM" or FCode == "WWFRCM-S":
-#                            outputfc = gdb + "/" + gdbOwner + "Wastewater/" +
-#                            gdbOwner + "WWC_PressureSewerPipe"
-#                        elif FCode == "DIMN" or FCode == "DIMN-S":
-#                            outputfc = gdb + "/" + gdbOwner + "WaterSupply/" +
-#                            gdbOwner + "PWS_DistributionPipe"
-#                        elif FCode == "TRNS" or FCode == "TRNS-S":
-#                            outputfc = gdb + "/" + gdbOwner + "WaterSupply/" +
-#                            gdbOwner + "PWS_TransmissionPipe"
-#                        else:
-#                            outputfc = ""
-#                            outputtab = ""
-
-#                    #arcpy.AddMessage(outputfc)
-#                    #arcpy.AddMessage(outputtab)
-
-
-#                    # Insert a feature into an output fc or record into an
-#                    output table
-#                    if outputfc != "":
-#                        if shapeType == "Point":
-#                            with arcpy.da.InsertCursor(outputfc,
-#                            outputFields_Point) as outputCursor:
-#                                # Insert the feature
-#                                outputCursor.insertRow([shp, AssetCode, MunID,
-#                                AssetClass, AssetSubtype, FCode, LocDesc,
-#                                Elev, Status, Material, CostFactor, Width,
-#                                InstallYear, Age, Condition, ConditionBasis,
-#                                InspectDate, EstimatedRUL, ReplacementYear,
-#                                CostCode, UnitCost, ReplacementCost,
-#                                ResidValue, DisposalDate, CnsqOfFail, Risk,
-#                                RecordDrawing, Region, Dept, Division,
-#                                PersResp, FollowUpDate, Comments, Complete])
-
-#                        elif shapeType == "Polyline":
-#                            with arcpy.da.InsertCursor(outputfc,
-#                            outputFields_Line) as outputCursor:
-#                                # Insert the feature
-#                                outputCursor.insertRow([shp, AssetCode, MunID,
-#                                AssetClass, AssetSubtype, FCode, LocDesc,
-#                                Status, Material, CostFactor, Width,
-#                                MeasuredLength, InstallYear, Age, Condition,
-#                                ConditionBasis, InspectDate, EstimatedRUL,
-#                                ReplacementYear, CostCode, UnitCost,
-#                                ReplacementCost, ResidValue, DisposalDate,
-#                                CnsqOfFail, Risk, RecordDrawing, Region, Dept,
-#                                Division, PersResp, FollowUpDate, Comments,
-#                                Complete])
-
-#                    if outputtab != "":
-#                        if outputtab == gdb + "/" + gdbOwner +
-#                        "PWS_BoosterStation_Assets":
-#                            with arcpy.da.InsertCursor(outputtab,
-#                            outputFields_Table_BST) as outputCursor:
-#                                # Insert the record (no geometry)
-#                                outputCursor.insertRow([AssetCode, MunID,
-#                                AssetClass, AssetSubtype, FCode, LocDesc,
-#                                Status, Material, CostFactor, Width,
-#                                InstallYear, Age, Condition, ConditionBasis,
-#                                InspectDate, EstimatedRUL, ReplacementYear,
-#                                CostCode, UnitCost, ReplacementCost,
-#                                ResidValue, DisposalDate, CnsqOfFail, Risk,
-#                                RecordDrawing, Region, Dept, Division,
-#                                PersResp, FollowUpDate, Comments, LocDesc,
-#                                Complete])
-
-#                        elif outputtab == gdb + "/" + gdbOwner +
-#                        "PWS_TreatmentFacility_Assets":
-#                            with arcpy.da.InsertCursor(outputtab,
-#                            outputFields_Table_WSTF) as outputCursor:
-#                                # Insert the record (no geometry)
-#                                outputCursor.insertRow([AssetCode, MunID,
-#                                AssetClass, AssetSubtype, FCode, LocDesc,
-#                                Status, Material, CostFactor, Width,
-#                                InstallYear, Age, Condition, ConditionBasis,
-#                                InspectDate, EstimatedRUL, ReplacementYear,
-#                                CostCode, UnitCost, ReplacementCost,
-#                                ResidValue, DisposalDate, CnsqOfFail, Risk,
-#                                RecordDrawing, Region, Dept, Division,
-#                                PersResp, FollowUpDate, Comments, LocDesc,
-#                                Complete])
-
-#                        elif outputtab == gdb + "/" + gdbOwner +
-#                        "WWC_LiftPumpStation_Assets":
-#                            with arcpy.da.InsertCursor(outputtab,
-#                            outputFields_Table_LPS) as outputCursor:
-#                                # Insert the record (no geometry)
-#                                outputCursor.insertRow([AssetCode, MunID,
-#                                AssetClass, AssetSubtype, FCode, LocDesc,
-#                                Status, Material, CostFactor, Width,
-#                                InstallYear, Age, Condition, ConditionBasis,
-#                                InspectDate, EstimatedRUL, ReplacementYear,
-#                                CostCode, UnitCost, ReplacementCost,
-#                                ResidValue, DisposalDate, CnsqOfFail, Risk,
-#                                RecordDrawing, Region, Dept, Division,
-#                                PersResp, FollowUpDate, Comments, LocDesc,
-#                                Complete])
-
-#                        elif outputtab == gdb + "/" + gdbOwner +
-#                        "WWC_TreatmentFacility_Assets":
-#                            with arcpy.da.InsertCursor(outputtab,
-#                            outputFields_Table_WWCTF) as outputCursor:
-#                                # Insert the record (no geometry)
-#                                outputCursor.insertRow([AssetCode, MunID,
-#                                AssetClass, AssetSubtype, FCode, LocDesc,
-#                                Status, Material, CostFactor, Width,
-#                                InstallYear, Age, Condition, ConditionBasis,
-#                                InspectDate, EstimatedRUL, ReplacementYear,
-#                                CostCode, UnitCost, ReplacementCost,
-#                                ResidValue, DisposalDate, CnsqOfFail, Risk,
-#                                RecordDrawing, Region, Dept, Division,
-#                                PersResp, FollowUpDate, Comments, LocDesc,
-#                                Complete])
-
-#                    # Update counter
-#                    counter = counter + 1
-#                    #arcpy.AddMessage("Counter: " + str(counter))
-
-
-#            # Add counter to totalcounter
-#            totalcounter = totalcounter + counter
-
-#            # Stop the edit operation
-#            edit.stopOperation()
-
-
-#            # Clean up ??
-#            arcpy.RemoveJoin_management(fcJoin)
-#            del outputCursor
-#            #del outputfc
-#            #del outputtab
-#            del counter
-#            del shapeType
-#            del inputFields
-
-
-#        # Use this to save ?  so that it can be displayed in Dashboard
-#        arcpy.AddMessage("Total records processed and uploaded: " +
-#        str(totalcounter))
-
-#        # Stop the edit session and save the changes
-#        edit.stopEditing(True)
-
-
-#        #
-#        ###################################################################################
-#        # Import the UnitCost sheet into the UnitCost table for the
-#        municipality
-#        #
-#        ###################################################################################
-
-#        # Have to get actual spreadsheet for the UnitCost information, convert
-#        to a CSV, then to a DBF and then load into UnitCost table
-
-#        # Find spreadsheet and the Unit Cost sheet, export to a CSV in the
-#        municipality folder
-#        for file in os.listdir(munFolder):
-#            if file.endswith(".xlsm") and file.startswith(munID):
-#                fileSpreadsheet = munFolder + file
-#                break
-
-#        wb = xlrd.open_workbook(fileSpreadsheet)
-#        sheet = wb.sheet_by_name("Unit Cost")
-#        csvUnitCost = open(munFolder + "UnitCost.csv", "wb")
-#        wr = csv.writer(csvUnitCost, quoting=csv.QUOTE_ALL)
-
-#        # Need to write header manually since sheet has merged rows and won't
-#        export perfectly
-#        wr.writerow(("Field1","Item","Lookup Code","Cost
-#        Factor","Life","Unit","Base Cost","Field2","Total
-#        Cost","Field4","Field5","Field6","Field7","Field8","Field9","Field10","Field11"))
-
-
-#        # Write remaining rows with data
-#        for rownum in xrange(sheet.nrows):
-#            # Skip the first two rows
-#            if rownum == 0 or rownum == 1:
-#                continue
-#            # Write other row values to CSV
-#            wr.writerow(sheet.row_values(rownum))
-
-
-#        # Close the spreadsheet and CSV
-#        wb.release_resources()
-#        del wb
-#        csvUnitCost.close()
-
-
-
-#        # The sheet/CSV has too many empty or unneeded columns, so will only
-#        take ones we need
-#        # Need to export to a new CSV in the municipality folder
-#        #global munName
-#        f = pd.read_csv(munFolder + "UnitCost.csv")
-#        keep_col = ["Item", "Lookup Code", "Cost Factor", "Life", "Unit",
-#        "Base Cost", "Total Cost"]
-#        new_f = f[keep_col]
-#        new_f.to_csv(munFolder + "UnitCost_" + munID + ".csv", index=False)
-
-#        # Will create a temporary DBF in the municipality folder
-#        dbfFile = munFolder + "UnitCost_" + munID + ".dbf"
-#        # Delete if already there
-#        if os.path.isfile(dbfFile):
-#            os.remove(dbfFile)
-#        # Might also be a dbf.xml file
-#        if os.path.isfile(munFolder + "UnitCost_" + munID + ".dbf.xml"):
-#            os.remove(munFolder + "UnitCost_" + munID + ".dbf.xml")
-#        # Convert CSV to DBF
-#        arcpy.TableToTable_conversion(munFolder + "UnitCost_" + munID +
-#        ".csv", munFolder, "UnitCost_" + munID + ".dbf")
-
-#        # Truncate UnitCost table in the GDB before loading new data in
-#        arcpy.env.workspace = gdb
-#        # Get corresponding UnitCost table for the municipality from the GDB
-#        unitCostTab = gdbOwner + "UnitCost_" + munID
-#        arcpy.TruncateTable_management(unitCostTab)
-
-
-#        # Start editing - without an undo/redo stack
-#        edit.startEditing(False, False)
-
-#        # Start another edit operation on GDB
-#        edit.startOperation()
-
-#        # Input fields from DBF and output GDB fields
-#        inputDBFFields = ["Item", "Lookup_Cod", "Cost_Facto", "Life", "Unit",
-#        "Base_Cost", "Total_Cost"]
-#        outputGDBFields = ["ItemDesc", "CostCode", "CostFactor", "UsefulLife",
-#        "Unit", "BaseCost", "TotalCost"]
-
-#        # Initialize counter (might not need this)
-#        unitCostCounter = 0
-
-
-#        # Cursor through input dbf
-#        with arcpy.da.SearchCursor(munFolder + "UnitCost_" + munID + ".dbf",
-#        inputDBFFields) as inputDBFCursor:
-
-#            # Write values to output feature class
-#            for inputDBFRec in inputDBFCursor:
-
-#                # To get rid of the rows with blank values at the end of
-#                CSV/DBF - skip over these
-#                if inputDBFRec[0] == " ":
-#                    continue
-#                else:
-#                    # Item
-#                    Item = inputDBFRec[0]
-
-#                    # Cost Code (Lookup Code)
-#                    if inputDBFRec[1] == "" or inputDBFRec[1] == " ":
-#                        CostCode = None
-#                    else:
-#                        CostCode = inputDBFRec[1]
-
-#                    # Cost Factor
-#                    if inputDBFRec[2] == "" or inputDBFRec[2] == " ":
-#                        CostFactor = None
-#                    else:
-#                        if is_number(inputDBFRec[2]):
-#                            CostFactor = float(inputDBFRec[2])
-#                            CostFactor = int(CostFactor)
-#                        else:
-#                            CostFactor = inputDBFRec[2]
-
-#                    # Useful Life
-#                    if str(inputDBFRec[3]) == "" or str(inputDBFRec[3]) == "
-#                    ":
-#                        UsefulLife = None
-#                    else:
-#                        if is_number(inputDBFRec[3]):
-#                            UsefulLife = int(inputDBFRec[3])
-#                        else:
-#                            UsefulLife = None
-
-#                    # Unit
-#                    if inputDBFRec[4] == "" or inputDBFRec[4] == " ":
-#                        Unit = None
-#                    else:
-#                        Unit = inputDBFRec[4]
-
-#                    # Base Cost
-#                    if str(inputDBFRec[5]) == "" or str(inputDBFRec[5]) == "
-#                    ":
-#                        BaseCost = None
-#                    else:
-#                        BaseCost = inputDBFRec[5]
-
-#                    # Total Cost
-#                    if str(inputDBFRec[6]) == "" or str(inputDBFRec[6]) == "
-#                    ":
-#                        TotalCost = None
-#                    else:
-#                        TotalCost = inputDBFRec[6]
-
-#                    # Write values to UnitCost table in GDB
-#                    with arcpy.da.InsertCursor(unitCostTab, outputGDBFields)
-#                    as unitCostCursor:
-#                        # Insert the record
-#                        unitCostCursor.insertRow([Item, CostCode, CostFactor,
-#                        UsefulLife, Unit, BaseCost, TotalCost])
-#                        # Update counter
-#                        unitCostCounter = unitCostCounter + 1
-
-
-
-#        # Stop the edit operation
-#        edit.stopOperation()
-
-
-#        # Stop the edit session and save the changes
-#        edit.stopEditing(True)
-
-
-
-#        # Clean up
-#        del unitCostCursor
-#        del unitCostTab
-#        del outputGDBFields
-#        del unitCostCounter
-
-#        # Status
-#        UploadStatus = "Upload Successful"
-
-#        # Send email
-#        NotifyClient(munFullName, "", "", UploadStatus)
-
-
-
-#    except arcpy.ExecuteError:
-
-#        arcpy.AddMessage(arcpy.GetMessages(2))
-#        UploadStatus = "Upload Failed: " + "\n" + arcpy.GetMessages(2)
-
-#        # Abort edit operation
-#        if "edit" in locals() or "edit" in globals():
-#        #if edit is not None:
-#        #if not edit == None:
-#            if edit.isEditing == "true":
-#                edit.abortOperation()
-#                # Stop the edit session without saving any changes
-#                edit.stopEditing(False)
-
-#        # Send email
-#        NotifyClient(munFullName, "", "", UploadStatus)
-
-
-    except Exception, e:
-
-        UploadStatus = "ERROR: Exception on line number:" + str(sys.exc_traceback.tb_lineno) + "\n" + str(e) + "\n"
-        #NotifyClient(munFullName, None, None, UploadStatus)
+                inputFields.append(shapefileName + ".AssetCode") 
+                inputFields.append(shapefileName + ".FCode")
+
+            # Initialize counter
+            counter = 0
+
+            # Cursor through input feature class using query
+            with arcpy.da.SearchCursor(fcJoin, inputFields) as inputCursor:
+
+                # Write values to output feature class
+                for inputRec in inputCursor:
+
+                    # Get shape
+                    shp = inputRec[0]
+
+                    # Elevation
+                    if inputRec[1] == None:
+                        Elev = None
+                    elif is_number(inputRec[1]):
+                        Elev = float(inputRec[1])
+                    else:
+                        Elev = None
+
+                    # Width
+                    if inputRec[2] == None:
+                        Width = None
+                    elif is_number(inputRec[2]):
+                        #Width = int(inputRec[2])
+                        Width = int(round(inputRec[2]))
+                        #Width = float(inputRec[2])
+                    else:
+                        Width = None
+
+                    # Asset Code
+                    # Depending on whether shapefiles existed (method), get
+                    # AssetCode from one of two fields
+                    if not inputRec[3] and shapefilesExist == False:
+                        AssetCode = str(inputRec[31])
+                        if AssetCode is not None:
+                            MunID = inputRec[31].split("-")[0]
+                            # Make sure MunID in AssetCode is the same as the
+                            # current municipality
+                            if MunID == munID:
+                                AssetClass = inputRec[31].split("-")[1]
+                                AssetSubtype = inputRec[31].split("-")[2]
+                            else:
+                                continue
+                        else:
+                            continue
+                    elif str(inputRec[3]) == "" or str(inputRec[3]) == " ":
+                        AssetCode = None
+                        continue
+                    else:
+                        AssetCode = inputRec[3]
+                        NoneType = type(None)
+                        if not isinstance(AssetCode, NoneType):
+                            MunID = inputRec[3].split("-")[0]
+                            # Make sure MunID in AssetCode is the same as the
+                            # current municipality
+                            if MunID == munID:
+                                AssetClass = inputRec[3].split("-")[1]
+                                AssetSubtype = inputRec[3].split("-")[2]
+                            else:
+                                continue
+                        else:
+                            continue
+
+
+                    # Location Description
+                    if not inputRec[4]:
+                        LocDesc = None
+                    elif str(inputRec[4]) == "" or str(inputRec[4]) == " ":
+                        LocDesc = None
+                    else:
+                        LocDesc = str(inputRec[4])
+
+                    # FCode
+                    if not inputRec[5]:
+                        if shapefilesExist == False:
+                            FCode = str(inputRec[32])
+                        else:
+                            FCode = None
+                    elif str(inputRec[5]) == "" or str(inputRec[5]) == " ":
+                        FCode = None
+                    else:
+                        FCode = str(inputRec[5])
+
+                    # Condition
+                    if inputRec[6] == None:
+                        Condition = None
+                    elif is_number(inputRec[6]):
+                        if int(inputRec[6]) == 0:
+                            Condition = 0
+                        elif int(inputRec[6]) > 5:
+                            Condition = None
+                        else:
+                            Condition = int(inputRec[6])
+                    else:
+                        Condition = None
+
+                    # Inspection Date
+                    # There are currently no Inspection Dates in spreadsheets -
+                    # this may change?  Not sure how they will be formatted.
+                    if not inputRec[7]:
+                        InspectDate = None
+                    elif str(inputRec[7]) == "" or str(inputRec[7]) == " ":
+                        InspectDate = None
+                    else:
+                        InspectDate = inputRec[7]
+
+                    # Status - often in spreadsheets as "active" or "activate"
+                    # or "Activate"
+                    if not inputRec[8]:
+                        Status = None
+                    elif str(inputRec[8]) == "" or str(inputRec[8]) == " ":
+                        Status = "Active"
+                    elif str(inputRec[8]) in ["active","Active","activate","Activate"]:
+                        Status = "Active"
+                    else:
+                        Status = str(inputRec[8])
+
+                    # Quantity
+                    if shapeType == "Polyline":
+                        if inputRec[9] == None:
+                            MeasuredLength = None
+                        elif is_number(inputRec[9]):
+                            if inputRec[9] == 0:
+                                MeasuredLength = 0
+                            else:
+                                #MeasuredLength = int(float(inputRec[9]))
+                                MeasuredLength = int(round(float(inputRec[9])))
+                        else:
+                            MeasuredLength = 0
+                    else:
+                        MeasuredLength = 0
+
+                    # Material
+                    # Check some road and sidewalk/trail fcodes for materials
+                    if FCode in ("RRCB-A", "RRCB-A-S", "RRRD-A", "RRRD-A-S", "RRDR-A", "RRDR-A-S", "RRSW-A", "RRSW-A-S"):
+                        Material = "Asphalt"
+                    elif FCode in ("RRCB-C", "RRCB-C-S", "RRSW-C", "RRSW-C-S"):
+                        Material = "Concrete"
+                    elif FCode in ("RRGR", "RRGR-S"):
+                        Material = "Gravel"
+                    elif FCode in ("RRSW-B", "RRSW-B-S"):
+                        Material = "Brick"
+                    else:
+                        if not inputRec[11]:
+                            Material = "Unknown"
+                        elif str(inputRec[11]) == "" or str(inputRec[11]) == " ":
+                            Material = "Unknown"
+                        else:
+                            Material = str(inputRec[11])
+
+                    # Comments
+                    if not inputRec[12]:
+                        Comments = None
+                    elif str(inputRec[12]) == "" or str(inputRec[12]) == " ":
+                        Comments = None
+                    else:
+                        Comments = str(inputRec[12])
+
+                    # Region
+                    if not inputRec[13]:
+                        Region = None
+                    elif str(inputRec[13]) == "" or str(inputRec[13]) == " ":
+                        Region = None
+                    else:
+                        Region = str(inputRec[13])
+
+                    # Department
+                    if not inputRec[14]:
+                        Dept = None
+                    elif str(inputRec[14]) == "" or str(inputRec[14]) == " ":
+                        Dept = None
+                    else:
+                        Dept = str(inputRec[14])
+
+                    # Division
+                    if not inputRec[15]:
+                        Division = None
+                    elif str(inputRec[15]) == "" or str(inputRec[15]) == " ":
+                        Division = None
+                    else:
+                        Division = str(inputRec[15])
+
+                    # Person Responsible
+                    if not inputRec[16]:
+                        PersResp = None
+                    elif str(inputRec[16]) == "" or str(inputRec[16]) == " ":
+                        PersResp = None
+                    else:
+                        PersResp = str(inputRec[16])
+
+                    # Install Year
+                    if inputRec[17] == None:
+                        InstallYear = None
+                    elif is_number(inputRec[17]):
+                        if inputRec[17] == 0:
+                            InstallYear = None
+                        else:
+                            InstallYear = int(float(inputRec[17]))
+                    else:
+                        InstallYear = None
+
+                    # Age
+                    if inputRec[10] == None:
+                        Age = None
+                    elif is_number(inputRec[10]):
+                        if inputRec[10] == 0:
+                            Age = None
+                        else:
+                            Age = int(float(inputRec[10]))
+                    else:
+                        Age = None
+
+                    # Estimated RUL
+                    if inputRec[18] == None:
+                        EstimatedRUL = None
+                    elif is_number(inputRec[18]):
+                        EstimatedRUL = int(inputRec[18])
+                        #EstimatedRUL = int(float(inputRec[18]))
+                    else:
+                        EstimatedRUL = None
+
+                    # Replacement Cost
+                    if inputRec[19] == None:
+                        ReplacementCost = None
+                    elif is_number(inputRec[19]):
+                        ReplacementCost = float(inputRec[19])
+                    else:
+                        ReplacementCost = None
+
+                    # Condition Basis
+                    if not inputRec[20]:
+                        ConditionBasis = None
+                    elif str(inputRec[20]) == "" or str(inputRec[20]) == " ":
+                        ConditionBasis = None
+                    else:
+                        ConditionBasis = str(inputRec[20])
+
+                    # Residual Value
+                    if inputRec[21] == None:
+                        ResidValue = None
+                    elif is_number(inputRec[21]):
+                        #ResidValue = int(inputRec[21])
+                        ResidValue = float(inputRec[21])
+                    else:
+                        ResidValue = None
+
+                    # Disposal Date
+                    #DisposalDate = inputRec[22]
+                    # There are no Disposal Dates in spreadsheets - this may
+                    # change?
+                    DisposalDate = None
+
+                    # Risk
+                    if inputRec[23] == None:
+                        Risk = None
+                    elif is_number(inputRec[23]):
+                        Risk = int(inputRec[23])
+                    else:
+                        Risk = None
+
+                    # Consequences of Failure
+                    if inputRec[24] == None:
+                        CnsqOfFail = None
+                    elif is_number(inputRec[24]):
+                        CnsqOfFail = int(inputRec[24])
+                    else:
+                        CnsqOfFail = None
+
+                    # Follow-up Date
+                    #FollowUpDate = inputRec[25]
+                    # Should never be Follow-up Dates in spreadsheets
+                    FollowUpDate = None
+
+                    # Record Drawing
+                    if not inputRec[26]:
+                        RecordDrawing = None
+                    elif str(inputRec[26]) == "" or str(inputRec[26]) == " ":
+                        RecordDrawing = None
+                    else:
+                        RecordDrawing = str(inputRec[26])
+
+                    # Replacement Year
+                    if inputRec[27] == None:
+                        ReplacementYear = None
+                    elif is_number(inputRec[27]):
+                        ReplacementYear = int(float(inputRec[27]))
+                    else:
+                        ReplacementYear = None
+
+                    # Cost Code (lookup)
+                    if not inputRec[28]:
+                        CostCode = None
+                    elif str(inputRec[28]) == "" or str(inputRec[28]) == " ":
+                        CostCode = None
+                    else:
+                        CostCode = str(inputRec[28])
+
+                    # Cost Factor
+                    if inputRec[29] == None:
+                        CostFactor = None
+                    elif inputRec[29] == 0:
+                        CostFactor = None
+                    elif str(inputRec[29]) == "" or str(inputRec[29]) == " ":
+                        CostFactor = None
+                    else:
+                        CostFactor = str(int(float(inputRec[29])))
+
+                    # Unit Cost
+                    if inputRec[30] == None:
+                        UnitCost = None
+                    elif is_number(inputRec[30]):
+                        if inputRec[30] == 0:
+                            UnitCost = None
+                        else:
+                            UnitCost = float(inputRec[30])
+                    else:
+                        UnitCost = None
+
+                    # If certain fields aren't filled out with values, then we
+                    # need to flag them as Incomplete and set
+                    # a default FollowUp Date of 2 weeks from the day of
+                    # upload.
+                    Complete = "Yes"
+                    # for readability
+                    fields = [AssetCode, 
+                                AssetClass, 
+                                AssetSubtype, 
+                                FCode, 
+                                LocDesc, 
+                                Status, 
+                                InstallYear,
+                                Age, 
+                                Condition, 
+                                ConditionBasis, 
+                                EstimatedRUL, 
+                                CostCode, 
+                                UnitCost, 
+                                ReplacementCost]
+                    if shapeType == "Point":
+                        if None in fields or Condition == 0:
+                            Complete = "No"
+                            FollowUpDate = datetime.datetime.now().date() + timedelta(days=14)
+                        else:
+                            Complete = "Yes"
+                            FollowUpDate = None
+
+                    elif shapeType == "Polyline":
+                        # Need to check for MeasuredLength as well
+                        if None in fields or Condition == 0 or MeasuredLength == 0:
+                            Complete = "No"
+                            FollowUpDate = datetime.datetime.now().date() + timedelta(days=14)
+                        else:
+                            Complete = "Yes"
+                            FollowUpDate = None
+
+
+                    # Query the FCode value to see which feature class the
+                    # feature should go into
+                    outputfc = ""
+                    outputtab = ""
+                    gdbOwner = "ASSETVIEWER."
+
+                    # Point feature class FCodes
+                    if shapeType == "Point":
+                        if FCode == "CB":
+                            outputfc = set_output_fc(gdb,gdbOwner,"Stormwater","SWC_Catchbasin")
+                        elif FCode == "IO" or FCode == "IO-S":
+                            outputfc = set_output_fc(gdb,gdbOwner,"Stormwater","SWC_InletOutlet")
+                        elif FCode == "LIFT":
+                            outputfc = set_output_fc(gdb,gdbOwner,"Stormwater","SWC_LiftStation")
+                        elif FCode == "MHST":
+                            outputfc = set_output_fc(gdb,gdbOwner,"Stormwater","SWC_Manhole")
+                        elif FCode == "PND":
+                            outputfc = set_output_fc(gdb,gdbOwner,"Stormwater","SWC_Pond")
+                        elif FCode == "TRMTD":
+                            outputfc = set_output_fc(gdb,gdbOwner,"Stormwater","SWC_TreatmentDevice")
+                        elif FCode == "UGS":
+                            outputfc = set_output_fc(gdb,gdbOwner,"Stormwater","SWC_UndergroundStorage")
+                        elif FCode == "STPR":
+                            outputfc = set_output_fc(gdb,gdbOwner,"Transportation","TRN_Bridge")
+                        elif FCode == "TFSP":
+                            outputfc = set_output_fc(gdb,gdbOwner,"Transportation","TRN_Sign")
+                        elif FCode == "TFTL":
+                            outputfc = set_output_fc(gdb,gdbOwner,"Transportation","TRN_Signal")
+                        elif FCode in ("TSIG","UTPO","TFSLOR","TFSL"):
+                            outputfc = set_output_fc(gdb,gdbOwner,"Transportation","TRN_Streetlight")
+                        elif FCode == "FTTESAN":
+                            outputfc = set_output_fc(gdb,gdbOwner,"Wastewater","WWC_Fitting")
+                        elif FCode == "PMPS":
+                            outputfc = set_output_fc(gdb,gdbOwner,"Wastewater","WWC_LiftPumpStation")
+                        elif FCode == "MHCO" or FCode == "MHSA":
+                            outputfc = set_output_fc(gdb,gdbOwner,"Wastewater","WWC_Manhole")
+                        elif FCode == "SEPT":
+                            outputfc = set_output_fc(gdb,gdbOwner,"Wastewater","WWC_SepticField")
+                        elif FCode == "WWCTF":
+                            outputfc = set_output_fc(gdb,gdbOwner,"Wastewater","WWC_TreatmentFacility")
+                        elif FCode in ("WWCPMP", "WWTFGEN", "WWSPMP"):
+                            # Check the contents of the LocDesc field to see
+                            # what the related feature is
+                            if not LocDesc == None: # If not <Null>
+                                if "-WWC-LPS-PMPS-" in LocDesc:
+                                    outputtab = gdb + "/" + gdbOwner + "WWC_LiftPumpStation_Assets"
+                                elif "-WWC-TRFWW-WWCTF-" in LocDesc:
+                                    outputtab = gdb + "/" + gdbOwner + "WWC_TreatmentFacility_Assets"
+                                else:
+                                    outputfc = set_output_fc(gdb,gdbOwner,"Wastewater","WWC_TreatmentFacility")
+                            else: #In case LocDesc is empty, put record here:
+                                outputfc = set_output_fc(gdb,gdbOwner,"Wastewater","WWC_TreatmentFacility")
+                        elif FCode in ("WWTFAC", 
+                                       "WWBSC", 
+                                       "WWBLWR", 
+                                       "WWTFBLD",
+                                       "WWCCSYS", 
+                                       "WWCLCC", 
+                                       "WWCLAR", 
+                                       "WWCOMP", 
+                                       "WWDAFS",
+                                       "WWDAFT", 
+                                       "WWELECM", 
+                                       "WWFFT", 
+                                       "WWFLME", 
+                                       "WWGDTP",
+                                       "WWISV", 
+                                       "WWLAB", 
+                                       "WWLAG", 
+                                       "WWOFS", 
+                                       "WWOXDI", 
+                                       "WWPADAE", 
+                                       "WWPTNK", 
+                                       "WWSBRT", 
+                                       "WWSCRC", 
+                                       "WWSDB",
+                                       "WWSCM", 
+                                       "WWST",
+                                       "WWTLEM"):
+                            outputtab = gdb + "/" + gdbOwner + "WWC_TreatmentFacility_Assets"
+                        elif FCode == "BST":
+                            outputfc = set_output_fc(gdb,gdbOwner,"WaterSupply","PWS_BoosterStation")
+                        elif FCode == "CS":
+                            outputfc = set_output_fc(gdb,gdbOwner,"WaterSupply","PWS_CorporationStop")
+                        elif FCode == "WV":
+                            outputfc = set_output_fc(gdb,gdbOwner,"WaterSupply","PWS_CurbStop")
+                        elif FCode in ("FTBD11", 
+                                       "FTBD22", 
+                                       "FTBD45", 
+                                       "FTBD90",
+                                       "FTCAP", 
+                                       "FTCP", 
+                                       "FTHY", 
+                                       "FTHYTE", 
+                                       "FTRD", 
+                                       "FTTS",
+                                       "FTTE"):
+                            outputfc = set_output_fc(gdb,gdbOwner,"WaterSupply","PWS_Fitting")
+                        elif FCode == "HY":
+                            outputfc = set_output_fc(gdb,gdbOwner,"WaterSupply","PWS_Hydrant")
+                        elif FCode == "METER":
+                            outputfc = set_output_fc(gdb,gdbOwner,"WaterSupply","PWS_MeteringSystem")
+                        elif FCode == "PRV" or FCode == "APV":
+                            outputfc = set_output_fc(gdb,gdbOwner,"WaterSupply","PWS_PRV")
+                        elif FCode == "WSST":
+                            outputfc = set_output_fc(gdb,gdbOwner,"WaterSupply","PWS_StorageTank")
+                        elif FCode == "WSTF":
+                            outputfc = set_output_fc(gdb,gdbOwner,"WaterSupply","PWS_TreatmentFacility")
+                        elif FCode == "FTVLHY" or FCode == "GV":
+                            outputfc = set_output_fc(gdb,gdbOwner,"WaterSupply","PWS_Valve")
+                        elif FCode == "WS":
+                            outputfc = set_output_fc(gdb,gdbOwner,"WaterSupply","PWS_WaterSource")
+                        elif FCode in ("WSTFAC", "WSCPMP", "WSISV", "WSSPMP"):
+                            # Check the contents of the LocDesc field to see
+                            # what the related feature is
+                            if not LocDesc == None: #If not <Null>
+                                if "-PWS-BST-BST-" in LocDesc:
+                                    outputtab = gdb + "/" + gdbOwner + "PWS_BoosterStation_Assets"
+                                elif "-PWS-TRFWS-WSTF-" in LocDesc:
+                                    outputtab = gdb + "/" + gdbOwner + "PWS_TreatmentFacility_Assets"
+                                else:
+                                    outputfc = set_output_fc(gdb,gdbOwner,"WaterSupply","PWS_TreatmentFacility")
+                            else: #In case LocDesc is empty, put record here:
+                                outputfc = set_output_fc(gdb,gdbOwner,"WaterSupply","PWS_TreatmentFacility")
+                        elif FCode in ("WSTFBLD", 
+                                       "WSCCSYS", 
+                                       "WSCLLD",
+                                       "WSCLAR", 
+                                       "WSCOMP", 
+                                       "WSDAFS", 
+                                       "WSDAFT", 
+                                       "WSELECM",
+                                       "WSFLME", 
+                                       "WSGDTP", 
+                                       "WSTFGEN", 
+                                       "WSLAB", 
+                                       "WSMFS", 
+                                       "WSMMF", 
+                                       "WSOFS", 
+                                       "WSPTNK", 
+                                       "WSSCM", 
+                                       "WSTLEM", 
+                                       "WSTP",
+                                       "WSUV", 
+                                       "WSVACCL"):
+                            outputtab = gdb + "/" + gdbOwner + "PWS_TreatmentFacility_Assets"
+                        else:
+                            outputfc = ""
+                            outputtab = ""
+
+                    # Polyline feature class FCodes
+                    elif shapeType == "Polyline":
+                        if FCode == "CLVT" or FCode == "CLVT-S":
+                            outputfc = set_output_fc(gdb,gdbOwner,"Stormwater","SWC_Culvert")
+                        elif FCode in ("DRCH", "DRCH-S", "RRGT", "RRGT-S"):
+                            outputfc = set_output_fc(gdb,gdbOwner,"Stormwater","SWC_DrainageChannel")
+                        elif FCode == "GRVPST" or FCode == "GRVPST-S":
+                            outputfc = set_output_fc(gdb,gdbOwner,"Stormwater","SWC_GravityPipe")
+                        elif FCode == "SWFRCM" or FCode == "SWFRCM-S":
+                            outputfc = set_output_fc(gdb,gdbOwner,"Stormwater","SWC_PressureStormPipe")
+                        elif FCode in ("FL", 
+                                       "FL-S", 
+                                       "STGR", 
+                                       "STGR-S", 
+                                       "SB",
+                                       "SB-S"):
+                            outputfc = set_output_fc(gdb,gdbOwner,"Transportation","TRN_BarrierGuardrail")
+                        elif FCode in ("RRCB-A", 
+                                       "RRCB-A-S", 
+                                       "RRCB-C", 
+                                       "RRCB-C-S", 
+                                       "RRRD-A", 
+                                       "RRRD-A-S", 
+                                       "RRGR", 
+                                       "RRGR-S"):
+                            outputfc = set_output_fc(gdb,gdbOwner,"Transportation","TRN_Road")
+                        elif FCode in ("RRBW-W", 
+                                       "RRBW-W-S", 
+                                       "RRDR-A",
+                                       "RRDR-A-S", 
+                                       "RRPW", 
+                                       "RRPW-S", 
+                                       "RRSW-C", 
+                                       "RRSW-C-S",
+                                       "RRSW-A", 
+                                       "RRSW-A-S", 
+                                       "RRSW-B", 
+                                       "RRSW-B-S", 
+                                       "RRTR",
+                                       "RRTR-S", 
+                                       "RRSW", 
+                                       "RRSW-S"):
+                            outputfc = set_output_fc(gdb,gdbOwner,"Transportation","TRN_SidewalkTrail")
+                        elif FCode in ("GRVPSA", "GRVPSA-S", "GRVPCO", "GRVPCO-S"):
+                            outputfc = set_output_fc(gdb,gdbOwner,"Wastewater","WWC_GravityPipe")
+                        elif FCode == "WWFRCM" or FCode == "WWFRCM-S":
+                            outputfc = set_output_fc(gdb,gdbOwner,"Wastewater","WWC_PressureSewerPipe")
+                        elif FCode == "DIMN" or FCode == "DIMN-S":
+                            outputfc = set_output_fc(gdb,gdbOwner,"WaterSupply","PWS_DistributionPipe")
+                        elif FCode == "TRNS" or FCode == "TRNS-S":
+                            outputfc = set_output_fc(gdb,gdbOwner,"WaterSupply","PWS_TransmissionPipe")
+                        else:
+                            outputfc = ""
+                            outputtab = ""
+                    # Insert a feature into an output fc or record into an
+                    # output table
+                    if outputfc != "":
+                        if shapeType == "Point":
+                            with arcpy.da.InsertCursor(outputfc, outputFields_Point) as outputCursor:
+                                # Insert the feature
+                                outputCursor.insertRow([shp, AssetCode, MunID,
+                                AssetClass, AssetSubtype, FCode, LocDesc,
+                                Elev, Status, Material, CostFactor, Width,
+                                InstallYear, Age, Condition, ConditionBasis,
+                                InspectDate, EstimatedRUL, ReplacementYear,
+                                CostCode, UnitCost, ReplacementCost,
+                                ResidValue, DisposalDate, CnsqOfFail, Risk,
+                                RecordDrawing, Region, Dept, Division,
+                                PersResp, FollowUpDate, Comments, Complete])
+
+                        elif shapeType == "Polyline":
+                            with arcpy.da.InsertCursor(outputfc, outputFields_Line) as outputCursor:
+                                # Insert the feature
+                                outputCursor.insertRow([shp, AssetCode, MunID,
+                                AssetClass, AssetSubtype, FCode, LocDesc,
+                                Status, Material, CostFactor, Width,
+                                MeasuredLength, InstallYear, Age, Condition,
+                                ConditionBasis, InspectDate, EstimatedRUL,
+                                ReplacementYear, CostCode, UnitCost,
+                                ReplacementCost, ResidValue, DisposalDate,
+                                CnsqOfFail, Risk, RecordDrawing, Region, Dept,
+                                Division, PersResp, FollowUpDate, Comments,
+                                Complete])
+
+                    if outputtab != "":
+                        tab_fields = [AssetCode, MunID,
+                                AssetClass, AssetSubtype, FCode, LocDesc,
+                                Status, Material, CostFactor, Width,
+                                InstallYear, Age, Condition, ConditionBasis,
+                                InspectDate, EstimatedRUL, ReplacementYear,
+                                CostCode, UnitCost, ReplacementCost,
+                                ResidValue, DisposalDate, CnsqOfFail, Risk,
+                                RecordDrawing, Region, Dept, Division,
+                                PersResp, FollowUpDate, Comments, LocDesc,
+                                Complete]
+                        if outputtab == gdb + "/" + gdbOwner + "PWS_BoosterStation_Assets":
+                            with arcpy.da.InsertCursor(outputtab, outputFields_Table_BST) as outputCursor:
+                                # Insert the record (no geometry)
+                                outputCursor.insertRow(tab_fields)
+
+                        elif outputtab == gdb + "/" + gdbOwner + "PWS_TreatmentFacility_Assets":
+                            with arcpy.da.InsertCursor(outputtab, outputFields_Table_WSTF) as outputCursor:
+                                # Insert the record (no geometry)
+                                outputCursor.insertRow(tab_fields)
+
+                        elif outputtab == gdb + "/" + gdbOwner + "WWC_LiftPumpStation_Assets":
+                            with arcpy.da.InsertCursor(outputtab, outputFields_Table_LPS) as outputCursor:
+                                # Insert the record (no geometry)
+                                outputCursor.insertRow(tab_fields)
+
+                        elif outputtab == gdb + "/" + gdbOwner + "WWC_TreatmentFacility_Assets":
+                            with arcpy.da.InsertCursor(outputtab, outputFields_Table_WWCTF) as outputCursor:
+                                # Insert the record (no geometry)
+                                outputCursor.insertRow(tab_fields)
+                    counter += 1
+            # Add counter to totalcounter
+            totalcounter = totalcounter + counter
+            # Stop the edit operation
+            edit.stopOperation()
+            # Clean up ??
+            arcpy.RemoveJoin_management(fcJoin)
+            del outputCursor
+            del counter
+            del shapeType
+            del inputFields
+        # Use this to save ?  so that it can be displayed in Dashboard
+        arcpy.AddMessage("Total records processed and uploaded: " + str(totalcounter))
+
+        # Stop the edit session and save the changes
+        edit.stopEditing(True)
+
+        # Import the UnitCost sheet into the UnitCost table for the
+        # municipality
+        # Have to get actual spreadsheet for the UnitCost information, convert
+        # to a CSV, then to a DBF and then load into UnitCost table
+
+        # Find spreadsheet and the Unit Cost sheet, export to a CSV in the
+        # municipality folder
+        for file in os.listdir(munFolder):
+            if file.endswith(".xlsm") and file.startswith(munID):
+                fileSpreadsheet = munFolder + file
+                break
+        wb = xlrd.open_workbook(fileSpreadsheet)
+        sheet = wb.sheet_by_name("Unit Cost")
+        csvUnitCost = open(munFolder + "UnitCost.csv", "wb")
+        wr = csv.writer(csvUnitCost, quoting=csv.QUOTE_ALL)
+        # Need to write header manually since sheet has merged rows and won't
+        # export perfectly
+        wr.writerow(("Field1",
+            "Item",
+             "Lookup Code",
+             "Cost Factor",
+             "Life",
+             "Unit",
+             "Base Cost",
+             "Field2",
+             "Total Cost",
+             "Field4",
+             "Field5",
+             "Field6",
+             "Field7",
+             "Field8",
+             "Field9",
+             "Field10",
+             "Field11"))
+        # Write remaining rows with data
+        for rownum in xrange(sheet.nrows):
+            # Skip the first two rows
+            if rownum == 0 or rownum == 1:
+                continue
+            # Write other row values to CSV
+            wr.writerow(sheet.row_values(rownum))
+        # Close the spreadsheet and CSV
+        wb.release_resources()
+        del wb
+        csvUnitCost.close()
+        # The sheet/CSV has too many empty or unneeded columns, so will only
+        # take ones we need
+        # Need to export to a new CSV in the municipality folder
+        # global munName
+        f = pd.read_csv(munFolder + "UnitCost.csv")
+        keep_col = ["Item", "Lookup Code", "Cost Factor", "Life", "Unit", "Base Cost", "Total Cost"]
+        new_f = f[keep_col]
+        new_f.to_csv(munFolder + "UnitCost_" + munID + ".csv", index=False)
+        # Will create a temporary DBF in the municipality folder
+        dbfFile = munFolder + "UnitCost_" + munID + ".dbf"
+        # Delete if already there
+        if os.path.isfile(dbfFile):
+            os.remove(dbfFile)
+        # Might also be a dbf.xml file
+        if os.path.isfile(munFolder + "UnitCost_" + munID + ".dbf.xml"):
+            os.remove(munFolder + "UnitCost_" + munID + ".dbf.xml")
+        # Convert CSV to DBF
+        arcpy.TableToTable_conversion(munFolder + "UnitCost_" + munID + ".csv", munFolder, "UnitCost_" + munID + ".dbf")
+        # Truncate UnitCost table in the GDB before loading new data in
+        arcpy.env.workspace = gdb
+        # Get corresponding UnitCost table for the municipality from the GDB
+        unitCostTab = gdbOwner + "UnitCost_" + munID
+        arcpy.TruncateTable_management(unitCostTab)
+        # Start editing - without an undo/redo stack
+        edit.startEditing(False, False)
+        # Start another edit operation on GDB
+        edit.startOperation()
+        # Input fields from DBF and output GDB fields
+        inputDBFFields = ["Item", "Lookup_Cod", "Cost_Facto", "Life", "Unit", "Base_Cost", "Total_Cost"]
+        outputGDBFields = ["ItemDesc", "CostCode", "CostFactor", "UsefulLife", "Unit", "BaseCost", "TotalCost"]
+        # Initialize counter (might not need this)
+        unitCostCounter = 0
+        # Cursor through input dbf
+        with arcpy.da.SearchCursor(munFolder + "UnitCost_" + munID + ".dbf", inputDBFFields) as inputDBFCursor:
+            # Write values to output feature class
+            for inputDBFRec in inputDBFCursor:
+                # To get rid of the rows with blank values at the end of
+                # CSV / DBF - skip over these
+                if inputDBFRec[0] == " ":
+                    continue
+                else:
+                    # Item
+                    Item = inputDBFRec[0]
+                    # Cost Code (Lookup Code)
+                    if(empty_string(inputDBFRec[1])):
+                        CostCode = None
+                    else:
+                        CostCode = inputDBFRec[1]
+                    # Cost Factor
+                    if empty_string(inputDBFRec[2]):
+                        CostFactor = None
+                    else:
+                        if is_number(inputDBFRec[2]):
+                            CostFactor = float(inputDBFRec[2])
+                            CostFactor = int(CostFactor)
+                        else:
+                            CostFactor = inputDBFRec[2]
+                    # Useful Life
+                    if empty_string(str(inputDBFRec[3])):
+                        UsefulLife = None
+                    else:
+                        if is_number(inputDBFRec[3]):
+                            UsefulLife = int(inputDBFRec[3])
+                        else:
+                            UsefulLife = None
+                    # Unit
+                    if empty_string(inputDBFRec[4]):
+                        Unit = None
+                    else:
+                        Unit = inputDBFRec[4]
+                    # Base Cost
+                    if empty_string(str(inputDBFRec[5])):
+                        BaseCost = None
+                    else:
+                        BaseCost = inputDBFRec[5]
+                    # Total Cost
+                    if empty_string(str(inputDBFRec[6])):
+                        TotalCost = None
+                    else:
+                        TotalCost = inputDBFRec[6]
+                    # Write values to UnitCost table in GDB
+                    with arcpy.da.InsertCursor(unitCostTab, outputGDBFields) as unitCostCursor:
+                        # Insert the record
+                        unitCostCursor.insertRow([Item, CostCode, CostFactor, UsefulLife, Unit, BaseCost, TotalCost])
+                        # Update counter
+                        unitCostCounter += 1
+        # Stop the edit operation
+        edit.stopOperation()
+        # Stop the edit session and save the changes
+        edit.stopEditing(True)
+        # Clean up
+        del unitCostCursor
+        del unitCostTab
+        del outputGDBFields
+        del unitCostCounter
+        # Status
+        UploadStatus = "Upload Successful"
+        # Send email
         NotifyClient(munFullName, "", "", UploadStatus)
-
+    except arcpy.ExecuteError:
+        arcpy.AddMessage(arcpy.GetMessages(2))
+        UploadStatus = "Upload Failed: " + "\n" + arcpy.GetMessages(2)
         # Abort edit operation
         if "edit" in locals() or "edit" in globals():
-        #if edit is not None:
-        #if not edit == None:
+            if edit.isEditing == "true":
+                edit.abortOperation()
+                # Stop the edit session without saving any changes
+                edit.stopEditing(False)
+        # Send email
+        NotifyClient(munFullName, "", "", UploadStatus)
+    except Exception, e:
+        UploadStatus = "ERROR: Exception on line number:" + str(sys.exc_traceback.tb_lineno) + "\n" + str(e) + "\n"
+        NotifyClient(munFullName, "", "", UploadStatus)
+        # Abort edit operation
+        if "edit" in locals() or "edit" in globals():
             if edit.isEditing == "true":
                 edit.abortOperation()
                 # Stop the edit session without saving any changes
                 edit.stopEditing(False)
 
+def NotifyClient(munFullName, errorFilenameShort, errorFilename, UploadStatus):
+    arcpy.AddMessage("Sending email...")
+    # Get the email parameter
+    email = arcpy.GetParameterAsText(2)
+    # From email address
+    fromaddr = "noreply@gov.ns.ca"
+    toaddr = email
+    msg = MIMEMultipart()
+    msg["From"] = fromaddr
+    msg["To"] = toaddr
+    msg["Subject"] = munFullName + ": Infrastructure Registry for Municipal Assets Upload Tool"
+    # Attach csv error file if there were validation errors
+    if UploadStatus == "Upload Successful":
+        body = "Upload Status: " + UploadStatus + "\n\n" + "Total records processed and uploaded: " + str(totalcounter) + "\n" + "Your data will refresh as soon as you zoom or pan around in the map."
+        msg.attach(MIMEText(body, "plain"))
+    elif UploadStatus == "Validation Failed":
+        body = "Upload Status: " + UploadStatus + "\n" + "See attached error log file."
+        msg.attach(MIMEText(body, "plain"))
+        filename = errorFilenameShort
+        attachment = open(errorFilename, "rb")
+        part = MIMEBase("application", "octet-stream")
+        part.set_payload((attachment).read())
+        encoders.encode_base64(part)
+        part.add_header("Content-Disposition", "attachment; filename = %s" % filename)
+        msg.attach(part)
+    elif "Cannot acquire a lock" in UploadStatus:
+        body = "Upload Status: Upload Failed." + "\n" + "The database is currently in use by another user or process." + "\n"
+        msg.attach(MIMEText(body, "plain"))
+    else:
+        body = "Upload Status: " + UploadStatus + "\n"
+        msg.attach(MIMEText(body, "plain"))
+    # Email server for government
+    server = smtplib.SMTP("mail.gov.ns.ca", 25)
+    text = msg.as_string()
+    server.sendmail(fromaddr, toaddr, text)
+    server.quit()
 
-#def NotifyClient(munFullName, errorFilenameShort, errorFilename, UploadStatus):
-
-#    arcpy.AddMessage("Sending email...")
-
-#    # Get the email parameter
-#    email = arcpy.GetParameterAsText(2)
-
-#    # From email address
-#    fromaddr = "noreply@gov.ns.ca"
-#    toaddr = email
-
-#    msg = MIMEMultipart()
-#    msg["From"] = fromaddr
-#    msg["To"] = toaddr
-#    msg["Subject"] = munFullName + ": Infrastructure Registry for Municipal Assets Upload Tool"
-
-#    # Attach csv error file if there were validation errors
-#    if UploadStatus == "Upload Successful":
-#        body = "Upload Status: " + UploadStatus + "\n\n" + "Total records processed and uploaded: " + str(totalcounter) + "\n" + "Your data will refresh as soon as you zoom or pan around in the map."
-#        msg.attach(MIMEText(body, "plain"))
-
-#    elif UploadStatus == "Validation Failed":
-#        body = "Upload Status: " + UploadStatus + "\n" + "See attached error log file."
-#        msg.attach(MIMEText(body, "plain"))
-#        filename = errorFilenameShort
-#        attachment = open(errorFilename, "rb")
-#        part = MIMEBase("application", "octet-stream")
-#        part.set_payload((attachment).read())
-#        encoders.encode_base64(part)
-#        part.add_header("Content-Disposition", "attachment; filename = %s" % filename)
-#        msg.attach(part)
-
-#    elif "Cannot acquire a lock" in UploadStatus:
-#        body = "Upload Status: Upload Failed." + "\n" + "The database is currently in use by another user or process." + "\n"
-#        msg.attach(MIMEText(body, "plain"))
-
-#    else:
-#        body = "Upload Status: " + UploadStatus + "\n"
-#        msg.attach(MIMEText(body, "plain"))
-
-
-#    # Email server for government
-#    server = smtplib.SMTP("mail.gov.ns.ca", 25)
-###    server.starttls()
-###    server.login(fromaddr, "")
-#    text = msg.as_string()
-#    server.sendmail(fromaddr, toaddr, text)
-#    server.quit()
-
-
-#if __name__ == '__main__':
-#    main()
+if __name__ == '__main__':
+    main()

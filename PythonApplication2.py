@@ -173,12 +173,12 @@ def empty_string(text):
 #stupid1()
 #stupid2()
 #print(str(a))
-sfnames = get_array('shapefile_names.json', 'shapefile_names')
-for sfname in sfnames:
-    usfname = sfname.replace(' ', '_')
-    q = 'query' + usfname
-    o = get_object_value('query_strings.json', q)
-    print(o)
+#sfnames = get_array('shapefile_names.json', 'shapefile_names')
+#for sfname in sfnames:
+#    usfname = sfname.replace(' ', '_')
+#    q = 'query' + usfname
+#    o = get_object_value('query_strings.json', q)
+#    print(o)
 #a = get_object_value('query_strings.json', 'queryPWS_L')
 #b = get_object_value('query_strings.json', 'querySWC_L')
 #c = get_object_value('query_strings.json', 'queryTRN_L')
@@ -187,3 +187,7 @@ for sfname in sfnames:
 #print(b)
 #print(c)
 #print(d)
+#a = ['a', 'b']
+#b = ['c', 'd']
+#c = [i for i in a+b]
+#print(c)

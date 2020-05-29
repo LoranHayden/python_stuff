@@ -1,0 +1,32 @@
+{
+  "input_fields": [
+    "GenAssetInfo.Asset_Code",
+    "GenAssetInfo.LocDesc",
+    "GenAssetInfo.FeatureCod",
+    "GenAssetInfo.Condition",
+    "GenAssetInfo.Inspected",
+    "GenAssetInfo.Status",
+    "GenAssetInfo.Quantity",
+    "GenAssetInfo.Age",
+    "GenAssetInfo.Material",
+    "GenAssetInfo.Comments",
+    "GenAssetInfo.Area",
+    "GenAssetInfo.Department",
+    "GenAssetInfo.Division",
+    "GenAssetInfo.PersResp",
+    "GenAssetInfo.Install_yr",
+    "GenAssetInfo.Estimated",
+    "GenAssetInfo.RplmtCst",
+    "GenAssetInfo.ConditionB",
+    "GenAssetInfo.ResidValue",
+    "GenAssetInfo.DispDate",
+    "GenAssetInfo.Risk",
+    "GenAssetInfo.CnsqOfFail",
+    "GenAssetInfo.FollowUp",
+    "GenAssetInfo.Record_Dra",
+    "GenAssetInfo.Replacemen",
+    "GenAssetInfo.CostLookup",
+    "GenAssetInfo.Cost_Facto",
+    "GenAssetInfo.Unit_Cost"
+  ]
+}
