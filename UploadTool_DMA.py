@@ -755,6 +755,7 @@ def Upload():
 
             shapefile = ""
 
+            # check the last five characters of the subFolder name
             if subFolder[-5:] == "PWS L":
                 # Shapefile will be called "<shpMunID> PWS L.shp"
                 shapefile = shpMunID + " PWS L.shp"
@@ -791,141 +792,139 @@ def Upload():
                 shapefile = ""
 
 
-#            # Set fc to the shapefile and get shape type
-#            fc = shapefile
-#            desc = arcpy.Describe(fc)
-#            shapeType = desc.shapeType
+            # Set fc to the shapefile and get shape type
+            fc = shapefile
+            desc = arcpy.Describe(fc)
+            shapeType = desc.shapeType
 
-#            # Coordinate system of shapefiles (NAD83 UTM20)
-#            srNAD83_UTM20 = arcpy.SpatialReference(26920)
-#            # Coordinate system of GDB feature classes (NAD83 CSRS UTM20)
-#            srNAD83_CSRS_UTM20 = arcpy.SpatialReference(2961)
-#            # Datum transformation between the two
-#            gt = "NAD_1983_To_WGS_1984_1 + NAD_1983_CSRS_To_WGS_1984_2"
-
-
-#            # If shapefiles already existed (i.e.  GIS Method)
-#            if shapefilesExist == True:
-
-#                # Project the shapefile to UTM 20 NAD83 CSRS if not already in
-#                that coordinate system
-#                if arcpy.Describe(fc).spatialReference.factoryCode == 26920:
-#                    # Project tool doesn't like spaces, so need to get rid of
-#                    them
-#                    fcProj = fc.replace(" ", "_")[:-4] + "_Proj.shp"
-#                    arcpy.Project_management(fc, fcProj, srNAD83_CSRS_UTM20,
-#                    gt)
-#                    # Join the shapefile to the spreadsheet dbf
-#                    fcJoin = fc.replace(" ", "_")[:-4] + "_Join"
-#                    arcpy.MakeFeatureLayer_management(fcProj, fcJoin)
-#                    #shapefileName = fc.replace(" ", "_")[:-4] + "_Proj"
-#                    shapefileName = fcProj.replace(" ", "_")[:-4]
-
-#                # If already in UTM 20 NAD83 CSRS, don't need to project
-#                elif arcpy.Describe(fc).spatialReference.factoryCode == 2961:
-#                    # Join the shapefile to the spreadsheet dbf
-#                    fcJoin = fc.replace(" ", "_")[:-4] + "_Join"
-#                    arcpy.MakeFeatureLayer_management(fc, fcJoin)
-#                    # Commented out 02 May 2019 and replaced with line below
-#                    it
-#                    #shapefileName = fc.replace(" ", "_")[:-4]
-#                    shapefileName = fc.replace(" ", " ")[:-4]
-
-#                # Join the shapefile with the dbf based on the GIS_Link field
-#                arcpy.AddJoin_management(fcJoin, "GIS_Link", dbfGenAssetInfo,
-#                "GIS_Link")
-
-#            else:
-#                # Join the shapefile to the spreadsheet dbf
-#                fcJoin = fc.replace(" ", "_")[:-4] + "_Join"
-#                arcpy.MakeFeatureLayer_management(fc, fcJoin)
-
-#                # Join the shapefile with the dbf based on the AssetCode field
-#                arcpy.AddJoin_management(fcJoin, "AssetCode", dbfGenAssetInfo,
-#                "Asset_Code")
-#                shapefileName = fc[:-4]
+            # Coordinate system of shapefiles (NAD83 UTM20)
+            srNAD83_UTM20 = arcpy.SpatialReference(26920)
+            # Coordinate system of GDB feature classes (NAD83 CSRS UTM20)
+            srNAD83_CSRS_UTM20 = arcpy.SpatialReference(2961)
+            # Datum transformation between the two
+            gt = "NAD_1983_To_WGS_1984_1 + NAD_1983_CSRS_To_WGS_1984_2"
 
 
-#            # Check if the Elevation field is called Elevation, ELEVATION,
-#            Elev or ELEV
-#            fieldNames = [f.name for f in arcpy.ListFields(fcJoin)]
-#            fieldElevName = ""
-#            for fieldName in fieldNames:
-#                if "Elevation" in fieldName:
-#                    fieldElevName = "Elevation"
-#                elif "ELEVATION" in fieldName:
-#                    fieldElevName = "ELEVATION"
-#                elif "Elev" in fieldName:
-#                    fieldElevName = "Elev"
-#                elif "ELEV" in fieldName:
-#                    fieldElevName = "ELEV"
+            # If shapefiles already existed (i.e. GIS Method)
+            if shapefilesExist == True:
+
+                # Project the shapefile to UTM 20 NAD83 CSRS if not already in that coordinate system
+                if arcpy.Describe(fc).spatialReference.factoryCode == 26920:
+                    # Project tool doesn't like spaces, so need to get rid of them
+                    fcProj = fc.replace(" ", "_")[:-4] + "_Proj.shp"
+                    arcpy.Project_management(fc, fcProj, srNAD83_CSRS_UTM20, gt)
+                    # Join the shapefile to the spreadsheet dbf
+                    fcJoin = fc.replace(" ", "_")[:-4] + "_Join"
+                    arcpy.MakeFeatureLayer_management(fcProj, fcJoin)
+                    #shapefileName = fc.replace(" ", "_")[:-4] + "_Proj"
+                    shapefileName = fcProj.replace(" ", "_")[:-4]
+
+                # If already in UTM 20 NAD83 CSRS, don't need to project
+                elif arcpy.Describe(fc).spatialReference.factoryCode == 2961:
+                    # Join the shapefile to the spreadsheet dbf
+                    fcJoin = fc.replace(" ", "_")[:-4] + "_Join"
+                    arcpy.MakeFeatureLayer_management(fc, fcJoin)
+                    # Commented out 02 May 2019 and replaced with line below
+                    it
+                    #shapefileName = fc.replace(" ", "_")[:-4]
+                    shapefileName = fc.replace(" ", " ")[:-4]
+
+                # Join the shapefile with the dbf based on the GIS_Link field
+                arcpy.AddJoin_management(fcJoin, "GIS_Link", dbfGenAssetInfo, "GIS_Link")
+
+            else:
+                # Join the shapefile to the spreadsheet dbf
+                fcJoin = fc.replace(" ", "_")[:-4] + "_Join"
+                arcpy.MakeFeatureLayer_management(fc, fcJoin)
+
+                # Join the shapefile with the dbf based on the AssetCode field
+                arcpy.AddJoin_management(fcJoin, "AssetCode", dbfGenAssetInfo, "Asset_Code")
+                shapefileName = fc[:-4]
+
+
+            # Check if the Elevation field is called Elevation, ELEVATION, Elev or ELEV
+            fieldNames = [f.name for f in arcpy.ListFields(fcJoin)]
+            fieldElevName = ""
+            if "Elevation" in fieldNames:
+                fieldElevName = "Elevation"
+            elif "ELEVATION" in fieldNames:
+                fieldElevName = "ELEVATION"
+            elif "Elev" in fieldNames:
+                fieldElevName = "Elev"
+            elif "ELEV" in fieldNames:
+                fieldElevName = "ELEV"
 
 
 
 #            # Only some of these fields are necessary for the upload
-#            if method == "GIS":
-#                shapefilesExist = True
-#                inputFields = ["Shape@", shapefileName + "." + fieldElevName,
-#                shapefileName + ".Width", \
-#                               "GenAssetInfo.Asset_Code",
-#                               "GenAssetInfo.LocDesc",
-#                               "GenAssetInfo.FeatureCod",
-#                               "GenAssetInfo.Condition", \
-#                               "GenAssetInfo.Inspected",
-#                               "GenAssetInfo.Status", "GenAssetInfo.Quantity",
-#                               "GenAssetInfo.Age", \
-#                               "GenAssetInfo.Material",
-#                               "GenAssetInfo.Comments", "GenAssetInfo.Area",
-#                               "GenAssetInfo.Department", \
-#                               "GenAssetInfo.Division",
-#                               "GenAssetInfo.PersResp",
-#                               "GenAssetInfo.Install_yr",
-#                               "GenAssetInfo.Estimated", \
-#                               "GenAssetInfo.RplmtCst",
-#                               "GenAssetInfo.ConditionB",
-#                               "GenAssetInfo.ResidValue",
-#                               "GenAssetInfo.DispDate", \
-#                               "GenAssetInfo.Risk", "GenAssetInfo.CnsqOfFail",
-#                               "GenAssetInfo.FollowUp",
-#                               "GenAssetInfo.Record_Dra", \
-#                               "GenAssetInfo.Replacemen",
-#                               "GenAssetInfo.CostLookup",
-#                               "GenAssetInfo.Cost_Facto",
-#                               "GenAssetInfo.Unit_Cost"]
+            if method == "GIS":
+                shapefilesExist = True
+                inputFields = ["Shape@", shapefileName + "." + fieldElevName,
+                shapefileName + ".Width", "GenAssetInfo.Asset_Code",
+                               "GenAssetInfo.LocDesc",
+                               "GenAssetInfo.FeatureCod",
+                               "GenAssetInfo.Condition",
+                               "GenAssetInfo.Inspected",
+                               "GenAssetInfo.Status", 
+                               "GenAssetInfo.Quantity",
+                               "GenAssetInfo.Age",
+                               "GenAssetInfo.Material",
+                               "GenAssetInfo.Comments", 
+                               "GenAssetInfo.Area",
+                               "GenAssetInfo.Department",
+                               "GenAssetInfo.Division",
+                               "GenAssetInfo.PersResp",
+                               "GenAssetInfo.Install_yr",
+                               "GenAssetInfo.Estimated",
+                               "GenAssetInfo.RplmtCst",
+                               "GenAssetInfo.ConditionB",
+                               "GenAssetInfo.ResidValue",
+                               "GenAssetInfo.DispDate",
+                               "GenAssetInfo.Risk", 
+                               "GenAssetInfo.CnsqOfFail",
+                               "GenAssetInfo.FollowUp",
+                               "GenAssetInfo.Record_Dra",
+                               "GenAssetInfo.Replacemen",
+                               "GenAssetInfo.CostLookup",
+                               "GenAssetInfo.Cost_Facto",
+                               "GenAssetInfo.Unit_Cost"]
 
-#            # Need extra AssetCode and FCode fields in case there is no
-#            matching record when joined
-#            elif method == "Survey":
-#                shapefilesExist = False
-#                inputFields = ["Shape@", shapefileName + "." + fieldElevName,
-#                shapefileName + ".Width", \
-#                               "GenAssetInfo.Asset_Code",
-#                               "GenAssetInfo.LocDesc",
-#                               "GenAssetInfo.FeatureCod",
-#                               "GenAssetInfo.Condition", \
-#                               "GenAssetInfo.Inspected",
-#                               "GenAssetInfo.Status", "GenAssetInfo.Quantity",
-#                               "GenAssetInfo.Age", \
-#                               "GenAssetInfo.Material",
-#                               "GenAssetInfo.Comments", "GenAssetInfo.Area",
-#                               "GenAssetInfo.Department", \
-#                               "GenAssetInfo.Division",
-#                               "GenAssetInfo.PersResp",
-#                               "GenAssetInfo.Install_yr",
-#                               "GenAssetInfo.Estimated", \
-#                               "GenAssetInfo.RplmtCst",
-#                               "GenAssetInfo.ConditionB",
-#                               "GenAssetInfo.ResidValue",
-#                               "GenAssetInfo.DispDate", \
-#                               "GenAssetInfo.Risk", "GenAssetInfo.CnsqOfFail",
-#                               "GenAssetInfo.FollowUp",
-#                               "GenAssetInfo.Record_Dra", \
-#                               "GenAssetInfo.Replacemen",
-#                               "GenAssetInfo.CostLookup",
-#                               "GenAssetInfo.Cost_Facto",
-#                               "GenAssetInfo.Unit_Cost", \
-#                               shapefileName + ".AssetCode", shapefileName +
-#                               ".FCode"]
+            # Need extra AssetCode and FCode fields in case there is no matching record when joined
+            elif method == "Survey":
+                shapefilesExist = False
+                inputFields = ["Shape@", 
+                               shapefileName + "." + fieldElevName, 
+                               shapefileName + ".Width", 
+                               "GenAssetInfo.Asset_Code",
+                               "GenAssetInfo.LocDesc",
+                               "GenAssetInfo.FeatureCod",
+                               "GenAssetInfo.Condition",
+                               "GenAssetInfo.Inspected",
+                               "GenAssetInfo.Status", 
+                               "GenAssetInfo.Quantity",
+                               "GenAssetInfo.Age",
+                               "GenAssetInfo.Material",
+                               "GenAssetInfo.Comments", 
+                               "GenAssetInfo.Area",
+                               "GenAssetInfo.Department",
+                               "GenAssetInfo.Division",
+                               "GenAssetInfo.PersResp",
+                               "GenAssetInfo.Install_yr",
+                               "GenAssetInfo.Estimated",
+                               "GenAssetInfo.RplmtCst",
+                               "GenAssetInfo.ConditionB",
+                               "GenAssetInfo.ResidValue",
+                               "GenAssetInfo.DispDate",
+                               "GenAssetInfo.Risk", 
+                               "GenAssetInfo.CnsqOfFail",
+                               "GenAssetInfo.FollowUp",
+                               "GenAssetInfo.Record_Dra",
+                               "GenAssetInfo.Replacemen",
+                               "GenAssetInfo.CostLookup",
+                               "GenAssetInfo.Cost_Facto",
+                               "GenAssetInfo.Unit_Cost",
+                               shapefileName + ".AssetCode", 
+                               shapefileName + ".FCode"]
 
 
 #            # Initialize counter
