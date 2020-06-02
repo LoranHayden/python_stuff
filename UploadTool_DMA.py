@@ -252,8 +252,8 @@ def Validate():
             wr = csv.writer(csvGenAssetInfo, quoting=csv.QUOTE_ALL)
 
             # Write rows with data (including header row)
-            nrows = xrange(sheet.nrows)
-            for rownum in nrows:
+            xrows = xrange(sheet.nrows)
+            for rownum in xrows:
                 # Skip the first two rows
                 if rownum == 0 or rownum == 1:
                     continue
@@ -479,7 +479,8 @@ def Upload():
             wr = csv.writer(csvAssetDetails, quoting=csv.QUOTE_ALL)
 
             # Write remaining rows with data
-            for rownum in xrange(sheetAssetDetails.nrows):
+            xrows = xrange(sheetAssetDetails.nrows)
+            for rownum in xrows:
                 # Skip the first two rows
                 if rownum == 0 or rownum == 1:
                     continue
@@ -769,7 +770,7 @@ def Upload():
             shapefile = ""
 
             shapefile_names = get_array('shapefile_names.json', 'shapefile_names')
-            sf_name = subFolder [:-5] # last five characters
+            sf_name = subFolder[:-5] # last five characters
             if sf_name in shapefile_names:
                 shapefile = shpMunID + ' ' + sf_name + '.shp'
             else:
@@ -1002,7 +1003,7 @@ def Upload():
                     else:
                         if not inputRec[11]:
                             Material = "Unknown"
-                        elif str(inputRec[11]) == "" or str(inputRec[11]) == " ":
+                        elif empty_string(str(inputRec[11])):
                             Material = "Unknown"
                         else:
                             Material = str(inputRec[11])
@@ -1010,7 +1011,7 @@ def Upload():
                     # Comments
                     if not inputRec[12]:
                         Comments = None
-                    elif str(inputRec[12]) == "" or str(inputRec[12]) == " ":
+                    elif empty_string(str(inputRec[12])):
                         Comments = None
                     else:
                         Comments = str(inputRec[12])
@@ -1018,7 +1019,7 @@ def Upload():
                     # Region
                     if not inputRec[13]:
                         Region = None
-                    elif str(inputRec[13]) == "" or str(inputRec[13]) == " ":
+                    elif empty_string(str(inputRec[13])):
                         Region = None
                     else:
                         Region = str(inputRec[13])
@@ -1026,7 +1027,7 @@ def Upload():
                     # Department
                     if not inputRec[14]:
                         Dept = None
-                    elif str(inputRec[14]) == "" or str(inputRec[14]) == " ":
+                    elif empty_string(str(inputRec[14])):
                         Dept = None
                     else:
                         Dept = str(inputRec[14])
@@ -1034,7 +1035,7 @@ def Upload():
                     # Division
                     if not inputRec[15]:
                         Division = None
-                    elif str(inputRec[15]) == "" or str(inputRec[15]) == " ":
+                    elif empty_string(str(inputRec[15])):
                         Division = None
                     else:
                         Division = str(inputRec[15])
@@ -1042,7 +1043,7 @@ def Upload():
                     # Person Responsible
                     if not inputRec[16]:
                         PersResp = None
-                    elif str(inputRec[16]) == "" or str(inputRec[16]) == " ":
+                    elif empty_string(str(inputRec[16])):
                         PersResp = None
                     else:
                         PersResp = str(inputRec[16])
@@ -1089,7 +1090,7 @@ def Upload():
                     # Condition Basis
                     if not inputRec[20]:
                         ConditionBasis = None
-                    elif str(inputRec[20]) == "" or str(inputRec[20]) == " ":
+                    elif empty_string(str(inputRec[20])):
                         ConditionBasis = None
                     else:
                         ConditionBasis = str(inputRec[20])
@@ -1133,7 +1134,7 @@ def Upload():
                     # Record Drawing
                     if not inputRec[26]:
                         RecordDrawing = None
-                    elif str(inputRec[26]) == "" or str(inputRec[26]) == " ":
+                    elif empty_string(str(inputRec[26])):
                         RecordDrawing = None
                     else:
                         RecordDrawing = str(inputRec[26])
@@ -1149,7 +1150,7 @@ def Upload():
                     # Cost Code (lookup)
                     if not inputRec[28]:
                         CostCode = None
-                    elif str(inputRec[28]) == "" or str(inputRec[28]) == " ":
+                    elif empty_string(str(inputRec[28])):
                         CostCode = None
                     else:
                         CostCode = str(inputRec[28])
@@ -1159,7 +1160,7 @@ def Upload():
                         CostFactor = None
                     elif inputRec[29] == 0:
                         CostFactor = None
-                    elif str(inputRec[29]) == "" or str(inputRec[29]) == " ":
+                    elif empty_string(str(inputRec[29])):
                         CostFactor = None
                     else:
                         CostFactor = str(int(float(inputRec[29])))
@@ -1220,6 +1221,7 @@ def Upload():
                     gdbOwner = "ASSETVIEWER."
 
                     # Point feature class FCodes
+                    # This is just a mess no matter how you do it.
                     if shapeType == "Point":
                         if FCode == "CB":
                             outputfc = set_output_fc(gdb,gdbOwner,"Stormwater","SWC_Catchbasin")
@@ -1265,33 +1267,9 @@ def Upload():
                                     outputfc = set_output_fc(gdb,gdbOwner,"Wastewater","WWC_TreatmentFacility")
                             else: #In case LocDesc is empty, put record here:
                                 outputfc = set_output_fc(gdb,gdbOwner,"Wastewater","WWC_TreatmentFacility")
-                        elif FCode in ("WWTFAC", 
-                                       "WWBSC", 
-                                       "WWBLWR", 
-                                       "WWTFBLD",
-                                       "WWCCSYS", 
-                                       "WWCLCC", 
-                                       "WWCLAR", 
-                                       "WWCOMP", 
-                                       "WWDAFS",
-                                       "WWDAFT", 
-                                       "WWELECM", 
-                                       "WWFFT", 
-                                       "WWFLME", 
-                                       "WWGDTP",
-                                       "WWISV", 
-                                       "WWLAB", 
-                                       "WWLAG", 
-                                       "WWOFS", 
-                                       "WWOXDI", 
-                                       "WWPADAE", 
-                                       "WWPTNK", 
-                                       "WWSBRT", 
-                                       "WWSCRC", 
-                                       "WWSDB",
-                                       "WWSCM", 
-                                       "WWST",
-                                       "WWTLEM"):
+                        elif FCode in ("WWTFAC", "WWBSC", "WWBLWR", "WWTFBLD", "WWCCSYS", "WWCLCC", "WWCLAR", "WWCOMP", 
+                                       "WWDAFS", "WWDAFT", "WWELECM", "WWFFT", "WWFLME", "WWGDTP", "WWISV", "WWLAB", 
+                                       "WWLAG", "WWOFS", "WWOXDI", "WWPADAE", "WWPTNK", "WWSBRT", "WWSCRC", "WWSDB", "WWSCM", "WWST","WWTLEM") :
                             outputtab = gdb + "/" + gdbOwner + "WWC_TreatmentFacility_Assets"
                         elif FCode == "BST":
                             outputfc = set_output_fc(gdb,gdbOwner,"WaterSupply","PWS_BoosterStation")
@@ -1529,7 +1507,8 @@ def Upload():
              "Field10",
              "Field11"))
         # Write remaining rows with data
-        for rownum in xrange(sheet.nrows):
+        xrows = xrange(sheet.nrows)
+        for rownum in xrows:
             # Skip the first two rows
             if rownum == 0 or rownum == 1:
                 continue
@@ -1581,44 +1560,44 @@ def Upload():
                     continue
                 else:
                     # Item
-                    Item = inputDBFRec[0]
+                    Item = inputDBFRec.getValue('Item')
                     # Cost Code (Lookup Code)
-                    if(empty_string(inputDBFRec[1])):
+                    if(empty_string(inputDBFRec.getValue('Lookup_Cod'))):
                         CostCode = None
                     else:
-                        CostCode = inputDBFRec[1]
+                        CostCode = inputDBFRec.getValue('Lookup_Cod')
                     # Cost Factor
-                    if empty_string(inputDBFRec[2]):
+                    if empty_string(inputDBFRec.getValue('Cost_Facto')):
                         CostFactor = None
                     else:
-                        if is_number(inputDBFRec[2]):
-                            CostFactor = float(inputDBFRec[2])
+                        if is_number(inputDBFRec.getValue('Cost_Facto')):
+                            CostFactor = float(inputDBFRec.getValue('Cost_Facto'))
                             CostFactor = int(CostFactor)
                         else:
-                            CostFactor = inputDBFRec[2]
+                            CostFactor = inputDBFRec.getValue('Cost_Facto')
                     # Useful Life
-                    if empty_string(str(inputDBFRec[3])):
+                    if empty_string(str(inputDBFRec.getValue('Life'))):
                         UsefulLife = None
                     else:
-                        if is_number(inputDBFRec[3]):
-                            UsefulLife = int(inputDBFRec[3])
+                        if is_number(inputDBFRec.getValue('Life')):
+                            UsefulLife = int(inputDBFRec.getValue('Life'))
                         else:
                             UsefulLife = None
                     # Unit
-                    if empty_string(inputDBFRec[4]):
+                    if empty_string(inputDBFRec.getValue('Unit')):
                         Unit = None
                     else:
-                        Unit = inputDBFRec[4]
+                        Unit = inputDBFRec.getValue('Unit')
                     # Base Cost
-                    if empty_string(str(inputDBFRec[5])):
+                    if empty_string(str(inputDBFRec.getValue('Base_cost'))):
                         BaseCost = None
                     else:
-                        BaseCost = inputDBFRec[5]
+                        BaseCost = inputDBFRec.getValue('Base_Cost')
                     # Total Cost
-                    if empty_string(str(inputDBFRec[6])):
+                    if empty_string(str(inputDBFRec.getValue('Total_Cost'))):
                         TotalCost = None
                     else:
-                        TotalCost = inputDBFRec[6]
+                        TotalCost = inputDBFRec.getValue('Total_Cost')
                     # Write values to UnitCost table in GDB
                     with arcpy.da.InsertCursor(unitCostTab, outputGDBFields) as unitCostCursor:
                         # Insert the record

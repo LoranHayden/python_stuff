@@ -208,3 +208,21 @@ def empty_string(text):
 #a = globals()
 #b = locals()
 #print(a)
+def with_ex():
+    xr = xrange(100000000)
+    for j in xrange(10):
+        for i in xr:
+            return i
+def with_in():
+    for j in xrange(10):
+        for i in xrange(100000000):
+            return i
+import timeit
+t = timeit.Timer(setup='from __main__ import with_ex', stmt='with_ex()')
+print(t.timeit())
+#print(t)
+#11.479144930839539
+t = timeit.Timer(setup='from __main__ import with_in', stmt='with_in()')
+print(t.timeit())
+#print(t)
+#4.6661689281463623
