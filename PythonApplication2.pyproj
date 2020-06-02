@@ -34,6 +34,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="aFile.txt" />
+    <Content Include="brick_codes.json" />
+    <Content Include="gravel_codes.json" />
+    <Content Include="concrete_codes.json" />
+    <Content Include="asphalt_codes.json" />
     <Content Include="input_fields.json" />
     <Content Include="dataset_table_names.json" />
     <Content Include="dataset_names.json" />

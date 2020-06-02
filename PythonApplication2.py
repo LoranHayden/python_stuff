@@ -191,3 +191,20 @@ def empty_string(text):
 #b = ['c', 'd']
 #c = [i for i in a+b]
 #print(c)
+#def a():
+#    global b
+#    b = 2
+#def c():
+#    d
+#    b = 3
+#a()
+#print(b)
+#c()
+#print(b)
+#a()
+#print(b)
+#c()
+#print(b)
+#a = globals()
+#b = locals()
+#print(a)

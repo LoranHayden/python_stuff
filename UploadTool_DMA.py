@@ -49,6 +49,7 @@ outputFields_Table_BST = get_array('water_supply_booster_station.json','outputFi
 outputFields_Table_WSTF = get_array('water_supply_treatment_facility.json','outputFields_Table_WSTF')
 
 def main():
+    Unzip()
     Validate()
 
 def is_number(n):
@@ -135,6 +136,10 @@ def validateFiles(logfile, errorCount, shpFolder, shapefullpath, fieldsShapefile
             else:
                 errorCounter += 1
                 writeSpatialReferenceError(logfile, errorCount, shapefullpath)
+def Unzip():
+    # Get the zip file parameter
+    global munZipfile, zip_ref
+    munZipfile = arcpy.GetParameterAsText(3)
 
 def Validate():
 
@@ -149,8 +154,6 @@ def Validate():
         # Get 2 of the parameters
         mun = arcpy.GetParameterAsText(0)
         method = arcpy.GetParameterAsText(1)
-        #parentFolder = arcpy.GetParameterAsText(2) + "/"
-        #gdb = arcpy.GetParameterAsText(3) + "/"
 
 
         # Set different variables according to what the input method is
@@ -228,7 +231,8 @@ def Validate():
 
 
 #        # Main Municipality spreadsheet (XLSM)
-        for file in os.listdir(munFolder):
+        files = os.listdir(munFolder)
+        for file in files:
             if file.endswith(".xlsm") and file.startswith(munID):
                 fileSpreadsheet = munFolder + file
                 existSpreadsheet = True
@@ -248,7 +252,8 @@ def Validate():
             wr = csv.writer(csvGenAssetInfo, quoting=csv.QUOTE_ALL)
 
             # Write rows with data (including header row)
-            for rownum in xrange(sheet.nrows):
+            nrows = xrange(sheet.nrows)
+            for rownum in nrows:
                 # Skip the first two rows
                 if rownum == 0 or rownum == 1:
                     continue
@@ -291,13 +296,13 @@ def Validate():
 #            # The sheet/CSV has too many empty or unneeded columns, so will
 #            only take ones we need
 #            # Need to export to a new CSV in the municipality folder
-            #f = pd.read_csv(munFolder + "GenAssetInfo_" + munID + ".csv")
+            f = pd.read_csv(munFolder + "GenAssetInfo_" + munID + ".csv")
             if shapefilesExist == False:
                 keep_col = get_array('required_asset_fields.json', 'required_asset_fields').remove('GIS Link')
             else:
                 keep_col = get_array('required_asset_fields.json', 'required_asset_fields')
-            #new_f = f[keep_col]
-            #new_f.to_csv(munFolder + "GenAssetInfo.csv", index=False)
+            new_f = f[keep_col]
+            new_f.to_csv(munFolder + "GenAssetInfo.csv", index=False)
 
 #            # Will create a DBF in the municipality folder
             dbfGenAssetInfo = munFolder + "GenAssetInfo.dbf"
@@ -430,8 +435,10 @@ def Validate():
 def Upload():
 
     try:
-        
-        global totalCounter
+        # need to make certain we're referencing the global variables
+        # defined in the Validate() method
+        global munFolder, munID, shpMunID, munName, munFullName, mun
+        global method, gdb, shapefilesExist, totalCounter
 
         # Get the Spreadsheet Export folder
         ssExportFolder = munFolder + "Spreadsheet Export/"
@@ -449,8 +456,6 @@ def Upload():
         # Convert CSV file to DBF
         arcpy.TableToTable_conversion(csvGenAssetInfo, munFolder, "GenAssetInfo.dbf")
         dbfGenAssetInfo = munFolder + "GenAssetInfo.dbf"
-
-
 
 #        ====================================================================================================================
 #        Begin of Survey-method-only code
@@ -716,7 +721,8 @@ def Upload():
                     raise Exception
         # Stand-alone tables
         dstn = get_array('dataset_table_names.json', 'dataset_table_names')
-        for tab in arcpy.ListTables():
+        tabs = arcpy.ListTables()
+        for tab in tabs:
             if not arcpy.TestSchemaLock(tab):
                 for dst in dstn:
                     if dst in tab:
@@ -762,31 +768,10 @@ def Upload():
 
             shapefile = ""
 
-            # check the last five characters of the subFolder name
-            if subFolder[-5:] == "PWS L":
-                # Shapefile will be called "<shpMunID> PWS L.shp"
-                shapefile = shpMunID + " PWS L.shp"
-            elif subFolder[-5:] == "PWS P":
-                # Shapefile will be called "<shpMunID> PWS P.shp"
-                shapefile = shpMunID + " PWS P.shp"
-            elif subFolder[-5:] == "SWC L":
-                # Shapefile will be called "<shpMunID> SWC L.shp"
-                shapefile = shpMunID + " SWC L.shp"
-            elif subFolder[-5:] == "SWC P":
-                # Shapefile will be called "<shpMunID> SWC P.shp"
-                shapefile = shpMunID + " SWC P.shp"
-            elif subFolder[-5:] == "TRN L":
-                # Shapefile will be called "<shpMunID> TRN L.shp"
-                shapefile = shpMunID + " TRN L.shp"
-            elif subFolder[-5:] == "TRN P":
-                # Shapefile will be called "<shpMunID> TRN P.shp"
-                shapefile = shpMunID + " TRN P.shp"
-            elif subFolder[-5:] == "WWC L":
-                # Shapefile will be called "<shpMunID> WWC L.shp"
-                shapefile = shpMunID + " WWC L.shp"
-            elif subFolder[-5:] == "WWC P":
-                # Shapefile will be called "<shpMunID> WWC P.shp"
-                shapefile = shpMunID + " WWC P.shp"
+            shapefile_names = get_array('shapefile_names.json', 'shapefile_names')
+            sf_name = subFolder [:-5] # last five characters
+            if sf_name in shapefile_names:
+                shapefile = shpMunID + ' ' + sf_name + '.shp'
             else:
                 shapefile = ""
 
@@ -824,8 +809,7 @@ def Upload():
                     # Join the shapefile to the spreadsheet dbf
                     fcJoin = fc.replace(" ", "_")[:-4] + "_Join"
                     arcpy.MakeFeatureLayer_management(fc, fcJoin)
-                    # Commented out 02 May 2019 and replaced with line below
-                    it
+                    # Commented out 02 May 2019 and replaced with line below it
                     #shapefileName = fc.replace(" ", "_")[:-4]
                     shapefileName = fc.replace(" ", " ")[:-4]
 
@@ -1003,13 +987,17 @@ def Upload():
 
                     # Material
                     # Check some road and sidewalk/trail fcodes for materials
-                    if FCode in ("RRCB-A", "RRCB-A-S", "RRRD-A", "RRRD-A-S", "RRDR-A", "RRDR-A-S", "RRSW-A", "RRSW-A-S"):
+                    asphalt_codes = get_array('asphalt_codes.json','asphalt_codes')
+                    concrete_codes = get_array('concrete_codes.json','concrete_codes')
+                    brick_codes = get_array('brick_codes.json','brick_codes')
+                    gravel_codes = get_array('gravel_codes.json','gravel_codes')
+                    if FCode in asphalt_codes:
                         Material = "Asphalt"
-                    elif FCode in ("RRCB-C", "RRCB-C-S", "RRSW-C", "RRSW-C-S"):
+                    elif FCode in concrete_codes:
                         Material = "Concrete"
-                    elif FCode in ("RRGR", "RRGR-S"):
+                    elif FCode in gravel_codes:
                         Material = "Gravel"
-                    elif FCode in ("RRSW-B", "RRSW-B-S"):
+                    elif FCode in brick_codes:
                         Material = "Brick"
                     else:
                         if not inputRec[11]:
